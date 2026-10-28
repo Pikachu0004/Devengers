@@ -25,6 +25,7 @@
     }
   ],
   "rewrites": [
+    { "source": "/api/:path*", "destination": "https://devengers-api.onrender.com/api/:path*" },
     { "source": "/login", "destination": "/login.html" },
     { "source": "/register", "destination": "/register.html" },
     { "source": "/forgot-password", "destination": "/forgot-password.html" },

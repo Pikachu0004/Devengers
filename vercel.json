@@ -1,0 +1,33 @@
+{
+  "version": 2,
+  "cleanUrls": true,
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "X-Frame-Options", "value": "SAMEORIGIN" },
+        { "key": "X-XSS-Protection", "value": "1; mode=block" },
+        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" }
+      ]
+    }
+  ],
+  "rewrites": [
+    { "source": "/api/:path*", "destination": "https://devengers-api.onrender.com/api/:path*" },
+    { "source": "/", "destination": "/okay-dev-vanilla/index.html" },
+    { "source": "/login", "destination": "/okay-dev-vanilla/login.html" },
+    { "source": "/register", "destination": "/okay-dev-vanilla/register.html" },
+    { "source": "/forgot-password", "destination": "/okay-dev-vanilla/forgot-password.html" },
+    { "source": "/reset-password", "destination": "/okay-dev-vanilla/forgot-password.html" },
+    { "source": "/profile", "destination": "/okay-dev-vanilla/profile.html" },
+    { "source": "/events", "destination": "/okay-dev-vanilla/events.html" },
+    { "source": "/campus", "destination": "/okay-dev-vanilla/campus.html" },
+    { "source": "/dsa", "destination": "/okay-dev-vanilla/dsa.html" },
+    { "source": "/learn", "destination": "/okay-dev-vanilla/learn.html" },
+    { "source": "/certificates", "destination": "/okay-dev-vanilla/certificates.html" },
+    { "source": "/jobs", "destination": "/okay-dev-vanilla/jobs.html" },
+    { "source": "/gallery", "destination": "/okay-dev-vanilla/gallery.html" },
+    { "source": "/directory", "destination": "/okay-dev-vanilla/directory.html" },
+    { "source": "/(.*)", "destination": "/okay-dev-vanilla/$1" }
+  ]
+}
