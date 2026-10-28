@@ -31,3 +31,4 @@
     { "source": "/(.*)", "destination": "/okay-dev-vanilla/$1" }
   ]
 }
+

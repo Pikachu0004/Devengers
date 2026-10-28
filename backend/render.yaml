@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: devengers-api
+    env: python
+    region: singapore
+    plan: free
+    rootDir: backend
+    buildCommand: pip install -r requirements.txt
+    startCommand: python serve.py
+    envVars:
+      - key: PORT
+        value: 10000
+      - key: DEVENGERS_DEV_MODE
+        value: false
+    healthCheckPath: /api/events

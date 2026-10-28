@@ -1,44 +1,13 @@
-# Tell Vercel to ignore ALL Python backend files
-# Python/backend runs on Render — Vercel only serves static HTML/CSS/JS
-
-# Main server
-serve.py
-requirements.txt
-render.yaml
-
-# Auth & backend services
-auth.py
-db.py
-campus_service.py
-certificate_service.py
-dsa_service.py
-email_service.py
-flash_event_service.py
-gallery_service.py
-job_sync_service.py
-manage_admin.py
-
-# Tests
-test_e2e.py
-test_certificates_e2e.py
-test_forgot_password.py
-test_production_readiness.py
-test_smtp_live.py
-
-# Runtime artifacts
+# No Python files remain in this directory.
+# Backend lives in /backend/ and is deployed on Render separately.
+# This file kept as a safety net.
 __pycache__/
 *.pyc
 *.pyo
-
-# Databases
 *.db
 *.sqlite
 *.sqlite3
-
-# Secrets
 .env
 .env.*
 !.env.example
-
-# DSA PDF solutions (large files not needed on Vercel CDN)
 Assest/dsa/solutions/
