@@ -1,0 +1,1292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Gallery &amp; Community Dashboard | Devengers</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico?v=2">
+    <link rel="icon" type="image/png" href="favicon.png?v=2">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css?v=4">
+    <!-- Cropper.js CDN for interactive image cropping -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.1/cropper.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.1/cropper.min.js"></script>
+    <script src="auth.js"></script>
+    <style>
+        body { font-family: 'Space Grotesk', system-ui, -apple-system, sans-serif; }
+        .bg-grid {
+            background-color: #0d0d0d;
+            background-image: 
+                radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+                linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 24px 24px, 96px 96px, 96px 96px;
+        }
+        .shadow-brutal {
+            box-shadow: 4px 4px 0px 0px rgba(0,0,0,1);
+        }
+        .shadow-brutal-sm {
+            box-shadow: 2px 2px 0px 0px rgba(0,0,0,1);
+        }
+        .shadow-brutal-lime {
+            box-shadow: 4px 4px 0px 0px #CDFF29;
+        }
+        .form-input {
+            background-color: #161616;
+            border: 2px solid #2d2d2d;
+            color: white;
+            transition: all 0.2s;
+        }
+        .form-input:focus {
+            border-color: #CDFF29;
+            outline: none;
+            background-color: #1f1f1f;
+        }
+        /* Custom scrollbars */
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: #111; }
+        ::-webkit-scrollbar-thumb { background: #333; border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: #CDFF29; }
+    </style>
+</head>
+<body class="bg-grid m-0 p-0 text-white min-h-screen antialiased flex flex-col">
+
+    <!-- Toast Notification -->
+    <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-24 opacity-0 pointer-events-none transition-all duration-300 bg-black/95 border-2 border-[#CDFF29] text-white px-5 py-3 rounded-2xl shadow-brutal-lime font-mono text-xs flex items-center gap-3">
+        <span id="toast-icon" class="text-base">✓</span>
+        <span id="toast-message">Action successful!</span>
+    </div>
+
+    <!-- TOP ADMIN NAVBAR -->
+    <header class="sticky top-0 z-40 w-full bg-[#141414]/90 backdrop-blur-md border-b-2 border-black/80 px-6 py-4">
+        <div class="max-w-[1400px] mx-auto flex items-center justify-between flex-wrap gap-4">
+            
+            <!-- Logo & Brand Title -->
+            <div class="flex items-center gap-4">
+                <a href="index.html" class="flex items-center group">
+                    <div class="font-black text-2xl tracking-tighter uppercase rounded-full transition-transform duration-300 group-hover:scale-105"
+                         style="-webkit-text-stroke: 1.5px black; color: #CDFF29; text-shadow: 2px 2px 0px black; line-height: 1;">
+                        DEVENGERS
+                    </div>
+                </a>
+                
+                <!-- Admin Section Nav Switcher -->
+                <nav class="flex items-center gap-2 bg-black/60 p-1 rounded-xl border border-zinc-800 flex-wrap">
+                    <a href="admin-events.html" class="px-3 py-1 rounded-lg text-xs font-mono font-bold uppercase tracking-wider text-gray-400 hover:text-white transition-colors">
+                        Events
+                    </a>
+                    <a href="admin-learn.html" class="px-3 py-1 rounded-lg text-xs font-mono font-bold uppercase tracking-wider text-gray-400 hover:text-white transition-colors">
+                        Learn &amp; Courses
+                    </a>
+                    <a href="admin-campus.html" class="px-3 py-1 rounded-lg text-xs font-mono font-bold uppercase tracking-wider text-gray-400 hover:text-white transition-colors">
+                        Campus &amp; PYQs
+                    </a>
+                    <a href="admin-gallery.html" class="px-3 py-1 rounded-lg text-xs font-mono font-bold uppercase tracking-wider bg-[#CDFF29] text-black shadow-brutal-sm">
+                        Gallery &amp; Community
+                    </a>
+                    <a href="admin-certificates.html" class="px-3 py-1 rounded-lg text-xs font-mono font-bold uppercase tracking-wider text-gray-400 hover:text-white transition-colors">
+                        Certificates
+                    </a>
+                </nav>
+            </div>
+
+            <!-- Admin Meta & Actions -->
+            <div class="flex items-center gap-4">
+                <a href="gallery.html" target="_blank"
+                   class="inline-flex items-center gap-1.5 text-xs font-mono font-bold uppercase tracking-wider text-gray-300 hover:text-white px-3 py-1.5 rounded-lg border border-gray-700 hover:border-gray-500 transition-colors">
+                    <span>Public Gallery</span>
+                    <span class="text-sm">&#8599;</span>
+                </a>
+
+                <div class="flex items-center gap-3 bg-black/60 px-3 py-1.5 rounded-full border border-gray-800">
+                    <span class="w-2.5 h-2.5 rounded-full bg-green-400 animate-pulse"></span>
+                    <span id="admin-email-display" class="text-xs font-mono text-gray-300 font-bold">admin@devengers.org</span>
+                </div>
+
+                <button id="logout-btn" onclick="window.DevengersAuth && window.DevengersAuth.logout ? window.DevengersAuth.logout() : location.href='login.html'"
+                        class="bg-red-500/10 hover:bg-red-500 text-red-300 hover:text-white border border-red-500/40 px-3 py-1.5 rounded-full text-xs font-mono font-bold uppercase tracking-wider transition-colors cursor-pointer">
+                    Logout
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN DASHBOARD CONTENT -->
+    <main class="flex-1 w-full max-w-[1400px] mx-auto px-6 py-8 flex flex-col gap-8">
+
+        <!-- TITLE & TAB SWITCHER -->
+        <div class="flex items-center justify-between flex-wrap gap-4 border-b border-zinc-800 pb-6">
+            <div>
+                <h1 class="text-3xl md:text-4xl font-black uppercase tracking-tight text-white mb-1">
+                    Gallery &amp; Community Manager
+                </h1>
+                <p class="text-gray-400 text-sm">
+                    Manage the Latest Opportunities advertising posters, Our Previous Events with crop controls, and moderate Community Projects.
+                </p>
+            </div>
+
+            <!-- Section Tabs Switcher -->
+            <div class="flex items-center gap-2 bg-[#161616] p-1.5 rounded-2xl border border-zinc-800">
+                <button type="button" onclick="switchTab('posters')" id="tab-btn-posters"
+                        class="px-4 py-2 rounded-xl text-xs font-mono font-bold uppercase tracking-wider bg-[#CDFF29] text-black shadow-brutal-sm transition-all flex items-center gap-2">
+                    <span>📢 Advertising Posters</span>
+                    <span id="badge-posters-count" class="bg-black text-white text-[10px] px-1.5 py-0.2 rounded-full">0</span>
+                </button>
+                <button type="button" onclick="switchTab('events')" id="tab-btn-events"
+                        class="px-4 py-2 rounded-xl text-xs font-mono font-bold uppercase tracking-wider text-gray-400 hover:text-white transition-all flex items-center gap-2">
+                    <span>🏆 Previous Events</span>
+                    <span id="badge-events-count" class="bg-zinc-800 text-gray-300 text-[10px] px-1.5 py-0.2 rounded-full">0</span>
+                </button>
+                <button type="button" onclick="switchTab('projects')" id="tab-btn-projects"
+                        class="px-4 py-2 rounded-xl text-xs font-mono font-bold uppercase tracking-wider text-gray-400 hover:text-white transition-all flex items-center gap-2">
+                    <span>🚀 Community Projects</span>
+                    <span id="badge-projects-count" class="bg-zinc-800 text-gray-300 text-[10px] px-1.5 py-0.2 rounded-full">0</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- ========================================================================= -->
+        <!-- TAB 1: ADVERTISING POSTERS (LATEST OPPORTUNITIES) -->
+        <!-- ========================================================================= -->
+        <section id="tab-posters" class="block">
+            <div class="flex items-center justify-between mb-6 flex-wrap gap-4">
+                <div>
+                    <h2 class="text-xl font-bold uppercase tracking-wide text-white">
+                        Latest Opportunity Advertising Posters
+                    </h2>
+                    <p class="text-gray-400 text-xs font-mono mt-0.5">
+                        Upload 1, 2, 3, 4, 5+ promotional posters. They automatically rotate with horizontal moving animation on the public gallery hero!
+                    </p>
+                </div>
+                <button type="button" onclick="openPosterModal()"
+                        class="bg-[#CDFF29] hover:bg-white text-black font-black uppercase tracking-wider text-xs px-5 py-2.5 rounded-full border-2 border-black shadow-brutal hover:translate-x-0.5 hover:translate-y-0.5 transition-all flex items-center gap-2 cursor-pointer">
+                    <span>+ Upload New Poster</span>
+                </button>
+            </div>
+
+            <!-- Posters List Grid -->
+            <div id="posters-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                <!-- Dynamically loaded via JS -->
+            </div>
+        </section>
+
+        <!-- ========================================================================= -->
+        <!-- TAB 2: OUR PREVIOUS EVENTS (WITH INTERACTIVE CROPPER) -->
+        <!-- ========================================================================= -->
+        <section id="tab-events" class="hidden">
+            <div class="flex items-center justify-between mb-6 flex-wrap gap-4">
+                <div>
+                    <h2 class="text-xl font-bold uppercase tracking-wide text-white">
+                        Our Previous Events (Managed with Interactive Image Crop)
+                    </h2>
+                    <p class="text-gray-400 text-xs font-mono mt-0.5">
+                        Manage titles, organizations (By XYZ), and crop thumbnails with an exact real-time display card preview.
+                    </p>
+                </div>
+                <button type="button" onclick="openPrevEventModal()"
+                        class="bg-[#CDFF29] hover:bg-white text-black font-black uppercase tracking-wider text-xs px-5 py-2.5 rounded-full border-2 border-black shadow-brutal hover:translate-x-0.5 hover:translate-y-0.5 transition-all flex items-center gap-2 cursor-pointer">
+                    <span>+ Add Previous Event</span>
+                </button>
+            </div>
+
+            <!-- Previous Events Grid -->
+            <div id="prev-events-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                <!-- Dynamically loaded via JS -->
+            </div>
+        </section>
+
+        <!-- ========================================================================= -->
+        <!-- TAB 3: COMMUNITY PROJECTS MODERATION -->
+        <!-- ========================================================================= -->
+        <section id="tab-projects" class="hidden">
+            <div class="flex items-center justify-between mb-6 flex-wrap gap-4">
+                <div>
+                    <h2 class="text-xl font-bold uppercase tracking-wide text-white">
+                        Community Projects Moderation
+                    </h2>
+                    <p class="text-gray-400 text-xs font-mono mt-0.5">
+                        Logged-in users upload projects from their profile or gallery page. Admin can monitor, review discussion chats, or remove unwanted submissions.
+                    </p>
+                </div>
+                <div class="flex items-center gap-3">
+                    <input type="text" id="admin-project-search" placeholder="Search projects or tech stack..."
+                           oninput="renderAdminProjects()"
+                           class="form-input text-xs px-3.5 py-2 rounded-xl w-64">
+                </div>
+            </div>
+
+            <!-- Community Projects Table -->
+            <div class="bg-[#141414] border-2 border-zinc-800 rounded-2xl overflow-hidden shadow-brutal">
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left text-xs font-mono">
+                        <thead class="bg-black/60 border-b border-zinc-800 text-gray-400 uppercase text-[11px]">
+                            <tr>
+                                <th class="p-4">Project</th>
+                                <th class="p-4">Author</th>
+                                <th class="p-4">Tech Stack</th>
+                                <th class="p-4">Chats / Q&amp;A</th>
+                                <th class="p-4">Demo &amp; Video</th>
+                                <th class="p-4 text-right">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="admin-projects-tbody" class="divide-y divide-zinc-800/80">
+                            <!-- Populated dynamically -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ========================================================================= -->
+    <!-- MODAL 1: ADD / EDIT OPPORTUNITY POSTER -->
+    <!-- ========================================================================= -->
+    <div id="poster-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden items-center justify-center p-4">
+        <div class="bg-[#161616] border-2 border-zinc-700 w-full max-w-lg rounded-3xl p-6 shadow-2xl relative max-h-[90vh] overflow-y-auto">
+            <div class="flex justify-between items-center mb-5 pb-3 border-b border-zinc-800">
+                <h3 id="poster-modal-title" class="font-black text-xl uppercase tracking-tight text-white">
+                    Add Opportunity Poster
+                </h3>
+                <button type="button" onclick="closePosterModal()" class="text-gray-400 hover:text-white text-2xl leading-none">&times;</button>
+            </div>
+
+            <form id="poster-form" onsubmit="handleSavePoster(event)" class="flex flex-col gap-4">
+                <input type="hidden" id="poster-id">
+
+                <div>
+                    <label class="block text-xs font-mono text-gray-300 font-bold mb-1">Poster Title *</label>
+                    <input type="text" id="poster-title" required placeholder="e.g., National AI Hackathon 2026"
+                           class="form-input w-full px-3.5 py-2.5 rounded-xl text-sm">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-mono text-gray-300 font-bold mb-1">Subtitle / Key Highlight</label>
+                    <input type="text" id="poster-subtitle" placeholder="e.g., ₹1,50,000 Prize Pool • 36h Code Sprint"
+                           class="form-input w-full px-3.5 py-2.5 rounded-xl text-sm">
+                </div>
+
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-xs font-mono text-gray-300 font-bold mb-1">Badge Tag</label>
+                        <input type="text" id="poster-badge" placeholder="HOT / HIRING / NEW" value="OPPORTUNITY"
+                               class="form-input w-full px-3 py-2 rounded-xl text-xs font-mono">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-mono text-gray-300 font-bold mb-1">Display Order</label>
+                        <input type="number" id="poster-order" value="1" min="1" max="99"
+                               class="form-input w-full px-3 py-2 rounded-xl text-xs font-mono">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-mono text-gray-300 font-bold mb-1">Target Link URL</label>
+                    <input type="text" id="poster-link" placeholder="events.html or external https://..."
+                           class="form-input w-full px-3.5 py-2.5 rounded-xl text-sm">
+                </div>
+
+                <!-- Poster Image Upload -->
+                <div>
+                    <label class="block text-xs font-mono text-gray-300 font-bold mb-1">Poster Image *</label>
+                    <div class="flex items-center gap-3 mb-2">
+                        <label class="bg-zinc-800 hover:bg-zinc-700 text-white px-3.5 py-2 rounded-xl text-xs font-mono cursor-pointer border border-zinc-700">
+                            <span>📁 Upload Image File</span>
+                            <input type="file" id="poster-file-input" accept="image/*" class="hidden" onchange="handlePosterFileSelect(this)">
+                        </label>
+                        <span class="text-xs text-gray-500 font-mono">or enter URL below</span>
+                    </div>
+                    <input type="url" id="poster-image-url" required placeholder="https://images.unsplash.com/... or Assest/uploads/..."
+                           oninput="document.getElementById('poster-preview-img').src = this.value"
+                           class="form-input w-full px-3.5 py-2 rounded-xl text-xs font-mono">
+                    
+                    <!-- Preview -->
+                    <div class="mt-3 aspect-video bg-black rounded-xl overflow-hidden border border-zinc-800 relative">
+                        <img id="poster-preview-img" src="" alt="Poster Preview" class="w-full h-full object-cover">
+                    </div>
+                </div>
+
+                <div class="flex items-center gap-2 pt-2">
+                    <input type="checkbox" id="poster-active" checked class="w-4 h-4 accent-[#CDFF29]">
+                    <label for="poster-active" class="text-xs font-mono text-gray-300">Active (Visible in auto horizontal rotation)</label>
+                </div>
+
+                <div class="flex justify-end gap-3 pt-3 border-t border-zinc-800 mt-2">
+                    <button type="button" onclick="closePosterModal()" class="px-4 py-2 rounded-xl text-xs font-mono text-gray-400 hover:text-white">
+                        Cancel
+                    </button>
+                    <button type="submit" id="poster-save-btn"
+                            class="bg-[#CDFF29] hover:bg-white text-black font-black uppercase text-xs px-6 py-2.5 rounded-full border-2 border-black shadow-brutal transition-all">
+                        Save Poster
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- ========================================================================= -->
+    <!-- MODAL 2: ADD / EDIT PREVIOUS EVENT (WITH INTERACTIVE CROPPER & LIVE PREVIEW) -->
+    <!-- ========================================================================= -->
+    <div id="prev-event-modal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-md hidden items-center justify-center p-4">
+        <div class="bg-[#141414] border-2 border-zinc-700 w-full max-w-4xl rounded-3xl p-6 shadow-2xl relative max-h-[92vh] overflow-y-auto">
+            <div class="flex justify-between items-center mb-5 pb-3 border-b border-zinc-800">
+                <div>
+                    <h3 id="prev-event-modal-title" class="font-black text-xl uppercase tracking-tight text-white">
+                        Add Previous Event
+                    </h3>
+                    <p class="text-xs text-gray-400 font-mono mt-0.5">
+                        Includes interactive image cropper with real-time event card preview!
+                    </p>
+                </div>
+                <button type="button" onclick="closePrevEventModal()" class="text-gray-400 hover:text-white text-2xl leading-none">&times;</button>
+            </div>
+
+            <form id="prev-event-form" onsubmit="handleSavePrevEvent(event)" class="flex flex-col gap-6">
+                <input type="hidden" id="prev-event-id">
+                <input type="hidden" id="prev-event-thumb-url">
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Column 1: Metadata Fields -->
+                    <div class="flex flex-col gap-4">
+                        <div>
+                            <label class="block text-xs font-mono text-gray-300 font-bold mb-1">Event Title *</label>
+                            <input type="text" id="prev-event-title" required placeholder="e.g., DevCon Global Hackfest 2025"
+                                   oninput="updateLivePreview()"
+                                   class="form-input w-full px-3.5 py-2.5 rounded-xl text-sm">
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-mono text-gray-300 font-bold mb-1">
+                                Organization Name (Replaces "By Alex") *
+                            </label>
+                            <input type="text" id="prev-event-org" required placeholder="e.g., Google Developer Groups &amp; Devengers"
+                                   oninput="updateLivePreview()"
+                                   class="form-input w-full px-3.5 py-2.5 rounded-xl text-sm">
+                            <span class="text-[11px] text-gray-500 font-mono mt-0.5 block">Will be displayed as "BY [ORGANIZATION]"</span>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-3">
+                            <div>
+                                <label class="block text-xs font-mono text-gray-300 font-bold mb-1">Date / Month</label>
+                                <input type="text" id="prev-event-date" placeholder="e.g., Nov 2025"
+                                       oninput="updateLivePreview()"
+                                       class="form-input w-full px-3 py-2 rounded-xl text-xs font-mono">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-mono text-gray-300 font-bold mb-1">Category / Tag</label>
+                                <input type="text" id="prev-event-category" placeholder="Hackathon / Summit" value="Hackathon"
+                                       oninput="updateLivePreview()"
+                                       class="form-input w-full px-3 py-2 rounded-xl text-xs font-mono">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-mono text-gray-300 font-bold mb-1">Recap / Event Link</label>
+                            <input type="text" id="prev-event-link" placeholder="events.html or external link"
+                                   class="form-input w-full px-3.5 py-2 rounded-xl text-xs font-mono">
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-mono text-gray-300 font-bold mb-1">Display Order</label>
+                            <input type="number" id="prev-event-order" value="1" min="1" max="99"
+                                   class="form-input w-28 px-3 py-2 rounded-xl text-xs font-mono">
+                        </div>
+
+                        <!-- Image Selector -->
+                        <div class="border-t border-zinc-800 pt-3">
+                            <label class="block text-xs font-mono text-gray-300 font-bold mb-1.5">Select Thumbnail to Crop</label>
+                            <div class="flex items-center gap-3">
+                                <label class="bg-[#CDFF29] hover:bg-white text-black px-4 py-2 rounded-xl text-xs font-mono font-bold cursor-pointer transition-colors shadow-brutal-sm">
+                                    <span>📸 Choose Local Image</span>
+                                    <input type="file" id="crop-file-input" accept="image/*" class="hidden" onchange="initCropperFromFile(this)">
+                                </label>
+                                <span class="text-xs text-gray-500 font-mono">or paste URL:</span>
+                            </div>
+                            <div class="flex items-center gap-2 mt-2">
+                                <input type="url" id="crop-url-input" placeholder="https://... image URL"
+                                       class="form-input flex-1 px-3 py-1.5 rounded-xl text-xs font-mono">
+                                <button type="button" onclick="initCropperFromUrl()"
+                                        class="bg-zinc-800 hover:bg-zinc-700 text-white px-3 py-1.5 rounded-xl text-xs font-mono border border-zinc-700">
+                                    Load
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Column 2: Interactive Cropper + Live Card Display -->
+                    <div class="flex flex-col gap-4 bg-[#1b1b1b] p-4 rounded-2xl border border-zinc-800">
+                        <!-- Cropper Canvas Container -->
+                        <div>
+                            <div class="flex justify-between items-center mb-1.5">
+                                <span class="text-xs font-mono text-gray-300 font-bold">1. Crop Image (16:9 Aspect Ratio)</span>
+                                <button type="button" id="apply-crop-btn" onclick="applyCrop()"
+                                        class="bg-[#CDFF29] hover:bg-white text-black text-[11px] font-mono font-bold px-3 py-1 rounded-lg transition-colors shadow-brutal-sm">
+                                    ✂️ Apply Crop
+                                </button>
+                            </div>
+                            <div class="h-56 bg-black rounded-xl overflow-hidden border border-zinc-700 relative flex items-center justify-center">
+                                <img id="cropper-target-img" src="" alt="Cropper Workspace" class="max-h-full max-w-full">
+                                <div id="cropper-empty-hint" class="text-xs font-mono text-gray-500 text-center p-4">
+                                    <span>Select or upload an image on the left to start cropping.</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 2. Real-Time Display Card Preview -->
+                        <div class="pt-2 border-t border-zinc-800">
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="text-xs font-mono text-[#CDFF29] font-bold">2. Live Event Display Preview</span>
+                                <span class="text-[10px] font-mono text-gray-400 bg-black/60 px-2 py-0.5 rounded-full">Exact look on public gallery</span>
+                            </div>
+                            
+                            <!-- Card Replica matching gallery.html -->
+                            <div class="bg-[#111] p-3.5 rounded-2xl border border-zinc-800 shadow-brutal max-w-sm mx-auto w-full">
+                                <div class="aspect-video bg-gray-800 rounded-xl mb-3 overflow-hidden relative border border-zinc-700">
+                                    <img id="live-preview-thumb" src="https://images.unsplash.com/photo-1515187029135-18ee286d815b?q=80&w=800&auto=format&fit=crop"
+                                         class="w-full h-full object-cover">
+                                    <span id="live-preview-cat" class="absolute top-2 right-2 bg-black/80 backdrop-blur-md text-[#CDFF29] text-[10px] font-mono font-bold px-2 py-0.5 rounded-full border border-[#CDFF29]/30">
+                                        Hackathon
+                                    </span>
+                                </div>
+                                <h4 id="live-preview-title" class="font-bold text-white text-sm mb-1 leading-tight line-clamp-1">
+                                    DevCon Global Hackfest 2025
+                                </h4>
+                                <p id="live-preview-org" class="text-gray-400 text-[10px] font-mono tracking-widest uppercase">
+                                    BY GOOGLE DEVELOPER GROUPS &amp; DEVENGERS
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex justify-end gap-3 pt-3 border-t border-zinc-800">
+                    <button type="button" onclick="closePrevEventModal()" class="px-4 py-2 rounded-xl text-xs font-mono text-gray-400 hover:text-white">
+                        Cancel
+                    </button>
+                    <button type="submit" id="prev-event-save-btn"
+                            class="bg-[#CDFF29] hover:bg-white text-black font-black uppercase text-xs px-6 py-2.5 rounded-full border-2 border-black shadow-brutal transition-all">
+                        Save Previous Event
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- ========================================================================= -->
+    <!-- MODAL 3: VIEW COMMUNITY PROJECT DETAILS & DISCUSSION (ADMIN MODERATION) -->
+    <!-- ========================================================================= -->
+    <div id="project-detail-modal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-md hidden items-center justify-center p-4">
+        <div class="bg-[#141414] border-2 border-zinc-700 w-full max-w-3xl rounded-3xl p-6 shadow-2xl relative max-h-[92vh] overflow-y-auto">
+            <div class="flex justify-between items-center mb-5 pb-3 border-b border-zinc-800">
+                <div>
+                    <h3 id="modal-proj-title" class="font-black text-xl uppercase tracking-tight text-white">
+                        Project Details
+                    </h3>
+                    <p id="modal-proj-author" class="text-xs text-gray-400 font-mono mt-0.5">Author info</p>
+                </div>
+                <button type="button" onclick="closeProjectDetailModal()" class="text-gray-400 hover:text-white text-2xl leading-none">&times;</button>
+            </div>
+
+            <!-- Content -->
+            <div class="flex flex-col gap-6">
+                <!-- Banner / Thumbnail -->
+                <div class="aspect-video bg-black rounded-2xl overflow-hidden border border-zinc-800 relative">
+                    <img id="modal-proj-thumb" src="" alt="Thumbnail" class="w-full h-full object-cover">
+                </div>
+
+                <!-- Description & Tech Stack -->
+                <div>
+                    <h4 class="text-xs font-mono text-gray-400 uppercase font-bold mb-1">About This Project</h4>
+                    <p id="modal-proj-desc" class="text-sm text-gray-200 leading-relaxed whitespace-pre-line"></p>
+                </div>
+
+                <div>
+                    <h4 class="text-xs font-mono text-gray-400 uppercase font-bold mb-2">Tech Stack</h4>
+                    <div id="modal-proj-tech" class="flex flex-wrap gap-2"></div>
+                </div>
+
+                <!-- Links -->
+                <div class="flex items-center gap-3 flex-wrap">
+                    <a id="modal-proj-demo-btn" href="#" target="_blank"
+                       class="bg-[#CDFF29] hover:bg-white text-black font-black uppercase text-xs px-5 py-2.5 rounded-full border border-black shadow-brutal-sm transition-all inline-flex items-center gap-1.5">
+                        <span>🚀 Live Demo</span>
+                        <span>&#8599;</span>
+                    </a>
+                    <a id="modal-proj-video-btn" href="#" target="_blank"
+                       class="bg-zinc-800 hover:bg-zinc-700 text-white font-mono font-bold text-xs px-4 py-2.5 rounded-full border border-zinc-700 transition-all inline-flex items-center gap-1.5">
+                        <span>📺 Watch Video Demo</span>
+                    </a>
+                    <a id="modal-proj-github-btn" href="#" target="_blank"
+                       class="bg-zinc-800 hover:bg-zinc-700 text-white font-mono font-bold text-xs px-4 py-2.5 rounded-full border border-zinc-700 transition-all inline-flex items-center gap-1.5">
+                        <span>💻 Code Repository</span>
+                    </a>
+                </div>
+
+                <!-- Comments & Discussion -->
+                <div class="border-t border-zinc-800 pt-5">
+                    <div class="flex items-center justify-between mb-4">
+                        <h4 class="text-xs font-mono text-[#CDFF29] uppercase font-bold">
+                            💬 Discussion &amp; Q&amp;A Chat
+                        </h4>
+                        <span id="modal-proj-comm-count" class="text-xs font-mono text-gray-400">0 comments</span>
+                    </div>
+
+                    <!-- Comments List -->
+                    <div id="modal-proj-comments-list" class="flex flex-col gap-3 mb-4 max-h-60 overflow-y-auto pr-2">
+                        <!-- Loaded dynamically -->
+                    </div>
+
+                    <!-- Post Admin Comment Form -->
+                    <form onsubmit="handlePostAdminComment(event)" class="flex gap-2">
+                        <input type="text" id="modal-admin-comm-input" required placeholder="Write a reply or question as Admin..."
+                               class="form-input flex-1 px-3.5 py-2.5 rounded-xl text-xs font-mono">
+                        <button type="submit"
+                                class="bg-[#CDFF29] hover:bg-white text-black font-mono font-bold text-xs px-4 py-2.5 rounded-xl transition-all shadow-brutal-sm">
+                            Reply
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Admin Delete Project CTA -->
+                <div class="flex items-center justify-between border-t border-red-500/30 pt-4 bg-red-950/20 p-4 rounded-2xl">
+                    <div>
+                        <span class="text-xs font-mono font-bold text-red-300">Admin Moderation Action</span>
+                        <p class="text-[11px] text-gray-400 font-mono">Permanently remove this project and its comments from public gallery.</p>
+                    </div>
+                    <button type="button" id="modal-delete-proj-btn"
+                            class="bg-red-500/20 hover:bg-red-500 text-red-300 hover:text-white border border-red-500/50 px-4 py-2 rounded-xl text-xs font-mono font-bold uppercase transition-all shadow-brutal-sm">
+                        🗑️ Delete Project
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        let currentPosters = [];
+        let currentEvents = [];
+        let currentProjects = [];
+        let activeCropper = null;
+        let activeDetailProjectId = null;
+
+        // Toast Helper
+        function showToast(message, isError = false) {
+            const toast = document.getElementById('toast');
+            const toastMsg = document.getElementById('toast-message');
+            const toastIcon = document.getElementById('toast-icon');
+            toastMsg.textContent = message;
+            toastIcon.textContent = isError ? '⚠️' : '✓';
+            toast.className = toast.className.replace(/border-\[\#CDFF29\]|border-red-500/, isError ? 'border-red-500' : 'border-[#CDFF29]');
+            toast.classList.remove('translate-y-24', 'opacity-0', 'pointer-events-none');
+            setTimeout(() => {
+                toast.classList.add('translate-y-24', 'opacity-0', 'pointer-events-none');
+            }, 3200);
+        }
+
+        // Tab Switching
+        function switchTab(tab) {
+            ['posters', 'events', 'projects'].forEach(t => {
+                const el = document.getElementById(`tab-${t}`);
+                const btn = document.getElementById(`tab-btn-${t}`);
+                if (t === tab) {
+                    el.classList.remove('hidden');
+                    btn.className = "px-4 py-2 rounded-xl text-xs font-mono font-bold uppercase tracking-wider bg-[#CDFF29] text-black shadow-brutal-sm transition-all flex items-center gap-2";
+                } else {
+                    el.classList.add('hidden');
+                    btn.className = "px-4 py-2 rounded-xl text-xs font-mono font-bold uppercase tracking-wider text-gray-400 hover:text-white transition-all flex items-center gap-2";
+                }
+            });
+        }
+
+        // -------------------------------------------------------------
+        // 1. POSTERS LOGIC
+        // -------------------------------------------------------------
+        async function fetchPosters() {
+            try {
+                const res = await fetch('/api/admin/gallery/posters');
+                const data = await res.json();
+                if (data.success) {
+                    currentPosters = data.posters;
+                    document.getElementById('badge-posters-count').textContent = currentPosters.length;
+                    renderPosters();
+                }
+            } catch (err) {
+                console.error('Error fetching posters:', err);
+            }
+        }
+
+        function renderPosters() {
+            const container = document.getElementById('posters-grid');
+            if (!currentPosters.length) {
+                container.innerHTML = `
+                    <div class="col-span-full p-12 text-center border-2 border-dashed border-zinc-800 rounded-3xl text-gray-500 font-mono text-xs">
+                        <span class="text-3xl block mb-2">📢</span>
+                        <span>No posters configured yet. Click "+ Upload New Poster" above.</span>
+                    </div>
+                `;
+                return;
+            }
+
+            container.innerHTML = currentPosters.map((p, idx) => `
+                <div class="bg-[#141414] border-2 ${p.is_active ? 'border-zinc-800' : 'border-zinc-900 opacity-60'} rounded-3xl p-4 shadow-brutal flex flex-col justify-between group">
+                    <div>
+                        <div class="aspect-video bg-black rounded-2xl mb-3 overflow-hidden relative border border-zinc-800">
+                            <img src="${p.image_url}" alt="${p.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            <span class="absolute top-2 left-2 bg-black/80 backdrop-blur-md text-[#CDFF29] text-[10px] font-mono font-bold px-2 py-0.5 rounded-full border border-[#CDFF29]/40">
+                                ${p.badge_text || 'OPPORTUNITY'}
+                            </span>
+                            <span class="absolute top-2 right-2 bg-black/80 text-white text-[10px] font-mono font-bold px-2 py-0.5 rounded-full">
+                                #${p.order_index}
+                            </span>
+                        </div>
+                        <h3 class="font-bold text-white text-sm mb-1 leading-snug line-clamp-2">${p.title}</h3>
+                        <p class="text-xs text-gray-400 font-mono mb-2 line-clamp-2">${p.subtitle || ''}</p>
+                    </div>
+
+                    <div class="flex items-center justify-between pt-3 border-t border-zinc-800 mt-2">
+                        <span class="text-[11px] font-mono ${p.is_active ? 'text-green-400' : 'text-gray-500'}">
+                            ${p.is_active ? '● Active' : '○ Inactive'}
+                        </span>
+                        <div class="flex items-center gap-1.5">
+                            <button onclick="editPoster('${p.id}')" class="px-2.5 py-1 bg-zinc-800 hover:bg-zinc-700 text-white rounded-lg text-[11px] font-mono">
+                                Edit
+                            </button>
+                            <button onclick="deletePoster('${p.id}')" class="px-2.5 py-1 bg-red-950/40 hover:bg-red-500 text-red-300 hover:text-white rounded-lg text-[11px] font-mono transition-colors">
+                                Delete
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function openPosterModal(poster = null) {
+            document.getElementById('poster-id').value = poster ? poster.id : '';
+            document.getElementById('poster-title').value = poster ? poster.title : '';
+            document.getElementById('poster-subtitle').value = poster ? (poster.subtitle || '') : '';
+            document.getElementById('poster-badge').value = poster ? (poster.badge_text || 'OPPORTUNITY') : 'OPPORTUNITY';
+            document.getElementById('poster-order').value = poster ? poster.order_index : (currentPosters.length + 1);
+            document.getElementById('poster-link').value = poster ? (poster.link_url || '') : 'events.html';
+            document.getElementById('poster-image-url').value = poster ? poster.image_url : '';
+            document.getElementById('poster-preview-img').src = poster ? poster.image_url : '';
+            document.getElementById('poster-active').checked = poster ? !!poster.is_active : true;
+            document.getElementById('poster-modal-title').textContent = poster ? 'Edit Opportunity Poster' : 'Add Opportunity Poster';
+
+            document.getElementById('poster-modal').classList.remove('hidden');
+            document.getElementById('poster-modal').classList.add('flex');
+        }
+
+        function closePosterModal() {
+            document.getElementById('poster-modal').classList.add('hidden');
+            document.getElementById('poster-modal').classList.remove('flex');
+        }
+
+        function editPoster(id) {
+            const p = currentPosters.find(x => x.id === id);
+            if (p) openPosterModal(p);
+        }
+
+        async function handlePosterFileSelect(input) {
+            if (!input.files || !input.files[0]) return;
+            const file = input.files[0];
+            const reader = new FileReader();
+            reader.onload = async (e) => {
+                const base64 = e.target.result;
+                document.getElementById('poster-preview-img').src = base64;
+                try {
+                    const res = await fetch('/api/gallery/upload', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ image_base64: base64, media_type: 'poster' })
+                    });
+                    const data = await res.json();
+                    if (data.success) {
+                        document.getElementById('poster-image-url').value = data.url;
+                        showToast('Poster image uploaded successfully!');
+                    }
+                } catch (err) {
+                    showToast('Failed to upload image', true);
+                }
+            };
+            reader.readAsDataURL(file);
+        }
+
+        async function handleSavePoster(e) {
+            e.preventDefault();
+            const id = document.getElementById('poster-id').value;
+            const payload = {
+                title: document.getElementById('poster-title').value,
+                subtitle: document.getElementById('poster-subtitle').value,
+                badge_text: document.getElementById('poster-badge').value,
+                order_index: parseInt(document.getElementById('poster-order').value, 10) || 1,
+                link_url: document.getElementById('poster-link').value,
+                image_url: document.getElementById('poster-image-url').value,
+                is_active: document.getElementById('poster-active').checked
+            };
+
+            try {
+                const url = id ? `/api/admin/gallery/posters/${id}` : '/api/admin/gallery/posters';
+                const method = id ? 'PUT' : 'POST';
+                const res = await fetch(url, {
+                    method: method,
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                const data = await res.json();
+                if (data.success) {
+                    showToast(id ? 'Poster updated!' : 'Poster created successfully!');
+                    closePosterModal();
+                    fetchPosters();
+                } else {
+                    showToast(data.error || 'Failed to save poster', true);
+                }
+            } catch (err) {
+                showToast('Network error saving poster', true);
+            }
+        }
+
+        async function deletePoster(id) {
+            if (!confirm('Are you sure you want to remove this advertising poster?')) return;
+            try {
+                const res = await fetch(`/api/admin/gallery/posters/${id}`, { method: 'DELETE' });
+                const data = await res.json();
+                if (data.success) {
+                    showToast('Poster deleted successfully');
+                    fetchPosters();
+                }
+            } catch (err) {
+                showToast('Failed to delete poster', true);
+            }
+        }
+
+        // -------------------------------------------------------------
+        // 2. PREVIOUS EVENTS & INTERACTIVE CROPPER LOGIC
+        // -------------------------------------------------------------
+        async function fetchPrevEvents() {
+            try {
+                const res = await fetch('/api/admin/gallery/previous-events');
+                const data = await res.json();
+                if (data.success) {
+                    currentEvents = data.events;
+                    document.getElementById('badge-events-count').textContent = currentEvents.length;
+                    renderPrevEvents();
+                }
+            } catch (err) {
+                console.error('Error fetching previous events:', err);
+            }
+        }
+
+        function renderPrevEvents() {
+            const container = document.getElementById('prev-events-grid');
+            if (!currentEvents.length) {
+                container.innerHTML = `
+                    <div class="col-span-full p-12 text-center border-2 border-dashed border-zinc-800 rounded-3xl text-gray-500 font-mono text-xs">
+                        <span class="text-3xl block mb-2">🏆</span>
+                        <span>No previous events configured. Click "+ Add Previous Event" above.</span>
+                    </div>
+                `;
+                return;
+            }
+
+            container.innerHTML = currentEvents.map(e => `
+                <div class="bg-[#141414] border-2 border-zinc-800 rounded-3xl p-4 shadow-brutal flex flex-col justify-between group">
+                    <div>
+                        <div class="aspect-video bg-gray-900 rounded-2xl mb-3 overflow-hidden relative border border-zinc-800">
+                            <img src="${e.thumbnail}" alt="${e.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            <span class="absolute top-2 right-2 bg-black/80 backdrop-blur-md text-[#CDFF29] text-[10px] font-mono font-bold px-2 py-0.5 rounded-full border border-[#CDFF29]/40">
+                                ${e.category || 'Event'}
+                            </span>
+                            ${e.event_date ? `
+                                <span class="absolute bottom-2 left-2 bg-black/80 text-white text-[10px] font-mono px-2 py-0.5 rounded-full">
+                                    ${e.event_date}
+                                </span>
+                            ` : ''}
+                        </div>
+                        <h3 class="font-bold text-white text-sm mb-1 leading-snug line-clamp-2">${e.title}</h3>
+                        <p class="text-[11px] text-gray-400 font-mono tracking-wider uppercase mb-1">
+                            BY ${e.organization}
+                        </p>
+                    </div>
+
+                    <div class="flex items-center justify-between pt-3 border-t border-zinc-800 mt-2">
+                        <span class="text-[11px] font-mono text-gray-500">#${e.order_index}</span>
+                        <div class="flex items-center gap-1.5">
+                            <button onclick="editPrevEvent('${e.id}')" class="px-2.5 py-1 bg-zinc-800 hover:bg-zinc-700 text-white rounded-lg text-[11px] font-mono">
+                                Edit &amp; Crop
+                            </button>
+                            <button onclick="deletePrevEvent('${e.id}')" class="px-2.5 py-1 bg-red-950/40 hover:bg-red-500 text-red-300 hover:text-white rounded-lg text-[11px] font-mono transition-colors">
+                                Delete
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function openPrevEventModal(event = null) {
+            document.getElementById('prev-event-id').value = event ? event.id : '';
+            document.getElementById('prev-event-title').value = event ? event.title : '';
+            document.getElementById('prev-event-org').value = event ? event.organization : '';
+            document.getElementById('prev-event-date').value = event ? (event.event_date || '') : '';
+            document.getElementById('prev-event-category').value = event ? (event.category || 'Hackathon') : 'Hackathon';
+            document.getElementById('prev-event-order').value = event ? event.order_index : (currentEvents.length + 1);
+            document.getElementById('prev-event-link').value = event ? (event.link_url || '') : 'events.html';
+            document.getElementById('prev-event-thumb-url').value = event ? event.thumbnail : '';
+            document.getElementById('crop-url-input').value = event ? event.thumbnail : '';
+
+            document.getElementById('prev-event-modal-title').textContent = event ? 'Edit Previous Event' : 'Add Previous Event';
+
+            // Reset Cropper image
+            const thumb = event ? event.thumbnail : 'https://images.unsplash.com/photo-1515187029135-18ee286d815b?q=80&w=800&auto=format&fit=crop';
+            setCropperSource(thumb);
+            updateLivePreview();
+
+            document.getElementById('prev-event-modal').classList.remove('hidden');
+            document.getElementById('prev-event-modal').classList.add('flex');
+        }
+
+        function closePrevEventModal() {
+            if (activeCropper) {
+                activeCropper.destroy();
+                activeCropper = null;
+            }
+            document.getElementById('prev-event-modal').classList.add('hidden');
+            document.getElementById('prev-event-modal').classList.remove('flex');
+        }
+
+        function editPrevEvent(id) {
+            const e = currentEvents.find(x => x.id === id);
+            if (e) openPrevEventModal(e);
+        }
+
+        function setCropperSource(src) {
+            const img = document.getElementById('cropper-target-img');
+            const hint = document.getElementById('cropper-empty-hint');
+            if (activeCropper) {
+                activeCropper.destroy();
+                activeCropper = null;
+            }
+            if (!src) {
+                img.src = '';
+                img.style.display = 'none';
+                hint.style.display = 'block';
+                return;
+            }
+            hint.style.display = 'none';
+            img.style.display = 'block';
+            img.src = src;
+
+            img.onload = () => {
+                if (activeCropper) activeCropper.destroy();
+                activeCropper = new Cropper(img, {
+                    aspectRatio: 16 / 9,
+                    viewMode: 1,
+                    autoCropArea: 1,
+                    responsive: true,
+                    background: false,
+                    crop() {
+                        // Debounced live preview update
+                    }
+                });
+            };
+        }
+
+        function initCropperFromFile(input) {
+            if (!input.files || !input.files[0]) return;
+            const file = input.files[0];
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                setCropperSource(e.target.result);
+            };
+            reader.readAsDataURL(file);
+        }
+
+        function initCropperFromUrl() {
+            const url = document.getElementById('crop-url-input').value.trim();
+            if (url) {
+                setCropperSource(url);
+            }
+        }
+
+        async function applyCrop() {
+            if (!activeCropper) {
+                showToast('Please select or load an image first', true);
+                return;
+            }
+            const canvas = activeCropper.getCroppedCanvas({
+                width: 800,
+                height: 450,
+                imageSmoothingEnabled: true,
+                imageSmoothingQuality: 'high'
+            });
+            if (!canvas) return;
+
+            const base64 = canvas.toDataURL('image/jpeg', 0.92);
+            document.getElementById('live-preview-thumb').src = base64;
+
+            // Upload cropped image to server immediately
+            try {
+                showToast('Uploading cropped thumbnail...');
+                const res = await fetch('/api/gallery/upload', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ image_base64: base64, media_type: 'event_crop' })
+                });
+                const data = await res.json();
+                if (data.success) {
+                    document.getElementById('prev-event-thumb-url').value = data.url;
+                    showToast('Cropped image saved & updated in preview!');
+                }
+            } catch (err) {
+                showToast('Failed to save cropped image', true);
+            }
+        }
+
+        function updateLivePreview() {
+            const title = document.getElementById('prev-event-title').value.trim() || 'Event Title';
+            const org = document.getElementById('prev-event-org').value.trim() || 'Organization Name';
+            const cat = document.getElementById('prev-event-category').value.trim() || 'Hackathon';
+
+            document.getElementById('live-preview-title').textContent = title;
+            document.getElementById('live-preview-org').textContent = `BY ${org.toUpperCase()}`;
+            document.getElementById('live-preview-cat').textContent = cat;
+
+            const thumb = document.getElementById('prev-event-thumb-url').value;
+            if (thumb) {
+                document.getElementById('live-preview-thumb').src = thumb;
+            }
+        }
+
+        async function handleSavePrevEvent(e) {
+            e.preventDefault();
+            const id = document.getElementById('prev-event-id').value;
+            let thumb = document.getElementById('prev-event-thumb-url').value;
+
+            // If user hasn't clicked "Apply Crop" yet but cropper is active, auto-apply crop now
+            if (activeCropper && !thumb) {
+                const canvas = activeCropper.getCroppedCanvas({ width: 800, height: 450 });
+                if (canvas) {
+                    const base64 = canvas.toDataURL('image/jpeg', 0.92);
+                    const res = await fetch('/api/gallery/upload', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ image_base64: base64, media_type: 'event_crop' })
+                    });
+                    const d = await res.json();
+                    if (d.success) thumb = d.url;
+                }
+            }
+
+            if (!thumb) {
+                thumb = 'https://images.unsplash.com/photo-1515187029135-18ee286d815b?q=80&w=800&auto=format&fit=crop';
+            }
+
+            const payload = {
+                title: document.getElementById('prev-event-title').value,
+                organization: document.getElementById('prev-event-org').value,
+                thumbnail: thumb,
+                event_date: document.getElementById('prev-event-date').value,
+                category: document.getElementById('prev-event-category').value,
+                link_url: document.getElementById('prev-event-link').value,
+                order_index: parseInt(document.getElementById('prev-event-order').value, 10) || 1
+            };
+
+            try {
+                const url = id ? `/api/admin/gallery/previous-events/${id}` : '/api/admin/gallery/previous-events';
+                const method = id ? 'PUT' : 'POST';
+                const res = await fetch(url, {
+                    method: method,
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                const data = await res.json();
+                if (data.success) {
+                    showToast(id ? 'Previous Event updated!' : 'Previous Event created!');
+                    closePrevEventModal();
+                    fetchPrevEvents();
+                } else {
+                    showToast(data.error || 'Failed to save event', true);
+                }
+            } catch (err) {
+                showToast('Network error saving event', true);
+            }
+        }
+
+        async function deletePrevEvent(id) {
+            if (!confirm('Are you sure you want to delete this previous event?')) return;
+            try {
+                const res = await fetch(`/api/admin/gallery/previous-events/${id}`, { method: 'DELETE' });
+                const data = await res.json();
+                if (data.success) {
+                    showToast('Previous Event removed');
+                    fetchPrevEvents();
+                }
+            } catch (err) {
+                showToast('Failed to delete event', true);
+            }
+        }
+
+        // -------------------------------------------------------------
+        // 3. COMMUNITY PROJECTS MODERATION LOGIC
+        // -------------------------------------------------------------
+        async function fetchAdminProjects() {
+            try {
+                const res = await fetch('/api/community/projects');
+                const data = await res.json();
+                if (data.success) {
+                    currentProjects = data.projects;
+                    document.getElementById('badge-projects-count').textContent = currentProjects.length;
+                    renderAdminProjects();
+                }
+            } catch (err) {
+                console.error('Error fetching admin projects:', err);
+            }
+        }
+
+        function renderAdminProjects() {
+            const q = (document.getElementById('admin-project-search').value || '').toLowerCase();
+            const filtered = currentProjects.filter(p => {
+                return (p.title || '').toLowerCase().includes(q) ||
+                       (p.tech_stack || '').toLowerCase().includes(q) ||
+                       (p.author_name || '').toLowerCase().includes(q);
+            });
+
+            const tbody = document.getElementById('admin-projects-tbody');
+            if (!filtered.length) {
+                tbody.innerHTML = `
+                    <tr>
+                        <td colspan="6" class="p-8 text-center text-gray-500 font-mono">
+                            No community projects found matching your search.
+                        </td>
+                    </tr>
+                `;
+                return;
+            }
+
+            tbody.innerHTML = filtered.map(p => `
+                <tr class="hover:bg-white/[0.02] transition-colors">
+                    <td class="p-4">
+                        <div class="flex items-center gap-3">
+                            <img src="${p.thumbnail}" alt="" class="w-12 h-10 object-cover rounded-lg border border-zinc-700 shrink-0">
+                            <div>
+                                <span class="font-bold text-white text-xs block">${p.title}</span>
+                                <span class="text-[11px] text-gray-400 font-mono line-clamp-1">${p.tagline || ''}</span>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="p-4">
+                        <div class="flex items-center gap-1.5">
+                            <span>${p.author_emoji || '⚡'}</span>
+                            <div>
+                                <span class="text-xs text-gray-200 font-bold block">${p.author_name || 'Member'}</span>
+                                <span class="text-[10px] text-gray-500">${p.author_email || ''}</span>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="p-4">
+                        <div class="flex flex-wrap gap-1 max-w-xs">
+                            ${(p.tech_stack || '').split(',').filter(Boolean).slice(0, 3).map(t => `
+                                <span class="bg-zinc-800 text-gray-300 px-1.5 py-0.5 rounded text-[10px]">${t.trim()}</span>
+                            `).join('')}
+                        </div>
+                    </td>
+                    <td class="p-4">
+                        <span class="text-xs font-mono text-[#CDFF29] font-bold">
+                            💬 ${p.comments_count || 0}
+                        </span>
+                    </td>
+                    <td class="p-4">
+                        <div class="flex items-center gap-2">
+                            ${p.demo_url ? `<a href="${p.demo_url}" target="_blank" class="text-xs text-[#CDFF29] hover:underline">Demo ↗</a>` : '<span class="text-gray-600">-</span>'}
+                            ${p.video_url ? `<a href="${p.video_url}" target="_blank" class="text-xs text-blue-400 hover:underline">Video ↗</a>` : ''}
+                        </div>
+                    </td>
+                    <td class="p-4 text-right">
+                        <div class="flex items-center justify-end gap-2">
+                            <button onclick="openProjectDetailModal('${p.id}')"
+                                    class="bg-zinc-800 hover:bg-zinc-700 text-white px-3 py-1.5 rounded-lg text-xs font-mono transition-colors">
+                                View &amp; Chat
+                            </button>
+                            <button onclick="adminDeleteProject('${p.id}')"
+                                    class="bg-red-950/40 hover:bg-red-500 text-red-300 hover:text-white px-3 py-1.5 rounded-lg text-xs font-mono transition-colors">
+                                Delete
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        async function openProjectDetailModal(projectId) {
+            activeDetailProjectId = projectId;
+            try {
+                const res = await fetch(`/api/community/projects/${projectId}`);
+                const data = await res.json();
+                if (!data.success) {
+                    showToast('Project not found', true);
+                    return;
+                }
+
+                const p = data.project;
+                const comments = data.comments || [];
+
+                document.getElementById('modal-proj-title').textContent = p.title;
+                document.getElementById('modal-proj-author').textContent = `Uploaded by ${p.author_name || 'Member'} (${p.author_email || ''}) • ${new Date(p.created_at).toLocaleDateString()}`;
+                document.getElementById('modal-proj-thumb').src = p.thumbnail;
+                document.getElementById('modal-proj-desc').textContent = p.description;
+
+                // Tech Stack
+                const techEl = document.getElementById('modal-proj-tech');
+                techEl.innerHTML = (p.tech_stack || '').split(',').filter(Boolean).map(t => `
+                    <span class="bg-[#1f1f1f] text-[#CDFF29] border border-[#CDFF29]/30 px-2.5 py-1 rounded-full text-xs font-mono font-bold">
+                        ${t.trim()}
+                    </span>
+                `).join('') || '<span class="text-gray-500 text-xs">No stack specified</span>';
+
+                // Links
+                const demoBtn = document.getElementById('modal-proj-demo-btn');
+                const videoBtn = document.getElementById('modal-proj-video-btn');
+                const ghBtn = document.getElementById('modal-proj-github-btn');
+
+                if (p.demo_url) { demoBtn.href = p.demo_url; demoBtn.style.display = 'inline-flex'; } else { demoBtn.style.display = 'none'; }
+                if (p.video_url) { videoBtn.href = p.video_url; videoBtn.style.display = 'inline-flex'; } else { videoBtn.style.display = 'none'; }
+                if (p.github_url) { ghBtn.href = p.github_url; ghBtn.style.display = 'inline-flex'; } else { ghBtn.style.display = 'none'; }
+
+                // Comments
+                renderModalComments(comments);
+
+                // Delete CTA
+                document.getElementById('modal-delete-proj-btn').onclick = () => adminDeleteProject(p.id, true);
+
+                document.getElementById('project-detail-modal').classList.remove('hidden');
+                document.getElementById('project-detail-modal').classList.add('flex');
+            } catch (err) {
+                showToast('Failed to load project details', true);
+            }
+        }
+
+        function closeProjectDetailModal() {
+            activeDetailProjectId = null;
+            document.getElementById('project-detail-modal').classList.add('hidden');
+            document.getElementById('project-detail-modal').classList.remove('flex');
+        }
+
+        function renderModalComments(comments) {
+            document.getElementById('modal-proj-comm-count').textContent = `${comments.length} comment${comments.length === 1 ? '' : 's'}`;
+            const list = document.getElementById('modal-proj-comments-list');
+            if (!comments.length) {
+                list.innerHTML = `
+                    <div class="p-6 text-center text-gray-500 font-mono text-xs border border-dashed border-zinc-800 rounded-xl">
+                        No discussion comments yet. Be the first to start the conversation!
+                    </div>
+                `;
+                return;
+            }
+
+            list.innerHTML = comments.map(c => `
+                <div class="bg-[#1a1a1a] p-3 rounded-xl border border-zinc-800 flex flex-col gap-1">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-2">
+                            <span>${c.author_emoji || '💬'}</span>
+                            <span class="text-xs font-bold text-white">${c.author_name || 'Member'}</span>
+                            ${c.author_role === 'admin' ? '<span class="bg-[#CDFF29] text-black text-[9px] font-black px-1.5 py-0.2 rounded font-mono uppercase">Admin</span>' : ''}
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="text-[10px] text-gray-500 font-mono">${new Date(c.created_at).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</span>
+                            <button onclick="adminDeleteComment('${c.id}')" class="text-gray-500 hover:text-red-400 text-xs" title="Delete comment">&times;</button>
+                        </div>
+                    </div>
+                    <p class="text-xs text-gray-300 font-mono pl-6 whitespace-pre-line">${c.message}</p>
+                </div>
+            `).join('');
+        }
+
+        async function handlePostAdminComment(e) {
+            e.preventDefault();
+            if (!activeDetailProjectId) return;
+            const input = document.getElementById('modal-admin-comm-input');
+            const msg = input.value.trim();
+            if (!msg) return;
+
+            try {
+                const res = await fetch(`/api/community/projects/${activeDetailProjectId}/comments`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ message: msg })
+                });
+                const data = await res.json();
+                if (data.success) {
+                    input.value = '';
+                    // Reload modal comments
+                    const r = await fetch(`/api/community/projects/${activeDetailProjectId}`);
+                    const d = await r.json();
+                    if (d.success) renderModalComments(d.comments || []);
+                    fetchAdminProjects();
+                } else {
+                    showToast(data.error || 'Failed to post comment', true);
+                }
+            } catch (err) {
+                showToast('Failed to post reply', true);
+            }
+        }
+
+        async function adminDeleteComment(commentId) {
+            if (!confirm('Delete this comment?')) return;
+            try {
+                const res = await fetch(`/api/community/comments/${commentId}`, { method: 'DELETE' });
+                const data = await res.json();
+                if (data.success) {
+                    showToast('Comment deleted');
+                    if (activeDetailProjectId) {
+                        const r = await fetch(`/api/community/projects/${activeDetailProjectId}`);
+                        const d = await r.json();
+                        if (d.success) renderModalComments(d.comments || []);
+                    }
+                    fetchAdminProjects();
+                }
+            } catch (err) {
+                showToast('Failed to delete comment', true);
+            }
+        }
+
+        async function adminDeleteProject(projectId, fromModal = false) {
+            if (!confirm('Are you sure you want to permanently delete this project and all its comments? This cannot be undone.')) return;
+            try {
+                const res = await fetch(`/api/community/projects/${projectId}`, { method: 'DELETE' });
+                const data = await res.json();
+                if (data.success) {
+                    showToast('Project deleted successfully');
+                    if (fromModal) closeProjectDetailModal();
+                    fetchAdminProjects();
+                } else {
+                    showToast(data.error || 'Failed to delete project', true);
+                }
+            } catch (err) {
+                showToast('Failed to delete project', true);
+            }
+        }
+
+        // Initialize on load
+        window.addEventListener('DOMContentLoaded', async () => {
+            if (window.DevengersAuth) {
+                const user = await window.DevengersAuth.checkSession();
+                if (!user || user.role !== 'admin') {
+                    alert('Admin access required. Please sign in as an admin.');
+                    location.href = 'login.html';
+                    return;
+                }
+                document.getElementById('admin-email-display').textContent = user.email;
+            }
+            fetchPosters();
+            fetchPrevEvents();
+            fetchAdminProjects();
+        });
+    </script>
+</body>
+</html>

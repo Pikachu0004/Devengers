@@ -1,0 +1,131 @@
+%PDF-1.4
+%‚„œ”
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [3 0 R] /Count 1 >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 4 0 R /F2 5 0 R >> >> /Contents 6 0 R >>
+endobj
+4 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold >>
+endobj
+5 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+6 0 obj
+<< /Length 2417 >>
+stream
+BT
+/F1 15 Tf
+50 800 Td
+(DEVENGERS DSA VAULT // LINKED LIST) Tj
+0 0 Td
+/F1 13 Tf
+50 780 Td
+(PROBLEM: MIDDLE OF THE LINKED LIST \(EASY\)) Tj
+0 0 Td
+/F2 9.5 Tf
+50 765 Td
+(Target Companies: Adobe, Microsoft) Tj
+0 0 Td
+/F2 8 Tf
+50 752 Td
+(-----------------------------------------------------------------------------------------------------------------------------------------------------) Tj
+0 0 Td
+/F1 11 Tf
+50 735 Td
+(1. PROBLEM COMPLEXITY & TARGET SPECIFICATIONS) Tj
+0 0 Td
+/F2 9.5 Tf
+65 720 Td
+(Optimal Time Complexity:  O\(N\)) Tj
+0 0 Td
+/F2 9.5 Tf
+65 705 Td
+(Optimal Space Complexity: O\(1\)) Tj
+0 0 Td
+/F2 8 Tf
+50 690 Td
+(-----------------------------------------------------------------------------------------------------------------------------------------------------) Tj
+0 0 Td
+/F1 11 Tf
+50 670 Td
+(2. ALGORITHMIC INTUITION & STEP-BY-STEP PROOF) Tj
+0 0 Td
+/F2 9 Tf
+65 650 Td
+(Tortoise and Hare: slow moves 1 step, fast moves 2 steps. When fast reaches end, slow is mid.) Tj
+0 0 Td
+/F1 11 Tf
+50 605 Td
+(3. DIRECT VERIFIED REFERENCE LINKS) Tj
+0 0 Td
+/F2 9 Tf
+65 588 Td
+(LeetCode Problem: https://leetcode.com/problems/middle-of-the-linked-list/) Tj
+0 0 Td
+/F2 9 Tf
+65 572 Td
+(Editorial Solution: https://www.geeksforgeeks.org/write-a-c-function-to-print-the-middle-of-the-linked-list/) Tj
+0 0 Td
+/F2 8 Tf
+50 550 Td
+(=====================================================================================================================) Tj
+0 0 Td
+/F1 10.5 Tf
+50 530 Td
+(4. STANDARD IMPLEMENTATION OUTLINE) Tj
+0 0 Td
+/F2 8.5 Tf
+65 510 Td
+(// Java / C++ / Python3 Optimal Logic Pattern:) Tj
+0 0 Td
+/F2 8.5 Tf
+65 495 Td
+(1. Initialize boundary pointers and optimal accumulator structures.) Tj
+0 0 Td
+/F2 8.5 Tf
+65 480 Td
+(2. Iterate through input elements maintaining invariant properties.) Tj
+0 0 Td
+/F2 8.5 Tf
+65 465 Td
+(3. Check boundary edge cases \(empty inputs, singletons, overflows\).) Tj
+0 0 Td
+/F2 8.5 Tf
+65 450 Td
+(4. Return calculated target or optimal state.) Tj
+0 0 Td
+/F2 8 Tf
+50 420 Td
+(-----------------------------------------------------------------------------------------------------------------------------------------------------) Tj
+0 0 Td
+/F1 9 Tf
+50 400 Td
+(DEVENGERS STREAK TIP: Solve daily and mark as completed on Devengers to maintain your streak!) Tj
+0 0 Td
+/F2 7.5 Tf
+50 50 Td
+(Devengers DSA Streak Companion Guide \(c\) 2026 | Verified Reference Solution | Page 1 of 1) Tj
+0 0 Td
+ET
+
+endstream
+endobj
+xref
+0 7
+0000000000 65535 f 
+0000000015 00000 n 
+0000000064 00000 n 
+0000000121 00000 n 
+0000000257 00000 n 
+0000000332 00000 n 
+0000000402 00000 n 
+trailer
+<< /Size 7 /Root 1 0 R >>
+startxref
+2871
+%%EOF

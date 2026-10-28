@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Learn & Courses Dashboard | Devengers</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico?v=2">
+    <link rel="icon" type="image/png" href="favicon.png?v=2">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700;900&family=JetBrains+Mono:wght@400;600;800&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css?v=3">
+    <script src="auth.js"></script>
+    <style>
+        body { font-family: 'Space Grotesk', system-ui, -apple-system, sans-serif; }
+        .bg-grid {
+            background-color: #0d0d0d;
+            background-image: 
+                radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+                linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 24px 24px, 96px 96px, 96px 96px;
+        }
+        .shadow-brutal {
+            box-shadow: 4px 4px 0px 0px rgba(0,0,0,1);
+        }
+        .shadow-brutal-sm {
+            box-shadow: 2px 2px 0px 0px rgba(0,0,0,1);
+        }
+        .shadow-brutal-lime {
+            box-shadow: 4px 4px 0px 0px #CDFF29;
+        }
+        .shadow-brutal-purple {
+            box-shadow: 4px 4px 0px 0px #7B42F6;
+        }
+        .form-input {
+            background-color: #161616;
+            border: 2px solid #2d2d2d;
+            color: white;
+            transition: all 0.2s;
+        }
+        .form-input:focus {
+            border-color: #CDFF29;
+            outline: none;
+            background-color: #1f1f1f;
+        }
+    </style>
+</head>
+<body class="bg-grid m-0 p-0 text-white min-h-screen antialiased flex flex-col">
+
+    <!-- TOP ADMIN NAVBAR -->
+    <header class="sticky top-0 z-40 w-full bg-[#141414]/90 backdrop-blur-md border-b-2 border-black/80 px-6 py-4">
+        <div class="max-w-[1400px] mx-auto flex items-center justify-between flex-wrap gap-4">
+            
+            <!-- Logo & Brand Title -->
+            <div class="flex items-center gap-4">
+                <a href="index.html" class="flex items-center group">
+                    <div class="font-black text-2xl tracking-tighter uppercase rounded-full transition-transform duration-300 group-hover:scale-105"
+                         style="-webkit-text-stroke: 1.5px black; color: #CDFF29; text-shadow: 2px 2px 0px black; line-height: 1;">
+                        DEVENGERS
+                    </div>
+                </a>
+                
+                <!-- Admin Section Nav Switcher -->
+                <nav class="flex items-center gap-2 bg-black/60 p-1 rounded-xl border border-zinc-800">
+                    <a href="admin-events.html" class="px-3 py-1 rounded-lg text-xs font-mono font-bold uppercase tracking-wider text-gray-400 hover:text-white transition-colors">
+                        Events
+                    </a>
+                    <a href="admin-learn.html" class="px-3 py-1 rounded-lg text-xs font-mono font-bold uppercase tracking-wider bg-[#CDFF29] text-black shadow-brutal-sm">
+                        Learn & Courses
+                    </a>
+                    <a href="admin-campus.html" class="px-3 py-1 rounded-lg text-xs font-mono font-bold uppercase tracking-wider text-gray-400 hover:text-white transition-colors">
+                        Campus & PYQs
+                    </a>
+                    <a href="admin-gallery.html" class="px-3 py-1 rounded-lg text-xs font-mono font-bold uppercase tracking-wider text-gray-400 hover:text-white transition-colors">
+                        Gallery &amp; Community
+                    </a>
+                    <a href="admin-certificates.html" class="px-3 py-1 rounded-lg text-xs font-mono font-bold uppercase tracking-wider text-gray-400 hover:text-white transition-colors">
+                        Certificates
+                    </a>
+                </nav>
+            </div>
+
+            <!-- Admin Meta & Actions -->
+            <div class="flex items-center gap-4">
+                <a href="learn.html" target="_blank"
+                   class="inline-flex items-center gap-1.5 text-xs font-mono font-bold uppercase tracking-wider text-[#CDFF29] hover:underline px-3 py-1.5 rounded-lg border border-zinc-700 hover:border-[#CDFF29] transition-colors">
+                    <span>View Public Learn</span>
+                    <span class="text-sm">&#8599;</span>
+                </a>
+
+                <div class="flex items-center gap-3 bg-black/60 px-3 py-1.5 rounded-full border border-gray-800">
+                    <span class="w-2.5 h-2.5 rounded-full bg-green-400 animate-pulse"></span>
+                    <span id="admin-email-display" class="text-xs font-mono text-gray-300 font-bold">event@devengers.org</span>
+                </div>
+
+                <button onclick="handleLogout()"
+                        class="bg-red-500/10 hover:bg-red-500 text-red-300 hover:text-white border border-red-500/40 px-3 py-1.5 rounded-full text-xs font-mono font-bold uppercase tracking-wider transition-colors cursor-pointer">
+                    Logout
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN DASHBOARD CONTENT -->
+    <main class="flex-1 w-full max-w-[1400px] mx-auto px-6 py-8 flex flex-col gap-8">
+
+        <!-- TITLE & PRIMARY CTA -->
+        <div class="flex items-center justify-between flex-wrap gap-4">
+            <div>
+                <h1 class="text-3xl md:text-4xl font-black uppercase tracking-tight text-white mb-1">
+                    Learn & Courses Management
+                </h1>
+                <p class="text-gray-400 text-sm">
+                    Curate free CS courses, GFG documentation, PDF cheat sheets, and configure the Paid Coming Soon section.
+                </p>
+            </div>
+
+            <div class="flex items-center gap-3 flex-wrap">
+                <button onclick="reseedCourses()" class="px-4 py-2.5 rounded-xl border border-zinc-700 bg-zinc-900 hover:bg-zinc-800 text-xs font-mono font-bold uppercase tracking-wider transition-colors">
+                    🔄 Reseed Starter Courses
+                </button>
+                <button onclick="openCourseModal()" class="px-5 py-2.5 rounded-xl bg-[#CDFF29] hover:bg-white text-black font-mono text-xs font-black uppercase tracking-wider border-2 border-black shadow-brutal-sm transition-all hover:scale-105 cursor-pointer flex items-center gap-2">
+                    <span class="text-base leading-none font-black">+</span>
+                    <span>Add New Course / Doc</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- STATS OVERVIEW -->
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
+            <div class="bg-zinc-900 border-2 border-black rounded-2xl p-4 shadow-brutal">
+                <div class="text-xs font-mono text-gray-400 uppercase font-bold tracking-wider">Total Resources</div>
+                <div id="stat-total" class="text-3xl font-black text-white mt-1">12</div>
+            </div>
+            <div class="bg-zinc-900 border-2 border-black rounded-2xl p-4 shadow-brutal">
+                <div class="text-xs font-mono text-gray-400 uppercase font-bold tracking-wider">Free Courses</div>
+                <div id="stat-free" class="text-3xl font-black text-[#CDFF29] mt-1">8</div>
+            </div>
+            <div class="bg-zinc-900 border-2 border-black rounded-2xl p-4 shadow-brutal">
+                <div class="text-xs font-mono text-gray-400 uppercase font-bold tracking-wider">GFG Docs & PDFs</div>
+                <div id="stat-docs" class="text-3xl font-black text-[#00D2FF] mt-1">4</div>
+            </div>
+            <div class="bg-zinc-900 border-2 border-black rounded-2xl p-4 shadow-brutal">
+                <div class="text-xs font-mono text-gray-400 uppercase font-bold tracking-wider">Published</div>
+                <div id="stat-published" class="text-3xl font-black text-green-400 mt-1">12</div>
+            </div>
+            <div class="bg-zinc-900 border-2 border-black rounded-2xl p-4 shadow-brutal">
+                <div class="text-xs font-mono text-gray-400 uppercase font-bold tracking-wider">Drafts</div>
+                <div id="stat-draft" class="text-3xl font-black text-amber-400 mt-1">0</div>
+            </div>
+        </div>
+
+        <!-- COMING SOON SECTION CONTROLLER CARD -->
+        <div class="bg-zinc-900/90 border-2 border-black rounded-2xl p-6 shadow-brutal-purple relative overflow-hidden">
+            <div class="flex items-center justify-between flex-wrap gap-4 mb-4 pb-4 border-b border-zinc-800">
+                <div class="flex items-center gap-3">
+                    <span class="w-3 h-3 rounded-full bg-[#7B42F6] animate-pulse"></span>
+                    <h2 class="text-lg font-black uppercase text-white tracking-tight">
+                        Paid Courses "Coming Soon" Section Settings
+                    </h2>
+                    <span class="px-2 py-0.5 rounded bg-purple-900/60 text-purple-300 font-mono text-[10px] font-bold border border-purple-500/30 uppercase">
+                        Admin Controlled
+                    </span>
+                </div>
+                
+                <!-- Toggle Switch -->
+                <div class="flex items-center gap-3">
+                    <label class="text-xs font-mono uppercase text-gray-400 font-bold">Display On Public Site:</label>
+                    <label class="relative inline-flex items-center cursor-pointer">
+                        <input type="checkbox" id="setting-coming-soon-enabled" class="sr-only peer" checked>
+                        <div class="w-11 h-6 bg-zinc-700 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[#CDFF29]"></div>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Settings Fields -->
+            <form id="coming-soon-form" onsubmit="saveComingSoonSettings(event)" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                    <label class="block text-xs font-mono uppercase text-gray-400 font-bold mb-1">Coming Soon Badge</label>
+                    <input type="text" id="setting-badge" required class="w-full form-input rounded-xl px-3 py-2 text-sm font-mono" placeholder="e.g. LAUNCHING WINTER 2026">
+                </div>
+                <div>
+                    <label class="block text-xs font-mono uppercase text-gray-400 font-bold mb-1">Target Launch Date / Quarter</label>
+                    <input type="text" id="setting-date" required class="w-full form-input rounded-xl px-3 py-2 text-sm font-mono" placeholder="e.g. Winter 2026 or November 2026">
+                </div>
+                <div class="md:col-span-2">
+                    <label class="block text-xs font-mono uppercase text-gray-400 font-bold mb-1">Section Title</label>
+                    <input type="text" id="setting-title" required class="w-full form-input rounded-xl px-3 py-2 text-sm font-bold uppercase" placeholder="e.g. DEVENGERS ELITE PRO MASTERCLASSES">
+                </div>
+                <div class="md:col-span-2">
+                    <label class="block text-xs font-mono uppercase text-gray-400 font-bold mb-1">Subtitle / Value Proposition</label>
+                    <textarea id="setting-subtitle" rows="2" class="w-full form-input rounded-xl px-3 py-2 text-sm" placeholder="Explain the upcoming paid tracks..."></textarea>
+                </div>
+                <div class="md:col-span-2 flex items-center justify-between pt-2">
+                    <div id="settings-save-feedback" class="text-xs font-mono text-[#CDFF29]"></div>
+                    <button type="submit" class="px-5 py-2 rounded-xl bg-[#7B42F6] hover:bg-purple-600 text-white font-mono text-xs font-bold uppercase tracking-wider border-2 border-black shadow-brutal-sm cursor-pointer transition-colors">
+                        Save Coming Soon Settings &rarr;
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <!-- COURSES MANAGEMENT SECTION -->
+        <div class="space-y-4">
+            
+            <!-- Filters Bar -->
+            <div class="bg-zinc-900 border-2 border-black rounded-2xl p-4 shadow-brutal flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4">
+                <!-- Search -->
+                <div class="flex items-center border border-zinc-700 rounded-xl px-3 py-2 bg-black/50 flex-1 max-w-md focus-within:border-[#CDFF29]">
+                    <svg class="w-4 h-4 text-gray-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                    <input type="text" id="admin-search-input" oninput="fetchAdminCourses()" placeholder="Search courses, tags, or docs..." class="outline-none w-full text-xs bg-transparent text-white placeholder-gray-500">
+                </div>
+
+                <!-- Select Filters -->
+                <div class="flex items-center gap-3 flex-wrap">
+                    <select id="filter-category" onchange="fetchAdminCourses()" class="form-input rounded-xl px-3 py-2 text-xs font-mono">
+                        <option value="all">All Tracks</option>
+                        <option value="Web Development">Web Development</option>
+                        <option value="DSA & Algorithms">DSA & Algorithms</option>
+                        <option value="AI & Machine Learning">AI & Machine Learning</option>
+                        <option value="Core CS & Systems">Core CS & Systems</option>
+                        <option value="Cheatsheets & PDFs">Cheatsheets & PDFs</option>
+                    </select>
+
+                    <select id="filter-type" onchange="fetchAdminCourses()" class="form-input rounded-xl px-3 py-2 text-xs font-mono">
+                        <option value="all">All Types</option>
+                        <option value="free">Free Courses</option>
+                        <option value="doc">GFG Documentation</option>
+                        <option value="pdf">Downloadable PDF</option>
+                        <option value="paid">Paid Masterclasses</option>
+                    </select>
+
+                    <select id="filter-status" onchange="fetchAdminCourses()" class="form-input rounded-xl px-3 py-2 text-xs font-mono">
+                        <option value="">All Statuses</option>
+                        <option value="Published">Published</option>
+                        <option value="Draft">Draft</option>
+                        <option value="Archived">Archived</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Table of Courses -->
+            <div class="bg-zinc-900 border-2 border-black rounded-2xl overflow-hidden shadow-brutal">
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left text-xs font-mono border-collapse">
+                        <thead>
+                            <tr class="bg-black/80 border-b-2 border-black text-gray-400 uppercase tracking-wider">
+                                <th class="p-4">Resource / Course</th>
+                                <th class="p-4">Track</th>
+                                <th class="p-4">Type</th>
+                                <th class="p-4">Provider</th>
+                                <th class="p-4">Certificate</th>
+                                <th class="p-4">Status</th>
+                                <th class="p-4 text-right">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="courses-table-body" class="divide-y divide-zinc-800">
+                            <tr>
+                                <td colspan="7" class="p-8 text-center text-gray-500">
+                                    Loading learning resources...
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- CREATE / EDIT COURSE MODAL -->
+    <div id="course-modal" class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto">
+        <div class="bg-zinc-900 border-4 border-black rounded-3xl w-full max-w-3xl max-h-[90vh] overflow-y-auto shadow-brutal p-6 md:p-8 space-y-6">
+            
+            <div class="flex items-center justify-between pb-4 border-b border-zinc-800">
+                <div>
+                    <h3 id="modal-title" class="text-xl font-black uppercase text-white tracking-tight">
+                        Add New Course / Doc
+                    </h3>
+                    <p class="text-xs text-gray-400 font-mono mt-0.5">
+                        Configure learning outcomes, GFG docs, and certificate tags.
+                    </p>
+                </div>
+                <button onclick="closeCourseModal()" class="w-8 h-8 rounded-full bg-zinc-800 hover:bg-zinc-700 text-gray-300 flex items-center justify-center font-bold text-lg">
+                    &times;
+                </button>
+            </div>
+
+            <form id="course-form" onsubmit="handleCourseSubmit(event)" class="space-y-4">
+                <input type="hidden" id="course-id">
+
+                <!-- Title -->
+                <div>
+                    <label class="block text-xs font-mono uppercase text-gray-400 font-bold mb-1">Resource Title *</label>
+                    <input type="text" id="course-title" required class="w-full form-input rounded-xl px-3 py-2.5 text-sm font-bold" placeholder="e.g. Striver's A2Z DSA Course & Sheet">
+                </div>
+
+                <!-- Category & Type & Mode -->
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                    <div>
+                        <label class="block text-xs font-mono uppercase text-gray-400 font-bold mb-1">Track / Category *</label>
+                        <select id="course-category" required class="w-full form-input rounded-xl px-3 py-2 text-xs font-mono">
+                            <option value="Web Development">Web Development</option>
+                            <option value="DSA & Algorithms">DSA & Algorithms</option>
+                            <option value="AI & Machine Learning">AI & Machine Learning</option>
+                            <option value="Core CS & Systems">Core CS & Systems</option>
+                            <option value="Cheatsheets & PDFs">Cheatsheets & PDFs</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-mono uppercase text-gray-400 font-bold mb-1">Resource Type *</label>
+                        <select id="course-type" required class="w-full form-input rounded-xl px-3 py-2 text-xs font-mono">
+                            <option value="free">Free Course</option>
+                            <option value="doc">GFG / Official Documentation</option>
+                            <option value="pdf">Downloadable PDF Book / Sheet</option>
+                            <option value="paid">Paid Masterclass</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-mono uppercase text-gray-400 font-bold mb-1">Delivery Mode</label>
+                        <input type="text" id="course-mode" class="w-full form-input rounded-xl px-3 py-2 text-xs font-mono" placeholder="e.g. Online (Self-Paced)">
+                    </div>
+                </div>
+
+                <!-- Provider & Action Label -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-xs font-mono uppercase text-gray-400 font-bold mb-1">Provider / Organization</label>
+                        <input type="text" id="course-provider" class="w-full form-input rounded-xl px-3 py-2 text-xs" placeholder="e.g. freeCodeCamp, GeeksforGeeks, Harvard">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-mono uppercase text-gray-400 font-bold mb-1">Primary Action Button Label</label>
+                        <input type="text" id="course-action-label" class="w-full form-input rounded-xl px-3 py-2 text-xs" placeholder="e.g. Start Free Course, Read GFG Docs">
+                    </div>
+                </div>
+
+                <!-- Destination URL & Doc URL -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-xs font-mono uppercase text-gray-400 font-bold mb-1">Destination URL (Primary Link) *</label>
+                        <input type="url" id="course-destination-url" required class="w-full form-input rounded-xl px-3 py-2 text-xs font-mono" placeholder="https://...">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-mono uppercase text-gray-400 font-bold mb-1">GFG Documentation / PDF Link (Auxiliary)</label>
+                        <input type="url" id="course-doc-url" class="w-full form-input rounded-xl px-3 py-2 text-xs font-mono" placeholder="https://www.geeksforgeeks.org/...">
+                    </div>
+                </div>
+
+                <!-- Thumbnail URL -->
+                <div>
+                    <label class="block text-xs font-mono uppercase text-gray-400 font-bold mb-1">Thumbnail URL</label>
+                    <input type="url" id="course-thumbnail" class="w-full form-input rounded-xl px-3 py-2 text-xs font-mono" placeholder="https://images.unsplash.com/...">
+                </div>
+
+                <!-- Has Certificate & Order Index -->
+                <div class="flex items-center justify-between bg-black/40 p-3 rounded-xl border border-zinc-800">
+                    <label class="flex items-center gap-2 cursor-pointer text-xs font-mono">
+                        <input type="checkbox" id="course-has-certificate" class="w-4 h-4 accent-[#CDFF29]">
+                        <span>Includes Free Verified Certificate</span>
+                    </label>
+
+                    <div class="flex items-center gap-2">
+                        <label class="text-xs font-mono text-gray-400">Display Order:</label>
+                        <input type="number" id="course-order-index" value="0" class="w-16 form-input rounded-lg px-2 py-1 text-xs text-center">
+                    </div>
+                </div>
+
+                <!-- What You Will Learn (Multiline) -->
+                <div>
+                    <label class="block text-xs font-mono uppercase text-gray-400 font-bold mb-1">
+                        What You Will Learn (Bullet points, one per line) *
+                    </label>
+                    <textarea id="course-what-you-learn" rows="4" required class="w-full form-input rounded-xl px-3 py-2 text-xs font-mono" placeholder="• HTML5, CSS3 & Responsive Design&#10;• JavaScript ES6+ & Fetch API&#10;• React.js Components & Hooks"></textarea>
+                </div>
+
+                <!-- What You Get -->
+                <div>
+                    <label class="block text-xs font-mono uppercase text-gray-400 font-bold mb-1">
+                        What You Will Get (Perks / Materials) *
+                    </label>
+                    <input type="text" id="course-what-you-get" required class="w-full form-input rounded-xl px-3 py-2 text-xs font-mono" placeholder="e.g. 🎓 Free Certificate • 🛠️ 5 Portfolio Projects • ⚡ Lifetime Access">
+                </div>
+
+                <!-- Tags & Status -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-xs font-mono uppercase text-gray-400 font-bold mb-1">Tags (Comma-separated)</label>
+                        <input type="text" id="course-tags" class="w-full form-input rounded-xl px-3 py-2 text-xs font-mono" placeholder="HTML, CSS, Web Dev, B.Tech CSE">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-mono uppercase text-gray-400 font-bold mb-1">Publication Status</label>
+                        <select id="course-status" class="w-full form-input rounded-xl px-3 py-2 text-xs font-mono">
+                            <option value="Published">Published</option>
+                            <option value="Draft">Draft</option>
+                            <option value="Archived">Archived</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Modal Actions -->
+                <div class="flex items-center justify-end gap-3 pt-4 border-t border-zinc-800">
+                    <button type="button" onclick="closeCourseModal()" class="px-4 py-2 rounded-xl bg-zinc-800 hover:bg-zinc-700 text-gray-300 font-mono text-xs uppercase transition-colors">
+                        Cancel
+                    </button>
+                    <button type="submit" class="px-6 py-2 rounded-xl bg-[#CDFF29] hover:bg-white text-black font-mono text-xs font-black uppercase tracking-wider border-2 border-black shadow-brutal-sm transition-colors cursor-pointer">
+                        Save Course / Doc &rarr;
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        let adminCourses = [];
+
+        document.addEventListener('DOMContentLoaded', async () => {
+            await ensureAdminAuth();
+            await fetchAdminCourses();
+            await fetchLearnSettings();
+        });
+
+        async function ensureAdminAuth() {
+            try {
+                const res = await fetch('/api/auth/me');
+                const data = await res.json();
+                if (!data.authenticated || data.user.role !== 'admin') {
+                    window.location.href = 'login.html?redirect=admin-learn.html';
+                    return;
+                }
+                const emailDisplay = document.getElementById('admin-email-display');
+                if (emailDisplay) emailDisplay.textContent = data.user.email;
+            } catch (e) {
+                window.location.href = 'login.html?redirect=admin-learn.html';
+            }
+        }
+
+        async function fetchAdminCourses() {
+            const cat = document.getElementById('filter-category').value;
+            const type = document.getElementById('filter-type').value;
+            const status = document.getElementById('filter-status').value;
+            const search = document.getElementById('admin-search-input').value.trim();
+
+            const params = new URLSearchParams();
+            if (cat && cat !== 'all') params.append('category', cat);
+            if (type && type !== 'all') params.append('type', type);
+            if (status) params.append('status', status);
+            if (search) params.append('search', search);
+
+            try {
+                const res = await fetch(`/api/admin/courses?${params.toString()}`);
+                const data = await res.json();
+                if (data.courses) {
+                    adminCourses = data.courses;
+                    renderCoursesTable(adminCourses);
+                }
+                if (data.stats) {
+                    document.getElementById('stat-total').textContent = data.stats.total;
+                    document.getElementById('stat-free').textContent = data.stats.free;
+                    document.getElementById('stat-docs').textContent = data.stats.doc;
+                    document.getElementById('stat-published').textContent = data.stats.published;
+                    document.getElementById('stat-draft').textContent = data.stats.draft;
+                }
+            } catch (err) {
+                console.error("Failed to load courses:", err);
+            }
+        }
+
+        function renderCoursesTable(courses) {
+            const tbody = document.getElementById('courses-table-body');
+            if (!courses || courses.length === 0) {
+                tbody.innerHTML = `
+                    <tr>
+                        <td colspan="7" class="p-8 text-center text-gray-500">
+                            No courses match current filter criteria.
+                        </td>
+                    </tr>
+                `;
+                return;
+            }
+
+            tbody.innerHTML = courses.map(c => {
+                const isPublished = c.status === 'Published';
+                const statusBadge = isPublished 
+                    ? `<span class="px-2 py-0.5 rounded bg-green-500/20 text-green-400 border border-green-500/30">Published</span>`
+                    : `<span class="px-2 py-0.5 rounded bg-amber-500/20 text-amber-400 border border-amber-500/30">${escapeHtml(c.status)}</span>`;
+
+                let typeLabel = c.type.toUpperCase();
+                if (c.type === 'doc') typeLabel = 'GFG DOCS';
+                if (c.type === 'pdf') typeLabel = 'PDF BOOK';
+
+                return `
+                    <tr class="hover:bg-zinc-800/40 transition-colors">
+                        <td class="p-4">
+                            <div class="flex items-center gap-3">
+                                <img src="${escapeHtml(c.thumbnail || 'Assest/devengers-logo.png')}" class="w-12 h-8 rounded object-cover border border-zinc-700 flex-shrink-0" alt="">
+                                <div>
+                                    <div class="font-bold text-white text-xs max-w-xs truncate">${escapeHtml(c.title)}</div>
+                                    <div class="text-[10px] text-gray-400 truncate max-w-xs">${escapeHtml(c.action_label || 'Start')} &bull; <a href="${escapeHtml(c.destination_url)}" target="_blank" class="text-[#CDFF29] underline">Link &#8599;</a></div>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="p-4 text-gray-300">${escapeHtml(c.category)}</td>
+                        <td class="p-4">
+                            <span class="px-2 py-0.5 rounded bg-zinc-800 text-gray-200 border border-zinc-700">${escapeHtml(typeLabel)}</span>
+                        </td>
+                        <td class="p-4 text-gray-400">${escapeHtml(c.provider || 'Devengers')}</td>
+                        <td class="p-4">
+                            ${c.has_certificate ? '<span class="text-green-400">&#10003; Yes</span>' : '<span class="text-gray-500">&mdash;</span>'}
+                        </td>
+                        <td class="p-4">${statusBadge}</td>
+                        <td class="p-4 text-right">
+                            <div class="flex items-center justify-end gap-2">
+                                <button onclick="toggleCourseStatus('${c.id}', '${c.status}')" class="px-2 py-1 rounded bg-zinc-800 hover:bg-zinc-700 text-gray-300 text-[10px] transition-colors" title="Toggle Publish / Draft">
+                                    ${isPublished ? 'Unpublish' : 'Publish'}
+                                </button>
+                                <button onclick="openEditCourse('${c.id}')" class="px-2 py-1 rounded bg-zinc-800 hover:bg-zinc-700 text-[#CDFF29] text-[10px] transition-colors">
+                                    Edit
+                                </button>
+                                <button onclick="deleteCourse('${c.id}')" class="px-2 py-1 rounded bg-red-900/40 hover:bg-red-800 text-red-300 text-[10px] transition-colors">
+                                    Delete
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                `;
+            }).join('');
+        }
+
+        async function fetchLearnSettings() {
+            try {
+                const res = await fetch('/api/admin/learn/settings');
+                const data = await res.json();
+                if (data.settings) {
+                    const s = data.settings;
+                    document.getElementById('setting-coming-soon-enabled').checked = !!s.paid_coming_soon_enabled;
+                    document.getElementById('setting-badge').value = s.paid_coming_soon_badge || '';
+                    document.getElementById('setting-title').value = s.paid_coming_soon_title || '';
+                    document.getElementById('setting-subtitle').value = s.paid_coming_soon_subtitle || '';
+                    document.getElementById('setting-date').value = s.paid_coming_soon_date || '';
+                }
+            } catch (err) {
+                console.error("Failed to load settings:", err);
+            }
+        }
+
+        async function saveComingSoonSettings(e) {
+            e.preventDefault();
+            const payload = {
+                paid_coming_soon_enabled: document.getElementById('setting-coming-soon-enabled').checked,
+                paid_coming_soon_badge: document.getElementById('setting-badge').value.trim(),
+                paid_coming_soon_title: document.getElementById('setting-title').value.trim(),
+                paid_coming_soon_subtitle: document.getElementById('setting-subtitle').value.trim(),
+                paid_coming_soon_date: document.getElementById('setting-date').value.trim()
+            };
+
+            const feedback = document.getElementById('settings-save-feedback');
+            try {
+                const res = await fetch('/api/admin/learn/settings', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify(payload)
+                });
+                const data = await res.json();
+                if (data.success) {
+                    feedback.textContent = "✓ Settings successfully updated!";
+                    setTimeout(() => { feedback.textContent = ""; }, 3000);
+                } else {
+                    feedback.textContent = "Error saving settings.";
+                }
+            } catch (err) {
+                feedback.textContent = "Network error while saving.";
+            }
+        }
+
+        function openCourseModal() {
+            document.getElementById('modal-title').textContent = "Add New Course / Doc";
+            document.getElementById('course-id').value = "";
+            document.getElementById('course-form').reset();
+            document.getElementById('course-modal').classList.remove('hidden');
+        }
+
+        function closeCourseModal() {
+            document.getElementById('course-modal').classList.add('hidden');
+        }
+
+        function openEditCourse(id) {
+            const course = adminCourses.find(c => c.id === id);
+            if (!course) return;
+
+            document.getElementById('modal-title').textContent = "Edit Course / Resource";
+            document.getElementById('course-id').value = course.id;
+            document.getElementById('course-title').value = course.title || '';
+            document.getElementById('course-category').value = course.category || 'Web Development';
+            document.getElementById('course-type').value = course.type || 'free';
+            document.getElementById('course-mode').value = course.mode || '';
+            document.getElementById('course-provider').value = course.provider || '';
+            document.getElementById('course-action-label').value = course.action_label || '';
+            document.getElementById('course-destination-url').value = course.destination_url || '';
+            document.getElementById('course-doc-url').value = course.doc_url || '';
+            document.getElementById('course-thumbnail').value = course.thumbnail || '';
+            document.getElementById('course-has-certificate').checked = !!course.has_certificate;
+            document.getElementById('course-order-index').value = course.order_index || 0;
+            document.getElementById('course-what-you-learn').value = course.what_you_learn || '';
+            document.getElementById('course-what-you-get').value = course.what_you_get || '';
+            document.getElementById('course-tags').value = course.tags || '';
+            document.getElementById('course-status').value = course.status || 'Published';
+
+            document.getElementById('course-modal').classList.remove('hidden');
+        }
+
+        async function handleCourseSubmit(e) {
+            e.preventDefault();
+            const id = document.getElementById('course-id').value;
+            const payload = {
+                title: document.getElementById('course-title').value.trim(),
+                category: document.getElementById('course-category').value,
+                type: document.getElementById('course-type').value,
+                mode: document.getElementById('course-mode').value.trim() || 'Online (Self-Paced)',
+                provider: document.getElementById('course-provider').value.trim() || 'Devengers Academy',
+                action_label: document.getElementById('course-action-label').value.trim() || 'Start Free Course',
+                destination_url: document.getElementById('course-destination-url').value.trim(),
+                doc_url: document.getElementById('course-doc-url').value.trim() || null,
+                thumbnail: document.getElementById('course-thumbnail').value.trim() || 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=1200&q=80',
+                has_certificate: document.getElementById('course-has-certificate').checked ? 1 : 0,
+                order_index: parseInt(document.getElementById('course-order-index').value) || 0,
+                what_you_learn: document.getElementById('course-what-you-learn').value.trim(),
+                what_you_get: document.getElementById('course-what-you-get').value.trim(),
+                tags: document.getElementById('course-tags').value.trim(),
+                status: document.getElementById('course-status').value
+            };
+
+            const url = id ? `/api/admin/courses/${id}` : '/api/admin/courses';
+            const method = id ? 'PUT' : 'POST';
+
+            try {
+                const res = await fetch(url, {
+                    method: method,
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify(payload)
+                });
+                const data = await res.json();
+                if (data.success) {
+                    closeCourseModal();
+                    await fetchAdminCourses();
+                } else {
+                    alert("Error saving course: " + (data.error || "Unknown error"));
+                }
+            } catch (err) {
+                alert("Network error while saving.");
+            }
+        }
+
+        async function toggleCourseStatus(id, currentStatus) {
+            const nextStatus = currentStatus === 'Published' ? 'Draft' : 'Published';
+            try {
+                const res = await fetch(`/api/admin/courses/${id}/status`, {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({ status: nextStatus })
+                });
+                const data = await res.json();
+                if (data.success) {
+                    await fetchAdminCourses();
+                }
+            } catch (err) {
+                console.error("Status toggle error:", err);
+            }
+        }
+
+        async function deleteCourse(id) {
+            if (!confirm("Are you sure you want to delete this course / resource?")) return;
+            try {
+                const res = await fetch(`/api/admin/courses/${id}`, {
+                    method: 'DELETE'
+                });
+                const data = await res.json();
+                if (data.success) {
+                    await fetchAdminCourses();
+                }
+            } catch (err) {
+                console.error("Delete course error:", err);
+            }
+        }
+
+        async function reseedCourses() {
+            if (!confirm("This will seed any missing default B.Tech CS courses and docs. Continue?")) return;
+            try {
+                const res = await fetch('/api/admin/courses/seed', { method: 'POST' });
+                const data = await res.json();
+                if (data.success) {
+                    alert("Starter courses synced successfully!");
+                    await fetchAdminCourses();
+                }
+            } catch (err) {
+                alert("Failed to sync starter courses.");
+            }
+        }
+
+        async function handleLogout() {
+            await logout();
+            window.location.href = 'login.html';
+        }
+
+        function escapeHtml(str) {
+            if (!str) return '';
+            return String(str)
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#039;');
+        }
+    </script>
+</body>
+</html>

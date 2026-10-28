@@ -1,0 +1,1289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campus Resources: University PYQs, Notes &amp; Syllabus | Devengers</title>
+    <meta name="description" content="Free university semester notes, previous year question papers (PYQs), engineering branch roadmaps, and syllabus guides for computer science and engineering students.">
+    <meta name="keywords" content="Campus Notes, University PYQs, Previous Year Questions, Engineering Syllabus, CSE Notes, Devengers Campus, Question Papers, BTech Notes">
+    <meta name="author" content="Devengers Community">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <meta name="theme-color" content="#7B42F6">
+    <meta name="msapplication-TileColor" content="#7B42F6">
+    <link rel="canonical" href="https://devengers.org/campus">
+
+    <!-- Open Graph / Meta -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://devengers.org/campus">
+    <meta property="og:site_name" content="Devengers">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:title" content="Campus Resources: University PYQs, Notes &amp; Syllabus | Devengers">
+    <meta property="og:description" content="Free university semester notes, PYQs, previous year papers, and engineering syllabus guides for computer science students.">
+    <meta property="og:image" content="https://devengers.org/og-image.jpg">
+    <meta property="og:image:secure_url" content="https://devengers.org/og-image.jpg">
+    <meta property="og:image:type" content="image/jpeg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="675">
+    <meta property="og:image:alt" content="Devengers Campus Engineering Resources and PYQs">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@devengers">
+    <meta name="twitter:creator" content="@devengers">
+    <meta name="twitter:url" content="https://devengers.org/campus">
+    <meta name="twitter:title" content="Campus Resources: University PYQs, Notes &amp; Syllabus | Devengers">
+    <meta name="twitter:description" content="Free university semester notes, PYQs, previous year papers, and engineering syllabus guides.">
+    <meta name="twitter:image" content="https://devengers.org/og-image.jpg">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico?v=3">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon.png?v=3">
+    <link rel="icon" type="image/png" sizes="192x192" href="favicon.png?v=3">
+    <link rel="apple-touch-icon" href="favicon.png?v=3">
+
+    <!-- Structured Data (JSON-LD) for Google Rich Results & Breadcrumbs -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Devengers Home",
+              "item": "https://devengers.org/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Campus PYQs & Resources",
+              "item": "https://devengers.org/campus"
+            }
+          ]
+        },
+        {
+          "@type": "EducationalOccupationalProgram",
+          "name": "Devengers Campus Academic Repository",
+          "description": "Peer-verified database of university previous year exam papers, lecture notes, syllabus checklists, and engineering subject cheat sheets.",
+          "provider": {
+            "@type": "Organization",
+            "name": "Devengers",
+            "url": "https://devengers.org"
+          }
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "How do I download engineering PYQs on Devengers?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Filter by your university, branch (CSE, IT, ECE), semester, and subject on the Campus page to instantly view or download past examination question papers for free."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Are the university syllabus notes verified?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes, our community of high-performing university mentors verifies notes and solution keys before publishing them to ensure curriculum accuracy."
+              }
+            }
+          ]
+        }
+      ]
+    }
+    </script>
+    <!-- Tailwind CSS (via CDN) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css?v=5">
+    <script src="theme.js"></script>
+    <script src="auth.js"></script>
+
+    <style>
+        .shadow-brutal-sm {
+            box-shadow: 2px 2px 0px #000;
+        }
+        .shadow-brutal-md {
+            box-shadow: 4px 4px 0px #000;
+        }
+        .shadow-brutal-lg {
+            box-shadow: 6px 6px 0px #000;
+        }
+        .shadow-brutal-lime {
+            box-shadow: 4px 4px 0px #CDFF29;
+        }
+        .shadow-brutal-purple {
+            box-shadow: 4px 4px 0px #7B42F6;
+        }
+        .bg-grid-subtle {
+            background-color: #0b0b0b;
+            background-image: 
+                radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+                linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+            background-size: 24px 24px, 24px 24px, 24px 24px;
+        }
+        /* Peach theme card overrides */
+        [data-theme="peach"] .pyq-card,
+        body.theme-peach .pyq-card {
+            background-color: #FFFBF7 !important;
+            border-color: #24160F !important;
+            box-shadow: 4px 4px 0px #24160F !important;
+        }
+        [data-theme="peach"] .curriculum-box,
+        body.theme-peach .curriculum-box {
+            background-color: #FFFBF7 !important;
+            border-color: #24160F !important;
+        }
+        [data-theme="peach"] .uni-tab-inactive,
+        body.theme-peach .uni-tab-inactive {
+            background-color: #F8ECE1 !important;
+            color: #4A3525 !important;
+            border-color: #D6BCAB !important;
+        }
+        [data-theme="peach"] .uni-tab-active,
+        body.theme-peach .uni-tab-active {
+            background-color: #24160F !important;
+            color: #FFF6EE !important;
+            border-color: #24160F !important;
+        }
+        [data-theme="peach"] .year-btn-active,
+        body.theme-peach .year-btn-active {
+            background-color: #7B42F6 !important;
+            color: #FFFFFF !important;
+            border-color: #24160F !important;
+        }
+        [data-theme="peach"] .sem-btn-active,
+        body.theme-peach .sem-btn-active {
+            background-color: #CDFF29 !important;
+            color: #000000 !important;
+            border-color: #24160F !important;
+        }
+    </style>
+</head>
+<body class="bg-[#0b0b0b] m-0 p-0 overflow-x-hidden antialiased text-white min-h-screen flex flex-col bg-grid-subtle">
+    
+    <!-- NAVIGATION (Fixed) -->
+    <nav class="devengers-navbar-fixed fixed top-6 left-0 w-full z-50 flex justify-center px-4">
+        <!-- Purple Navbar Background (#7B42F6) -->
+        <div class="devengers-navbar-notch bg-[#7B42F6] shadow-brutal border-4 border-black rounded-full px-6 md:px-8 py-3 w-full max-w-[1400px] flex items-center justify-between">
+            <!-- Avengers Animated Logo -->
+            <a href="index.html" class="flex items-center group select-none" title="Devengers Home">
+                <div class="devengers-nav-logo font-black text-2xl md:text-[30px] tracking-tighter uppercase rounded-full transition-transform duration-300"
+                    style="-webkit-text-stroke: 2px black; color: #CDFF29; text-shadow: 3px 3px 0px black; line-height: 1;">
+                    <span class="devengers-badge-icon">
+                        <svg class="w-3.5 h-3.5 text-[#CDFF29]" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
+                        </svg>
+                    </span>
+                    <span class="logo-char">D</span><span class="logo-char">E</span><span class="logo-char">V</span><span class="logo-char">E</span><span class="logo-char">N</span><span class="logo-char">G</span><span class="logo-char">E</span><span class="logo-char">R</span><span class="logo-char">S</span>
+                </div>
+            </a>
+
+            <!-- Center Links -->
+            <div class="hidden md:flex gap-6 lg:gap-8 text-[11px] font-bold uppercase tracking-widest text-white/80">
+                <a href="events.html" class="nav-link">Events</a>
+                <a href="learn.html" class="nav-link">Learn</a>
+                <a href="campus.html" class="nav-link">Campus Resource</a>
+                <a href="dsa.html" class="nav-link">DSA Streak</a>
+                <a href="gallery.html" class="nav-link">Gallery</a>
+                <a href="certificates.html" class="nav-link">Certificates</a>
+            </div>
+
+            <!-- Right Links & Action Buttons -->
+            <div class="flex items-center gap-3 sm:gap-4">
+                <!-- Theme Toggle Button -->
+                <button type="button" onclick="window.DevengersTheme.toggleTheme()" class="theme-toggle-btn" title="Toggle Eye-Comfort Peach Theme" aria-label="Toggle Theme">
+                    <div class="toggle-thumb">🌙</div>
+                </button>
+
+                <!-- Notifications Bell with Dynamic Red Dot -->
+                <div class="relative">
+                    <button type="button" id="nav-notification-btn" onclick="window.DevengersNotifications.toggleDropdown(event)"
+                        class="nav-notification-btn flex items-center justify-center w-8 h-8 text-white/80 hover:text-white transition-colors relative cursor-pointer"
+                        title="Notifications" aria-label="Notifications">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 transition-transform hover:scale-110" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+                        </svg>
+                        <span id="nav-notification-dot" class="nav-notification-dot hidden"></span>
+                    </button>
+                </div>
+
+                <!-- Profile Symbol Button with Instagram Ring -->
+                <a href="profile.html" class="nav-profile-btn group" title="My Profile" aria-label="My Profile">
+                    <span class="nav-profile-inner">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-white transition-transform group-hover:scale-110" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                        </svg>
+                    </span>
+                </a>
+
+                <a href="login.html" class="hidden md:block text-[11px] font-bold uppercase tracking-widest text-white/80 hover:text-white transition-colors">LOGIN</a>
+                <a href="register.html" class="bg-white text-black px-5 py-2 rounded-full text-[11px] font-bold uppercase tracking-widest hover:bg-[#CDFF29] transition-colors flex items-center gap-1.5 shadow-sm">
+                    SIGN UP <span class="font-normal text-sm leading-none">&rarr;</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- MAIN CONTENT -->
+    <main class="flex-grow w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-12 pt-36 md:pt-40 pb-24">
+        
+        <!-- HERO / HEADER -->
+        <div class="mb-10 text-center md:text-left">
+            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#CDFF29] text-black font-mono text-xs font-black uppercase tracking-wider shadow-brutal-sm border-2 border-black mb-4">
+                <span>🏛️</span>
+                <span>CAMPUS RESOURCE VAULT // UNIVERSITY PYQS &amp; CURRICULUM</span>
+            </div>
+            <h1 class="font-black text-2xl sm:text-5xl lg:text-7xl uppercase tracking-tighter leading-tight mb-4 text-white drop-shadow-md">
+                PREVIOUS YEAR <span class="text-[#CDFF29] underline decoration-[#7B42F6] decoration-4 underline-offset-4">PAPERS</span> &amp; CURRICULUM
+            </h1>
+            <p class="text-gray-400 text-xs sm:text-base max-w-3xl leading-relaxed">
+                Direct downloadable PDF question papers and official academic syllabi for B.Tech &amp; Computer Science and allied engineering disciplines. Authentic multi-page exam archives spanning <strong class="text-white">AKTU, MMMUT, GGSIPU, RGPV, MAKAUT, and VTU</strong>.
+            </p>
+
+            <!-- Quick Metrics Ticker -->
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-3 mt-6 sm:mt-8">
+                <div class="bg-[#141414] border-2 border-black rounded-xl sm:rounded-2xl p-3 sm:p-4 shadow-brutal-sm">
+                    <div class="text-xl sm:text-3xl font-black text-[#CDFF29]">432+</div>
+                    <div class="text-[10px] sm:text-[11px] font-mono uppercase text-gray-400 tracking-wider">Direct PDF Papers</div>
+                </div>
+                <div class="bg-[#141414] border-2 border-black rounded-xl sm:rounded-2xl p-3 sm:p-4 shadow-brutal-sm">
+                    <div class="text-xl sm:text-3xl font-black text-[#7B42F6]">6 Tech</div>
+                    <div class="text-[10px] sm:text-[11px] font-mono uppercase text-gray-400 tracking-wider">Major Universities</div>
+                </div>
+                <div class="bg-[#141414] border-2 border-black rounded-xl sm:rounded-2xl p-3 sm:p-4 shadow-brutal-sm">
+                    <div class="text-xl sm:text-3xl font-black text-[#00D2FF]">Sem 1-8</div>
+                    <div class="text-[10px] sm:text-[11px] font-mono uppercase text-gray-400 tracking-wider">All 4 Academic Years</div>
+                </div>
+                <div class="bg-[#141414] border-2 border-black rounded-xl sm:rounded-2xl p-3 sm:p-4 shadow-brutal-sm">
+                    <div class="text-xl sm:text-3xl font-black text-emerald-400">100% Free</div>
+                    <div class="text-[10px] sm:text-[11px] font-mono uppercase text-gray-400 tracking-wider">Direct Local Download</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- UNIVERSITY SELECTOR BAR -->
+        <div class="mb-10">
+            <div class="flex items-center justify-between mb-3">
+                <span class="text-xs font-mono uppercase tracking-wider font-bold text-gray-400 flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-[#CDFF29] inline-block animate-pulse"></span>
+                    STEP 1: SELECT YOUR UNIVERSITY
+                </span>
+                <span id="active-uni-badge" class="hidden sm:inline-block text-xs font-mono text-[#CDFF29] bg-[#CDFF29]/10 border border-[#CDFF29]/30 px-2.5 py-0.5 rounded-full">
+                    AKTU (UPTU) Active
+                </span>
+            </div>
+            
+            <div id="university-tabs-container" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
+                <!-- Dynamically rendered or fallback -->
+                <button type="button" onclick="selectUniversity('aktu')" data-uni="aktu" class="uni-tab text-left p-3.5 rounded-2xl border-2 border-black transition-all font-sans bg-[#7B42F6] text-white shadow-brutal-sm hover:-translate-y-0.5">
+                    <div class="text-xs font-mono font-bold tracking-wider uppercase text-[#CDFF29]">AKTU</div>
+                    <div class="font-bold text-sm leading-tight mt-1">Dr. APJ Abdul Kalam</div>
+                    <div class="text-[10px] text-white/70 font-mono mt-1">Lucknow, UP</div>
+                </button>
+                <button type="button" onclick="selectUniversity('mmmut')" data-uni="mmmut" class="uni-tab text-left p-3.5 rounded-2xl border-2 border-black transition-all font-sans bg-[#181818] text-gray-300 shadow-brutal-sm hover:-translate-y-0.5 hover:bg-[#202020]">
+                    <div class="text-xs font-mono font-bold tracking-wider uppercase text-purple-400">MMMUT</div>
+                    <div class="font-bold text-sm leading-tight mt-1">Madan Mohan Malaviya</div>
+                    <div class="text-[10px] text-gray-500 font-mono mt-1">Gorakhpur, UP (MMH)</div>
+                </button>
+                <button type="button" onclick="selectUniversity('ipu')" data-uni="ipu" class="uni-tab text-left p-3.5 rounded-2xl border-2 border-black transition-all font-sans bg-[#181818] text-gray-300 shadow-brutal-sm hover:-translate-y-0.5 hover:bg-[#202020]">
+                    <div class="text-xs font-mono font-bold tracking-wider uppercase text-cyan-400">GGSIPU</div>
+                    <div class="font-bold text-sm leading-tight mt-1">Guru Gobind Singh IPU</div>
+                    <div class="text-[10px] text-gray-500 font-mono mt-1">Dwarka, New Delhi</div>
+                </button>
+                <button type="button" onclick="selectUniversity('rgpv')" data-uni="rgpv" class="uni-tab text-left p-3.5 rounded-2xl border-2 border-black transition-all font-sans bg-[#181818] text-gray-300 shadow-brutal-sm hover:-translate-y-0.5 hover:bg-[#202020]">
+                    <div class="text-xs font-mono font-bold tracking-wider uppercase text-emerald-400">RGPV</div>
+                    <div class="font-bold text-sm leading-tight mt-1">Rajiv Gandhi Proudyogiki</div>
+                    <div class="text-[10px] text-gray-500 font-mono mt-1">Bhopal, MP</div>
+                </button>
+                <button type="button" onclick="selectUniversity('makaut')" data-uni="makaut" class="uni-tab text-left p-3.5 rounded-2xl border-2 border-black transition-all font-sans bg-[#181818] text-gray-300 shadow-brutal-sm hover:-translate-y-0.5 hover:bg-[#202020]">
+                    <div class="text-xs font-mono font-bold tracking-wider uppercase text-pink-400">MAKAUT</div>
+                    <div class="font-bold text-sm leading-tight mt-1">Maulana Abul Kalam</div>
+                    <div class="text-[10px] text-gray-500 font-mono mt-1">Kolkata, WB (WBUT)</div>
+                </button>
+                <button type="button" onclick="selectUniversity('vtu')" data-uni="vtu" class="uni-tab text-left p-3.5 rounded-2xl border-2 border-black transition-all font-sans bg-[#181818] text-gray-300 shadow-brutal-sm hover:-translate-y-0.5 hover:bg-[#202020]">
+                    <div class="text-xs font-mono font-bold tracking-wider uppercase text-amber-400">VTU</div>
+                    <div class="font-bold text-sm leading-tight mt-1">Visvesvaraya Tech Univ</div>
+                    <div class="text-[10px] text-gray-500 font-mono mt-1">Belagavi, Karnataka</div>
+                </button>
+            </div>
+        </div>
+
+        <!-- STEP 2: YEAR SELECTION & DYNAMIC SEMESTER ENABLING -->
+        <div class="bg-[#141414] border-3 border-black rounded-3xl p-6 sm:p-8 mb-10 shadow-brutal-md">
+            
+            <!-- Academic Year Tabs (1st, 2nd, 3rd, 4th Year) -->
+            <div class="mb-6">
+                <div class="flex items-center justify-between mb-3">
+                    <span class="text-xs font-mono uppercase tracking-wider font-bold text-gray-400 flex items-center gap-2">
+                        <span>🎓</span>
+                        STEP 2: CHOOSE ACADEMIC YEAR (ACTIVATES ITS 2 SEMESTERS)
+                    </span>
+                    <span class="text-[11px] font-mono text-gray-400">Clicking a Year unlocks both its Semesters</span>
+                </div>
+                
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                    <!-- Year 1 -->
+                    <button type="button" id="year-btn-1" onclick="selectYear(1)" class="year-selector-btn p-4 rounded-2xl border-2 border-black font-mono font-bold text-left transition-all bg-[#222] text-gray-300 hover:bg-[#2a2a2a] shadow-brutal-sm">
+                        <div class="flex items-center justify-between">
+                            <span class="text-lg text-white">1st Year</span>
+                            <span class="text-xs px-2 py-0.5 rounded bg-black/40 text-gray-400">Sem 1 &amp; 2</span>
+                        </div>
+                        <div class="text-[10px] text-gray-400 font-sans font-normal mt-1">Applied Sciences &amp; Fundamentals</div>
+                    </button>
+
+                    <!-- Year 2 (Active by default for demonstration) -->
+                    <button type="button" id="year-btn-2" onclick="selectYear(2)" class="year-selector-btn p-4 rounded-2xl border-2 border-black font-mono font-bold text-left transition-all bg-[#7B42F6] text-white shadow-brutal-sm">
+                        <div class="flex items-center justify-between">
+                            <span class="text-lg text-white">2nd Year</span>
+                            <span class="text-xs px-2 py-0.5 rounded bg-[#CDFF29] text-black font-bold">Sem 3 &amp; 4</span>
+                        </div>
+                        <div class="text-[10px] text-white/80 font-sans font-normal mt-1">Core CS &amp; Algorithms</div>
+                    </button>
+
+                    <!-- Year 3 -->
+                    <button type="button" id="year-btn-3" onclick="selectYear(3)" class="year-selector-btn p-4 rounded-2xl border-2 border-black font-mono font-bold text-left transition-all bg-[#222] text-gray-300 hover:bg-[#2a2a2a] shadow-brutal-sm">
+                        <div class="flex items-center justify-between">
+                            <span class="text-lg text-white">3rd Year</span>
+                            <span class="text-xs px-2 py-0.5 rounded bg-black/40 text-gray-400">Sem 5 &amp; 6</span>
+                        </div>
+                        <div class="text-[10px] text-gray-400 font-sans font-normal mt-1">Advanced Systems &amp; Web/AI</div>
+                    </button>
+
+                    <!-- Year 4 -->
+                    <button type="button" id="year-btn-4" onclick="selectYear(4)" class="year-selector-btn p-4 rounded-2xl border-2 border-black font-mono font-bold text-left transition-all bg-[#222] text-gray-300 hover:bg-[#2a2a2a] shadow-brutal-sm">
+                        <div class="flex items-center justify-between">
+                            <span class="text-lg text-white">4th Year</span>
+                            <span class="text-xs px-2 py-0.5 rounded bg-black/40 text-gray-400">Sem 7 &amp; 8</span>
+                        </div>
+                        <div class="text-[10px] text-gray-400 font-sans font-normal mt-1">Specialization &amp; Capstone</div>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Dynamic Semester Bar -->
+            <div>
+                <div class="flex items-center justify-between mb-3">
+                    <span class="text-xs font-mono uppercase tracking-wider font-bold text-gray-400 flex items-center gap-2">
+                        <span>⚡</span>
+                        ACTIVE SEMESTERS FOR SELECTED YEAR
+                    </span>
+                    <span id="active-sem-indicator" class="text-xs font-mono text-[#CDFF29] font-bold">
+                        Semester 3 Selected
+                    </span>
+                </div>
+
+                <!-- 8 Semesters Row with Enabled / Disabled state -->
+                <div class="grid grid-cols-4 sm:grid-cols-8 gap-2" id="semester-tabs-bar">
+                    <!-- Semester 1 -->
+                    <button type="button" id="sem-btn-1" onclick="selectSemester(1)" class="sem-btn py-2.5 px-3 rounded-xl border-2 border-black font-mono text-xs font-bold transition-all opacity-40 bg-[#1c1c1c] text-gray-500 cursor-not-allowed">
+                        Sem 1
+                    </button>
+                    <!-- Semester 2 -->
+                    <button type="button" id="sem-btn-2" onclick="selectSemester(2)" class="sem-btn py-2.5 px-3 rounded-xl border-2 border-black font-mono text-xs font-bold transition-all opacity-40 bg-[#1c1c1c] text-gray-500 cursor-not-allowed">
+                        Sem 2
+                    </button>
+                    <!-- Semester 3 (Enabled & Active) -->
+                    <button type="button" id="sem-btn-3" onclick="selectSemester(3)" class="sem-btn py-2.5 px-3 rounded-xl border-2 border-black font-mono text-xs font-bold transition-all bg-[#CDFF29] text-black shadow-brutal-sm scale-105">
+                        Sem 3 ✨
+                    </button>
+                    <!-- Semester 4 (Enabled) -->
+                    <button type="button" id="sem-btn-4" onclick="selectSemester(4)" class="sem-btn py-2.5 px-3 rounded-xl border-2 border-black font-mono text-xs font-bold transition-all bg-[#2a2a2a] text-white hover:bg-[#333] shadow-brutal-sm">
+                        Sem 4
+                    </button>
+                    <!-- Semester 5 -->
+                    <button type="button" id="sem-btn-5" onclick="selectSemester(5)" class="sem-btn py-2.5 px-3 rounded-xl border-2 border-black font-mono text-xs font-bold transition-all opacity-40 bg-[#1c1c1c] text-gray-500 cursor-not-allowed">
+                        Sem 5
+                    </button>
+                    <!-- Semester 6 -->
+                    <button type="button" id="sem-btn-6" onclick="selectSemester(6)" class="sem-btn py-2.5 px-3 rounded-xl border-2 border-black font-mono text-xs font-bold transition-all opacity-40 bg-[#1c1c1c] text-gray-500 cursor-not-allowed">
+                        Sem 6
+                    </button>
+                    <!-- Semester 7 -->
+                    <button type="button" id="sem-btn-7" onclick="selectSemester(7)" class="sem-btn py-2.5 px-3 rounded-xl border-2 border-black font-mono text-xs font-bold transition-all opacity-40 bg-[#1c1c1c] text-gray-500 cursor-not-allowed">
+                        Sem 7
+                    </button>
+                    <!-- Semester 8 -->
+                    <button type="button" id="sem-btn-8" onclick="selectSemester(8)" class="sem-btn py-2.5 px-3 rounded-xl border-2 border-black font-mono text-xs font-bold transition-all opacity-40 bg-[#1c1c1c] text-gray-500 cursor-not-allowed">
+                        Sem 8
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECTION 1: CURRICULUM FIRST (As requested by user: "whatever the curriculum, firstly") -->
+        <section id="curriculum-section" class="mb-14">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
+                <div>
+                    <div class="inline-flex items-center gap-1.5 text-xs font-mono font-bold uppercase tracking-wider text-[#CDFF29] bg-[#CDFF29]/10 px-3 py-1 rounded-full border border-[#CDFF29]/30 mb-2">
+                        <span>📖</span>
+                        <span>FIRST: ACADEMIC CURRICULUM &amp; SYLLABUS OUTLINE</span>
+                    </div>
+                    <h2 id="curriculum-header-title" class="font-black text-2xl sm:text-3xl uppercase tracking-tight text-white">
+                        SEMESTER 3 // CORE CS CURRICULUM
+                    </h2>
+                    <p id="curriculum-header-desc" class="text-xs sm:text-sm text-gray-400 font-mono mt-1">
+                        Focus: Linear &amp; Non-Linear Data Structures, Discrete Mathematics, and Computer Architecture.
+                    </p>
+                </div>
+
+                <div class="flex items-center gap-2">
+                    <span class="text-xs font-mono text-gray-400 bg-[#181818] border border-gray-800 px-3 py-1.5 rounded-xl">
+                        AICTE &amp; UGC Standard Scheme
+                    </span>
+                </div>
+            </div>
+
+            <!-- Curriculum Subject Cards Grid -->
+            <div id="curriculum-cards-grid" class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Dynamically populated by JavaScript based on active semester -->
+            </div>
+        </section>
+
+        <!-- SECTION 2: PREVIOUS YEAR PAPERS (Direct Downloadable PDFs) -->
+        <section id="papers-section" class="mb-14">
+            
+            <!-- Section Header & Filter Controls -->
+            <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
+                <div>
+                    <div class="inline-flex items-center gap-1.5 text-xs font-mono font-bold uppercase tracking-wider text-[#7B42F6] bg-[#7B42F6]/15 px-3 py-1 rounded-full border border-[#7B42F6]/40 mb-2">
+                        <span>📥</span>
+                        <span>DIRECT DOWNLOADABLE PDF EXAMINATION PAPERS</span>
+                    </div>
+                    <h2 class="font-black text-2xl sm:text-4xl uppercase tracking-tight text-white flex items-center gap-3">
+                        PREVIOUS YEAR QUESTION PAPERS
+                        <span id="papers-count-badge" class="text-xs font-mono font-bold bg-[#CDFF29] text-black px-2.5 py-1 rounded-full border border-black shadow-brutal-sm">
+                            12 Papers Available
+                        </span>
+                    </h2>
+                    <p class="text-xs sm:text-sm text-gray-400 font-mono mt-1">
+                        Download genuine multi-page exam papers directly to your device or preview instantly in-browser.
+                    </p>
+                </div>
+
+                <!-- Session & Search Filters -->
+                <div class="flex flex-wrap items-center gap-3">
+                    <!-- Exam Year Filter -->
+                    <div class="flex items-center gap-1.5 bg-[#181818] border-2 border-black rounded-xl px-3 py-1.5 shadow-brutal-sm">
+                        <span class="text-xs font-mono text-gray-400 font-bold">Session:</span>
+                        <select id="exam-year-filter" onchange="applyFilters()" class="bg-transparent text-white text-xs font-mono font-bold outline-none cursor-pointer">
+                            <option value="all" class="bg-[#181818] text-white">All Sessions (2021-25)</option>
+                            <option value="2024-25" class="bg-[#181818] text-white">2024-25 (Latest)</option>
+                            <option value="2023-24" class="bg-[#181818] text-white">2023-24</option>
+                            <option value="2022-23" class="bg-[#181818] text-white">2022-23</option>
+                            <option value="2021-22" class="bg-[#181818] text-white">2021-22</option>
+                        </select>
+                    </div>
+
+                    <!-- Search Input -->
+                    <div class="relative min-w-[220px]">
+                        <input type="text" id="subject-search-input" oninput="applyFilters()" placeholder="Search subject or code..." class="w-full bg-[#181818] border-2 border-black text-white text-xs font-mono rounded-xl pl-8 pr-3 py-2 outline-none focus:border-[#CDFF29] shadow-brutal-sm transition-colors">
+                        <svg class="w-4 h-4 text-gray-400 absolute left-2.5 top-2.5 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Subject Quick Filter Pills -->
+            <div id="subject-quick-pills" class="flex flex-wrap items-center gap-2 mb-6">
+                <!-- Dynamically populated -->
+            </div>
+
+            <!-- Papers Grid -->
+            <div id="papers-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Dynamically rendered paper cards -->
+            </div>
+
+            <!-- Empty State -->
+            <div id="papers-empty-state" class="hidden text-center py-16 bg-[#141414] border-2 border-dashed border-gray-800 rounded-3xl p-8">
+                <div class="text-4xl mb-3">🔍</div>
+                <h3 class="font-bold text-lg text-white mb-1">No Examination Papers Match Your Filter</h3>
+                <p class="text-gray-400 text-xs font-mono max-w-md mx-auto mb-4">Try clearing the search term or resetting the exam session filter.</p>
+                <button type="button" onclick="resetFilters()" class="px-4 py-2 bg-[#CDFF29] text-black font-mono text-xs font-bold rounded-xl border-2 border-black shadow-brutal-sm hover:bg-[#b8e822] transition-colors">
+                    Reset All Filters
+                </button>
+            </div>
+        </section>
+
+        <!-- UNIVERSITY CURRICULUM SYLLABUS DIRECTORY SUMMARY (FOOTER BANNER) -->
+        <div class="bg-gradient-to-r from-[#7B42F6]/20 via-black to-[#CDFF29]/10 border-3 border-black rounded-3xl p-6 sm:p-10 shadow-brutal-md flex flex-col md:flex-row items-center justify-between gap-6">
+            <div class="max-w-2xl">
+                <div class="inline-flex items-center gap-2 text-xs font-mono font-bold text-[#CDFF29] uppercase tracking-wider mb-2">
+                    <span>⚡</span>
+                    <span>STUDENT ADVANTAGE // VERIFIED ARCHIVES</span>
+                </div>
+                <h3 class="text-2xl sm:text-3xl font-black uppercase text-white tracking-tight mb-2">
+                    Need Solutions or Previous Year Formula Sheets?
+                </h3>
+                <p class="text-gray-300 text-xs sm:text-sm leading-relaxed">
+                    All question papers in this archive are standard format examination papers with Section A (Short questions), Section B (Numericals &amp; proofs), and Section C (Comprehensive design &amp; derivations). Feel free to share this vault with your batchmates.
+                </p>
+            </div>
+            <div class="flex flex-col sm:flex-row gap-3 w-full md:w-auto">
+                <a href="https://whatsapp.com/channel/0029VbCVGAd8KMql7Ie3ew43" target="_blank" rel="noopener noreferrer" class="px-6 py-3 bg-[#25D366] text-black font-mono text-xs font-black uppercase tracking-wider rounded-2xl border-2 border-black shadow-brutal-sm hover:bg-[#20ba59] transition-all flex items-center justify-center gap-2">
+                    <span>💬</span>
+                    <span>Join Student Channel</span>
+                </a>
+                <a href="learn.html" class="px-6 py-3 bg-white text-black font-mono text-xs font-black uppercase tracking-wider rounded-2xl border-2 border-black shadow-brutal-sm hover:bg-gray-100 transition-all flex items-center justify-center gap-2">
+                    <span>🚀</span>
+                    <span>Explore Free Courses &rarr;</span>
+                </a>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- IN-BROWSER PDF PREVIEW MODAL -->
+    <div id="pdf-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm hidden" style="backdrop-filter: blur(8px);">
+        <div class="bg-[#121212] border-4 border-black rounded-3xl w-full max-w-5xl h-[88vh] flex flex-col shadow-2xl overflow-hidden relative">
+            
+            <!-- Modal Header -->
+            <div class="bg-[#1a1a1a] border-b-2 border-black px-6 py-4 flex items-center justify-between flex-shrink-0">
+                <div class="flex items-center gap-3">
+                    <span class="w-3 h-3 rounded-full bg-red-500 inline-block border border-black"></span>
+                    <span class="w-3 h-3 rounded-full bg-yellow-500 inline-block border border-black"></span>
+                    <span class="w-3 h-3 rounded-full bg-green-500 inline-block border border-black"></span>
+                    <div class="ml-2">
+                        <h4 id="modal-paper-title" class="font-bold text-white text-sm sm:text-base leading-tight">Data Structures &amp; Algorithms</h4>
+                        <div class="flex items-center gap-2 text-[10px] sm:text-xs font-mono text-gray-400 mt-0.5">
+                            <span id="modal-paper-uni" class="text-[#CDFF29] font-bold">AKTU</span>
+                            <span>•</span>
+                            <span id="modal-paper-code">KCS-301</span>
+                            <span>•</span>
+                            <span id="modal-paper-session">Session: 2024-25</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex items-center gap-3">
+                    <!-- Direct Download Button in Modal -->
+                    <a id="modal-download-btn" href="#" download="" class="px-4 py-2 bg-[#CDFF29] text-black font-mono text-xs font-bold uppercase rounded-xl border-2 border-black shadow-brutal-sm hover:bg-[#b8e822] transition-colors flex items-center gap-1.5">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                        <span>Download PDF</span>
+                    </a>
+                    
+                    <!-- Open in New Tab -->
+                    <a id="modal-newtab-btn" href="#" target="_blank" rel="noopener noreferrer" class="hidden sm:flex px-3 py-2 bg-[#2a2a2a] text-white font-mono text-xs rounded-xl border-2 border-black hover:bg-[#333] transition-colors items-center gap-1.5" title="Open PDF in new tab">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                    </a>
+
+                    <!-- Close Button -->
+                    <button type="button" onclick="closePdfModal()" class="w-9 h-9 rounded-xl bg-red-600/20 text-red-400 hover:bg-red-600 hover:text-white border-2 border-black transition-colors flex items-center justify-center font-bold text-lg" title="Close Preview (Esc)">
+                        &times;
+                    </button>
+                </div>
+            </div>
+
+            <!-- PDF Viewer Frame -->
+            <div class="flex-grow bg-[#222] relative overflow-hidden">
+                <iframe id="modal-pdf-frame" src="" class="w-full h-full border-none"></iframe>
+            </div>
+
+            <!-- Modal Footer Info -->
+            <div class="bg-[#141414] border-t-2 border-black px-6 py-2.5 flex items-center justify-between text-[11px] font-mono text-gray-400 flex-shrink-0">
+                <span class="flex items-center gap-1.5">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400 inline-block"></span>
+                    Direct PDF stream from Devengers local archive
+                </span>
+                <span class="hidden sm:inline">Press ESC to dismiss</span>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- SECTION: Site Footer (Matching index.html) -->
+    <footer class="relative bg-[#0b0b0b] w-full pt-28 pb-16 px-6 overflow-hidden text-center select-none" id="site-footer">
+        <!-- SVG Grid Lines Background -->
+        <svg class="absolute inset-0 w-full h-full pointer-events-none opacity-20" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <pattern id="footer-grid-pattern" width="24" height="24" patternUnits="userSpaceOnUse">
+                    <line x1="0" y1="24" x2="24" y2="24" stroke="#ffffff" stroke-width="1" stroke-dasharray="3,3" />
+                    <line x1="24" y1="0" x2="24" y2="24" stroke="#ffffff" stroke-width="1" stroke-dasharray="3,3" />
+                </pattern>
+                <pattern id="footer-major-grid" width="120" height="120" patternUnits="userSpaceOnUse">
+                    <line x1="0" y1="120" x2="120" y2="120" stroke="#ffffff" stroke-width="1" stroke-opacity="0.35" />
+                    <line x1="120" y1="0" x2="120" y2="120" stroke="#ffffff" stroke-width="1" stroke-opacity="0.35" />
+                </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#footer-grid-pattern)" />
+            <rect width="100%" height="100%" fill="url(#footer-major-grid)" />
+        </svg>
+
+        <div class="relative z-10 max-w-[1000px] mx-auto flex flex-col items-center">
+
+            <!-- Eyebrow -->
+            <p class="text-white text-[15px] md:text-[18px] font-semibold tracking-tight mb-7">
+                A Technology &amp; Developer Community
+            </p>
+
+            <!-- 3D Extruded Logo (DEVENGERS) -->
+            <div class="w-full max-w-[620px] flex justify-center mb-8 px-4">
+                <svg class="w-full h-auto overflow-visible select-none drop-shadow-lg transition-transform hover:scale-[1.02] duration-300" viewBox="0 0 850 140" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <style>
+                            .svg-devengers-text {
+                                font-family: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+                                font-weight: 900;
+                                font-size: 88px;
+                                letter-spacing: -2px;
+                                text-anchor: middle;
+                                dominant-baseline: central;
+                            }
+                        </style>
+                    </defs>
+                    <g transform="translate(425, 65) skewX(-5)">
+                        <!-- Bottom Black Shadow -->
+                        <text class="svg-devengers-text" x="-18" y="18" fill="#000000" stroke="#000000" stroke-width="8" stroke-linejoin="round">DEVENGERS</text>
+                        <text class="svg-devengers-text" x="-17" y="17" fill="#000000" stroke="#000000" stroke-width="8" stroke-linejoin="round">DEVENGERS</text>
+                        
+                        <!-- 3D White/Gray Extrusion Layers -->
+                        <text class="svg-devengers-text" x="-16" y="16" fill="#e2e2e2" stroke="#e2e2e2" stroke-width="8" stroke-linejoin="round">DEVENGERS</text>
+                        <text class="svg-devengers-text" x="-15" y="15" fill="#e2e2e2" stroke="#e2e2e2" stroke-width="8" stroke-linejoin="round">DEVENGERS</text>
+                        <text class="svg-devengers-text" x="-14" y="14" fill="#e2e2e2" stroke="#e2e2e2" stroke-width="8" stroke-linejoin="round">DEVENGERS</text>
+                        <text class="svg-devengers-text" x="-13" y="13" fill="#e2e2e2" stroke="#e2e2e2" stroke-width="8" stroke-linejoin="round">DEVENGERS</text>
+                        <text class="svg-devengers-text" x="-12" y="12" fill="#e2e2e2" stroke="#e2e2e2" stroke-width="8" stroke-linejoin="round">DEVENGERS</text>
+                        <text class="svg-devengers-text" x="-11" y="11" fill="#e2e2e2" stroke="#e2e2e2" stroke-width="8" stroke-linejoin="round">DEVENGERS</text>
+                        <text class="svg-devengers-text" x="-10" y="10" fill="#e2e2e2" stroke="#e2e2e2" stroke-width="8" stroke-linejoin="round">DEVENGERS</text>
+                        <text class="svg-devengers-text" x="-9" y="9" fill="#e2e2e2" stroke="#e2e2e2" stroke-width="8" stroke-linejoin="round">DEVENGERS</text>
+                        <text class="svg-devengers-text" x="-8" y="8" fill="#e2e2e2" stroke="#e2e2e2" stroke-width="8" stroke-linejoin="round">DEVENGERS</text>
+                        <text class="svg-devengers-text" x="-7" y="7" fill="#e2e2e2" stroke="#e2e2e2" stroke-width="8" stroke-linejoin="round">DEVENGERS</text>
+                        <text class="svg-devengers-text" x="-6" y="6" fill="#e2e2e2" stroke="#e2e2e2" stroke-width="8" stroke-linejoin="round">DEVENGERS</text>
+                        <text class="svg-devengers-text" x="-5" y="5" fill="#e2e2e2" stroke="#e2e2e2" stroke-width="8" stroke-linejoin="round">DEVENGERS</text>
+                        <text class="svg-devengers-text" x="-4" y="4" fill="#e2e2e2" stroke="#e2e2e2" stroke-width="8" stroke-linejoin="round">DEVENGERS</text>
+                        <text class="svg-devengers-text" x="-3" y="3" fill="#ffffff" stroke="#ffffff" stroke-width="8" stroke-linejoin="round">DEVENGERS</text>
+                        <text class="svg-devengers-text" x="-2" y="2" fill="#ffffff" stroke="#ffffff" stroke-width="8" stroke-linejoin="round">DEVENGERS</text>
+                        <text class="svg-devengers-text" x="-1" y="1" fill="#ffffff" stroke="#ffffff" stroke-width="8" stroke-linejoin="round">DEVENGERS</text>
+
+                        <!-- Top Front White Outline -->
+                        <text class="svg-devengers-text" x="0" y="0" fill="#ffffff" stroke="#ffffff" stroke-width="8" stroke-linejoin="round">DEVENGERS</text>
+                        <!-- Top Front Solid Black Face -->
+                        <text class="svg-devengers-text" x="0" y="0" fill="#000000">DEVENGERS</text>
+                    </g>
+                </svg>
+            </div>
+
+            <!-- Subtitle -->
+            <h3 class="text-white text-[22px] sm:text-[26px] md:text-[30px] font-semibold tracking-tight leading-[1.3] max-w-[620px] mb-8">
+                Join for free and build with<br class="hidden sm:inline"> creative developers on the internet.
+            </h3>
+
+            <!-- Pill CTA Button -->
+            <a href="https://whatsapp.com/channel/0029VbCVGAd8KMql7Ie3ew43" target="_blank" rel="noopener noreferrer"
+                class="inline-flex items-center gap-2 bg-white text-black font-semibold text-[13px] md:text-[14px] px-7 py-3 rounded-full hover:bg-gray-200 transition-all shadow-md group mb-16">
+                <span>Join Devengers</span>
+                <span class="text-base font-normal leading-none group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform">&#8599;</span>
+            </a>
+
+            <!-- Navigation Links Row 1 -->
+            <div class="flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-white font-medium text-[15px] md:text-[16px] tracking-normal mb-4">
+                <a href="index.html" class="hover:text-gray-300 transition-colors">Home</a>
+                <a href="events.html" class="hover:text-gray-300 transition-colors">Events</a>
+                <a href="learn.html" class="hover:text-gray-300 transition-colors">Learn</a>
+                <a href="campus.html" class="hover:text-gray-300 transition-colors">Campus Resource</a>
+                <a href="gallery.html" class="hover:text-gray-300 transition-colors">Gallery</a>
+                <a href="dsa.html" class="hover:text-gray-300 transition-colors">DSA Streak</a>
+                <a href="directory.html" class="hover:text-gray-300 transition-colors">Directory</a>
+            </div>
+
+            <!-- Navigation Links Row 2 -->
+            <div class="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-gray-400 font-normal text-[13px] md:text-[14px] tracking-normal mb-8">
+                <a href="index.html#social-section" class="hover:text-white transition-colors">About</a>
+                <a href="index.html#faq-section" class="hover:text-white transition-colors">FAQs</a>
+                <a href="mailto:event@devengers.org?subject=Campus%20Event%20or%20Hackathon%20Inquiry" class="hover:text-white transition-colors">Partnerships</a>
+                <a href="mailto:support@devengers.org?subject=General%20Inquiry%20-%20Devengers" class="hover:text-white transition-colors">Contact</a>
+                <a href="login.html" class="hover:text-white transition-colors">Login</a>
+                <a href="register.html" class="hover:text-white transition-colors">Sign up</a>
+                <a href="index.html#footer-cta-section" class="hover:text-white transition-colors">Campus Chapter</a>
+            </div>
+
+            <!-- Social Media Icons Row -->
+            <div class="flex items-center justify-center gap-6 text-white mb-8">
+                <!-- WhatsApp Channel -->
+                <a href="https://whatsapp.com/channel/0029VbCVGAd8KMql7Ie3ew43" target="_blank" rel="noopener noreferrer"
+                    class="hover:text-[#25D366] transition-colors" title="WhatsApp Channel" aria-label="WhatsApp Channel">
+                    <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                        <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2ZM12.05 20.16C10.57 20.16 9.12 19.76 7.85 19.01L7.55 18.83L4.44 19.65L5.27 16.61L5.07 16.3C4.24 14.98 3.81 13.47 3.81 11.91C3.81 7.37 7.5 3.68 12.05 3.68C14.25 3.68 16.31 4.54 17.87 6.1C19.42 7.66 20.28 9.72 20.28 11.92C20.28 16.46 16.59 20.16 12.05 20.16ZM16.57 14.33C16.32 14.21 15.1 13.61 14.87 13.53C14.64 13.44 14.48 13.4 14.31 13.65C14.15 13.89 13.68 14.45 13.53 14.62C13.39 14.78 13.25 14.8 13 14.68C12.75 14.55 11.95 14.29 11 13.45C10.26 12.79 9.76 11.98 9.62 11.73C9.47 11.49 9.6 11.35 9.73 11.23C9.84 11.12 9.98 10.94 10.1 10.8C10.23 10.66 10.27 10.55 10.35 10.39C10.43 10.22 10.39 10.08 10.33 9.96C10.27 9.84 9.78 8.63 9.57 8.14C9.37 7.66 9.17 7.72 9.02 7.71C8.88 7.71 8.71 7.71 8.55 7.71C8.38 7.71 8.12 7.77 7.89 8.02C7.67 8.26 7.03 8.86 7.03 10.08C7.03 11.3 7.92 12.48 8.04 12.65C8.16 12.81 9.78 15.31 12.26 16.38C12.85 16.64 13.31 16.79 13.67 16.91C14.26 17.09 14.8 17.07 15.22 17C15.7 16.93 16.69 16.4 16.9 15.81C17.11 15.22 17.11 14.71 17.05 14.6C16.98 14.5 16.82 14.45 16.57 14.33Z" />
+                    </svg>
+                </a>
+                <!-- Instagram -->
+                <a href="https://www.instagram.com/officialdevengers" target="_blank" rel="noopener noreferrer"
+                    class="hover:text-[#E1306C] transition-colors" title="Instagram" aria-label="Instagram">
+                    <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                        <rect x="2.5" y="2.5" width="19" height="19" rx="5" />
+                        <circle cx="12" cy="12" r="4.2" />
+                        <circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" />
+                    </svg>
+                </a>
+                <!-- LinkedIn -->
+                <a href="https://www.linkedin.com/company/officialdevengers" target="_blank" rel="noopener noreferrer"
+                    class="hover:text-[#0077B5] transition-colors" title="LinkedIn" aria-label="LinkedIn">
+                    <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                        <rect x="2.5" y="2.5" width="19" height="19" rx="4" />
+                        <circle cx="7.5" cy="8" r="1.3" fill="currentColor" />
+                        <path d="M6.3 11.2h2.4v6.5H6.3z" fill="currentColor" />
+                        <path d="M11 11.2h2.2v1c.4-.7 1.3-1.2 2.4-1.2 2.1 0 3.1 1.3 3.1 3.5v4.2h-2.3v-3.7c0-1-.4-1.7-1.4-1.7-1 0-1.5.7-1.5 1.7v3.7H11z" fill="currentColor" />
+                    </svg>
+                </a>
+                <!-- YouTube -->
+                <a href="https://www.youtube.com/@officialdevengers" target="_blank" rel="noopener noreferrer"
+                    class="hover:text-[#FF0000] transition-colors" title="YouTube" aria-label="YouTube">
+                    <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                        <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+                    </svg>
+                </a>
+                <!-- Devengers Community Smiley -->
+                <a href="index.html" class="hover:text-[#FCE205] transition-colors" title="Devengers Community" aria-label="Devengers Community">
+                    <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                        <circle cx="12" cy="12" r="9" />
+                        <circle cx="9" cy="9.5" r="1" fill="currentColor" />
+                        <circle cx="15" cy="9.5" r="1" fill="currentColor" />
+                        <path d="M8.5 14c.8 1.5 2 2.2 3.5 2.2s2.7-.7 3.5-2.2" stroke-linecap="round" />
+                    </svg>
+                </a>
+                <!-- Admin Login Icon -->
+                <a href="admin-events.html" class="admin-only hidden hover:text-[#CDFF29] transition-colors p-1.5 rounded-lg border border-gray-800 hover:border-[#CDFF29]/40 bg-black/40 hover:bg-[#CDFF29]/10 items-center justify-center text-gray-500" title="Admin Portal" aria-label="Admin Portal">
+                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                        <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                    </svg>
+                </a>
+            </div>
+
+            <!-- Copyright and Legal -->
+            <p class="text-[#888888] font-mono text-[11px] uppercase tracking-wider mb-2">
+                DEVENGERS COMMUNITY &copy; 2026 ALL RIGHTS RESERVED
+            </p>
+            <div class="flex flex-wrap items-center justify-center gap-x-2 gap-y-1 text-[#888888] font-mono text-[10px] uppercase tracking-wider">
+                <a href="campus.html" class="hover:text-white transition-colors">Terms</a>
+                <span>|</span>
+                <a href="campus.html" class="hover:text-white transition-colors">Privacy</a>
+                <span>|</span>
+                <a href="campus.html" class="hover:text-white transition-colors">Acceptable Use</a>
+                <span>|</span>
+                <a href="mailto:support@devengers.org" class="hover:text-white transition-colors">Campus Support</a>
+                <span>|</span>
+                <a href="mailto:event@devengers.org" class="hover:text-white transition-colors">Partnerships</a>
+                <span>|</span>
+                <a href="campus.html" class="hover:text-white transition-colors">Cookie Policy</a>
+                <span>|</span>
+                <a href="campus.html" class="hover:text-white transition-colors">Community Guidelines</a>
+                <span class="admin-only hidden">|</span>
+                <a href="admin-events.html" class="admin-only hidden hover:text-[#CDFF29] text-gray-400 transition-colors items-center gap-1 font-bold">
+                    <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                        <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                    </svg>
+                    <span>Admin</span>
+                </a>
+            </div>
+
+        </div>
+    </footer>
+
+    <!-- CLIENT APPLICATION LOGIC -->
+    <script>
+        // State
+        let CATALOG = null;
+        let selectedUni = 'aktu';
+        let selectedYear = 2; // Default to 2nd year (Sem 3 & 4)
+        let selectedSemester = 3;
+        let activeSubjectFilter = 'all';
+
+        // University display dictionary
+        const UNI_META = {
+            'aktu': { short: 'AKTU (UPTU)', name: 'Dr. A.P.J. Abdul Kalam Technical University', color: '#FF6B35', state: 'Lucknow, UP' },
+            'mmmut': { short: 'MMMUT (MMH)', name: 'Madan Mohan Malaviya Univ of Tech', color: '#7B42F6', state: 'Gorakhpur, UP' },
+            'ipu': { short: 'GGSIPU (IPU)', name: 'Guru Gobind Singh Indraprastha Univ', color: '#00D2FF', state: 'Dwarka, New Delhi' },
+            'rgpv': { short: 'RGPV', name: 'Rajiv Gandhi Proudyogiki Vishwavidyalaya', color: '#10B981', state: 'Bhopal, MP' },
+            'makaut': { short: 'MAKAUT (WBUT)', name: 'Maulana Abul Kalam Azad Univ of Tech', color: '#EC4899', state: 'Kolkata, WB' },
+            'vtu': { short: 'VTU', name: 'Visvesvaraya Technological University', color: '#F59E0B', state: 'Belagavi, Karnataka' }
+        };
+
+        // Year to Semesters Mapping (Academic standard)
+        const YEAR_SEMS = {
+            1: [1, 2],
+            2: [3, 4],
+            3: [5, 6],
+            4: [7, 8]
+        };
+
+        // Semester to Year Reverse Mapping
+        const SEM_TO_YEAR = {
+            1: 1, 2: 1,
+            3: 2, 4: 2,
+            5: 3, 6: 3,
+            7: 4, 8: 4
+        };
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', async () => {
+            await loadCatalog();
+            renderUniversityTabs();
+            updateYearAndSemesterUI();
+            renderCurriculum();
+            renderPapers();
+            checkAdminStatus();
+        });
+
+        async function checkAdminStatus() {
+            try {
+                const res = await fetch('/api/auth/me');
+                const data = await res.json();
+                if (data && data.authenticated && data.user && data.user.role === 'admin') {
+                    const sc = document.getElementById('admin-shortcut');
+                    if (sc) sc.classList.remove('hidden');
+                }
+            } catch (e) {}
+        }
+
+        async function loadCatalog() {
+            try {
+                // Fetch catalog via direct JSON or API
+                const res = await fetch('/api/pyqs');
+                const data = await res.json();
+                if (data && data.success) {
+                    CATALOG = data;
+                } else {
+                    // Fallback directly to catalog file
+                    const fallback = await fetch('/Assest/pyqs/pyqs_catalog.json');
+                    CATALOG = await fallback.json();
+                }
+            } catch (e) {
+                console.warn('API fetch error, falling back to static JSON catalog:', e);
+                const fallback = await fetch('/Assest/pyqs/pyqs_catalog.json');
+                CATALOG = await fallback.json();
+            }
+        }
+
+        // STEP 1: University Selection
+        function selectUniversity(uniId) {
+            selectedUni = uniId;
+            renderUniversityTabs();
+            renderCurriculum();
+            renderPapers();
+        }
+
+        function renderUniversityTabs() {
+            const tabs = document.querySelectorAll('.uni-tab');
+            tabs.forEach(tab => {
+                const uni = tab.getAttribute('data-uni');
+                if (uni === selectedUni) {
+                    tab.classList.remove('bg-[#181818]', 'text-gray-300', 'hover:bg-[#202020]');
+                    tab.classList.add('bg-[#7B42F6]', 'text-white', 'scale-[1.02]');
+                } else {
+                    tab.classList.add('bg-[#181818]', 'text-gray-300', 'hover:bg-[#202020]');
+                    tab.classList.remove('bg-[#7B42F6]', 'text-white', 'scale-[1.02]');
+                }
+            });
+
+            const badge = document.getElementById('active-uni-badge');
+            if (badge && UNI_META[selectedUni]) {
+                badge.innerText = `${UNI_META[selectedUni].short} Active`;
+            }
+        }
+
+        // STEP 2: Year Selection (Enables its two semesters)
+        function selectYear(yr) {
+            selectedYear = yr;
+            const validSems = YEAR_SEMS[yr];
+            // If current semester is not in this year, auto-select the first semester of this year
+            if (!validSems.includes(selectedSemester)) {
+                selectedSemester = validSems[0];
+            }
+            activeSubjectFilter = 'all';
+            updateYearAndSemesterUI();
+            renderCurriculum();
+            renderPapers();
+        }
+
+        // Step 2b: Semester Selection (Only within the enabled year)
+        function selectSemester(sem) {
+            // Find which year this semester belongs to
+            const parentYear = SEM_TO_YEAR[sem];
+            if (parentYear !== selectedYear) {
+                // If user clicks a semester outside current year, switch the year as well!
+                selectedYear = parentYear;
+            }
+            selectedSemester = sem;
+            activeSubjectFilter = 'all';
+            updateYearAndSemesterUI();
+            renderCurriculum();
+            renderPapers();
+        }
+
+        function updateYearAndSemesterUI() {
+            // Update Year Buttons
+            for (let y = 1; y <= 4; y++) {
+                const btn = document.getElementById(`year-btn-y` ? `year-btn-${y}` : null);
+                if (btn) {
+                    if (y === selectedYear) {
+                        btn.classList.add('bg-[#7B42F6]', 'text-white', 'border-black');
+                        btn.classList.remove('bg-[#222]', 'text-gray-300', 'hover:bg-[#2a2a2a]');
+                        const badge = btn.querySelector('span:last-child');
+                        if (badge) {
+                            badge.className = 'text-xs px-2 py-0.5 rounded bg-[#CDFF29] text-black font-bold';
+                        }
+                    } else {
+                        btn.classList.remove('bg-[#7B42F6]', 'text-white');
+                        btn.classList.add('bg-[#222]', 'text-gray-300', 'hover:bg-[#2a2a2a]');
+                        const badge = btn.querySelector('span:last-child');
+                        if (badge) {
+                            badge.className = 'text-xs px-2 py-0.5 rounded bg-black/40 text-gray-400 font-normal';
+                        }
+                    }
+                }
+            }
+
+            // Update Semester Buttons (Enabling only the two semesters of the selected year)
+            const enabledSems = YEAR_SEMS[selectedYear];
+            for (let s = 1; s <= 8; s++) {
+                const btn = document.getElementById(`sem-btn-${s}`);
+                if (!btn) continue;
+
+                if (enabledSems.includes(s)) {
+                    // Enabled semester
+                    btn.classList.remove('opacity-40', 'cursor-not-allowed');
+                    btn.classList.add('cursor-pointer');
+                    btn.title = `Semester ${s} (Year ${selectedYear})`;
+
+                    if (s === selectedSemester) {
+                        // Active selected semester
+                        btn.classList.remove('bg-[#2a2a2a]', 'text-white', 'bg-[#1c1c1c]', 'text-gray-500');
+                        btn.classList.add('bg-[#CDFF29]', 'text-black', 'scale-105', 'shadow-brutal-sm');
+                        btn.innerHTML = `Sem ${s} ✨`;
+                    } else {
+                        // Enabled but not active
+                        btn.classList.remove('bg-[#CDFF29]', 'text-black', 'scale-105', 'bg-[#1c1c1c]', 'text-gray-500');
+                        btn.classList.add('bg-[#2a2a2a]', 'text-white', 'hover:bg-[#333]', 'shadow-brutal-sm');
+                        btn.innerHTML = `Sem ${s}`;
+                    }
+                } else {
+                    // Disabled / locked for other years
+                    btn.classList.add('opacity-40', 'bg-[#1c1c1c]', 'text-gray-500', 'cursor-not-allowed');
+                    btn.classList.remove('bg-[#CDFF29]', 'text-black', 'scale-105', 'bg-[#2a2a2a]', 'text-white', 'shadow-brutal-sm', 'cursor-pointer');
+                    btn.innerHTML = `Sem ${s}`;
+                    btn.title = `Belongs to Year ${SEM_TO_YEAR[s]}. Click Year ${SEM_TO_YEAR[s]} to unlock.`;
+                }
+            }
+
+            const ind = document.getElementById('active-sem-indicator');
+            if (ind) {
+                ind.innerText = `Semester ${selectedSemester} Active (Year ${selectedYear})`;
+            }
+        }
+
+        // RENDER CURRICULUM (FIRST)
+        function renderCurriculum() {
+            if (!CATALOG || !CATALOG.curriculum) return;
+
+            const semData = CATALOG.curriculum[String(selectedSemester)];
+            if (!semData) return;
+
+            const titleEl = document.getElementById('curriculum-header-title');
+            const descEl = document.getElementById('curriculum-header-desc');
+            const container = document.getElementById('curriculum-cards-grid');
+
+            const uniInfo = UNI_META[selectedUni] || { short: selectedUni.toUpperCase() };
+
+            if (titleEl) {
+                titleEl.innerHTML = `${uniInfo.short} // SEMESTER ${selectedSemester} CURRICULUM BLUEPRINT`;
+            }
+            if (descEl) {
+                descEl.innerText = `Academic Focus: ${semData.focus || 'Core Computer Science and Allied Engineering Foundations'}`;
+            }
+
+            if (!container) return;
+            container.innerHTML = '';
+
+            const subjects = semData.subjects || [];
+            subjects.forEach((subj, idx) => {
+                const card = document.createElement('div');
+                card.className = 'curriculum-box bg-[#161616] border-2 border-black rounded-2xl p-6 shadow-brutal-sm flex flex-col justify-between transition-all hover:-translate-y-1';
+                
+                const unitsListHtml = (subj.units || []).map((u, i) => `
+                    <li class="flex items-start gap-2 text-xs text-gray-300">
+                        <span class="text-[#CDFF29] font-mono font-bold">U${i+1}:</span>
+                        <span>${escapeHtml(u)}</span>
+                    </li>
+                `).join('');
+
+                card.innerHTML = `
+                    <div>
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="px-2.5 py-1 rounded bg-[#7B42F6]/20 border border-[#7B42F6]/50 text-[#CDFF29] font-mono text-xs font-bold">
+                                ${escapeHtml(subj.code)}
+                            </span>
+                            <span class="text-[11px] font-mono text-gray-400 bg-black/40 px-2 py-0.5 rounded">
+                                Credits: ${escapeHtml(subj.credits || '3-1-0')}
+                            </span>
+                        </div>
+                        <h3 class="font-bold text-lg text-white mb-2 leading-snug">
+                            ${escapeHtml(subj.title)}
+                        </h3>
+                        <div class="text-[11px] font-mono text-gray-400 uppercase tracking-wider mb-3">
+                            Syllabus Modules (5 Units):
+                        </div>
+                        <ul class="space-y-1.5 mb-6 pl-1">
+                            ${unitsListHtml}
+                        </ul>
+                    </div>
+
+                    <div class="pt-4 border-t border-gray-800 flex items-center justify-between">
+                        <span class="text-[11px] font-mono text-gray-400">
+                            Core Degree Requirement
+                        </span>
+                        <button type="button" onclick="filterBySubject('${escapeJs(subj.title)}')" class="text-xs font-mono font-bold text-[#CDFF29] hover:underline flex items-center gap-1">
+                            View Papers &darr;
+                        </button>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        function filterBySubject(subjTitle) {
+            activeSubjectFilter = subjTitle;
+            const searchInput = document.getElementById('subject-search-input');
+            if (searchInput) searchInput.value = '';
+            renderPapers();
+            
+            // Scroll down smoothly to papers section
+            const sec = document.getElementById('papers-section');
+            if (sec) {
+                sec.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        // RENDER PAPERS
+        function renderPapers() {
+            if (!CATALOG || !CATALOG.papers) return;
+
+            const examYrFilter = document.getElementById('exam-year-filter') ? document.getElementById('exam-year-filter').value : 'all';
+            const searchVal = document.getElementById('subject-search-input') ? document.getElementById('subject-search-input').value.trim().toLowerCase() : '';
+
+            // Filter papers by: University, Semester (which already defines the year), Exam Session, and Search Term
+            let filtered = CATALOG.papers.filter(p => {
+                if (p.university_id.toLowerCase() !== selectedUni.toLowerCase()) return false;
+                if (p.semester !== selectedSemester) return false;
+                if (examYrFilter !== 'all' && p.exam_year !== examYrFilter) return false;
+                if (activeSubjectFilter !== 'all' && !p.subject_title.toLowerCase().includes(activeSubjectFilter.toLowerCase())) return false;
+                if (searchVal) {
+                    const match = p.subject_title.toLowerCase().includes(searchVal) ||
+                                  p.subject_code.toLowerCase().includes(searchVal) ||
+                                  p.exam_year.toLowerCase().includes(searchVal);
+                    if (!match) return false;
+                }
+                return true;
+            });
+
+            // Update count badge
+            const countBadge = document.getElementById('papers-count-badge');
+            if (countBadge) {
+                countBadge.innerText = `${filtered.length} Papers Available`;
+            }
+
+            renderSubjectPills();
+
+            const grid = document.getElementById('papers-grid');
+            const empty = document.getElementById('papers-empty-state');
+            if (!grid) return;
+
+            grid.innerHTML = '';
+
+            if (filtered.length === 0) {
+                if (empty) empty.classList.remove('hidden');
+                return;
+            } else {
+                if (empty) empty.classList.add('hidden');
+            }
+
+            filtered.forEach(paper => {
+                const card = document.createElement('div');
+                card.className = 'pyq-card bg-[#141414] border-3 border-black rounded-3xl p-6 shadow-brutal-md flex flex-col justify-between transition-all hover:-translate-y-1 group';
+
+                // Session badge color
+                const isLatest = paper.exam_year === '2024-25';
+                const sessionBadgeClass = isLatest ? 'bg-emerald-500/20 text-emerald-400 border-emerald-500/40' : 'bg-gray-800 text-gray-300 border-gray-700';
+
+                card.innerHTML = `
+                    <div>
+                        <!-- Top Meta -->
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-[#7B42F6]/20 border border-[#7B42F6]/40 text-[#CDFF29] font-mono text-xs font-bold">
+                                <span>📄</span> ${escapeHtml(paper.subject_code)}
+                            </span>
+                            <span class="px-2.5 py-1 rounded-lg border font-mono text-xs font-bold ${sessionBadgeClass}">
+                                ${escapeHtml(paper.exam_year)}
+                            </span>
+                        </div>
+
+                        <!-- Title -->
+                        <h3 class="font-black text-xl text-white mb-2 leading-snug group-hover:text-[#CDFF29] transition-colors">
+                            ${escapeHtml(paper.subject_title)}
+                        </h3>
+
+                        <!-- University & Exam Spec -->
+                        <div class="text-xs font-mono text-gray-400 mb-4 flex flex-wrap items-center gap-x-2 gap-y-1">
+                            <span class="text-white font-bold">${escapeHtml(paper.university_short)}</span>
+                            <span>•</span>
+                            <span>${escapeHtml(paper.paper_type || 'Regular End-Sem')}</span>
+                            <span>•</span>
+                            <span>${paper.duration_hours || 3} Hours</span>
+                            <span>•</span>
+                            <span>${paper.total_marks || 100} Marks</span>
+                        </div>
+
+                        <!-- Units tags -->
+                        <div class="mb-6 flex flex-wrap gap-1.5">
+                            ${(paper.units || []).slice(0, 3).map(u => `
+                                <span class="text-[10px] font-mono bg-black/40 text-gray-400 px-2 py-0.5 rounded border border-gray-800">
+                                    ${escapeHtml(u)}
+                                </span>
+                            `).join('')}
+                            ${(paper.units || []).length > 3 ? `<span class="text-[10px] font-mono text-gray-500 self-center">+${paper.units.length - 3} more</span>` : ''}
+                        </div>
+                    </div>
+
+                    <!-- Actions Bar (Direct Download PDF + In-Browser Preview) -->
+                    <div class="pt-4 border-t border-gray-800 flex items-center gap-2">
+                        <!-- Direct Download Button -->
+                        <a href="${escapeHtml(paper.pdf_url)}" download="${escapeHtml(paper.download_filename || 'PYQ.pdf')}" class="flex-1 py-2.5 px-3 bg-[#CDFF29] text-black font-mono text-xs font-black uppercase tracking-wider rounded-xl border-2 border-black shadow-brutal-sm hover:bg-[#b8e822] transition-all flex items-center justify-center gap-1.5 text-center">
+                            <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                            <span>Download PDF</span>
+                        </a>
+
+                        <!-- Interactive Preview Button -->
+                        <button type="button" onclick="openPdfModal('${escapeJs(paper.pdf_url)}', '${escapeJs(paper.subject_title)}', '${escapeJs(paper.subject_code)}', '${escapeJs(paper.university_short)}', '${escapeJs(paper.exam_year)}', '${escapeJs(paper.download_filename)}')" class="py-2.5 px-3 bg-[#1e1e1e] text-white hover:text-[#CDFF29] font-mono text-xs font-bold rounded-xl border-2 border-black shadow-brutal-sm hover:bg-[#282828] transition-all flex items-center justify-center gap-1" title="In-Browser PDF Preview">
+                            <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
+                            <span class="hidden sm:inline">Preview</span>
+                        </button>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // Subject quick filter pills
+        function renderSubjectPills() {
+            const container = document.getElementById('subject-quick-pills');
+            if (!container || !CATALOG || !CATALOG.curriculum) return;
+
+            const semData = CATALOG.curriculum[String(selectedSemester)];
+            if (!semData || !semData.subjects) {
+                container.innerHTML = '';
+                return;
+            }
+
+            let html = `
+                <button type="button" onclick="setSubjectFilter('all')" class="text-xs font-mono font-bold px-3 py-1.5 rounded-xl border-2 border-black transition-all shadow-brutal-sm ${activeSubjectFilter === 'all' ? 'bg-[#CDFF29] text-black font-black' : 'bg-[#181818] text-gray-300 hover:bg-[#222]'}">
+                    All Subjects (${semData.subjects.length})
+                </button>
+            `;
+
+            semData.subjects.forEach(s => {
+                const isActive = activeSubjectFilter.toLowerCase() === s.title.toLowerCase();
+                html += `
+                    <button type="button" onclick="setSubjectFilter('${escapeJs(s.title)}')" class="text-xs font-mono font-bold px-3 py-1.5 rounded-xl border-2 border-black transition-all shadow-brutal-sm ${isActive ? 'bg-[#7B42F6] text-white font-black' : 'bg-[#181818] text-gray-300 hover:bg-[#222]'}">
+                        ${escapeHtml(s.code)}: ${escapeHtml(s.title.split('(')[0].trim())}
+                    </button>
+                `;
+            });
+
+            container.innerHTML = html;
+        }
+
+        function setSubjectFilter(title) {
+            activeSubjectFilter = title;
+            renderPapers();
+        }
+
+        function applyFilters() {
+            renderPapers();
+        }
+
+        function resetFilters() {
+            activeSubjectFilter = 'all';
+            const search = document.getElementById('subject-search-input');
+            const examYr = document.getElementById('exam-year-filter');
+            if (search) search.value = '';
+            if (examYr) examYr.value = 'all';
+            renderPapers();
+        }
+
+        // PDF PREVIEW MODAL LOGIC
+        function openPdfModal(pdfUrl, title, code, uni, session, filename) {
+            const modal = document.getElementById('pdf-modal');
+            const frame = document.getElementById('modal-pdf-frame');
+            const titleEl = document.getElementById('modal-paper-title');
+            const codeEl = document.getElementById('modal-paper-code');
+            const uniEl = document.getElementById('modal-paper-uni');
+            const sessionEl = document.getElementById('modal-paper-session');
+            const downloadBtn = document.getElementById('modal-download-btn');
+            const newTabBtn = document.getElementById('modal-newtab-btn');
+
+            if (!modal || !frame) return;
+
+            titleEl.innerText = title;
+            codeEl.innerText = code;
+            uniEl.innerText = uni;
+            sessionEl.innerText = `Session: ${session}`;
+            
+            // Set Frame and Download URLs
+            frame.src = `${pdfUrl}#toolbar=1&navpanes=0`;
+            downloadBtn.href = pdfUrl;
+            downloadBtn.setAttribute('download', filename || 'Question_Paper.pdf');
+            if (newTabBtn) newTabBtn.href = pdfUrl;
+
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closePdfModal() {
+            const modal = document.getElementById('pdf-modal');
+            const frame = document.getElementById('modal-pdf-frame');
+            if (modal) {
+                modal.classList.add('hidden');
+            }
+            if (frame) {
+                frame.src = '';
+            }
+            document.body.style.overflow = '';
+        }
+
+        // Close on ESC key or background click
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closePdfModal();
+        });
+        document.getElementById('pdf-modal')?.addEventListener('click', (e) => {
+            if (e.target.id === 'pdf-modal') closePdfModal();
+        });
+
+        // Helper string sanitizers
+        function escapeHtml(str) {
+            if (!str) return '';
+            return String(str)
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#39;');
+        }
+        function escapeJs(str) {
+            if (!str) return '';
+            return String(str)
+                .replace(/\\/g, '\\\\')
+                .replace(/'/g, "\\'")
+                .replace(/"/g, '\\"')
+                .replace(/\n/g, '\\n')
+                .replace(/\r/g, '\\r');
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+{
+  "version": 2,
+  "cleanUrls": true,
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "SAMEORIGIN"
+        },
+        {
+          "key": "X-XSS-Protection",
+          "value": "1; mode=block"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        }
+      ]
+    }
+  ],
+  "rewrites": [
+    { "source": "/login", "destination": "/login.html" },
+    { "source": "/register", "destination": "/register.html" },
+    { "source": "/forgot-password", "destination": "/forgot-password.html" },
+    { "source": "/reset-password", "destination": "/forgot-password.html" },
+    { "source": "/profile", "destination": "/profile.html" },
+    { "source": "/events", "destination": "/events.html" },
+    { "source": "/campus", "destination": "/campus.html" },
+    { "source": "/dsa", "destination": "/dsa.html" },
+    { "source": "/learn", "destination": "/learn.html" },
+    { "source": "/certificates", "destination": "/certificates.html" },
+    { "source": "/jobs", "destination": "/jobs.html" },
+    { "source": "/gallery", "destination": "/gallery.html" },
+    { "source": "/directory", "destination": "/directory.html" }
+  ]
+}
+

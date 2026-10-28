@@ -1,0 +1,54 @@
+# Devengers Robots.txt
+# Platform: https://devengers.org
+
+User-agent: *
+Allow: /
+Allow: /events
+Allow: /dsa
+Allow: /learn
+Allow: /campus
+Allow: /certificates
+Allow: /jobs
+Allow: /gallery
+Allow: /directory
+Allow: /login
+Allow: /register
+Allow: /og-image.jpg
+Allow: /favicon.ico
+Allow: /favicon.png
+Allow: /style.css
+Allow: /script.js
+Allow: /auth.js
+Allow: /theme.js
+Allow: /Assest/
+
+# Disallow Private & Admin Areas
+Disallow: /admin-*
+Disallow: /api/admin/
+Disallow: /api/auth/
+Disallow: /profile
+
+# Search Engine Crawlers
+User-agent: Googlebot
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /og-image.jpg
+Allow: /favicon.png
+Allow: /Assest/
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: LinkedInBot
+Allow: /
+
+# Host & Sitemaps
+Host: https://devengers.org
+Sitemap: https://devengers.org/sitemap.xml

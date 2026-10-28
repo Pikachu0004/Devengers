@@ -1,0 +1,101 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [3 0 R 5 0 R] /Count 2 >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842]
+   /Contents 4 0 R
+   /Resources << /Font << /F1 7 0 R /F2 8 0 R >> >> >>
+endobj
+4 0 obj
+<< /Length 4174 >>
+stream
+BT /F1 13 Tf 50 800 Td (RAJIV GANDHI PROUDYOGIKI VISHWAVIDYALAYA) Tj ET
+BT /F2 9.5 Tf 50 786 Td (B.TECH. COMPUTER SCIENCE & ENGINEERING / ALLIED BRANCHES) Tj ET
+BT /F1 10.5 Tf 50 772 Td (END SEMESTER EXAMINATION \(2022-23\) -- SEMESTER 4) Tj ET
+BT /F1 11 Tf 50 756 Td (COURSE: THEORY OF AUTOMATA AND FORMAL LANGUAGES \(TAFL\) \(CS-402\)) Tj ET
+BT /F2 9 Tf 50 742 Td (Time Allowed: 3 Hours                       Maximum Marks: 100 Marks                       Paper Code: CS-402) Tj ET
+BT /F2 8.5 Tf 50 730 Td (Roll Number: [   ] [   ] [   ] [   ] [   ] [   ] [   ] [   ] [   ] [   ] [   ] [   ]   |   Total Printed Pages: 2) Tj ET
+BT /F2 8 Tf 50 718 Td (-----------------------------------------------------------------------------------------------------------------------------------------------------) Tj ET
+BT /F2 8.5 Tf 50 706 Td (NOTE: Attempt all Sections. Assume suitable missing data if any. Programmable calculators are NOT permitted.) Tj ET
+BT /F2 8 Tf 50 696 Td (=====================================================================================================================) Tj ET
+BT /F1 10.5 Tf 50 680 Td (SECTION A: Short Answer Type Questions \(Attempt ALL questions\) [10 x 2 = 20 Marks]) Tj ET
+BT /F2 9 Tf 55 664 Td (Q1. \(a\) Define DFA formally as a 5-tuple \(Q, Sigma, delta, q0, F\).) Tj ET
+BT /F2 9 Tf 55 649 Td (Q1. \(b\) What is difference between DFA and NFA in terms of transition function?) Tj ET
+BT /F2 9 Tf 55 634 Td (Q1. \(c\) State Arden theorem for solving regular expression equations.) Tj ET
+BT /F2 9 Tf 55 619 Td (Q1. \(d\) State Pumping Lemma for Regular Languages.) Tj ET
+BT /F2 9 Tf 55 604 Td (Q1. \(e\) Define ambiguous context-free grammar with an example.) Tj ET
+BT /F2 9 Tf 55 589 Td (Q1. \(f\) What is Chomsky Normal Form \(CNF\) and Greibach Normal Form \(GNF\)?) Tj ET
+BT /F2 9 Tf 55 574 Td (Q1. \(g\) Differentiate between DPDA \(Deterministic PDA\) and NPDA.) Tj ET
+BT /F2 9 Tf 55 559 Td (Q1. \(h\) Define Turing Machine as a 7-tuple.) Tj ET
+BT /F2 9 Tf 55 544 Td (Q1. \(i\) What is Halting Problem of Turing Machine? Is it decidable?) Tj ET
+BT /F2 9 Tf 55 529 Td (Q1. \(j\) Define Chomsky Hierarchy of formal grammars \(Type 0, 1, 2, 3\).) Tj ET
+BT /F1 10.5 Tf 50 506 Td (SECTION B: Analytical & Computational Problems \(Attempt any THREE\) [3 x 10 = 30 Marks]) Tj ET
+BT /F2 9 Tf 55 490 Td (Q2. \(a\) Convert given NFA with epsilon transitions into an equivalent DFA using subset construction.) Tj ET
+BT /F2 9 Tf 55 475 Td (Q2. \(b\) Minimize given DFA with 6 states using Table Filling / Myhill-Nerode equivalence method.) Tj ET
+BT /F2 9 Tf 55 460 Td (Q2. \(c\) Using Pumping Lemma, prove that language L = {a^n b^n | n >= 0} is not regular.) Tj ET
+BT /F2 9 Tf 55 445 Td (Q2. \(d\) Construct a Pushdown Automaton \(PDA\) accepting language L = {w c w^R | w in {a, b}*} by empty stack.) Tj ET
+BT /F2 9 Tf 55 430 Td (Q2. \(e\) Design a Turing Machine that accepts the language L = {a^n b^n c^n | n >= 1} with state transition table.) Tj ET
+BT /F1 10.5 Tf 50 407 Td (SECTION C: Long Technical & Design Questions \(Attempt any ONE from each\) [5 x 10 = 50 Marks]) Tj ET
+BT /F1 9 Tf 55 391 Td (Q3. \(a\) Construct DFA accepting strings over {0, 1} having even number of 0s and odd number of 1s.  [10 Marks]) Tj ET
+BT /F2 8.5 Tf 90 378 Td (-- OR --) Tj ET
+BT /F2 9 Tf 75 365 Td (\(b\) Find regular expression for language over {a, b} containing substring 'ab' but not 'ba'.  [10 Marks]) Tj ET
+BT /F1 9 Tf 55 349 Td (Q4. \(a\) Convert CFG into Chomsky Normal Form \(CNF\): S -> aSb | ab | epsilon, S -> AB, A -> aA | a, B -> bB | b.  [10 Marks]) Tj ET
+BT /F2 8.5 Tf 90 336 Td (-- OR --) Tj ET
+BT /F2 9 Tf 75 323 Td (\(b\) Remove null productions, unit productions, and useless symbols from given grammar.  [10 Marks]) Tj ET
+BT /F1 9 Tf 55 307 Td (Q5. \(a\) Construct PDA for language L = {a^n b^\(2n\) | n >= 1} with transition diagram and trace.  [10 Marks]) Tj ET
+BT /F2 8.5 Tf 90 294 Td (-- OR --) Tj ET
+BT /F2 9 Tf 75 281 Td (\(b\) Convert Context-Free Grammar into Pushdown Automaton using standard algorithm.  [10 Marks]) Tj ET
+BT /F2 8 Tf 220 30 Td ([ DEVENGERS CAMPUS RESOURCE LIBRARY -- PAGE 1 OF 2 -- CS-402 ]) Tj ET
+endstream
+endobj
+5 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842]
+   /Contents 6 0 R
+   /Resources << /Font << /F1 7 0 R /F2 8 0 R >> >> >>
+endobj
+6 0 obj
+<< /Length 1748 >>
+stream
+BT /F1 11 Tf 50 800 Td (THEORY OF AUTOMATA AND FORMAL LANGUAGES \(TAFL\) \(CS-402\) -- CONTINUED \(PAGE 2\)) Tj ET
+BT /F2 8.5 Tf 50 786 Td (-----------------------------------------------------------------------------------------------------------------------------------------------------) Tj ET
+BT /F1 9.5 Tf 55 765 Td (Q6. \(a\) Design a Turing Machine that computes 2's complement of an arbitrary binary string.  [10 Marks]) Tj ET
+BT /F2 8.5 Tf 90 750 Td (-- OR --) Tj ET
+BT /F2 9 Tf 75 735 Td (\(b\) Design a Turing Machine for unary addition f\(m, n\) = m + n.  [10 Marks]) Tj ET
+BT /F1 9.5 Tf 55 715 Td (Q7. \(a\) Prove that Post Correspondence Problem \(PCP\) is undecidable.  [10 Marks]) Tj ET
+BT /F2 8.5 Tf 90 700 Td (-- OR --) Tj ET
+BT /F2 9 Tf 75 685 Td (\(b\) Explain Rice Theorem and prove that non-trivial semantic properties of programs are undecidable.  [10 Marks]) Tj ET
+BT /F1 10.5 Tf 50 655 Td (EXAMINATION EVALUATION SCHEME & RUBRIC GUIDELINES:) Tj ET
+BT /F2 8.5 Tf 55 640 Td (1. Section A: Direct definition, time complexity analysis, formula derivation, or syntax verification.) Tj ET
+BT /F2 8.5 Tf 55 627 Td (2. Section B: Step-by-step mathematical proof, trace tables, algorithmic pseudocode, and state diagrams.) Tj ET
+BT /F2 8.5 Tf 55 614 Td (3. Section C: Architectural design, full code implementation, edge case handling, and space/time tradeoffs.) Tj ET
+BT /F2 8.5 Tf 50 595 Td (-----------------------------------------------------------------------------------------------------------------------------------------------------) Tj ET
+BT /F1 9 Tf 160 580 Td (*** END OF QUESTION PAPER -- DEVENGERS ACADEMIC VAULT ***) Tj ET
+BT /F2 8 Tf 220 30 Td ([ DEVENGERS CAMPUS RESOURCE LIBRARY -- PAGE 2 OF 2 -- CS-402 ]) Tj ET
+endstream
+endobj
+7 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold >>
+endobj
+8 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+xref
+0 9
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000121 00000 n 
+0000000263 00000 n 
+0000004489 00000 n 
+0000004631 00000 n 
+0000006431 00000 n 
+0000006506 00000 n 
+trailer
+<< /Size 9 /Root 1 0 R >>
+startxref
+6576
+%%EOF

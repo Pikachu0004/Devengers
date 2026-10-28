@@ -1,0 +1,1203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Campus & PYQ Dashboard | Devengers</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico?v=2">
+    <link rel="icon" type="image/png" href="favicon.png?v=2">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700;900&family=JetBrains+Mono:wght@400;600;800&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css?v=5">
+    <script src="auth.js"></script>
+
+    <style>
+        body { font-family: 'Space Grotesk', system-ui, -apple-system, sans-serif; }
+        .bg-grid {
+            background-color: #0d0d0d;
+            background-image: 
+                radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+                linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 24px 24px, 96px 96px, 96px 96px;
+        }
+        .shadow-brutal {
+            box-shadow: 4px 4px 0px 0px rgba(0,0,0,1);
+        }
+        .shadow-brutal-sm {
+            box-shadow: 2px 2px 0px 0px rgba(0,0,0,1);
+        }
+        .shadow-brutal-lime {
+            box-shadow: 4px 4px 0px 0px #CDFF29;
+        }
+        .shadow-brutal-purple {
+            box-shadow: 4px 4px 0px 0px #7B42F6;
+        }
+        .form-input {
+            background-color: #161616;
+            border: 2px solid #2d2d2d;
+            color: white;
+            transition: all 0.2s;
+        }
+        .form-input:focus {
+            border-color: #CDFF29;
+            outline: none;
+            background-color: #1f1f1f;
+        }
+    </style>
+</head>
+<body class="bg-grid m-0 p-0 text-white min-h-screen antialiased flex flex-col">
+
+    <!-- Toast Notification -->
+    <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-24 opacity-0 pointer-events-none transition-all duration-300 bg-black/95 border-2 border-[#CDFF29] text-white px-5 py-3 rounded-2xl shadow-brutal-lime font-mono text-xs flex items-center gap-3">
+        <span id="toast-icon" class="text-base">✓</span>
+        <span id="toast-message">Action successful!</span>
+    </div>
+
+    <!-- TOP ADMIN NAVBAR -->
+    <header class="sticky top-0 z-40 w-full bg-[#141414]/90 backdrop-blur-md border-b-2 border-black/80 px-6 py-4">
+        <div class="max-w-[1400px] mx-auto flex items-center justify-between flex-wrap gap-4">
+            
+            <!-- Logo & Brand Title -->
+            <div class="flex items-center gap-4">
+                <a href="index.html" class="flex items-center group">
+                    <div class="font-black text-2xl tracking-tighter uppercase rounded-full transition-transform duration-300 group-hover:scale-105"
+                         style="-webkit-text-stroke: 1.5px black; color: #CDFF29; text-shadow: 2px 2px 0px black; line-height: 1;">
+                        DEVENGERS
+                    </div>
+                </a>
+                
+                <!-- Admin Section Nav Switcher -->
+                <nav class="flex items-center gap-2 bg-black/60 p-1 rounded-xl border border-zinc-800">
+                    <a href="admin-events.html" class="px-3 py-1 rounded-lg text-xs font-mono font-bold uppercase tracking-wider text-gray-400 hover:text-white transition-colors">
+                        Events
+                    </a>
+                    <a href="admin-learn.html" class="px-3 py-1 rounded-lg text-xs font-mono font-bold uppercase tracking-wider text-gray-400 hover:text-white transition-colors">
+                        Learn &amp; Courses
+                    </a>
+                    <a href="admin-campus.html" class="px-3 py-1 rounded-lg text-xs font-mono font-bold uppercase tracking-wider bg-[#CDFF29] text-black shadow-brutal-sm">
+                        Campus &amp; PYQs
+                    </a>
+                    <a href="admin-gallery.html" class="px-3 py-1 rounded-lg text-xs font-mono font-bold uppercase tracking-wider text-gray-400 hover:text-white transition-colors">
+                        Gallery &amp; Community
+                    </a>
+                    <a href="admin-certificates.html" class="px-3 py-1 rounded-lg text-xs font-mono font-bold uppercase tracking-wider text-gray-400 hover:text-white transition-colors">
+                        Certificates
+                    </a>
+                </nav>
+            </div>
+
+            <!-- Admin Meta & Actions -->
+            <div class="flex items-center gap-4">
+                <a href="campus.html" target="_blank"
+                   class="inline-flex items-center gap-1.5 text-xs font-mono font-bold uppercase tracking-wider text-[#CDFF29] hover:underline px-3 py-1.5 rounded-lg border border-zinc-700 hover:border-[#CDFF29] transition-colors">
+                    <span>View Public Campus Vault</span>
+                    <span class="text-sm">&#8599;</span>
+                </a>
+
+                <div class="flex items-center gap-3 bg-black/60 px-3 py-1.5 rounded-full border border-gray-800">
+                    <span class="w-2.5 h-2.5 rounded-full bg-green-400 animate-pulse"></span>
+                    <span id="admin-email-display" class="text-xs font-mono text-gray-300 font-bold">event@devengers.org</span>
+                </div>
+
+                <button onclick="handleLogout()"
+                        class="bg-red-500/10 hover:bg-red-500 text-red-300 hover:text-white border border-red-500/40 px-3 py-1.5 rounded-full text-xs font-mono font-bold uppercase tracking-wider transition-colors cursor-pointer">
+                    Logout
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN DASHBOARD CONTENT -->
+    <main class="flex-grow max-w-[1400px] w-full mx-auto px-6 py-8">
+        
+        <!-- Header Banner & Action Buttons -->
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
+            <div>
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#7B42F6]/20 border border-[#7B42F6]/50 text-[#CDFF29] font-mono text-xs font-bold uppercase tracking-wider mb-2">
+                    <span>🏛️</span>
+                    <span>UNIVERSITY ARCHIVE ADMIN CONTROLLER</span>
+                </div>
+                <h1 class="text-3xl sm:text-4xl font-black uppercase tracking-tight text-white">
+                    Campus Resources, PYQs &amp; Curriculum Management
+                </h1>
+                <p class="text-gray-400 text-xs sm:text-sm font-mono mt-1">
+                    Upload and update previous year question papers (PDF format), configure universities, and manage semester-wise curriculum.
+                </p>
+            </div>
+
+            <div class="flex flex-wrap items-center gap-3">
+                <button type="button" onclick="openUniversityModal()" class="px-4 py-2.5 bg-[#1e1e1e] hover:bg-[#282828] text-white font-mono text-xs font-bold uppercase rounded-xl border-2 border-black shadow-brutal-sm transition-all flex items-center gap-2 cursor-pointer">
+                    <span>+</span>
+                    <span>Add University</span>
+                </button>
+                <button type="button" onclick="openCurriculumModal()" class="px-4 py-2.5 bg-[#7B42F6] hover:bg-[#6830e0] text-white font-mono text-xs font-bold uppercase rounded-xl border-2 border-black shadow-brutal-sm transition-all flex items-center gap-2 cursor-pointer">
+                    <span>📖</span>
+                    <span>Manage Curriculum</span>
+                </button>
+                <button type="button" onclick="openPaperModal()" class="px-5 py-2.5 bg-[#CDFF29] hover:bg-white text-black font-mono text-xs font-black uppercase tracking-wider rounded-xl border-2 border-black shadow-brutal-sm transition-all flex items-center gap-2 cursor-pointer">
+                    <span>📥</span>
+                    <span>Upload Question Paper (PDF)</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- STATS COUNTERS ROW -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-8">
+            <div class="bg-[#141414] border-2 border-black rounded-2xl p-4 shadow-brutal-sm">
+                <div class="text-xs font-mono uppercase text-gray-400">Total Question Papers</div>
+                <div id="stat-total-papers" class="text-3xl font-black text-[#CDFF29] mt-1">432</div>
+                <div class="text-[10px] text-gray-500 font-mono mt-1">Direct PDF format</div>
+            </div>
+            <div class="bg-[#141414] border-2 border-black rounded-2xl p-4 shadow-brutal-sm">
+                <div class="text-xs font-mono uppercase text-gray-400">Universities</div>
+                <div id="stat-total-unis" class="text-3xl font-black text-[#7B42F6] mt-1">6</div>
+                <div class="text-[10px] text-gray-500 font-mono mt-1">AKTU, MMMUT, IPU, etc.</div>
+            </div>
+            <div class="bg-[#141414] border-2 border-black rounded-2xl p-4 shadow-brutal-sm">
+                <div class="text-xs font-mono uppercase text-gray-400">Semesters Configured</div>
+                <div id="stat-total-sems" class="text-3xl font-black text-cyan-400 mt-1">8</div>
+                <div class="text-[10px] text-gray-500 font-mono mt-1">Years 1 through 4</div>
+            </div>
+            <div class="bg-[#141414] border-2 border-black rounded-2xl p-4 shadow-brutal-sm">
+                <div class="text-xs font-mono uppercase text-gray-400">Exam Sessions</div>
+                <div id="stat-total-sessions" class="text-3xl font-black text-emerald-400 mt-1">4</div>
+                <div class="text-[10px] text-gray-500 font-mono mt-1">2021-22 to 2024-25</div>
+            </div>
+        </div>
+
+        <!-- 3 MAIN TABS -->
+        <div class="flex items-center gap-2 border-b-2 border-zinc-800 mb-6 pb-2">
+            <button type="button" onclick="switchAdminTab('papers')" id="tab-btn-papers" class="px-4 py-2 font-mono text-xs font-bold uppercase rounded-xl border-2 border-black bg-[#CDFF29] text-black shadow-brutal-sm transition-all">
+                📄 Question Papers Archive (<span id="tab-count-papers">432</span>)
+            </button>
+            <button type="button" onclick="switchAdminTab('universities')" id="tab-btn-universities" class="px-4 py-2 font-mono text-xs font-bold uppercase rounded-xl border-2 border-black bg-[#181818] text-gray-300 hover:bg-[#202020] transition-all">
+                🏛️ Universities (<span id="tab-count-unis">6</span>)
+            </button>
+            <button type="button" onclick="switchAdminTab('curriculum')" id="tab-btn-curriculum" class="px-4 py-2 font-mono text-xs font-bold uppercase rounded-xl border-2 border-black bg-[#181818] text-gray-300 hover:bg-[#202020] transition-all">
+                📖 Semester Curriculum (8 Semesters)
+            </button>
+        </div>
+
+        <!-- TAB 1: PAPERS REPOSITORY -->
+        <div id="tab-content-papers" class="space-y-6">
+            
+            <!-- Filters Bar -->
+            <div class="bg-[#141414] border-2 border-black rounded-2xl p-4 shadow-brutal-sm flex flex-wrap items-center justify-between gap-3">
+                <div class="flex flex-wrap items-center gap-3">
+                    <!-- University Filter -->
+                    <div class="flex items-center gap-1.5">
+                        <span class="text-xs font-mono text-gray-400 font-bold">University:</span>
+                        <select id="filter-paper-uni" onchange="fetchAdminPapers()" class="form-input rounded-xl px-3 py-1.5 text-xs font-mono">
+                            <option value="all">All Universities</option>
+                            <option value="aktu">AKTU (UPTU)</option>
+                            <option value="mmmut">MMMUT (MMH)</option>
+                            <option value="ipu">GGSIPU (IPU)</option>
+                            <option value="rgpv">RGPV</option>
+                            <option value="makaut">MAKAUT</option>
+                            <option value="vtu">VTU</option>
+                        </select>
+                    </div>
+
+                    <!-- Year / Semester Filter -->
+                    <div class="flex items-center gap-1.5">
+                        <span class="text-xs font-mono text-gray-400 font-bold">Semester:</span>
+                        <select id="filter-paper-sem" onchange="fetchAdminPapers()" class="form-input rounded-xl px-3 py-1.5 text-xs font-mono">
+                            <option value="all">All Semesters (1-8)</option>
+                            <option value="1">Sem 1 (1st Year)</option>
+                            <option value="2">Sem 2 (1st Year)</option>
+                            <option value="3">Sem 3 (2nd Year)</option>
+                            <option value="4">Sem 4 (2nd Year)</option>
+                            <option value="5">Sem 5 (3rd Year)</option>
+                            <option value="6">Sem 6 (3rd Year)</option>
+                            <option value="7">Sem 7 (4th Year)</option>
+                            <option value="8">Sem 8 (4th Year)</option>
+                        </select>
+                    </div>
+
+                    <!-- Exam Year Filter -->
+                    <div class="flex items-center gap-1.5">
+                        <span class="text-xs font-mono text-gray-400 font-bold">Session:</span>
+                        <select id="filter-paper-session" onchange="fetchAdminPapers()" class="form-input rounded-xl px-3 py-1.5 text-xs font-mono">
+                            <option value="all">All Sessions</option>
+                            <option value="2024-25">2024-25 (Latest)</option>
+                            <option value="2023-24">2023-24</option>
+                            <option value="2022-23">2022-23</option>
+                            <option value="2021-22">2021-22</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Search Input -->
+                <div class="relative min-w-[240px]">
+                    <input type="text" id="filter-paper-search" oninput="fetchAdminPapers()" placeholder="Search title or code..." class="w-full form-input rounded-xl pl-8 pr-3 py-1.5 text-xs font-mono">
+                    <svg class="w-4 h-4 text-gray-400 absolute left-2.5 top-2 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                </div>
+            </div>
+
+            <!-- Papers Table -->
+            <div class="bg-[#141414] border-2 border-black rounded-3xl overflow-hidden shadow-brutal">
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left border-collapse text-xs font-mono">
+                        <thead>
+                            <tr class="bg-black/60 border-b-2 border-zinc-800 text-gray-400 font-bold uppercase tracking-wider">
+                                <th class="p-4">Subject &amp; Code</th>
+                                <th class="p-4">University</th>
+                                <th class="p-4">Year &amp; Sem</th>
+                                <th class="p-4">Session &amp; Type</th>
+                                <th class="p-4">PDF Status</th>
+                                <th class="p-4 text-right">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="papers-table-body" class="divide-y divide-zinc-800/80">
+                            <!-- Populated dynamically -->
+                            <tr>
+                                <td colspan="6" class="p-8 text-center text-gray-500">Loading question papers...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB 2: UNIVERSITIES MANAGEMENT -->
+        <div id="tab-content-universities" class="hidden space-y-6">
+            <div class="flex items-center justify-between">
+                <div>
+                    <h2 class="text-xl font-black uppercase text-white">Registered Technical Universities</h2>
+                    <p class="text-gray-400 text-xs font-mono">Institutions with B.Tech CSE &amp; allied programs in the archive.</p>
+                </div>
+                <button type="button" onclick="openUniversityModal()" class="px-4 py-2 bg-[#CDFF29] text-black font-mono text-xs font-bold uppercase rounded-xl border-2 border-black shadow-brutal-sm hover:bg-white transition-colors">
+                    + Add New University
+                </button>
+            </div>
+
+            <div id="universities-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Dynamically populated -->
+            </div>
+        </div>
+
+        <!-- TAB 3: CURRICULUM MANAGEMENT -->
+        <div id="tab-content-curriculum" class="hidden space-y-6">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                <div>
+                    <h2 class="text-xl font-black uppercase text-white">Curriculum &amp; Syllabus Outlines</h2>
+                    <p class="text-gray-400 text-xs font-mono">Academic syllabi and course blueprints for Semesters 1 through 8.</p>
+                </div>
+                <!-- Semester Switcher Pill Tabs -->
+                <div class="flex items-center gap-1.5 bg-[#141414] border-2 border-black p-1.5 rounded-2xl overflow-x-auto" id="curr-sem-pills">
+                    <!-- Sem 1-8 buttons -->
+                </div>
+            </div>
+
+            <!-- Active Semester Curriculum Details Box -->
+            <div id="active-curr-container" class="bg-[#141414] border-2 border-black rounded-3xl p-6 sm:p-8 shadow-brutal">
+                <!-- Dynamically rendered -->
+            </div>
+        </div>
+
+    </main>
+
+    <!-- MODAL: ADD / EDIT / UPLOAD PAPER -->
+    <div id="paper-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm hidden">
+        <div class="bg-[#141414] border-4 border-black rounded-3xl w-full max-w-2xl max-h-[90vh] overflow-y-auto p-6 sm:p-8 shadow-2xl relative">
+            
+            <div class="flex items-center justify-between pb-4 border-b border-zinc-800 mb-6">
+                <div class="flex items-center gap-2">
+                    <span class="w-3 h-3 rounded-full bg-[#CDFF29] inline-block"></span>
+                    <h3 id="paper-modal-title" class="font-black text-xl uppercase tracking-tight text-white">
+                        Upload Question Paper (PDF)
+                    </h3>
+                </div>
+                <button type="button" onclick="closePaperModal()" class="text-gray-400 hover:text-white text-2xl font-bold">&times;</button>
+            </div>
+
+            <form id="paper-form" onsubmit="handleSavePaper(event)" class="space-y-4">
+                <input type="hidden" id="paper-id" value="">
+
+                <!-- University & Semester -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-mono uppercase text-gray-400 font-bold mb-1">University *</label>
+                        <select id="paper-uni" class="w-full form-input rounded-xl px-3 py-2 text-xs font-mono" required>
+                            <!-- Populated from universities list -->
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-mono uppercase text-gray-400 font-bold mb-1">Semester &amp; Academic Year *</label>
+                        <select id="paper-sem" class="w-full form-input rounded-xl px-3 py-2 text-xs font-mono" required>
+                            <option value="1">Semester 1 (1st Year)</option>
+                            <option value="2">Semester 2 (1st Year)</option>
+                            <option value="3" selected>Semester 3 (2nd Year)</option>
+                            <option value="4">Semester 4 (2nd Year)</option>
+                            <option value="5">Semester 5 (3rd Year)</option>
+                            <option value="6">Semester 6 (3rd Year)</option>
+                            <option value="7">Semester 7 (4th Year)</option>
+                            <option value="8">Semester 8 (4th Year)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Subject Title & Code -->
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                    <div class="sm:col-span-2">
+                        <label class="block text-xs font-mono uppercase text-gray-400 font-bold mb-1">Subject Title *</label>
+                        <input type="text" id="paper-title" class="w-full form-input rounded-xl px-3 py-2 text-xs font-mono" placeholder="e.g. Data Structures & Algorithms" required>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-mono uppercase text-gray-400 font-bold mb-1">Subject Code *</label>
+                        <input type="text" id="paper-code" class="w-full form-input rounded-xl px-3 py-2 text-xs font-mono" placeholder="e.g. KCS-301" required>
+                    </div>
+                </div>
+
+                <!-- Exam Session, Type, Marks, Duration -->
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                    <div>
+                        <label class="block text-xs font-mono uppercase text-gray-400 font-bold mb-1">Session *</label>
+                        <input type="text" id="paper-session" class="w-full form-input rounded-xl px-3 py-2 text-xs font-mono" placeholder="2024-25" value="2024-25" required>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-mono uppercase text-gray-400 font-bold mb-1">Exam Type</label>
+                        <select id="paper-type" class="w-full form-input rounded-xl px-3 py-2 text-xs font-mono">
+                            <option value="Regular End-Sem">Regular End-Sem</option>
+                            <option value="Carry-Over Special">Carry-Over Special</option>
+                            <option value="Mid-Term Sessional">Mid-Term Sessional</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-mono uppercase text-gray-400 font-bold mb-1">Max Marks</label>
+                        <input type="number" id="paper-marks" class="w-full form-input rounded-xl px-3 py-2 text-xs font-mono" value="100">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-mono uppercase text-gray-400 font-bold mb-1">Duration (Hrs)</label>
+                        <input type="number" id="paper-duration" class="w-full form-input rounded-xl px-3 py-2 text-xs font-mono" value="3">
+                    </div>
+                </div>
+
+                <!-- PDF UPLOAD SECTION -->
+                <div class="p-4 rounded-2xl bg-[#1c1c1c] border-2 border-dashed border-zinc-700">
+                    <label class="block text-xs font-mono uppercase text-[#CDFF29] font-bold mb-2">
+                        📄 Question Paper PDF File
+                    </label>
+                    <p class="text-[11px] text-gray-400 font-mono mb-3">
+                        Choose a scanned/official PDF from your device. If no file is uploaded, Devengers automatically generates a compliant Adobe PDF question paper with Section A, B, and C!
+                    </p>
+                    
+                    <div class="flex items-center gap-3">
+                        <input type="file" id="paper-pdf-file" accept=".pdf,application/pdf" class="text-xs font-mono text-gray-300 file:mr-3 file:py-2 file:px-4 file:rounded-xl file:border-2 file:border-black file:text-xs file:font-mono file:font-bold file:bg-[#CDFF29] file:text-black file:cursor-pointer hover:file:bg-white">
+                        <span id="pdf-file-status" class="text-xs font-mono text-emerald-400"></span>
+                    </div>
+
+                    <div id="paper-current-pdf-box" class="mt-2 text-[11px] font-mono text-gray-400 hidden">
+                        Current file: <span id="paper-current-pdf" class="text-white underline"></span>
+                    </div>
+                </div>
+
+                <!-- Syllabus Units (5 units) -->
+                <div>
+                    <label class="block text-xs font-mono uppercase text-gray-400 font-bold mb-1">Syllabus Modules / Units (Comma or newline separated)</label>
+                    <textarea id="paper-units" rows="3" class="w-full form-input rounded-xl p-3 text-xs font-mono" placeholder="Unit 1: Stacks and Queues&#10;Unit 2: Trees &amp; Binary Search Trees&#10;Unit 3: Graphs &amp; Shortest Paths&#10;Unit 4: Sorting &amp; Searching&#10;Unit 5: File Structures &amp; Hashing"></textarea>
+                </div>
+
+                <!-- Modal Actions -->
+                <div class="flex items-center justify-end gap-3 pt-4 border-t border-zinc-800">
+                    <button type="button" onclick="closePaperModal()" class="px-4 py-2 rounded-xl bg-zinc-800 hover:bg-zinc-700 text-gray-300 font-mono text-xs uppercase transition-colors">
+                        Cancel
+                    </button>
+                    <button type="submit" id="save-paper-submit-btn" class="px-6 py-2.5 rounded-xl bg-[#CDFF29] hover:bg-white text-black font-mono text-xs font-black uppercase tracking-wider border-2 border-black shadow-brutal-sm transition-all cursor-pointer">
+                        Save &amp; Publish Paper &rarr;
+                    </button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+
+    <!-- MODAL: ADD / EDIT UNIVERSITY -->
+    <div id="uni-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm hidden">
+        <div class="bg-[#141414] border-4 border-black rounded-3xl w-full max-w-lg p-6 sm:p-8 shadow-2xl relative">
+            <div class="flex items-center justify-between pb-4 border-b border-zinc-800 mb-6">
+                <div class="flex items-center gap-2">
+                    <span class="w-3 h-3 rounded-full bg-[#7B42F6] inline-block"></span>
+                    <h3 id="uni-modal-title" class="font-black text-xl uppercase tracking-tight text-white">
+                        Add New University
+                    </h3>
+                </div>
+                <button type="button" onclick="closeUniversityModal()" class="text-gray-400 hover:text-white text-2xl font-bold">&times;</button>
+            </div>
+
+            <form id="uni-form" onsubmit="handleSaveUniversity(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-mono uppercase text-gray-400 font-bold mb-1">University Slug / ID *</label>
+                    <input type="text" id="uni-id" class="w-full form-input rounded-xl px-3 py-2 text-xs font-mono" placeholder="e.g. dtu, aktu, mmmut" required>
+                </div>
+                <div>
+                    <label class="block text-xs font-mono uppercase text-gray-400 font-bold mb-1">Full Official Name *</label>
+                    <input type="text" id="uni-name" class="w-full form-input rounded-xl px-3 py-2 text-xs font-mono" placeholder="e.g. Delhi Technological University" required>
+                </div>
+                <div>
+                    <label class="block text-xs font-mono uppercase text-gray-400 font-bold mb-1">Display Short Name *</label>
+                    <input type="text" id="uni-short" class="w-full form-input rounded-xl px-3 py-2 text-xs font-mono" placeholder="e.g. DTU Delhi" required>
+                </div>
+                <div>
+                    <label class="block text-xs font-mono uppercase text-gray-400 font-bold mb-1">Location / State</label>
+                    <input type="text" id="uni-location" class="w-full form-input rounded-xl px-3 py-2 text-xs font-mono" placeholder="e.g. Rohini, New Delhi">
+                </div>
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-xs font-mono uppercase text-gray-400 font-bold mb-1">Badge / Tag</label>
+                        <input type="text" id="uni-badge" class="w-full form-input rounded-xl px-3 py-2 text-xs font-mono" placeholder="Tier-1 State Univ">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-mono uppercase text-gray-400 font-bold mb-1">Accent Color</label>
+                        <div class="flex items-center gap-2">
+                            <input type="color" id="uni-color-picker" onchange="document.getElementById('uni-color').value=this.value" value="#7B42F6" class="w-8 h-8 rounded-lg bg-transparent border-0 cursor-pointer">
+                            <input type="text" id="uni-color" class="w-full form-input rounded-xl px-3 py-1.5 text-xs font-mono" value="#7B42F6">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex items-center justify-end gap-3 pt-4 border-t border-zinc-800">
+                    <button type="button" onclick="closeUniversityModal()" class="px-4 py-2 rounded-xl bg-zinc-800 hover:bg-zinc-700 text-gray-300 font-mono text-xs uppercase transition-colors">
+                        Cancel
+                    </button>
+                    <button type="submit" class="px-6 py-2.5 rounded-xl bg-[#CDFF29] hover:bg-white text-black font-mono text-xs font-black uppercase tracking-wider border-2 border-black shadow-brutal-sm transition-all cursor-pointer">
+                        Save University &rarr;
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- MODAL: ADD / EDIT CURRICULUM -->
+    <div id="curr-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm hidden">
+        <div class="bg-[#141414] border-4 border-black rounded-3xl w-full max-w-2xl max-h-[90vh] overflow-y-auto p-6 sm:p-8 shadow-2xl relative">
+            <div class="flex items-center justify-between pb-4 border-b border-zinc-800 mb-6">
+                <div class="flex items-center gap-2">
+                    <span class="w-3 h-3 rounded-full bg-cyan-400 inline-block"></span>
+                    <h3 id="curr-modal-title" class="font-black text-xl uppercase tracking-tight text-white">
+                        Configure Semester Curriculum
+                    </h3>
+                </div>
+                <button type="button" onclick="closeCurriculumModal()" class="text-gray-400 hover:text-white text-2xl font-bold">&times;</button>
+            </div>
+
+            <form id="curr-form" onsubmit="handleSaveCurriculum(event)" class="space-y-4">
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-mono uppercase text-gray-400 font-bold mb-1">Semester (1 to 8) *</label>
+                        <select id="curr-sem-select" onchange="loadCurriculumForModal(this.value)" class="w-full form-input rounded-xl px-3 py-2 text-xs font-mono" required>
+                            <option value="1">Semester 1 (Year 1)</option>
+                            <option value="2">Semester 2 (Year 1)</option>
+                            <option value="3" selected>Semester 3 (Year 2)</option>
+                            <option value="4">Semester 4 (Year 2)</option>
+                            <option value="5">Semester 5 (Year 3)</option>
+                            <option value="6">Semester 6 (Year 3)</option>
+                            <option value="7">Semester 7 (Year 4)</option>
+                            <option value="8">Semester 8 (Year 4)</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-mono uppercase text-gray-400 font-bold mb-1">Semester Display Name</label>
+                        <input type="text" id="curr-sem-name" class="w-full form-input rounded-xl px-3 py-2 text-xs font-mono" placeholder="Semester 3">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-mono uppercase text-gray-400 font-bold mb-1">Academic Focus Overview *</label>
+                    <input type="text" id="curr-focus" class="w-full form-input rounded-xl px-3 py-2 text-xs font-mono" placeholder="Core Data Structures, Discrete Mathematics & Computer Architecture" required>
+                </div>
+
+                <!-- Subjects in this Semester -->
+                <div>
+                    <div class="flex items-center justify-between mb-2">
+                        <label class="block text-xs font-mono uppercase text-gray-400 font-bold">Curriculum Courses / Subjects</label>
+                        <button type="button" onclick="addSubjectRow()" class="text-xs font-mono text-[#CDFF29] hover:underline font-bold">+ Add Course</button>
+                    </div>
+                    <div id="curr-subjects-list" class="space-y-3">
+                        <!-- Populated by dynamic rows -->
+                    </div>
+                </div>
+
+                <div class="flex items-center justify-end gap-3 pt-4 border-t border-zinc-800">
+                    <button type="button" onclick="closeCurriculumModal()" class="px-4 py-2 rounded-xl bg-zinc-800 hover:bg-zinc-700 text-gray-300 font-mono text-xs uppercase transition-colors">
+                        Cancel
+                    </button>
+                    <button type="submit" class="px-6 py-2.5 rounded-xl bg-[#CDFF29] hover:bg-white text-black font-mono text-xs font-black uppercase tracking-wider border-2 border-black shadow-brutal-sm transition-all cursor-pointer">
+                        Save Curriculum &rarr;
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT CONTROLLER -->
+    <script>
+        let allPapers = [];
+        let allUniversities = [];
+        let allCurriculum = {};
+        let activeCurrSemester = 3;
+
+        document.addEventListener('DOMContentLoaded', async () => {
+            await ensureAdminAuth();
+            await loadSummary();
+            await fetchAdminUniversities();
+            await fetchAdminCurriculum();
+            await fetchAdminPapers();
+            renderCurriculumSemesterPills();
+            renderActiveCurriculum();
+        });
+
+        // Auth
+        async function ensureAdminAuth() {
+            try {
+                const res = await fetch('/api/auth/me');
+                const data = await res.json();
+                if (!data.authenticated || data.user.role !== 'admin') {
+                    window.location.href = 'login.html?redirect=admin-campus.html';
+                    return;
+                }
+                const emailDisplay = document.getElementById('admin-email-display');
+                if (emailDisplay) emailDisplay.textContent = data.user.email;
+            } catch (e) {
+                window.location.href = 'login.html?redirect=admin-campus.html';
+            }
+        }
+
+        async function handleLogout() {
+            await logout();
+            window.location.href = 'login.html';
+        }
+
+        // Summary Counters
+        async function loadSummary() {
+            try {
+                const res = await fetch('/api/admin/campus/summary');
+                const data = await res.json();
+                if (data.success && data.summary) {
+                    const s = data.summary;
+                    document.getElementById('stat-total-papers').textContent = s.total_papers;
+                    document.getElementById('stat-total-unis').textContent = s.total_universities;
+                    document.getElementById('stat-total-sems').textContent = s.total_semesters;
+                    document.getElementById('tab-count-papers').textContent = s.total_papers;
+                    document.getElementById('tab-count-unis').textContent = s.total_universities;
+                }
+            } catch (e) {
+                console.error("Failed to load summary:", e);
+            }
+        }
+
+        // Tab Switching
+        function switchAdminTab(tabName) {
+            ['papers', 'universities', 'curriculum'].forEach(t => {
+                const btn = document.getElementById(`tab-btn-${t}`);
+                const content = document.getElementById(`tab-content-${t}`);
+                if (t === tabName) {
+                    btn.classList.add('bg-[#CDFF29]', 'text-black', 'shadow-brutal-sm');
+                    btn.classList.remove('bg-[#181818]', 'text-gray-300');
+                    content.classList.remove('hidden');
+                } else {
+                    btn.classList.remove('bg-[#CDFF29]', 'text-black', 'shadow-brutal-sm');
+                    btn.classList.add('bg-[#181818]', 'text-gray-300');
+                    content.classList.add('hidden');
+                }
+            });
+        }
+
+        // TAB 1: PAPERS REPOSITORY
+        async function fetchAdminPapers() {
+            const uni = document.getElementById('filter-paper-uni').value;
+            const sem = document.getElementById('filter-paper-sem').value;
+            const session = document.getElementById('filter-paper-session').value;
+            const search = document.getElementById('filter-paper-search').value.trim();
+
+            const params = new URLSearchParams();
+            if (uni !== 'all') params.append('university', uni);
+            if (sem !== 'all') params.append('semester', sem);
+            if (session !== 'all') params.append('exam_year', session);
+            if (search) params.append('search', search);
+
+            try {
+                const res = await fetch(`/api/admin/campus/papers?${params.toString()}`);
+                const data = await res.json();
+                if (data.success) {
+                    allPapers = data.papers;
+                    renderPapersTable(allPapers);
+                }
+            } catch (e) {
+                console.error("Failed to load papers:", e);
+            }
+        }
+
+        function renderPapersTable(papers) {
+            const tbody = document.getElementById('papers-table-body');
+            if (!papers || papers.length === 0) {
+                tbody.innerHTML = `
+                    <tr>
+                        <td colspan="6" class="p-8 text-center text-gray-500">
+                            No question papers match current criteria. Click "Upload Question Paper" to add.
+                        </td>
+                    </tr>
+                `;
+                return;
+            }
+
+            tbody.innerHTML = papers.map(p => {
+                return `
+                    <tr class="hover:bg-zinc-900/60 transition-colors">
+                        <td class="p-4">
+                            <div class="font-bold text-white text-sm leading-tight">${escapeHtml(p.subject_title)}</div>
+                            <div class="text-[11px] text-[#CDFF29] font-bold mt-0.5">${escapeHtml(p.subject_code)}</div>
+                        </td>
+                        <td class="p-4">
+                            <span class="px-2.5 py-1 rounded-lg bg-[#7B42F6]/20 border border-[#7B42F6]/40 text-[#CDFF29] font-bold">
+                                ${escapeHtml(p.university_short || p.university_id.toUpperCase())}
+                            </span>
+                        </td>
+                        <td class="p-4 text-gray-300">
+                            <div>Sem ${p.semester} (Year ${p.year})</div>
+                            <div class="text-[10px] text-gray-500">${p.duration_hours || 3}h • ${p.total_marks || 100} Marks</div>
+                        </td>
+                        <td class="p-4">
+                            <span class="px-2 py-0.5 rounded font-bold ${p.exam_year === '2024-25' ? 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/30' : 'bg-gray-800 text-gray-300'}">
+                                ${escapeHtml(p.exam_year)}
+                            </span>
+                            <div class="text-[10px] text-gray-500 mt-1">${escapeHtml(p.paper_type || 'Regular End-Sem')}</div>
+                        </td>
+                        <td class="p-4">
+                            <a href="${escapeHtml(p.pdf_url)}" target="_blank" class="inline-flex items-center gap-1 text-emerald-400 hover:underline">
+                                <span>📄</span>
+                                <span class="truncate max-w-[120px]">${escapeHtml(p.pdf_url.split('/').pop())}</span>
+                            </a>
+                        </td>
+                        <td class="p-4 text-right whitespace-nowrap">
+                            <div class="flex items-center justify-end gap-2">
+                                <a href="${escapeHtml(p.pdf_url)}" download="${escapeHtml(p.download_filename || 'paper.pdf')}" class="px-2.5 py-1 rounded-lg bg-zinc-800 hover:bg-zinc-700 text-gray-300 hover:text-white transition-colors" title="Download PDF">
+                                    📥
+                                </a>
+                                <button type="button" onclick="editPaper('${escapeJs(p.id)}')" class="px-3 py-1 rounded-lg bg-[#CDFF29] text-black font-bold hover:bg-white transition-colors shadow-brutal-sm">
+                                    Edit
+                                </button>
+                                <button type="button" onclick="deletePaper('${escapeJs(p.id)}')" class="px-2.5 py-1 rounded-lg bg-red-500/20 text-red-400 hover:bg-red-500 hover:text-white transition-colors">
+                                    🗑️
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                `;
+            }).join('');
+        }
+
+        // TAB 2: UNIVERSITIES
+        async function fetchAdminUniversities() {
+            try {
+                const res = await fetch('/api/admin/campus/universities');
+                const data = await res.json();
+                if (data.success) {
+                    allUniversities = data.universities;
+                    renderUniversitiesGrid(allUniversities);
+                    populateUniSelects(allUniversities);
+                }
+            } catch (e) {
+                console.error("Failed to load universities:", e);
+            }
+        }
+
+        function populateUniSelects(unis) {
+            const paperUniSelect = document.getElementById('paper-uni');
+            if (paperUniSelect) {
+                paperUniSelect.innerHTML = unis.map(u => `
+                    <option value="${escapeHtml(u.id)}">${escapeHtml(u.short_name)} - ${escapeHtml(u.name)}</option>
+                `).join('');
+            }
+        }
+
+        function renderUniversitiesGrid(unis) {
+            const grid = document.getElementById('universities-grid');
+            if (!grid) return;
+
+            grid.innerHTML = unis.map(u => `
+                <div class="bg-[#141414] border-3 border-black rounded-3xl p-6 shadow-brutal flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="px-3 py-1 rounded-xl text-xs font-mono font-bold" style="background-color: ${u.color}20; color: ${u.color}; border: 1px solid ${u.color}40;">
+                                ${escapeHtml(u.short_name)}
+                            </span>
+                            <span class="text-xs font-mono text-gray-400 bg-black/40 px-2 py-0.5 rounded">
+                                ID: ${escapeHtml(u.id)}
+                            </span>
+                        </div>
+                        <h3 class="font-black text-xl text-white mb-1 leading-snug">${escapeHtml(u.name)}</h3>
+                        <p class="text-xs font-mono text-gray-400 mb-2">${escapeHtml(u.location || 'India')}</p>
+                        <div class="text-[11px] font-mono text-[#CDFF29] bg-[#CDFF29]/10 border border-[#CDFF29]/30 px-2.5 py-1 rounded-xl inline-block mb-4">
+                            ${escapeHtml(u.badge || 'State Technical University')}
+                        </div>
+                    </div>
+
+                    <div class="pt-4 border-t border-zinc-800 flex items-center justify-between">
+                        <span class="text-xs font-mono text-gray-400">
+                            Official Archive Active
+                        </span>
+                        <div class="flex items-center gap-2">
+                            <button type="button" onclick="editUniversity('${escapeJs(u.id)}')" class="px-3 py-1 rounded-lg bg-[#CDFF29] text-black font-bold text-xs hover:bg-white transition-colors shadow-brutal-sm">
+                                Edit
+                            </button>
+                            <button type="button" onclick="deleteUniversity('${escapeJs(u.id)}')" class="px-2.5 py-1 rounded-lg bg-red-500/20 text-red-400 hover:bg-red-500 hover:text-white text-xs transition-colors">
+                                🗑️
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // TAB 3: CURRICULUM
+        async function fetchAdminCurriculum() {
+            try {
+                const res = await fetch('/api/admin/campus/curriculum');
+                const data = await res.json();
+                if (data.success) {
+                    allCurriculum = data.curriculum;
+                    renderCurriculumSemesterPills();
+                    renderActiveCurriculum();
+                }
+            } catch (e) {
+                console.error("Failed to load curriculum:", e);
+            }
+        }
+
+        function renderCurriculumSemesterPills() {
+            const container = document.getElementById('curr-sem-pills');
+            if (!container) return;
+
+            let html = '';
+            for (let s = 1; s <= 8; s++) {
+                const isActive = s === activeCurrSemester;
+                html += `
+                    <button type="button" onclick="setActiveCurrSemester(${s})" class="px-3 py-1.5 rounded-xl font-mono text-xs font-bold transition-all ${isActive ? 'bg-[#CDFF29] text-black shadow-brutal-sm' : 'bg-[#181818] text-gray-400 hover:text-white'}">
+                        Sem ${s}
+                    </button>
+                `;
+            }
+            container.innerHTML = html;
+        }
+
+        function setActiveCurrSemester(sem) {
+            activeCurrSemester = sem;
+            renderCurriculumSemesterPills();
+            renderActiveCurriculum();
+        }
+
+        function renderActiveCurriculum() {
+            const container = document.getElementById('active-curr-container');
+            if (!container) return;
+
+            const semData = allCurriculum[String(activeCurrSemester)];
+            if (!semData) {
+                container.innerHTML = `<p class="text-gray-400 font-mono text-xs">No curriculum found for Semester ${activeCurrSemester}.</p>`;
+                return;
+            }
+
+            const subjectsHtml = (semData.subjects || []).map((subj, idx) => `
+                <div class="bg-[#181818] border-2 border-black rounded-2xl p-5 shadow-brutal-sm">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="px-2.5 py-1 rounded-lg bg-[#7B42F6]/20 border border-[#7B42F6]/40 text-[#CDFF29] font-mono text-xs font-bold">
+                            ${escapeHtml(subj.code)}
+                        </span>
+                        <span class="text-[11px] font-mono text-gray-400 bg-black/40 px-2 py-0.5 rounded">
+                            Credits: ${escapeHtml(subj.credits || '3-1-0')}
+                        </span>
+                    </div>
+                    <h4 class="font-bold text-white text-base mb-3">${escapeHtml(subj.title)}</h4>
+                    <div class="text-[11px] font-mono text-gray-400 uppercase tracking-wider mb-2">5-Unit Syllabus Blueprint:</div>
+                    <ul class="space-y-1 mb-2 pl-2">
+                        ${(subj.units || []).map((u, i) => `
+                            <li class="text-xs text-gray-300 font-mono flex items-start gap-1.5">
+                                <span class="text-[#CDFF29] font-bold">Unit ${i+1}:</span>
+                                <span>${escapeHtml(u)}</span>
+                            </li>
+                        `).join('')}
+                    </ul>
+                </div>
+            `).join('');
+
+            container.innerHTML = `
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-zinc-800 mb-6">
+                    <div>
+                        <div class="inline-flex items-center gap-1.5 text-xs font-mono font-bold text-[#CDFF29] mb-1">
+                            <span>🎓</span>
+                            <span>YEAR ${semData.year || 1} // ${escapeHtml(semData.name || 'Semester ' + activeCurrSemester)}</span>
+                        </div>
+                        <h3 class="text-2xl font-black uppercase text-white">
+                            ${escapeHtml(semData.focus || 'Core Engineering Curriculum')}
+                        </h3>
+                    </div>
+                    <button type="button" onclick="openCurriculumModal(${activeCurrSemester})" class="px-4 py-2 bg-[#7B42F6] hover:bg-[#6830e0] text-white font-mono text-xs font-bold uppercase rounded-xl border-2 border-black shadow-brutal-sm transition-all flex items-center gap-2">
+                        <span>✏️</span>
+                        <span>Edit Semester ${activeCurrSemester} Syllabus</span>
+                    </button>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    ${subjectsHtml}
+                </div>
+            `;
+        }
+
+        // PAPER MODAL CRUD
+        function openPaperModal() {
+            document.getElementById('paper-modal-title').textContent = "Upload Question Paper (PDF)";
+            document.getElementById('paper-id').value = "";
+            document.getElementById('paper-form').reset();
+            document.getElementById('paper-current-pdf-box').classList.add('hidden');
+            document.getElementById('pdf-file-status').textContent = '';
+            document.getElementById('paper-modal').classList.remove('hidden');
+        }
+
+        function closePaperModal() {
+            document.getElementById('paper-modal').classList.add('hidden');
+        }
+
+        function editPaper(id) {
+            const paper = allPapers.find(p => p.id === id);
+            if (!paper) return;
+
+            document.getElementById('paper-modal-title').textContent = "Edit Question Paper";
+            document.getElementById('paper-id').value = paper.id;
+            document.getElementById('paper-uni').value = paper.university_id;
+            document.getElementById('paper-sem').value = String(paper.semester);
+            document.getElementById('paper-title').value = paper.subject_title || '';
+            document.getElementById('paper-code').value = paper.subject_code || '';
+            document.getElementById('paper-session').value = paper.exam_year || '2024-25';
+            document.getElementById('paper-type').value = paper.paper_type || 'Regular End-Sem';
+            document.getElementById('paper-marks').value = paper.total_marks || 100;
+            document.getElementById('paper-duration').value = paper.duration_hours || 3;
+            document.getElementById('paper-units').value = (paper.units || []).join('\n');
+
+            const currentBox = document.getElementById('paper-current-pdf-box');
+            const currentLink = document.getElementById('paper-current-pdf');
+            if (paper.pdf_url) {
+                currentBox.classList.remove('hidden');
+                currentLink.textContent = paper.pdf_url;
+            } else {
+                currentBox.classList.add('hidden');
+            }
+
+            document.getElementById('paper-modal').classList.remove('hidden');
+        }
+
+        async function handleSavePaper(e) {
+            e.preventDefault();
+            const btn = document.getElementById('save-paper-submit-btn');
+            btn.disabled = true;
+            btn.textContent = "Saving...";
+
+            const id = document.getElementById('paper-id').value.trim();
+            const uni = document.getElementById('paper-uni').value;
+            const sem = parseInt(document.getElementById('paper-sem').value);
+            const title = document.getElementById('paper-title').value.trim();
+            const code = document.getElementById('paper-code').value.trim();
+            const session = document.getElementById('paper-session').value.trim();
+            const type = document.getElementById('paper-type').value;
+            const marks = parseInt(document.getElementById('paper-marks').value) || 100;
+            const duration = parseInt(document.getElementById('paper-duration').value) || 3;
+            
+            const rawUnits = document.getElementById('paper-units').value.trim();
+            const units = rawUnits ? rawUnits.split('\n').map(u => u.trim()).filter(Boolean) : [];
+
+            // File upload handling
+            const fileInput = document.getElementById('paper-pdf-file');
+            let pdfBase64 = null;
+            let pdfFilename = null;
+
+            if (fileInput && fileInput.files && fileInput.files[0]) {
+                const file = fileInput.files[0];
+                pdfFilename = file.name;
+                pdfBase64 = await readFileAsBase64(file);
+            }
+
+            const payload = {
+                id: id || undefined,
+                university_id: uni,
+                semester: sem,
+                year: sem in [1, 2] ? 1 : (sem in [3, 4] ? 2 : (sem in [5, 6] ? 3 : 4)),
+                subject_title: title,
+                subject_code: code,
+                exam_year: session,
+                paper_type: type,
+                total_marks: marks,
+                duration_hours: duration,
+                units: units.length > 0 ? units : undefined,
+                pdf_base64: pdfBase64,
+                pdf_filename: pdfFilename
+            };
+
+            try {
+                const res = await fetch('/api/admin/campus/paper', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify(payload)
+                });
+                const data = await res.json();
+                if (data.success) {
+                    showToast("Question paper saved successfully!");
+                    closePaperModal();
+                    await fetchAdminPapers();
+                    await loadSummary();
+                } else {
+                    alert("Error: " + (data.error || "Failed to save paper"));
+                }
+            } catch (err) {
+                alert("Network error while saving paper: " + err);
+            } finally {
+                btn.disabled = false;
+                btn.textContent = "Save & Publish Paper →";
+            }
+        }
+
+        async function deletePaper(id) {
+            if (!confirm(`Are you sure you want to delete question paper ${id}?`)) return;
+            try {
+                const res = await fetch(`/api/admin/campus/papers/${id}`, { method: 'DELETE' });
+                const data = await res.json();
+                if (data.success) {
+                    showToast("Question paper deleted successfully.");
+                    await fetchAdminPapers();
+                    await loadSummary();
+                }
+            } catch (err) {
+                alert("Failed to delete paper: " + err);
+            }
+        }
+
+        // UNIVERSITY MODAL CRUD
+        function openUniversityModal() {
+            document.getElementById('uni-modal-title').textContent = "Add New University";
+            document.getElementById('uni-form').reset();
+            document.getElementById('uni-id').readOnly = false;
+            document.getElementById('uni-modal').classList.remove('hidden');
+        }
+
+        function closeUniversityModal() {
+            document.getElementById('uni-modal').classList.add('hidden');
+        }
+
+        function editUniversity(id) {
+            const uni = allUniversities.find(u => u.id === id);
+            if (!uni) return;
+
+            document.getElementById('uni-modal-title').textContent = "Edit University";
+            document.getElementById('uni-id').value = uni.id;
+            document.getElementById('uni-id').readOnly = true;
+            document.getElementById('uni-name').value = uni.name || '';
+            document.getElementById('uni-short').value = uni.short_name || '';
+            document.getElementById('uni-location').value = uni.location || '';
+            document.getElementById('uni-badge').value = uni.badge || '';
+            document.getElementById('uni-color').value = uni.color || '#7B42F6';
+            document.getElementById('uni-color-picker').value = uni.color || '#7B42F6';
+
+            document.getElementById('uni-modal').classList.remove('hidden');
+        }
+
+        async function handleSaveUniversity(e) {
+            e.preventDefault();
+            const payload = {
+                id: document.getElementById('uni-id').value.trim().toLowerCase(),
+                name: document.getElementById('uni-name').value.trim(),
+                short_name: document.getElementById('uni-short').value.trim(),
+                location: document.getElementById('uni-location').value.trim(),
+                badge: document.getElementById('uni-badge').value.trim(),
+                color: document.getElementById('uni-color').value.trim()
+            };
+
+            try {
+                const res = await fetch('/api/admin/campus/university', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify(payload)
+                });
+                const data = await res.json();
+                if (data.success) {
+                    showToast("University updated successfully!");
+                    closeUniversityModal();
+                    await fetchAdminUniversities();
+                    await loadSummary();
+                }
+            } catch (err) {
+                alert("Error saving university: " + err);
+            }
+        }
+
+        async function deleteUniversity(id) {
+            if (!confirm(`Are you sure you want to delete university ${id}?`)) return;
+            try {
+                const res = await fetch(`/api/admin/campus/universities/${id}`, { method: 'DELETE' });
+                const data = await res.json();
+                if (data.success) {
+                    showToast("University removed.");
+                    await fetchAdminUniversities();
+                    await loadSummary();
+                }
+            } catch (err) {
+                alert("Failed to delete university: " + err);
+            }
+        }
+
+        // CURRICULUM MODAL CRUD
+        function openCurriculumModal(semNum = 3) {
+            document.getElementById('curr-sem-select').value = String(semNum);
+            loadCurriculumForModal(semNum);
+            document.getElementById('curr-modal').classList.remove('hidden');
+        }
+
+        function closeCurriculumModal() {
+            document.getElementById('curr-modal').classList.add('hidden');
+        }
+
+        function loadCurriculumForModal(semNum) {
+            const semData = allCurriculum[String(semNum)] || {
+                name: `Semester ${semNum}`,
+                focus: "Core Computer Science Fundamentals",
+                subjects: []
+            };
+
+            document.getElementById('curr-sem-name').value = semData.name || `Semester ${semNum}`;
+            document.getElementById('curr-focus').value = semData.focus || '';
+
+            const list = document.getElementById('curr-subjects-list');
+            list.innerHTML = '';
+            (semData.subjects || []).forEach(s => addSubjectRow(s));
+            if ((semData.subjects || []).length === 0) {
+                addSubjectRow();
+            }
+        }
+
+        function addSubjectRow(data = {}) {
+            const list = document.getElementById('curr-subjects-list');
+            const row = document.createElement('div');
+            row.className = 'subject-editor-row bg-[#1c1c1c] p-3 rounded-xl border border-zinc-700 relative';
+            row.innerHTML = `
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 mb-2">
+                    <div>
+                        <input type="text" class="subj-code w-full form-input rounded-lg px-2.5 py-1.5 text-xs font-mono" placeholder="Code (e.g. KCS-301)" value="${escapeHtml(data.code || '')}" required>
+                    </div>
+                    <div class="sm:col-span-2">
+                        <input type="text" class="subj-title w-full form-input rounded-lg px-2.5 py-1.5 text-xs font-mono" placeholder="Course Title" value="${escapeHtml(data.title || '')}" required>
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 mb-2">
+                    <div>
+                        <input type="text" class="subj-credits w-full form-input rounded-lg px-2.5 py-1.5 text-xs font-mono" placeholder="Credits (e.g. 3-1-0)" value="${escapeHtml(data.credits || '3-1-0')}">
+                    </div>
+                    <div class="sm:col-span-2 flex items-center justify-between">
+                        <span class="text-[10px] font-mono text-gray-400">5 Syllabus Units (one per line below):</span>
+                        <button type="button" onclick="this.closest('.subject-editor-row').remove()" class="text-xs font-mono text-red-400 hover:text-red-300">Remove Course ✕</button>
+                    </div>
+                </div>
+                <textarea class="subj-units w-full form-input rounded-lg p-2 text-xs font-mono" rows="2" placeholder="Unit 1: Fundamentals&#10;Unit 2: Architecture&#10;Unit 3: Design&#10;Unit 4: Advanced Topics&#10;Unit 5: Applications">${(data.units || []).join('\n')}</textarea>
+            `;
+            list.appendChild(row);
+        }
+
+        async function handleSaveCurriculum(e) {
+            e.preventDefault();
+            const sem = document.getElementById('curr-sem-select').value;
+            const name = document.getElementById('curr-sem-name').value.trim();
+            const focus = document.getElementById('curr-focus').value.trim();
+
+            const rows = document.querySelectorAll('.subject-editor-row');
+            const subjects = [];
+            rows.forEach(r => {
+                const code = r.querySelector('.subj-code').value.trim();
+                const title = r.querySelector('.subj-title').value.trim();
+                const credits = r.querySelector('.subj-credits').value.trim();
+                const rawUnits = r.querySelector('.subj-units').value.trim();
+                const units = rawUnits ? rawUnits.split('\n').map(u => u.trim()).filter(Boolean) : [];
+
+                if (code && title) {
+                    subjects.push({
+                        code: code,
+                        title: title,
+                        credits: credits || '3-1-0',
+                        units: units
+                    });
+                }
+            });
+
+            const semInt = parseInt(sem);
+            const payload = {
+                semester: semInt,
+                year: semInt in [1, 2] ? 1 : (semInt in [3, 4] ? 2 : (semInt in [5, 6] ? 3 : 4)),
+                name: name || `Semester ${sem}`,
+                focus: focus,
+                subjects: subjects
+            };
+
+            try {
+                const res = await fetch('/api/admin/campus/curriculum', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify(payload)
+                });
+                const data = await res.json();
+                if (data.success) {
+                    showToast(`Semester ${sem} curriculum saved!`);
+                    closeCurriculumModal();
+                    await fetchAdminCurriculum();
+                }
+            } catch (err) {
+                alert("Failed to save curriculum: " + err);
+            }
+        }
+
+        // Helper: Read File as Base64
+        function readFileAsBase64(file) {
+            return new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.onload = () => resolve(reader.result);
+                reader.onerror = error => reject(error);
+                reader.readAsDataURL(file);
+            });
+        }
+
+        // Toast feedback
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            const msgEl = document.getElementById('toast-message');
+            if (!toast || !msgEl) return;
+            msgEl.textContent = msg;
+            toast.classList.remove('translate-y-24', 'opacity-0');
+            toast.classList.add('translate-y-0', 'opacity-100');
+            setTimeout(() => {
+                toast.classList.remove('translate-y-0', 'opacity-100');
+                toast.classList.add('translate-y-24', 'opacity-0');
+            }, 3500);
+        }
+
+        function escapeHtml(str) {
+            if (!str) return '';
+            return String(str)
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#039;');
+        }
+
+        function escapeJs(str) {
+            if (!str) return '';
+            return String(str)
+                .replace(/\\/g, '\\\\')
+                .replace(/'/g, "\\'")
+                .replace(/"/g, '\\"')
+                .replace(/\n/g, '\\n')
+                .replace(/\r/g, '\\r');
+        }
+    </script>
+</body>
+</html>

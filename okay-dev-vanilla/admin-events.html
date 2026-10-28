@@ -1,0 +1,2155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Events Dashboard | Devengers</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico?v=2">
+    <link rel="icon" type="image/png" href="favicon.png?v=2">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css?v=3">
+    <script src="auth.js"></script>
+    <style>
+        body { font-family: 'Space Grotesk', system-ui, -apple-system, sans-serif; }
+        .bg-grid {
+            background-color: #0d0d0d;
+            background-image: 
+                radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+                linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 24px 24px, 96px 96px, 96px 96px;
+        }
+        .shadow-brutal {
+            box-shadow: 4px 4px 0px 0px rgba(0,0,0,1);
+        }
+        .shadow-brutal-sm {
+            box-shadow: 2px 2px 0px 0px rgba(0,0,0,1);
+        }
+        .form-input {
+            background-color: #161616;
+            border: 2px solid #2d2d2d;
+            color: white;
+            transition: all 0.2s;
+        }
+        .form-input:focus {
+            border-color: #CDFF29;
+            outline: none;
+            background-color: #1f1f1f;
+        }
+    </style>
+</head>
+<body class="bg-grid m-0 p-0 text-white min-h-screen antialiased flex flex-col">
+
+    <!-- TOP ADMIN NAVBAR -->
+    <header class="sticky top-0 z-40 w-full bg-[#141414]/90 backdrop-blur-md border-b-2 border-black/80 px-6 py-4">
+        <div class="max-w-[1400px] mx-auto flex items-center justify-between flex-wrap gap-4">
+            
+            <!-- Logo & Brand Title -->
+            <div class="flex items-center gap-4">
+                <a href="index.html" class="flex items-center group">
+                    <div class="font-black text-2xl tracking-tighter uppercase rounded-full transition-transform duration-300 group-hover:scale-105"
+                         style="-webkit-text-stroke: 1.5px black; color: #CDFF29; text-shadow: 2px 2px 0px black; line-height: 1;">
+                        DEVENGERS
+                    </div>
+                </a>
+                <!-- Admin Section Nav Switcher -->
+                <nav class="flex items-center gap-2 bg-black/60 p-1 rounded-xl border border-zinc-800">
+                    <a href="admin-events.html" class="px-3 py-1 rounded-lg text-xs font-mono font-bold uppercase tracking-wider bg-[#CDFF29] text-black shadow-brutal-sm">
+                        Events
+                    </a>
+                    <a href="admin-learn.html" class="px-3 py-1 rounded-lg text-xs font-mono font-bold uppercase tracking-wider text-gray-400 hover:text-white transition-colors">
+                        Learn & Courses
+                    </a>
+                    <a href="admin-campus.html" class="px-3 py-1 rounded-lg text-xs font-mono font-bold uppercase tracking-wider text-gray-400 hover:text-white transition-colors">
+                        Campus & Courses
+                    </a>
+                    <a href="admin-gallery.html" class="px-3 py-1 rounded-lg text-xs font-mono font-bold uppercase tracking-wider text-gray-400 hover:text-white transition-colors">
+                        Gallery &amp; Community
+                    </a>
+                    <a href="admin-certificates.html" class="px-3 py-1 rounded-lg text-xs font-mono font-bold uppercase tracking-wider text-gray-400 hover:text-white transition-colors">
+                        Certificates
+                    </a>
+                    <button type="button" onclick="openNotifModal()" class="px-3 py-1 rounded-lg text-xs font-mono font-bold uppercase tracking-wider text-[#CDFF29] hover:bg-white/10 transition-colors flex items-center gap-1 cursor-pointer">
+                        <span>🔔</span> Broadcasts
+                    </button>
+                </nav>
+            </div>
+
+            <!-- Admin Meta & Actions -->
+            <div class="flex items-center gap-4">
+                <a href="events.html" target="_blank"
+                   class="inline-flex items-center gap-1.5 text-xs font-mono font-bold uppercase tracking-wider text-gray-300 hover:text-white px-3 py-1.5 rounded-lg border border-gray-700 hover:border-gray-500 transition-colors">
+                    <span>Public Events</span>
+                    <span class="text-sm">&#8599;</span>
+                </a>
+
+                <div class="flex items-center gap-3 bg-black/60 px-3 py-1.5 rounded-full border border-gray-800">
+                    <span class="w-2.5 h-2.5 rounded-full bg-green-400 animate-pulse"></span>
+                    <span id="admin-email-display" class="text-xs font-mono text-gray-300 font-bold">event@devengers.org</span>
+                </div>
+
+                <button id="logout-btn"
+                        class="bg-red-500/10 hover:bg-red-500 text-red-300 hover:text-white border border-red-500/40 px-3 py-1.5 rounded-full text-xs font-mono font-bold uppercase tracking-wider transition-colors cursor-pointer">
+                    Logout
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN DASHBOARD CONTENT -->
+    <main class="flex-1 w-full max-w-[1400px] mx-auto px-6 py-8 flex flex-col gap-8">
+
+        <!-- TITLE & PRIMARY CTA -->
+        <div class="flex items-center justify-between flex-wrap gap-4">
+            <div>
+                <h1 class="text-3xl md:text-4xl font-black uppercase tracking-tight text-white mb-1">
+                    Event Management
+                </h1>
+                <p class="text-gray-400 text-sm">
+                    Create, manage, and publish Hackathons, Quizzes, Internships, and Jobs for the DEVENGERS community.
+                </p>
+            </div>
+
+            <!-- Creation & Notification Options -->
+            <div class="flex items-center gap-3 flex-wrap">
+                <!-- Option 3: 📢 PUSH NOTIFICATION -->
+                <button type="button" id="open-notif-modal-btn" onclick="openNotifModal()"
+                        class="bg-[#7B42F6] hover:bg-white text-white hover:text-black font-black uppercase tracking-wider text-xs md:text-sm px-5 py-3.5 rounded-full border-2 border-black shadow-brutal hover:translate-x-0.5 hover:translate-y-0.5 transition-all flex items-center gap-2 cursor-pointer group">
+                    <span class="text-base group-hover:scale-125 transition-transform">📢</span>
+                    <span>PUSH NOTIFICATION</span>
+                </button>
+
+                <!-- Option 2: ⚡ FLASH EVENT (AUTO-LINK) -->
+                <button type="button" id="open-flash-modal-btn" onclick="openFlashModal()"
+                        class="bg-[#CDFF29] hover:bg-white text-black font-black uppercase tracking-wider text-xs md:text-sm px-6 py-3.5 rounded-full border-2 border-black shadow-brutal hover:translate-x-0.5 hover:translate-y-0.5 transition-all flex items-center gap-2 cursor-pointer group">
+                    <span class="text-base group-hover:scale-125 transition-transform">⚡</span>
+                    <span>FLASH EVENT (AUTO)</span>
+                </button>
+
+                <!-- Option 1: ✍️ MANUAL EVENT -->
+                <button type="button" id="open-create-modal-btn" onclick="openCreateModal()"
+                        class="bg-[#1c1c1c] hover:bg-[#282828] text-white font-bold uppercase tracking-wider text-xs md:text-sm px-5 py-3.5 rounded-full border border-gray-700 shadow-brutal hover:translate-x-0.5 hover:translate-y-0.5 transition-all flex items-center gap-2 cursor-pointer">
+                    <span class="text-base text-gray-400">+</span>
+                    <span>MANUAL EVENT</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- DAILY AUTO-SYNC PANEL (GOOGLE & UNSTOP) -->
+        <div class="bg-gradient-to-r from-[#181818] via-[#1c1c1c] to-[#141414] border-2 border-black rounded-2xl p-5 shadow-brutal flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+            <div class="flex items-start gap-3.5">
+                <div class="w-10 h-10 rounded-xl bg-[#CDFF29]/10 border border-[#CDFF29]/40 flex items-center justify-center text-xl shrink-0">
+                    ⚡
+                </div>
+                <div>
+                    <div class="flex items-center gap-2.5 flex-wrap">
+                        <h4 class="text-sm font-bold uppercase tracking-wider text-white">Daily Job &amp; Internship Auto-Crawler</h4>
+                        <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider bg-green-500/10 text-green-400 border border-green-500/30">
+                            <span class="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse"></span> Scheduled: 11:59 PM IST Daily
+                        </span>
+                    </div>
+                    <p class="text-xs text-gray-400 mt-1 font-mono">
+                        Auto-searches &amp; imports latest developer jobs &amp; internships from Google, Unstop &amp; Top Tech Drives.
+                        <span id="sync-last-run-label" class="text-gray-300 ml-1">Loading sync status...</span>
+                    </p>
+                </div>
+            </div>
+
+            <!-- Sync Controls -->
+            <div class="flex items-center gap-3 w-full md:w-auto justify-end flex-wrap">
+                <button type="button" id="trigger-sync-btn" onclick="triggerJobSync()"
+                        class="bg-[#CDFF29] hover:bg-white text-black font-black uppercase tracking-wider text-xs px-6 py-3 rounded-xl border-2 border-black shadow-brutal hover:translate-x-0.5 hover:translate-y-0.5 transition-all flex items-center gap-2 cursor-pointer">
+                    <span id="sync-spinner" class="hidden animate-spin">⟳</span>
+                    <span id="sync-btn-text">⚡ Sync Now</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- STATS METRICS -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div class="bg-[#181818] border-2 border-black rounded-2xl p-5 shadow-brutal flex flex-col">
+                <p class="text-gray-400 text-xs font-mono uppercase tracking-wider mb-2">Total Events</p>
+                <h3 id="stat-total" class="text-3xl md:text-4xl font-black text-white">0</h3>
+            </div>
+            <div class="bg-[#181818] border-2 border-black rounded-2xl p-5 shadow-brutal flex flex-col">
+                <p class="text-green-400 text-xs font-mono uppercase tracking-wider mb-2">Live Published</p>
+                <h3 id="stat-published" class="text-3xl md:text-4xl font-black text-green-400">0</h3>
+            </div>
+            <div class="bg-[#181818] border-2 border-black rounded-2xl p-5 shadow-brutal flex flex-col">
+                <p class="text-yellow-400 text-xs font-mono uppercase tracking-wider mb-2">Drafts &amp; Unpublished</p>
+                <h3 id="stat-drafts" class="text-3xl md:text-4xl font-black text-yellow-400">0</h3>
+            </div>
+            <div class="bg-[#181818] border-2 border-black rounded-2xl p-5 shadow-brutal flex flex-col">
+                <p class="text-gray-400 text-xs font-mono uppercase tracking-wider mb-2">Archived</p>
+                <h3 id="stat-archived" class="text-3xl md:text-4xl font-black text-gray-500">0</h3>
+            </div>
+        </div>
+
+        <!-- TOOLBAR: SEARCH & CATEGORY / STATUS FILTERS -->
+        <div class="bg-[#181818] border-2 border-black rounded-2xl p-4 shadow-brutal flex flex-col md:flex-row items-center justify-between gap-4 flex-wrap">
+            
+            <!-- Category Tabs -->
+            <div class="flex items-center gap-2 overflow-x-auto w-full md:w-auto pb-1 md:pb-0" id="category-filter-tabs">
+                <button data-cat="" class="cat-filter-btn px-4 py-2 rounded-xl text-xs font-mono uppercase tracking-wider font-bold bg-[#CDFF29] text-black border border-black shadow-brutal-sm">
+                    All
+                </button>
+                <button data-cat="Hackathons" class="cat-filter-btn px-4 py-2 rounded-xl text-xs font-mono uppercase tracking-wider text-gray-300 hover:text-white bg-[#222] border border-gray-700">
+                    Hackathons
+                </button>
+                <button data-cat="Quizzes" class="cat-filter-btn px-4 py-2 rounded-xl text-xs font-mono uppercase tracking-wider text-gray-300 hover:text-white bg-[#222] border border-gray-700">
+                    Quizzes
+                </button>
+                <button data-cat="Internships" class="cat-filter-btn px-4 py-2 rounded-xl text-xs font-mono uppercase tracking-wider text-gray-300 hover:text-white bg-[#222] border border-gray-700">
+                    Internships
+                </button>
+                <button data-cat="Jobs" class="cat-filter-btn px-4 py-2 rounded-xl text-xs font-mono uppercase tracking-wider text-gray-300 hover:text-white bg-[#222] border border-gray-700">
+                    Jobs
+                </button>
+            </div>
+
+            <!-- Status Dropdown & Search Input -->
+            <div class="flex items-center gap-3 w-full md:w-auto">
+                <select id="status-filter-select"
+                        class="bg-[#222] border border-gray-700 text-gray-300 text-xs font-mono uppercase tracking-wider rounded-xl px-3 py-2.5 focus:border-[#CDFF29] outline-none">
+                    <option value="">All Statuses</option>
+                    <option value="Published">Published</option>
+                    <option value="Draft">Drafts</option>
+                    <option value="Unpublished">Unpublished</option>
+                    <option value="Archived">Archived</option>
+                </select>
+
+                <div class="relative w-full md:w-64">
+                    <input type="text" id="search-input"
+                           placeholder="Search title, organizer..."
+                           class="w-full bg-[#222] border border-gray-700 text-white text-xs font-mono rounded-xl pl-9 pr-4 py-2.5 focus:border-[#CDFF29] outline-none placeholder:text-gray-500">
+                    <span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-xs">&#128269;</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- EVENTS TABLE / CARDS CONTAINER -->
+        <div id="events-container" class="w-full flex flex-col gap-4">
+            <!-- Loading State -->
+            <div class="p-12 text-center text-gray-400 font-mono text-sm animate-pulse bg-[#181818] rounded-2xl border border-gray-800">
+                Loading events from database...
+            </div>
+        </div>
+
+    </main>
+
+    <!-- FLASH EVENT AUTO-IMPORTER MODAL (HACKATHONS & QUIZZES VIA LINK) -->
+    <div id="flash-modal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-md hidden flex items-center justify-center p-4 overflow-y-auto">
+        <div class="bg-[#121212] border-4 border-black rounded-3xl w-full max-w-3xl my-8 overflow-hidden shadow-2xl flex flex-col max-h-[90vh]">
+            
+            <!-- Modal Header -->
+            <div class="px-6 py-4 bg-[#1a1a1a] border-b-2 border-black flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                    <span class="px-2.5 py-1 rounded-md text-[10px] font-mono font-black uppercase bg-[#CDFF29] text-black tracking-widest flex items-center gap-1">
+                        <span>⚡</span> FLASH EVENT
+                    </span>
+                    <h2 class="text-base md:text-lg font-black uppercase tracking-tight text-white">
+                        Auto-Import Hackathon or Quiz
+                    </h2>
+                </div>
+                <button onclick="closeFlashModal()" class="text-gray-400 hover:text-white text-2xl font-black leading-none cursor-pointer">
+                    &times;
+                </button>
+            </div>
+
+            <!-- Body -->
+            <div class="p-6 overflow-y-auto flex-1 flex flex-col gap-6">
+
+                <!-- Instructions banner -->
+                <p class="text-xs text-gray-400 font-mono">
+                    Paste any Hackathon or Quiz link (e.g. Unstop, Devfolio, MLH, Luma, Google Forms). We automatically extract the title, 16:9 banner, company logo, dates, prizes, and auto-crop the banner to fill the space.
+                </p>
+
+                <!-- STEP 1: Select Type -->
+                <div class="flex flex-col gap-2">
+                    <label class="text-[11px] font-mono uppercase tracking-wider text-gray-300 font-bold">
+                        1. Select Event Type <span class="text-red-500">*</span>
+                    </label>
+                    <div class="grid grid-cols-2 gap-4">
+                        <button type="button" id="flash-type-hackathon" onclick="selectFlashCategory('Hackathons')"
+                                class="flash-type-card p-4 rounded-2xl border-2 border-[#CDFF29] bg-[#CDFF29]/10 text-left cursor-pointer transition-all flex items-center gap-3.5 shadow-sm">
+                            <span class="text-2xl">🏆</span>
+                            <div>
+                                <h4 class="font-bold text-white text-sm">Hackathon</h4>
+                                <p class="text-[11px] text-gray-400 font-mono">Competitions, code sprints, builder drives</p>
+                            </div>
+                        </button>
+                        <button type="button" id="flash-type-quiz" onclick="selectFlashCategory('Quizzes')"
+                                class="flash-type-card p-4 rounded-2xl border-2 border-gray-800 bg-[#181818] text-left cursor-pointer transition-all flex items-center gap-3.5 hover:border-gray-700">
+                            <span class="text-2xl">🧠</span>
+                            <div>
+                                <h4 class="font-bold text-gray-300 text-sm">Quiz</h4>
+                                <p class="text-[11px] text-gray-500 font-mono">DSA challenges, trivia, timed tests</p>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- STEP 2: Paste Link & Trigger Fetch -->
+                <div class="flex flex-col gap-2">
+                    <label class="text-[11px] font-mono uppercase tracking-wider text-gray-300 font-bold">
+                        2. Paste Event Link <span class="text-red-500">*</span>
+                    </label>
+                    <div class="flex flex-col sm:flex-row items-stretch gap-2.5">
+                        <div class="relative flex-1">
+                            <input type="url" id="flash-url-input"
+                                   placeholder="https://unstop.com/hackathons/... or https://devfolio.co/..."
+                                   class="form-input w-full rounded-xl px-4 py-3 text-sm font-mono bg-[#181818] border border-gray-700 text-white placeholder:text-gray-500 focus:border-[#CDFF29] outline-none">
+                        </div>
+                        <button type="button" id="flash-fetch-btn" onclick="runFlashFetch()"
+                                class="bg-[#CDFF29] hover:bg-white text-black font-black uppercase tracking-wider text-xs px-6 py-3 rounded-xl border-2 border-black shadow-brutal flex items-center justify-center gap-2 cursor-pointer shrink-0 transition-all">
+                            <span id="flash-fetch-spinner" class="hidden animate-spin">⟳</span>
+                            <span id="flash-fetch-text">⚡ Auto-Fetch &amp; Crop</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Error Box -->
+                <div id="flash-error-box" class="hidden p-3.5 rounded-xl bg-red-950/80 border border-red-500/80 text-red-200 text-xs font-mono"></div>
+
+                <!-- STEP 3: Auto-Extracted Preview & Auto-Crop (Hidden until fetched) -->
+                <div id="flash-preview-section" class="hidden flex flex-col gap-5 border-t border-gray-800 pt-5">
+                    <div class="flex items-center justify-between">
+                        <h4 class="text-xs font-mono font-bold uppercase tracking-widest text-[#CDFF29] flex items-center gap-2">
+                            <span>✅ 3. Auto-Extracted Preview &amp; 16:9 Crop</span>
+                        </h4>
+                        <span class="text-[10px] font-mono text-gray-400">All fields verified without API keys</span>
+                    </div>
+
+                    <!-- Live Card Preview -->
+                    <div class="p-5 rounded-2xl bg-[#181818] border-2 border-gray-800 flex flex-col md:flex-row gap-5 items-start">
+                        
+                        <!-- Left: 16:9 Banner & Fit Toggle -->
+                        <div class="w-full md:w-64 shrink-0 flex flex-col gap-2">
+                            <div class="relative w-full aspect-video rounded-xl overflow-hidden border border-gray-700 bg-black shadow-inner">
+                                <img id="flash-preview-banner" src="" alt="Banner Preview" class="w-full h-full object-cover">
+                                <span class="absolute top-2 right-2 px-2 py-0.5 rounded bg-black/80 backdrop-blur-sm text-[9px] font-mono font-bold text-white uppercase border border-gray-700" id="flash-crop-badge">
+                                    16:9 CROP: COVER
+                                </span>
+                            </div>
+                            
+                            <!-- Crop Mode Toggle -->
+                            <div class="flex items-center justify-between text-[10px] font-mono text-gray-400 bg-black/40 p-1.5 rounded-lg border border-gray-800">
+                                <span>Banner Fit:</span>
+                                <div class="flex items-center gap-1">
+                                    <button type="button" id="flash-fit-cover-btn" onclick="setFlashBannerFit('cover')" class="px-2 py-0.5 rounded bg-[#CDFF29] text-black font-bold text-[9px]">COVER (FILL)</button>
+                                    <button type="button" id="flash-fit-contain-btn" onclick="setFlashBannerFit('contain')" class="px-2 py-0.5 rounded bg-gray-800 text-gray-300 font-bold text-[9px]">CONTAIN</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Right: Details -->
+                        <div class="flex-1 min-w-0 flex flex-col gap-3 w-full">
+                            
+                            <!-- Header: Category + Org Logo & Name -->
+                            <div class="flex items-center justify-between gap-2 flex-wrap">
+                                <div class="flex items-center gap-2.5">
+                                    <img id="flash-preview-logo" src="" alt="Logo" class="w-8 h-8 rounded-lg bg-black p-1 border border-gray-700 object-contain">
+                                    <input type="text" id="flash-edit-org" class="bg-[#141414] border border-gray-700 rounded-lg px-2.5 py-1 text-xs font-mono text-gray-300 w-44" placeholder="Organizer Name">
+                                </div>
+                                <span id="flash-preview-cat-badge" class="px-2.5 py-1 rounded text-[10px] font-mono font-bold uppercase bg-[#CDFF29] text-black">
+                                    HACKATHON
+                                </span>
+                            </div>
+
+                            <!-- Title (Editable inline) -->
+                            <div>
+                                <label class="text-[10px] font-mono text-gray-400 uppercase">Title</label>
+                                <input type="text" id="flash-edit-title" class="w-full bg-[#141414] border border-gray-700 rounded-xl px-3 py-2 text-sm font-bold text-white focus:border-[#CDFF29] outline-none">
+                            </div>
+
+                            <!-- Prize & Deadline row -->
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs font-mono">
+                                <div class="p-2.5 rounded-xl bg-black/40 border border-gray-800">
+                                    <span class="text-gray-500 block text-[10px]">PRIZE POOL</span>
+                                    <input type="text" id="flash-edit-prize" class="bg-transparent border-none text-[#CDFF29] font-bold p-0 text-xs w-full outline-none">
+                                </div>
+                                <div class="p-2.5 rounded-xl bg-black/40 border border-gray-800">
+                                    <span class="text-gray-500 block text-[10px]">REGISTRATION DEADLINE</span>
+                                    <input type="datetime-local" id="flash-edit-deadline" class="bg-transparent border-none text-white font-mono p-0 text-xs w-full outline-none">
+                                </div>
+                            </div>
+
+                            <!-- Auto-Extracted Tags & Categories -->
+                            <div>
+                                <div class="flex items-center justify-between mb-1">
+                                    <label class="text-[10px] font-mono text-gray-400 uppercase font-bold">Auto-Extracted Tags</label>
+                                    <span class="text-[9px] font-mono text-gray-500">Comma-separated</span>
+                                </div>
+                                <input type="text" id="flash-edit-tags" oninput="renderFlashTagsChips()"
+                                       class="w-full bg-[#141414] border border-gray-700 rounded-xl px-3 py-1.5 text-xs font-mono text-[#CDFF29] focus:border-[#CDFF29] outline-none"
+                                       placeholder="e.g. Engineering Students, IoT, Coding, College Festival">
+                                <div id="flash-tags-preview" class="flex flex-wrap gap-1.5 mt-2"></div>
+                            </div>
+
+                            <!-- Description / Overview -->
+                            <div>
+                                <label class="text-[10px] font-mono text-gray-400 uppercase font-bold block mb-1">Event Overview / Details</label>
+                                <textarea id="flash-edit-desc" rows="2"
+                                          class="w-full bg-[#141414] border border-gray-700 rounded-xl p-2.5 text-xs text-gray-300 focus:border-[#CDFF29] outline-none resize-none leading-relaxed"
+                                          placeholder="Auto-extracted event summary..."></textarea>
+                            </div>
+
+                            <!-- Action Label & Link -->
+                            <div class="flex items-center justify-between gap-3 text-xs font-mono pt-1">
+                                <div class="min-w-0 flex-1 truncate">
+                                    <span class="text-gray-500">Destination:</span>
+                                    <a id="flash-preview-dest-link" href="#" target="_blank" class="text-blue-400 underline ml-1 hover:text-[#CDFF29] truncate"></a>
+                                </div>
+                                <div class="flex items-center gap-1 shrink-0">
+                                    <span class="text-gray-500 text-[10px]">Button:</span>
+                                    <input type="text" id="flash-edit-action" class="bg-[#141414] border border-gray-700 rounded px-2 py-0.5 text-xs text-white w-32 font-bold">
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Modal Footer (Actions) -->
+            <div class="px-6 py-4 bg-[#1a1a1a] border-t-2 border-black flex items-center justify-between flex-wrap gap-3">
+                <button type="button" onclick="closeFlashModal()" class="px-4 py-2 rounded-xl text-xs font-mono text-gray-400 hover:text-white uppercase transition-colors cursor-pointer">
+                    Cancel
+                </button>
+
+                <div class="flex items-center gap-3">
+                    <button type="button" id="flash-manual-switch-btn" onclick="transferFlashToManualForm()" class="hidden px-4 py-2.5 rounded-xl text-xs font-mono text-gray-300 hover:text-white border border-gray-700 hover:border-gray-500 uppercase transition-all cursor-pointer">
+                        ✏️ Edit in Full Form
+                    </button>
+                    <button type="button" id="flash-draft-btn" onclick="submitFlashEvent('Draft')" class="hidden px-5 py-2.5 rounded-xl text-xs font-mono font-bold text-yellow-400 bg-yellow-950/40 border border-yellow-700/60 uppercase hover:bg-yellow-900/40 transition-all cursor-pointer">
+                        Save Draft
+                    </button>
+                    <button type="button" id="flash-publish-btn" onclick="submitFlashEvent('Published')" class="hidden px-6 py-2.5 rounded-full text-xs font-mono font-black text-black bg-[#CDFF29] hover:bg-white uppercase border-2 border-black shadow-brutal hover:translate-x-0.5 hover:translate-y-0.5 transition-all cursor-pointer flex items-center gap-2">
+                        <span>🚀 Publish Flash Event</span>
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- CREATE & EDIT EVENT MODAL (OPTION 1: MANUAL ENTRY) -->
+    <div id="event-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden flex items-center justify-center p-4 overflow-y-auto">
+        <div class="bg-[#141414] border-4 border-black rounded-3xl w-full max-w-3xl my-8 overflow-hidden shadow-2xl flex flex-col max-h-[90vh]">
+            
+            <!-- Modal Header -->
+            <div class="px-6 py-4 bg-[#1f1f1f] border-b-2 border-black flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                    <span id="modal-category-badge" class="px-2.5 py-1 rounded-md text-[10px] font-mono font-bold uppercase bg-[#CDFF29] text-black">
+                        HACKATHON
+                    </span>
+                    <h2 id="modal-title" class="text-lg font-black uppercase tracking-tight text-white">
+                        Create New Event
+                    </h2>
+                </div>
+                <button id="close-modal-btn" class="text-gray-400 hover:text-white text-2xl font-black leading-none cursor-pointer">
+                    &times;
+                </button>
+            </div>
+
+            <!-- Quick Switch to Flash Event -->
+            <div class="px-6 py-2.5 bg-[#1b1b1b] border-b border-gray-800 flex items-center justify-between text-xs font-mono">
+                <span class="text-gray-400">Want to save time? Auto-fetch details from a link instead:</span>
+                <button type="button" onclick="closeModal(); openFlashModal();" class="text-[#CDFF29] hover:underline font-bold uppercase tracking-wider flex items-center gap-1.5 cursor-pointer">
+                    <span>⚡ Switch to Flash Event</span>
+                    <span>&rarr;</span>
+                </button>
+            </div>
+
+            <!-- Modal Form Scrollable Body -->
+            <form id="event-form" class="p-6 overflow-y-auto flex-1 flex flex-col gap-6">
+                <input type="hidden" id="event-id">
+
+                <!-- Validation Errors Box -->
+                <div id="modal-error-box" class="hidden p-4 rounded-xl bg-red-950/80 border border-red-500 text-red-200 text-xs font-mono">
+                    <ul id="modal-error-list" class="list-disc pl-5 flex flex-col gap-1"></ul>
+                </div>
+
+                <!-- 1. Basic Details -->
+                <div class="flex flex-col gap-4">
+                    <h4 class="text-xs font-mono font-bold uppercase tracking-widest text-[#CDFF29] border-b border-gray-800 pb-2">
+                        1. Basic Details
+                    </h4>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div class="md:col-span-2 flex flex-col gap-1.5">
+                            <label class="text-[11px] font-mono uppercase tracking-wider text-gray-300">
+                                Event Title <span class="text-red-500">*</span>
+                            </label>
+                            <input type="text" id="field-title" class="form-input rounded-xl px-3.5 py-2.5 text-sm" placeholder="e.g. Devengers National Hackathon 2026" required>
+                        </div>
+                        <div class="flex flex-col gap-1.5">
+                            <label class="text-[11px] font-mono uppercase tracking-wider text-gray-300">
+                                Category <span class="text-red-500">*</span>
+                            </label>
+                            <select id="field-category" class="form-input rounded-xl px-3.5 py-2.5 text-sm" required>
+                                <option value="Hackathons">Hackathons</option>
+                                <option value="Quizzes">Quizzes</option>
+                                <option value="Internships">Internships</option>
+                                <option value="Jobs">Jobs</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="flex flex-col gap-1.5">
+                            <label class="text-[11px] font-mono uppercase tracking-wider text-gray-300">
+                                Organizer Name
+                            </label>
+                            <input type="text" id="field-organizer" class="form-input rounded-xl px-3.5 py-2.5 text-sm" placeholder="e.g. Devengers Tech Community">
+                        </div>
+                        <div class="flex flex-col gap-1.5">
+                            <label class="text-[11px] font-mono uppercase tracking-wider text-gray-300">
+                                Action Button Label
+                            </label>
+                            <input type="text" id="field-action-label" class="form-input rounded-xl px-3.5 py-2.5 text-sm" placeholder="e.g. Register Now, Apply for Internship">
+                        </div>
+                    </div>
+
+                    <!-- Job / Internship Specific Meta -->
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 p-3 rounded-xl bg-[#181818] border border-gray-800">
+                        <div class="flex flex-col gap-1.5">
+                            <label class="text-[11px] font-mono uppercase tracking-wider text-gray-300">
+                                Location
+                            </label>
+                            <input type="text" id="field-location" class="form-input rounded-xl px-3.5 py-2.5 text-sm" placeholder="e.g. (Remote) or Bengaluru, IN" value="(Remote)">
+                        </div>
+                        <div class="flex flex-col gap-1.5">
+                            <label class="text-[11px] font-mono uppercase tracking-wider text-gray-300">
+                                Job / Event Type
+                            </label>
+                            <select id="field-job-type" class="form-input rounded-xl px-3.5 py-2.5 text-sm">
+                                <option value="Full Time">Full Time</option>
+                                <option value="Part Time">Part Time</option>
+                                <option value="Contract">Contract</option>
+                                <option value="Internship">Internship</option>
+                                <option value="Freelance">Freelance</option>
+                            </select>
+                        </div>
+                        <div class="flex flex-col gap-1.5">
+                            <label class="text-[11px] font-mono uppercase tracking-wider text-gray-300">
+                                Experience Level
+                            </label>
+                            <select id="field-experience-level" class="form-input rounded-xl px-3.5 py-2.5 text-sm">
+                                <option value="Entry Level">Entry Level</option>
+                                <option value="Student / Fresher">Student / Fresher</option>
+                                <option value="Junior">Junior</option>
+                                <option value="Mid-Level">Mid-Level</option>
+                                <option value="Senior-Level">Senior-Level</option>
+                                <option value="Principal">Principal</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col gap-1.5">
+                        <label class="text-[11px] font-mono uppercase tracking-wider text-gray-300">
+                            Short Description <span class="text-red-500">*</span>
+                            <span class="text-gray-500 text-[10px] lowercase">(displays on card)</span>
+                        </label>
+                        <textarea id="field-short-desc" rows="2" class="form-input rounded-xl p-3 text-sm" placeholder="A concise 1-2 sentence overview of the event..." required></textarea>
+                    </div>
+
+                    <div class="flex flex-col gap-1.5">
+                        <label class="text-[11px] font-mono uppercase tracking-wider text-gray-300">
+                            Full Description <span class="text-gray-500 text-[10px] lowercase">(optional)</span>
+                        </label>
+                        <textarea id="field-full-desc" rows="3" class="form-input rounded-xl p-3 text-sm" placeholder="Detailed schedule, rules, guidelines, eligibility criteria..."></textarea>
+                    </div>
+                </div>
+
+                <!-- 2. Visual Media: Organization Logo & Event Banner -->
+                <div class="flex flex-col gap-6">
+                    <h4 class="text-xs font-mono font-bold uppercase tracking-widest text-[#CDFF29] border-b border-gray-800 pb-2 flex items-center justify-between">
+                        <span>2. Media Assets (Logo &amp; Banner)</span>
+                        <span class="text-[10px] text-gray-400 font-normal lowercase">distinct organization logo &amp; 16:9 banner</span>
+                    </h4>
+
+                    <!-- OPTION 1: ORGANIZATION / HOST LOGO -->
+                    <div class="p-5 rounded-2xl bg-[#181818] border border-gray-800 flex flex-col gap-4">
+                        <div class="flex items-start justify-between flex-wrap gap-2">
+                            <div>
+                                <h5 class="text-xs font-mono font-bold uppercase text-white flex items-center gap-2">
+                                    <span class="w-2 h-2 rounded-full bg-[#CDFF29]"></span> 1. Organization / Host Logo
+                                </h5>
+                                <p class="text-[11px] text-gray-400 mt-0.5">
+                                    Square icon shown in the event card header and jobs list logo column.
+                                </p>
+                            </div>
+                            <span class="px-2.5 py-1 rounded bg-black/60 border border-gray-700 text-[10px] font-mono text-[#CDFF29]">
+                                Recommended: 1:1 Square &bull; 400 &times; 400 px
+                            </span>
+                        </div>
+
+                        <div class="flex flex-col sm:flex-row items-center gap-5">
+                            <!-- Square Logo Preview -->
+                            <div class="w-20 h-20 rounded-2xl bg-black border-2 border-gray-700 flex items-center justify-center overflow-hidden shrink-0 shadow-inner p-2">
+                                <img id="org-logo-preview-img" src="Assest/devengers-logo.png" alt="Org Logo" class="w-full h-full object-contain">
+                            </div>
+
+                            <div class="flex-1 flex flex-col gap-2.5 w-full">
+                                <div class="flex flex-col gap-1">
+                                    <label class="text-[11px] font-mono uppercase tracking-wider text-gray-300">
+                                        Upload Organization Logo (PNG, JPG, WebP)
+                                    </label>
+                                    <input type="file" id="org-logo-uploader" accept="image/png, image/jpeg, image/webp"
+                                           class="text-xs text-gray-400 file:mr-3 file:py-1.5 file:px-3 file:rounded-full file:border-0 file:text-xs file:font-mono file:bg-gray-800 file:text-white hover:file:bg-gray-700 cursor-pointer">
+                                </div>
+
+                                <div class="flex items-center gap-2 flex-wrap">
+                                    <span class="text-[10px] font-mono text-gray-500 uppercase">Presets:</span>
+                                    <button type="button" data-logo="Assest/company-default-logo.svg" class="preset-logo-btn text-[10px] font-mono px-2 py-0.5 rounded bg-blue-500/10 text-blue-400 border border-blue-500/30 hover:bg-blue-500 hover:text-white transition-all">Company Default (Jobs)</button>
+                                    <button type="button" data-logo="Assest/unstop-logo.png" class="preset-logo-btn text-[10px] font-mono px-2 py-0.5 rounded bg-gray-800 hover:bg-gray-700 text-gray-300">Unstop</button>
+                                    <button type="button" data-logo="Assest/devengers-logo.png" class="preset-logo-btn text-[10px] font-mono px-2 py-0.5 rounded bg-[#CDFF29]/10 text-[#CDFF29] border border-[#CDFF29]/30 hover:bg-[#CDFF29] hover:text-black transition-all">Devengers (Events)</button>
+                                    <button type="button" data-logo="Assest/devfolio-logo.png" class="preset-logo-btn text-[10px] font-mono px-2 py-0.5 rounded bg-gray-800 hover:bg-gray-700 text-gray-300">Devfolio</button>
+                                    <button type="button" data-logo="Assest/webhurry-logo.png" class="preset-logo-btn text-[10px] font-mono px-2 py-0.5 rounded bg-gray-800 hover:bg-gray-700 text-gray-300">Webhurry</button>
+                                    <button type="button" data-logo="Assest/mlh-logo.png" class="preset-logo-btn text-[10px] font-mono px-2 py-0.5 rounded bg-gray-800 hover:bg-gray-700 text-gray-300">MLH</button>
+                                </div>
+
+                                <input type="hidden" id="field-org-logo" value="Assest/devengers-logo.png">
+                                <span id="org-logo-status-msg" class="text-[11px] font-mono text-green-400"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- OPTION 2: EVENT BANNER / THUMBNAIL -->
+                    <div class="p-5 rounded-2xl bg-[#181818] border border-gray-800 flex flex-col gap-4">
+                        <div class="flex items-start justify-between flex-wrap gap-2">
+                            <div>
+                                <h5 class="text-xs font-mono font-bold uppercase text-white flex items-center gap-2">
+                                    <span class="w-2 h-2 rounded-full bg-sky-400"></span> 2. Event Banner / Thumbnail
+                                </h5>
+                                <p class="text-[11px] text-gray-400 mt-0.5">
+                                    Full visual cover. Use 16:9 crop so it fully fills the banner space without empty black gaps.
+                                </p>
+                            </div>
+                            <span class="px-2.5 py-1 rounded bg-black/60 border border-gray-700 text-[10px] font-mono text-sky-400">
+                                Recommended: 16:9 Ratio &bull; 1200 &times; 675 px
+                            </span>
+                        </div>
+
+                        <!-- 16:9 Banner Preview Box -->
+                        <div class="w-full aspect-video rounded-xl bg-black border-2 border-gray-700 relative overflow-hidden flex items-center justify-center group shadow-md" style="aspect-ratio: 16 / 9;">
+                            <img id="thumbnail-preview-img" src="Assest/devengers-logo.png" alt="Banner Preview" class="w-full h-full object-cover">
+                            <div class="absolute bottom-2 left-2 bg-black/80 px-2.5 py-1 rounded-md text-[10px] font-mono text-gray-300 border border-gray-700 flex items-center gap-1.5 pointer-events-none">
+                                <span class="w-1.5 h-1.5 rounded-full bg-green-400"></span> Live Banner Preview (16:9)
+                            </div>
+                        </div>
+
+                        <!-- Banner Controls: Fit Mode & Crop Tool -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-1">
+                            <!-- Fit Mode -->
+                            <div class="flex flex-col gap-1.5">
+                                <label class="text-[11px] font-mono uppercase tracking-wider text-gray-300">
+                                    Banner Fill Mode
+                                </label>
+                                <div class="grid grid-cols-2 gap-2">
+                                    <label class="cursor-pointer">
+                                        <input type="radio" name="banner-fit-radio" id="banner-fit-cover" value="cover" class="peer hidden" checked onchange="handleBannerFitChange('cover')">
+                                        <div class="p-2.5 rounded-xl border border-gray-700 bg-black/40 peer-checked:border-[#CDFF29] peer-checked:bg-[#CDFF29]/10 text-center font-mono text-[11px] text-gray-300 font-bold transition-all">
+                                            Fully Fill Space
+                                        </div>
+                                    </label>
+                                    <label class="cursor-pointer">
+                                        <input type="radio" name="banner-fit-radio" id="banner-fit-contain" value="contain" class="peer hidden" onchange="handleBannerFitChange('contain')">
+                                        <div class="p-2.5 rounded-xl border border-gray-700 bg-black/40 peer-checked:border-sky-400 peer-checked:bg-sky-400/10 text-center font-mono text-[11px] text-gray-300 font-bold transition-all">
+                                            Fit / Contain
+                                        </div>
+                                    </label>
+                                </div>
+                                <input type="hidden" id="field-banner-fit" value="cover">
+                            </div>
+
+                            <!-- Interactive Crop Tool Trigger -->
+                            <div class="flex flex-col gap-1.5 justify-end">
+                                <button type="button" onclick="openCropModal()" class="w-full py-2.5 px-4 rounded-xl border-2 border-[#CDFF29] bg-[#CDFF29]/10 hover:bg-[#CDFF29] text-black hover:text-black font-mono text-xs font-black uppercase tracking-wider transition-all flex items-center justify-center gap-2 cursor-pointer shadow-brutal-sm">
+                                    <span>✂️ Crop &amp; Position to 16:9</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Upload File & Presets -->
+                        <div class="flex flex-col gap-3 pt-2 border-t border-gray-800">
+                            <div class="flex flex-col gap-1">
+                                <label class="text-[11px] font-mono uppercase tracking-wider text-gray-300">
+                                    Upload Banner File (PNG, JPG, WebP &bull; Max 5MB)
+                                </label>
+                                <input type="file" id="file-uploader" accept="image/png, image/jpeg, image/webp"
+                                       class="text-xs text-gray-400 file:mr-3 file:py-1.5 file:px-3 file:rounded-full file:border-0 file:text-xs file:font-mono file:bg-[#7B42F6] file:text-white hover:file:bg-[#905bf9] cursor-pointer">
+                            </div>
+
+                            <div class="flex items-center gap-2 flex-wrap">
+                                <span class="text-[10px] font-mono text-gray-500 uppercase">Preset Banners:</span>
+                                <button type="button" data-src="Assest/company-default-logo.svg" class="preset-img-btn text-[10px] font-mono px-2 py-0.5 rounded bg-blue-500/10 text-blue-400 border border-blue-500/30 hover:bg-blue-500 hover:text-white">Company Default</button>
+                                <button type="button" data-src="Assest/devengers-logo.png" class="preset-img-btn text-[10px] font-mono px-2 py-0.5 rounded bg-gray-800 hover:bg-gray-700 text-gray-300">Devengers Official</button>
+                                <button type="button" data-src="Assest/images Homepage/1.png" class="preset-img-btn text-[10px] font-mono px-2 py-0.5 rounded bg-gray-800 hover:bg-gray-700 text-gray-300">AI Hackathon</button>
+                                <button type="button" data-src="Assest/devfolio-logo.png" class="preset-img-btn text-[10px] font-mono px-2 py-0.5 rounded bg-gray-800 hover:bg-gray-700 text-gray-300">Devfolio Banner</button>
+                                <button type="button" data-src="Assest/webhurry-logo.png" class="preset-img-btn text-[10px] font-mono px-2 py-0.5 rounded bg-gray-800 hover:bg-gray-700 text-gray-300">Webhurry</button>
+                            </div>
+
+                            <input type="hidden" id="field-thumbnail" value="Assest/devengers-logo.png">
+                            <span id="upload-status-msg" class="text-[11px] font-mono text-green-400"></span>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- 3. Timeline & Deadlines -->
+                <div class="flex flex-col gap-4">
+                    <h4 class="text-xs font-mono font-bold uppercase tracking-widest text-[#CDFF29] border-b border-gray-800 pb-2">
+                        3. Timeline &amp; Deadlines
+                    </h4>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="flex flex-col gap-1.5">
+                            <label class="text-[11px] font-mono uppercase tracking-wider text-gray-300">
+                                Registration Opens <span class="text-gray-500 text-[10px] lowercase">(optional)</span>
+                            </label>
+                            <input type="datetime-local" id="field-reg-open" class="form-input rounded-xl px-3.5 py-2.5 text-sm">
+                        </div>
+                        <div class="flex flex-col gap-1.5">
+                            <label class="text-[11px] font-mono uppercase tracking-wider text-gray-300">
+                                Registration Deadline <span class="text-red-500">*</span>
+                            </label>
+                            <input type="datetime-local" id="field-reg-deadline" class="form-input rounded-xl px-3.5 py-2.5 text-sm" required>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="flex flex-col gap-1.5">
+                            <label class="text-[11px] font-mono uppercase tracking-wider text-gray-300">
+                                Event Starts <span class="text-gray-500 text-[10px] lowercase">(optional)</span>
+                            </label>
+                            <input type="datetime-local" id="field-event-start" class="form-input rounded-xl px-3.5 py-2.5 text-sm">
+                        </div>
+                        <div class="flex flex-col gap-1.5">
+                            <label class="text-[11px] font-mono uppercase tracking-wider text-gray-300">
+                                Event Ends <span class="text-gray-500 text-[10px] lowercase">(optional)</span>
+                            </label>
+                            <input type="datetime-local" id="field-event-end" class="form-input rounded-xl px-3.5 py-2.5 text-sm">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 4. Prize Pool & Fees -->
+                <div class="flex flex-col gap-4">
+                    <h4 class="text-xs font-mono font-bold uppercase tracking-widest text-[#CDFF29] border-b border-gray-800 pb-2">
+                        4. Prizes &amp; Pricing
+                    </h4>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div class="flex flex-col gap-1.5">
+                            <label class="text-[11px] font-mono uppercase tracking-wider text-gray-300">
+                                Prize Pool Amount
+                            </label>
+                            <input type="number" id="field-prize-amount" class="form-input rounded-xl px-3.5 py-2.5 text-sm" placeholder="e.g. 50000" min="0" step="any">
+                        </div>
+                        <div class="flex flex-col gap-1.5">
+                            <label class="text-[11px] font-mono uppercase tracking-wider text-gray-300">
+                                Currency
+                            </label>
+                            <select id="field-prize-currency" class="form-input rounded-xl px-3.5 py-2.5 text-sm">
+                                <option value="INR">INR (₹)</option>
+                                <option value="USD">USD ($)</option>
+                                <option value="EUR">EUR (€)</option>
+                            </select>
+                        </div>
+                        <div class="flex flex-col gap-1.5">
+                            <label class="text-[11px] font-mono uppercase tracking-wider text-gray-300">
+                                Registration Fee (0 = Free)
+                            </label>
+                            <input type="number" id="field-reg-fee" class="form-input rounded-xl px-3.5 py-2.5 text-sm" value="0" min="0" step="any">
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col gap-1.5">
+                        <label class="text-[11px] font-mono uppercase tracking-wider text-gray-300">
+                            Prize Description <span class="text-gray-500 text-[10px] lowercase">(optional)</span>
+                        </label>
+                        <input type="text" id="field-prize-desc" class="form-input rounded-xl px-3.5 py-2.5 text-sm" placeholder="e.g. ₹50,000 Cash Pool + Cloud Credits + Goodies">
+                    </div>
+                </div>
+
+                <!-- 5. Destination & Registration URL (Mandatory) -->
+                <div class="flex flex-col gap-4">
+                    <h4 class="text-xs font-mono font-bold uppercase tracking-widest text-[#CDFF29] border-b border-gray-800 pb-2">
+                        5. Registration Link (Mandatory Before Publication)
+                    </h4>
+
+                    <div class="flex flex-col gap-1.5">
+                        <label class="text-[11px] font-mono uppercase tracking-wider text-gray-300">
+                            Destination / External Registration URL <span class="text-red-500">*</span>
+                        </label>
+                        <input type="url" id="field-dest-url" class="form-input rounded-xl px-3.5 py-2.5 text-sm font-mono" placeholder="https://unstop.com/... or https://whatsapp.com/channel/..." required>
+                        <p class="text-[10px] font-mono text-gray-500">
+                            Students clicking "Register Now" on the public card will be sent directly to this URL in a new tab. Must start with http:// or https://.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 6. Publication Status -->
+                <div class="flex flex-col gap-4">
+                    <h4 class="text-xs font-mono font-bold uppercase tracking-widest text-[#CDFF29] border-b border-gray-800 pb-2">
+                        6. Publication Status
+                    </h4>
+
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+                        <label class="cursor-pointer">
+                            <input type="radio" name="modal-status" value="Draft" class="peer hidden" checked>
+                            <div class="p-3 rounded-xl border-2 border-gray-700 bg-[#1b1b1b] peer-checked:border-[#CDFF29] peer-checked:bg-[#CDFF29]/10 text-center font-mono text-xs uppercase font-bold transition-all">
+                                📝 Draft
+                            </div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="modal-status" value="Published" class="peer hidden">
+                            <div class="p-3 rounded-xl border-2 border-gray-700 bg-[#1b1b1b] peer-checked:border-green-400 peer-checked:bg-green-400/10 text-center font-mono text-xs uppercase font-bold transition-all">
+                                🚀 Published
+                            </div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="modal-status" value="Unpublished" class="peer hidden">
+                            <div class="p-3 rounded-xl border-2 border-gray-700 bg-[#1b1b1b] peer-checked:border-yellow-400 peer-checked:bg-yellow-400/10 text-center font-mono text-xs uppercase font-bold transition-all">
+                                ⏸ Unpublished
+                            </div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="modal-status" value="Archived" class="peer hidden">
+                            <div class="p-3 rounded-xl border-2 border-gray-700 bg-[#1b1b1b] peer-checked:border-red-400 peer-checked:bg-red-400/10 text-center font-mono text-xs uppercase font-bold transition-all">
+                                🗄 Archived
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Modal Actions -->
+                <div class="flex items-center justify-end gap-3 pt-4 border-t border-gray-800">
+                    <button type="button" id="modal-cancel-btn" class="px-6 py-2.5 rounded-full border border-gray-700 hover:border-gray-500 text-gray-300 font-mono text-xs uppercase font-bold cursor-pointer">
+                        Cancel
+                    </button>
+                    <button type="submit" id="modal-save-btn" class="bg-[#CDFF29] hover:bg-white text-black font-black uppercase text-xs tracking-wider px-8 py-3 rounded-full border-2 border-black shadow-brutal cursor-pointer">
+                        Save Event
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- INTERACTIVE 16:9 BANNER CROP MODAL -->
+    <div id="crop-modal" class="fixed inset-0 z-[60] bg-black/90 backdrop-blur-md hidden flex items-center justify-center p-4">
+        <div class="bg-[#181818] border-2 border-gray-700 rounded-3xl max-w-xl w-full p-6 flex flex-col gap-4 shadow-2xl">
+            <div class="flex items-center justify-between border-b border-gray-800 pb-3">
+                <div>
+                    <h3 class="text-sm font-bold uppercase tracking-wider text-white">16:9 Banner Crop &amp; Fill Tool</h3>
+                    <p class="text-[11px] text-gray-400">Drag and zoom to perfectly frame your banner so it fully fills the space.</p>
+                </div>
+                <button type="button" onclick="closeCropModal()" class="text-gray-400 hover:text-white text-2xl font-bold leading-none cursor-pointer">&times;</button>
+            </div>
+
+            <!-- 16:9 Viewport Canvas Container -->
+            <div class="relative w-full aspect-video bg-black rounded-2xl overflow-hidden border-2 border-[#CDFF29]/70 flex items-center justify-center cursor-grab active:cursor-grabbing select-none" id="crop-canvas-wrapper" style="aspect-ratio: 16 / 9;">
+                <canvas id="crop-canvas" width="1200" height="675" class="w-full h-full block"></canvas>
+                <div class="absolute inset-0 border-2 border-dashed border-white/40 pointer-events-none"></div>
+                <span class="absolute bottom-2 right-2 bg-black/80 text-[10px] font-mono text-[#CDFF29] px-2 py-0.5 rounded border border-gray-700">16:9 Ratio (1200 &times; 675)</span>
+            </div>
+
+            <!-- Controls: Zoom & Pan Hint -->
+            <div class="flex items-center justify-between gap-4 py-1 flex-wrap">
+                <div class="flex items-center gap-2 flex-1 min-w-[200px]">
+                    <span class="text-xs font-mono text-gray-400 uppercase">Zoom:</span>
+                    <input type="range" id="crop-zoom" min="0.5" max="3" step="0.02" value="1" class="flex-1 accent-[#CDFF29] cursor-pointer">
+                    <span id="crop-zoom-val" class="text-xs font-mono text-[#CDFF29] w-12 text-right">1.0x</span>
+                </div>
+                <div class="flex items-center gap-3">
+                    <button type="button" onclick="resetCropPosition()" class="text-[11px] font-mono text-gray-400 hover:text-white underline cursor-pointer">
+                        Reset Fit
+                    </button>
+                    <span class="text-[10px] font-mono text-gray-500">✋ Click &amp; drag to reposition</span>
+                </div>
+            </div>
+
+            <!-- Modal Actions -->
+            <div class="flex items-center justify-end gap-3 pt-3 border-t border-gray-800">
+                <button type="button" onclick="closeCropModal()" class="px-5 py-2.5 rounded-full border border-gray-700 text-gray-300 text-xs font-mono uppercase font-bold hover:bg-gray-800 cursor-pointer">
+                    Cancel
+                </button>
+                <button type="button" onclick="applyCanvasCrop()" id="crop-apply-btn" class="px-6 py-2.5 rounded-full bg-[#CDFF29] text-black text-xs font-mono font-black uppercase hover:bg-white transition-all shadow-brutal-sm cursor-pointer">
+                    Apply &amp; Fully Fill Banner
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- BROADCAST NOTIFICATIONS MODAL -->
+    <div id="notif-modal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-md hidden flex items-center justify-center p-4 overflow-y-auto">
+        <div class="bg-[#121216] border-2 border-[#7B42F6] rounded-3xl w-full max-w-2xl overflow-hidden shadow-2xl relative my-8">
+            <!-- Header -->
+            <div class="p-6 border-b border-gray-800 flex items-center justify-between bg-black/50">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-2xl bg-[#7B42F6]/20 border border-[#7B42F6]/40 flex items-center justify-center text-xl">
+                        📢
+                    </div>
+                    <div>
+                        <h2 class="text-xl font-black uppercase tracking-tight text-white">Broadcast Notification</h2>
+                        <p class="text-gray-400 text-xs font-mono">Push an important notification to all users across the website.</p>
+                    </div>
+                </div>
+                <button type="button" onclick="closeNotifModal()" class="text-gray-400 hover:text-white text-2xl font-black leading-none cursor-pointer">
+                    &times;
+                </button>
+            </div>
+
+            <!-- Body -->
+            <div class="p-6 flex flex-col gap-6">
+                <!-- Push Form -->
+                <form id="notif-broadcast-form" onsubmit="handlePushNotification(event)" class="flex flex-col gap-4">
+                    <div>
+                        <label class="block text-xs font-mono text-gray-400 uppercase tracking-widest mb-1.5 font-bold">
+                            Notification Title <span class="text-red-400">*</span>
+                        </label>
+                        <input type="text" id="notif-input-title" required placeholder="e.g. 🚀 Hackathon Registration is Live!"
+                               class="w-full bg-[#18181b] border border-gray-700 rounded-xl px-4 py-2.5 text-white text-sm outline-none focus:border-[#CDFF29] font-medium">
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-mono text-gray-400 uppercase tracking-widest mb-1.5 font-bold">
+                            Message Content <span class="text-red-400">*</span>
+                        </label>
+                        <textarea id="notif-input-message" required rows="3" placeholder="Brief, clear message that appears in the notification center..."
+                                  class="w-full bg-[#18181b] border border-gray-700 rounded-xl px-4 py-2.5 text-white text-sm outline-none focus:border-[#CDFF29] resize-none"></textarea>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-mono text-gray-400 uppercase tracking-widest mb-1.5 font-bold">
+                                Target Link URL (Optional)
+                            </label>
+                            <input type="text" id="notif-input-link" placeholder="events.html, campus.html, or https://..."
+                                   class="w-full bg-[#18181b] border border-gray-700 rounded-xl px-4 py-2.5 text-white text-sm outline-none focus:border-[#CDFF29]">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-mono text-gray-400 uppercase tracking-widest mb-1.5 font-bold">
+                                Notification Category
+                            </label>
+                            <select id="notif-input-type" class="w-full bg-[#18181b] border border-gray-700 rounded-xl px-4 py-2.5 text-white text-sm outline-none focus:border-[#CDFF29]">
+                                <option value="announcement">📢 Announcement / Alert</option>
+                                <option value="event">🎯 Event / Hackathon</option>
+                                <option value="system">🛡️ System Update</option>
+                                <option value="comment">💬 Community Alert</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center justify-end gap-3 pt-2">
+                        <button type="submit" id="btn-push-notif"
+                                class="bg-[#CDFF29] hover:bg-white text-black font-black uppercase text-xs md:text-sm tracking-wider px-7 py-3 rounded-full border-2 border-black shadow-brutal flex items-center gap-2 cursor-pointer transition-all">
+                            <span>🚀</span>
+                            <span>PUSH TO ALL USERS</span>
+                        </button>
+                    </div>
+                </form>
+
+                <!-- Active Broadcasts History -->
+                <div class="pt-4 border-t border-gray-800">
+                    <div class="flex items-center justify-between mb-3">
+                        <h3 class="text-xs font-mono font-bold text-gray-400 uppercase tracking-wider">Active Broadcasts</h3>
+                        <button type="button" onclick="loadBroadcastNotifications()" class="text-[11px] font-mono text-[#CDFF29] hover:underline cursor-pointer">
+                            ↻ Refresh
+                        </button>
+                    </div>
+                    <div id="notif-broadcast-list" class="flex flex-col gap-2 max-h-56 overflow-y-auto pr-1">
+                        <div class="text-gray-500 font-mono text-xs py-4 text-center">Loading broadcasts...</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SCRIPT LOGIC FOR ADMIN DASHBOARD -->
+    <script>
+        let allEvents = [];
+        let activeCategory = '';
+        let activeStatus = '';
+        let activeSearch = '';
+
+        // Authentication Guard
+        document.addEventListener('DOMContentLoaded', async () => {
+            const user = await window.DevengersAuth.requireAdmin();
+            if (!user) return; // will redirect to login.html
+
+            document.getElementById('admin-email-display').textContent = user.email;
+            document.getElementById('logout-btn').addEventListener('click', () => {
+                window.DevengersAuth.logout();
+            });
+
+            // Initialize Dashboard
+            loadEvents();
+            loadSyncStatus();
+            setupEventListeners();
+        });
+
+        async function loadEvents() {
+            try {
+                let url = '/api/admin/events?';
+                if (activeCategory) url += `category=${encodeURIComponent(activeCategory)}&`;
+                if (activeStatus) url += `status=${encodeURIComponent(activeStatus)}&`;
+                if (activeSearch) url += `search=${encodeURIComponent(activeSearch)}&`;
+
+                const res = await fetch(url);
+                const data = await res.json();
+
+                if (res.ok && data.success) {
+                    allEvents = data.events;
+                    updateStats(data.stats);
+                    renderEvents(allEvents);
+                } else {
+                    document.getElementById('events-container').innerHTML = `
+                        <div class="p-8 text-center text-red-400 font-mono bg-[#181818] rounded-2xl border border-red-500/30">
+                            Failed to load events: ${data.error || 'Server error'}
+                        </div>
+                    `;
+                }
+            } catch (err) {
+                document.getElementById('events-container').innerHTML = `
+                    <div class="p-8 text-center text-red-400 font-mono bg-[#181818] rounded-2xl border border-red-500/30">
+                        Connection error while fetching events.
+                    </div>
+                `;
+            }
+        }
+
+        function updateStats(stats) {
+            if (!stats) return;
+            document.getElementById('stat-total').textContent = stats.total || 0;
+            document.getElementById('stat-published').textContent = stats.published || 0;
+            document.getElementById('stat-drafts').textContent = (stats.drafts || 0) + (stats.unpublished || 0);
+            document.getElementById('stat-archived').textContent = stats.archived || 0;
+        }
+
+        function renderEvents(events) {
+            const container = document.getElementById('events-container');
+
+            if (!events || events.length === 0) {
+                container.innerHTML = `
+                    <div class="p-12 text-center text-gray-400 font-mono text-sm bg-[#181818] rounded-2xl border border-gray-800">
+                        <p class="text-xl mb-2 font-bold text-white">No Events Found</p>
+                        <p class="text-xs text-gray-500">No events matched the selected filter or none have been created yet.</p>
+                        <button onclick="openCreateModal()" class="mt-4 px-5 py-2 rounded-full bg-[#CDFF29] text-black font-bold uppercase text-xs font-mono shadow-brutal border-2 border-black cursor-pointer">
+                            + Create Event
+                        </button>
+                    </div>
+                `;
+                return;
+            }
+
+            container.innerHTML = events.map(evt => {
+                const now = new Date();
+                const deadline = new Date(evt.reg_deadline);
+                const isExpired = deadline < now;
+
+                // Category pill color
+                let catColor = 'bg-[#CDFF29] text-black';
+                if (evt.category === 'Quizzes') catColor = 'bg-[#7B42F6] text-white';
+                if (evt.category === 'Internships') catColor = 'bg-sky-400 text-black';
+                if (evt.category === 'Jobs') catColor = 'bg-emerald-400 text-black';
+
+                // Status pill
+                let statusBadge = '<span class="px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold uppercase bg-yellow-400/20 text-yellow-300 border border-yellow-400/40">Draft</span>';
+                if (evt.status === 'Published') {
+                    statusBadge = '<span class="px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold uppercase bg-green-400/20 text-green-300 border border-green-400/40">Published</span>';
+                } else if (evt.status === 'Archived') {
+                    statusBadge = '<span class="px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold uppercase bg-gray-700 text-gray-400 border border-gray-600">Archived</span>';
+                } else if (evt.status === 'Unpublished') {
+                    statusBadge = '<span class="px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold uppercase bg-orange-400/20 text-orange-300 border border-orange-400/40">Unpublished</span>';
+                }
+
+                // Company-safe logo renderer (Strictly never uses Devengers logo for Jobs/Internships)
+                function renderAdminLogo(e) {
+                    const isJobOrInternship = e.category === 'Jobs' || e.category === 'Internships';
+                    const org = (e.organizer || 'Company').trim();
+                    const initial = org ? org[0].toUpperCase() : 'C';
+
+                    if (isJobOrInternship) {
+                        let logoSrc = e.org_logo;
+                        if (!logoSrc || logoSrc.includes('devengers')) {
+                            logoSrc = (e.thumbnail && !e.thumbnail.includes('devengers')) ? e.thumbnail : '';
+                        }
+
+                        const colors = [
+                            'from-blue-600 to-indigo-900 border-blue-500/30',
+                            'from-emerald-600 to-teal-900 border-emerald-500/30',
+                            'from-purple-600 to-violet-900 border-purple-500/30',
+                            'from-amber-600 to-orange-900 border-amber-500/30',
+                            'from-rose-600 to-pink-900 border-rose-500/30',
+                            'from-cyan-600 to-blue-900 border-cyan-500/30'
+                        ];
+                        const colorIndex = (org.charCodeAt(0) || 0) % colors.length;
+                        const bgClass = colors[colorIndex];
+                        const fallbackTile = `<div class="w-full h-full rounded bg-gradient-to-br ${bgClass} border flex items-center justify-center text-white font-black text-sm select-none">${initial}</div>`;
+
+                        if (!logoSrc) {
+                            return fallbackTile;
+                        }
+
+                        return `<img src="${escapeHtml(logoSrc)}" alt="${escapeHtml(org)}" class="w-full h-full object-contain" onerror="this.onerror=null; this.parentElement.innerHTML=\`${fallbackTile}\`;">`;
+                    }
+
+                    const fallbackLogo = e.org_logo || e.thumbnail || 'Assest/devengers-logo.png';
+                    return `<img src="${escapeHtml(fallbackLogo)}" alt="${escapeHtml(e.title)}" class="w-full h-full object-contain" onerror="this.src='Assest/devengers-logo.png'">`;
+                }
+
+                const feeText = (!evt.reg_fee || evt.reg_fee === 0) ? 'Free' : `₹${evt.reg_fee}`;
+                const prizeText = evt.prize_amount ? `${evt.prize_currency === 'INR' ? '₹' : '$'}${Number(evt.prize_amount).toLocaleString()}` : (evt.prize_description || '—');
+
+                return `
+                    <div class="bg-[#181818] border-2 border-black rounded-2xl p-5 shadow-brutal flex flex-col md:flex-row items-start md:items-center justify-between gap-5 transition-all hover:border-gray-600">
+                        
+                        <!-- Left: Thumbnail & Details -->
+                        <div class="flex items-start gap-4 flex-1">
+                            <div class="w-20 h-16 md:w-24 md:h-20 rounded-xl bg-black border border-gray-700 shrink-0 overflow-hidden flex items-center justify-center p-1.5">
+                                ${renderAdminLogo(evt)}
+                            </div>
+
+                            <div class="flex flex-col gap-1">
+                                <div class="flex items-center gap-2 flex-wrap">
+                                    <span class="px-2 py-0.5 rounded text-[10px] font-mono font-bold uppercase ${catColor}">
+                                        ${evt.category}
+                                    </span>
+                                    ${statusBadge}
+                                    ${isExpired ? '<span class="px-2 py-0.5 rounded-full text-[10px] font-mono font-bold uppercase bg-red-950 text-red-300 border border-red-500/40">Deadline Passed</span>' : ''}
+                                </div>
+
+                                <h3 class="text-base md:text-lg font-bold text-white tracking-tight leading-snug">
+                                    ${escapeHtml(evt.title)}
+                                </h3>
+
+                                <p class="text-xs text-gray-400 line-clamp-1 max-w-xl">
+                                    ${escapeHtml(evt.short_description)}
+                                </p>
+
+                                <div class="flex items-center gap-4 text-[11px] font-mono text-gray-400 mt-1 flex-wrap">
+                                    <span>⏳ Deadline: <strong class="text-gray-200">${formatDate(evt.reg_deadline)}</strong></span>
+                                    <span>🏆 Prize: <strong class="text-[#CDFF29]">${escapeHtml(prizeText)}</strong></span>
+                                    <span>🎟 Fee: <strong class="text-gray-200">${feeText}</strong></span>
+                                    <span>🏢 ${escapeHtml(evt.organizer || 'Devengers')}</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Right: Actions -->
+                        <div class="flex items-center gap-2 w-full md:w-auto justify-end flex-wrap border-t md:border-t-0 border-gray-800 pt-3 md:pt-0">
+                            <!-- External Link Check -->
+                            <a href="${evt.destination_url}" target="_blank" rel="noopener noreferrer"
+                               class="p-2 rounded-lg bg-gray-800 hover:bg-gray-700 text-gray-300 hover:text-white transition-colors"
+                               title="Test External Destination URL">
+                                ↗
+                            </a>
+
+                            <!-- Toggle Publish / Unpublish -->
+                            <button onclick="togglePublish('${evt.id}', '${evt.status}')"
+                                    class="px-3 py-1.5 rounded-lg text-xs font-mono font-bold uppercase border transition-colors cursor-pointer ${
+                                        evt.status === 'Published'
+                                            ? 'bg-yellow-500/10 hover:bg-yellow-500/20 text-yellow-400 border-yellow-500/40'
+                                            : 'bg-green-500/10 hover:bg-green-500/20 text-green-400 border-green-500/40'
+                                    }">
+                                ${evt.status === 'Published' ? 'Unpublish' : 'Publish'}
+                            </button>
+
+                            <!-- Edit Button -->
+                            <button onclick="openEditModal('${evt.id}')"
+                                    class="px-3 py-1.5 rounded-lg text-xs font-mono font-bold uppercase bg-white/10 hover:bg-white text-white hover:text-black border border-white/20 transition-all cursor-pointer">
+                                Edit
+                            </button>
+
+                            <!-- Delete Button -->
+                            <button onclick="confirmDelete('${evt.id}', '${escapeHtml(evt.title)}')"
+                                    class="p-2 rounded-lg bg-red-950/40 hover:bg-red-900/60 text-red-400 hover:text-red-200 border border-red-500/30 transition-colors cursor-pointer"
+                                    title="Delete Event">
+                                🗑
+                            </button>
+                        </div>
+
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Setup filter & event listeners
+        function setupEventListeners() {
+            // Category Buttons
+            document.querySelectorAll('.cat-filter-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    document.querySelectorAll('.cat-filter-btn').forEach(b => {
+                        b.className = 'cat-filter-btn px-4 py-2 rounded-xl text-xs font-mono uppercase tracking-wider text-gray-300 hover:text-white bg-[#222] border border-gray-700';
+                    });
+                    btn.className = 'cat-filter-btn px-4 py-2 rounded-xl text-xs font-mono uppercase tracking-wider font-bold bg-[#CDFF29] text-black border border-black shadow-brutal-sm';
+                    activeCategory = btn.getAttribute('data-cat');
+                    loadEvents();
+                });
+            });
+
+            // Status Filter Dropdown
+            document.getElementById('status-filter-select').addEventListener('change', (e) => {
+                activeStatus = e.target.value;
+                loadEvents();
+            });
+
+            // Search with debounce
+            let debounceTimer;
+            document.getElementById('search-input').addEventListener('input', (e) => {
+                clearTimeout(debounceTimer);
+                debounceTimer = setTimeout(() => {
+                    activeSearch = e.target.value.trim();
+                    loadEvents();
+                }, 300);
+            });
+
+            // Modal Controls
+            document.getElementById('open-create-modal-btn').addEventListener('click', openCreateModal);
+            document.getElementById('close-modal-btn').addEventListener('click', closeModal);
+            document.getElementById('modal-cancel-btn').addEventListener('click', closeModal);
+
+            // Preset Logo Buttons
+            document.querySelectorAll('.preset-logo-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const src = btn.getAttribute('data-logo');
+                    document.getElementById('field-org-logo').value = src;
+                    document.getElementById('org-logo-preview-img').src = src;
+                    document.getElementById('org-logo-status-msg').textContent = 'Selected organization logo';
+                });
+            });
+
+            // Organization Logo Uploader
+            document.getElementById('org-logo-uploader').addEventListener('change', async (e) => {
+                const file = e.target.files[0];
+                if (!file) return;
+
+                const statusMsg = document.getElementById('org-logo-status-msg');
+                statusMsg.textContent = 'Uploading logo...';
+
+                const formData = new FormData();
+                formData.append('thumbnail', file);
+
+                try {
+                    const res = await fetch('/api/admin/upload', {
+                        method: 'POST',
+                        body: formData
+                    });
+                    const data = await res.json();
+                    if (res.ok && data.success) {
+                        document.getElementById('field-org-logo').value = data.url;
+                        document.getElementById('org-logo-preview-img').src = data.url;
+                        statusMsg.textContent = 'Organization logo uploaded!';
+                    } else {
+                        statusMsg.textContent = `Upload failed: ${data.error || 'Server error'}`;
+                    }
+                } catch (err) {
+                    statusMsg.textContent = 'Logo upload network error.';
+                }
+            });
+
+            // Preset Banner Image Buttons
+            document.querySelectorAll('.preset-img-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const src = btn.getAttribute('data-src');
+                    document.getElementById('field-thumbnail').value = src;
+                    document.getElementById('thumbnail-preview-img').src = src;
+                    document.getElementById('upload-status-msg').textContent = 'Selected preset banner';
+                });
+            });
+
+            // Banner File Uploader
+            document.getElementById('file-uploader').addEventListener('change', async (e) => {
+                const file = e.target.files[0];
+                if (!file) return;
+
+                const statusMsg = document.getElementById('upload-status-msg');
+                statusMsg.textContent = 'Uploading banner...';
+
+                const formData = new FormData();
+                formData.append('thumbnail', file);
+
+                try {
+                    const res = await fetch('/api/admin/upload', {
+                        method: 'POST',
+                        body: formData
+                    });
+                    const data = await res.json();
+                    if (res.ok && data.success) {
+                        document.getElementById('field-thumbnail').value = data.url;
+                        document.getElementById('thumbnail-preview-img').src = data.url;
+                        statusMsg.textContent = 'Banner uploaded! Click "Crop to 16:9" to adjust framing if desired.';
+                    } else {
+                        statusMsg.textContent = `Upload failed: ${data.error || 'Server error'}`;
+                    }
+                } catch (err) {
+                    statusMsg.textContent = 'Upload network error.';
+                }
+            });
+
+            // Initialize Crop Tool events
+            initCropEvents();
+
+            // Modal Form Submit
+            document.getElementById('event-form').addEventListener('submit', handleFormSubmit);
+        }
+
+        function openCreateModal() {
+            document.getElementById('modal-title').textContent = 'Create New Event';
+            document.getElementById('event-id').value = '';
+            document.getElementById('event-form').reset();
+            document.getElementById('modal-error-box').classList.add('hidden');
+            document.getElementById('upload-status-msg').textContent = '';
+            document.getElementById('org-logo-status-msg').textContent = '';
+
+            // Defaults: Category-aware logos
+            const isJobOrIntern = document.getElementById('field-category').value === 'Jobs' || document.getElementById('field-category').value === 'Internships';
+            const defaultLogo = isJobOrIntern ? 'Assest/company-default-logo.svg' : 'Assest/devengers-logo.png';
+            document.getElementById('field-org-logo').value = defaultLogo;
+            document.getElementById('org-logo-preview-img').src = defaultLogo;
+            document.getElementById('field-thumbnail').value = defaultLogo;
+            document.getElementById('thumbnail-preview-img').src = defaultLogo;
+            document.getElementById('thumbnail-preview-img').className = 'w-full h-full object-cover';
+            document.getElementById('banner-fit-cover').checked = true;
+            document.getElementById('field-banner-fit').value = 'cover';
+
+            document.getElementById('field-location').value = '(Remote)';
+            document.getElementById('field-job-type').value = 'Full Time';
+            document.getElementById('field-experience-level').value = 'Entry Level';
+
+            // Set default deadline 2 weeks in future
+            const now = new Date();
+            now.setDate(now.getDate() + 14);
+            document.getElementById('field-reg-deadline').value = now.toISOString().slice(0, 16);
+
+            document.getElementById('event-modal').classList.remove('hidden');
+        }
+
+        async function openEditModal(eventId) {
+            try {
+                const res = await fetch(`/api/admin/events/${eventId}`);
+                const data = await res.json();
+                if (!res.ok || !data.success) {
+                    alert('Could not fetch event details.');
+                    return;
+                }
+
+                const evt = data.event;
+                document.getElementById('modal-title').textContent = 'Edit Event';
+                document.getElementById('event-id').value = evt.id;
+                document.getElementById('field-title').value = evt.title || '';
+                document.getElementById('field-category').value = evt.category || 'Hackathons';
+                document.getElementById('field-organizer').value = evt.organizer || '';
+                document.getElementById('field-action-label').value = evt.action_label || 'Register Now';
+                document.getElementById('field-location').value = evt.location || '(Remote)';
+                document.getElementById('field-job-type').value = evt.job_type || 'Full Time';
+                document.getElementById('field-experience-level').value = evt.experience_level || 'Entry Level';
+                document.getElementById('field-short-desc').value = evt.short_description || '';
+                document.getElementById('field-full-desc').value = evt.full_description || '';
+
+                // Option 1: Org Logo (Strictly protect Jobs & Internships from Devengers community logo)
+                const isJobOrInternship = evt.category === 'Jobs' || evt.category === 'Internships';
+                let orgLogoSrc = evt.org_logo;
+                if (!orgLogoSrc || (isJobOrInternship && orgLogoSrc.includes('devengers'))) {
+                    orgLogoSrc = isJobOrInternship ? 'Assest/company-default-logo.svg' : 'Assest/devengers-logo.png';
+                }
+                document.getElementById('field-org-logo').value = orgLogoSrc;
+                document.getElementById('org-logo-preview-img').src = orgLogoSrc;
+                document.getElementById('org-logo-status-msg').textContent = '';
+
+                // Option 2: Banner & Fit
+                let bannerSrc = evt.thumbnail;
+                if (!bannerSrc || (isJobOrInternship && bannerSrc.includes('devengers'))) {
+                    bannerSrc = isJobOrInternship ? 'Assest/company-default-logo.svg' : 'Assest/devengers-logo.png';
+                }
+                const bannerFit = evt.banner_fit || 'cover';
+                document.getElementById('field-thumbnail').value = bannerSrc;
+                document.getElementById('thumbnail-preview-img').src = bannerSrc;
+                document.getElementById('field-banner-fit').value = bannerFit;
+                if (bannerFit === 'contain') {
+                    document.getElementById('banner-fit-contain').checked = true;
+                    document.getElementById('thumbnail-preview-img').className = 'w-full h-full object-contain p-2';
+                } else {
+                    document.getElementById('banner-fit-cover').checked = true;
+                    document.getElementById('thumbnail-preview-img').className = 'w-full h-full object-cover';
+                }
+                document.getElementById('upload-status-msg').textContent = '';
+
+                // Dates
+                document.getElementById('field-reg-open').value = evt.reg_open_date ? evt.reg_open_date.slice(0, 16) : '';
+                document.getElementById('field-reg-deadline').value = evt.reg_deadline ? evt.reg_deadline.slice(0, 16) : '';
+                document.getElementById('field-event-start').value = evt.event_start_date ? evt.event_start_date.slice(0, 16) : '';
+                document.getElementById('field-event-end').value = evt.event_end_date ? evt.event_end_date.slice(0, 16) : '';
+
+                // Prizes & Fees
+                document.getElementById('field-prize-amount').value = evt.prize_amount || '';
+                document.getElementById('field-prize-currency').value = evt.prize_currency || 'INR';
+                document.getElementById('field-prize-desc').value = evt.prize_description || '';
+                document.getElementById('field-reg-fee').value = evt.reg_fee !== null ? evt.reg_fee : 0;
+
+                // Destination
+                document.getElementById('field-dest-url').value = evt.destination_url || '';
+
+                // Status Radio
+                const statusRadio = document.querySelector(`input[name="modal-status"][value="${evt.status}"]`);
+                if (statusRadio) statusRadio.checked = true;
+
+                document.getElementById('modal-error-box').classList.add('hidden');
+                document.getElementById('event-modal').classList.remove('hidden');
+            } catch (e) {
+                alert('Network error loading event for editing.');
+            }
+        }
+
+        function closeModal() {
+            document.getElementById('event-modal').classList.add('hidden');
+        }
+
+        // ==========================================
+        // BROADCAST NOTIFICATIONS MANAGEMENT LOGIC
+        // ==========================================
+        function openNotifModal() {
+            document.getElementById('notif-modal').classList.remove('hidden');
+            loadBroadcastNotifications();
+        }
+
+        function closeNotifModal() {
+            document.getElementById('notif-modal').classList.add('hidden');
+        }
+
+        async function loadBroadcastNotifications() {
+            const listEl = document.getElementById('notif-broadcast-list');
+            listEl.innerHTML = '<div class="text-gray-500 font-mono text-xs py-3 text-center">Fetching broadcasts...</div>';
+            try {
+                const res = await fetch('/api/admin/notifications');
+                const data = await res.json();
+                if (res.ok && data.success) {
+                    const items = data.notifications || [];
+                    if (items.length === 0) {
+                        listEl.innerHTML = '<div class="text-gray-500 font-mono text-xs py-4 text-center">No active broadcasts found. Push one above!</div>';
+                        return;
+                    }
+                    listEl.innerHTML = items.map(n => `
+                        <div class="p-3 bg-black/40 border border-gray-800 rounded-xl flex items-start justify-between gap-3">
+                            <div class="flex items-start gap-2.5 min-w-0">
+                                <span class="text-base shrink-0 mt-0.5">${n.type === 'event' ? '🎯' : (n.type === 'comment' ? '💬' : '📢')}</span>
+                                <div class="min-w-0">
+                                    <div class="flex items-center gap-2">
+                                        <h4 class="text-xs font-bold text-white font-mono truncate">${escapeHtml(n.title)}</h4>
+                                        <span class="text-[9px] font-mono text-gray-500">${new Date(n.created_at).toLocaleDateString()}</span>
+                                    </div>
+                                    <p class="text-[11px] text-gray-400 font-mono mt-0.5 line-clamp-1">${escapeHtml(n.message)}</p>
+                                    ${n.link_url ? `<a href="${escapeHtml(n.link_url)}" target="_blank" class="text-[10px] text-[#CDFF29] hover:underline font-mono inline-block mt-0.5">${escapeHtml(n.link_url)}</a>` : ''}
+                                </div>
+                            </div>
+                            <button type="button" onclick="deleteBroadcastNotification('${n.id}')"
+                                    class="text-red-400 hover:text-red-200 text-xs font-mono px-2 py-1 rounded bg-red-950/30 hover:bg-red-900/50 border border-red-800/40 shrink-0 cursor-pointer"
+                                    title="Revoke / Delete Broadcast">
+                                🗑️ Delete
+                            </button>
+                        </div>
+                    `).join('');
+                } else {
+                    listEl.innerHTML = '<div class="text-red-400 font-mono text-xs py-3 text-center">Failed to load broadcasts.</div>';
+                }
+            } catch (e) {
+                listEl.innerHTML = `<div class="text-red-400 font-mono text-xs py-3 text-center">Error: ${e.message}</div>`;
+            }
+        }
+
+        async function handlePushNotification(e) {
+            e.preventDefault();
+            const btn = document.getElementById('btn-push-notif');
+            const origHtml = btn.innerHTML;
+            btn.disabled = true;
+            btn.innerHTML = '<span>Pushing...</span>';
+
+            const title = document.getElementById('notif-input-title').value.trim();
+            const message = document.getElementById('notif-input-message').value.trim();
+            const link_url = document.getElementById('notif-input-link').value.trim();
+            const type = document.getElementById('notif-input-type').value;
+
+            try {
+                const res = await fetch('/api/admin/notifications/push', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ title, message, link_url, type })
+                });
+                const data = await res.json();
+                if (res.ok && data.success) {
+                    alert('🎉 Notification broadcast pushed successfully to all users!');
+                    document.getElementById('notif-broadcast-form').reset();
+                    loadBroadcastNotifications();
+                } else {
+                    alert('Error: ' + (data.error || 'Failed to push notification'));
+                }
+            } catch (err) {
+                alert('Network error pushing notification: ' + err.message);
+            } finally {
+                btn.disabled = false;
+                btn.innerHTML = origHtml;
+            }
+        }
+
+        async function deleteBroadcastNotification(id) {
+            if (!confirm('Are you sure you want to delete this broadcast notification?')) return;
+            try {
+                const res = await fetch(`/api/admin/notifications/delete/${id}`, { method: 'POST' });
+                const data = await res.json();
+                if (res.ok && data.success) {
+                    loadBroadcastNotifications();
+                } else {
+                    alert('Failed to delete notification');
+                }
+            } catch (err) {
+                alert('Error deleting notification: ' + err.message);
+            }
+        }
+
+        // ==========================================
+        // OPTION 2: FLASH EVENT (AUTO-IMPORTER LOGIC)
+        // ==========================================
+        let activeFlashCategory = 'Hackathons';
+        let currentFlashData = null;
+
+        function openFlashModal() {
+            document.getElementById('flash-modal').classList.remove('hidden');
+            document.getElementById('flash-url-input').value = '';
+            document.getElementById('flash-error-box').classList.add('hidden');
+            document.getElementById('flash-preview-section').classList.add('hidden');
+            document.getElementById('flash-publish-btn').classList.add('hidden');
+            document.getElementById('flash-draft-btn').classList.add('hidden');
+            document.getElementById('flash-manual-switch-btn').classList.add('hidden');
+            currentFlashData = null;
+            selectFlashCategory('Hackathons');
+        }
+
+        function closeFlashModal() {
+            document.getElementById('flash-modal').classList.add('hidden');
+        }
+
+        function selectFlashCategory(cat) {
+            activeFlashCategory = cat;
+            const hackBtn = document.getElementById('flash-type-hackathon');
+            const quizBtn = document.getElementById('flash-type-quiz');
+
+            if (cat === 'Hackathons') {
+                hackBtn.className = 'flash-type-card p-4 rounded-2xl border-2 border-[#CDFF29] bg-[#CDFF29]/10 text-left cursor-pointer transition-all flex items-center gap-3.5 shadow-sm';
+                quizBtn.className = 'flash-type-card p-4 rounded-2xl border-2 border-gray-800 bg-[#181818] text-left cursor-pointer transition-all flex items-center gap-3.5 hover:border-gray-700';
+            } else {
+                quizBtn.className = 'flash-type-card p-4 rounded-2xl border-2 border-[#CDFF29] bg-[#CDFF29]/10 text-left cursor-pointer transition-all flex items-center gap-3.5 shadow-sm';
+                hackBtn.className = 'flash-type-card p-4 rounded-2xl border-2 border-gray-800 bg-[#181818] text-left cursor-pointer transition-all flex items-center gap-3.5 hover:border-gray-700';
+            }
+
+            if (currentFlashData) {
+                currentFlashData.category = cat;
+                document.getElementById('flash-preview-cat-badge').textContent = cat === 'Hackathons' ? 'HACKATHON' : 'QUIZ';
+            }
+        }
+
+        async function runFlashFetch() {
+            const urlInput = document.getElementById('flash-url-input');
+            const errorBox = document.getElementById('flash-error-box');
+            const fetchBtn = document.getElementById('flash-fetch-btn');
+            const spinner = document.getElementById('flash-fetch-spinner');
+            const btnText = document.getElementById('flash-fetch-text');
+
+            const url = urlInput.value.trim();
+            if (!url) {
+                errorBox.textContent = 'Please paste a valid event link (e.g. Unstop, Devfolio, MLH, Luma).';
+                errorBox.classList.remove('hidden');
+                return;
+            }
+
+            errorBox.classList.add('hidden');
+            fetchBtn.disabled = true;
+            spinner.classList.remove('hidden');
+            btnText.textContent = 'Auto-Extracting...';
+
+            try {
+                const res = await fetch('/api/admin/events/flash-fetch', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ url: url, category: activeFlashCategory })
+                });
+
+                const data = await res.json();
+                if (res.ok && data.success && data.event) {
+                    currentFlashData = data.event;
+                    renderFlashPreview(currentFlashData);
+                } else {
+                    errorBox.textContent = data.error || 'Could not auto-extract details from this link. Please check URL or use manual entry.';
+                    errorBox.classList.remove('hidden');
+                }
+            } catch (err) {
+                errorBox.textContent = 'Network error while fetching event link. Please verify server is running.';
+                errorBox.classList.remove('hidden');
+            } finally {
+                fetchBtn.disabled = false;
+                spinner.classList.add('hidden');
+                btnText.textContent = '⚡ Auto-Fetch & Crop';
+            }
+        }
+
+        function renderFlashPreview(evt) {
+            document.getElementById('flash-preview-section').classList.remove('hidden');
+            document.getElementById('flash-publish-btn').classList.remove('hidden');
+            document.getElementById('flash-draft-btn').classList.remove('hidden');
+            document.getElementById('flash-manual-switch-btn').classList.remove('hidden');
+
+            // Banner
+            const bannerImg = document.getElementById('flash-preview-banner');
+            bannerImg.src = evt.thumbnail;
+            bannerImg.className = evt.banner_fit === 'contain' ? 'w-full h-full object-contain' : 'w-full h-full object-cover';
+
+            // Crop Mode & Fit
+            setFlashBannerFit(evt.banner_fit || 'cover');
+
+            // Logo & Org
+            document.getElementById('flash-preview-logo').src = evt.org_logo;
+            document.getElementById('flash-edit-org').value = evt.organizer || '';
+
+            // Title
+            document.getElementById('flash-edit-title').value = evt.title || '';
+
+            // Category
+            document.getElementById('flash-preview-cat-badge').textContent = evt.category === 'Hackathons' ? 'HACKATHON' : 'QUIZ';
+
+            // Prize
+            document.getElementById('flash-edit-prize').value = evt.prize_description || '';
+
+            // Deadline
+            if (evt.reg_deadline) {
+                document.getElementById('flash-edit-deadline').value = evt.reg_deadline.slice(0, 16);
+            }
+
+            // Tags & Description
+            document.getElementById('flash-edit-tags').value = evt.tags || '';
+            renderFlashTagsChips();
+            document.getElementById('flash-edit-desc').value = evt.short_description || '';
+
+            // Destination
+            const destLink = document.getElementById('flash-preview-dest-link');
+            destLink.href = evt.destination_url;
+            destLink.textContent = evt.destination_url;
+
+            // Action label
+            document.getElementById('flash-edit-action').value = evt.action_label || 'Register Now';
+        }
+
+        function renderFlashTagsChips() {
+            const container = document.getElementById('flash-tags-preview');
+            const inputEl = document.getElementById('flash-edit-tags');
+            if (!container || !inputEl) return;
+            const tags = inputEl.value.split(',').map(t => t.trim()).filter(Boolean);
+            if (tags.length === 0) {
+                container.innerHTML = '<span class="text-[10px] font-mono text-gray-500 italic">No tags added yet</span>';
+                return;
+            }
+            container.innerHTML = tags.map(t => `
+                <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold bg-[#CDFF29]/15 text-[#CDFF29] border border-[#CDFF29]/30">
+                    #${escapeHtml(t)}
+                </span>
+            `).join('');
+        }
+
+        function setFlashBannerFit(fit) {
+            if (!currentFlashData) return;
+            currentFlashData.banner_fit = fit;
+            const bannerImg = document.getElementById('flash-preview-banner');
+            const badge = document.getElementById('flash-crop-badge');
+            const coverBtn = document.getElementById('flash-fit-cover-btn');
+            const containBtn = document.getElementById('flash-fit-contain-btn');
+
+            if (fit === 'cover') {
+                bannerImg.className = 'w-full h-full object-cover';
+                badge.textContent = '16:9 CROP: COVER';
+                coverBtn.className = 'px-2 py-0.5 rounded bg-[#CDFF29] text-black font-bold text-[9px]';
+                containBtn.className = 'px-2 py-0.5 rounded bg-gray-800 text-gray-300 font-bold text-[9px]';
+            } else {
+                bannerImg.className = 'w-full h-full object-contain';
+                badge.textContent = 'FIT: CONTAIN';
+                containBtn.className = 'px-2 py-0.5 rounded bg-[#CDFF29] text-black font-bold text-[9px]';
+                coverBtn.className = 'px-2 py-0.5 rounded bg-gray-800 text-gray-300 font-bold text-[9px]';
+            }
+        }
+
+        async function submitFlashEvent(status) {
+            if (!currentFlashData) return;
+
+            // Sync user inline adjustments
+            currentFlashData.title = document.getElementById('flash-edit-title').value.trim() || currentFlashData.title;
+            currentFlashData.organizer = document.getElementById('flash-edit-org').value.trim() || currentFlashData.organizer;
+            currentFlashData.prize_description = document.getElementById('flash-edit-prize').value.trim() || currentFlashData.prize_description;
+            currentFlashData.tags = document.getElementById('flash-edit-tags').value.trim();
+            currentFlashData.short_description = document.getElementById('flash-edit-desc').value.trim() || currentFlashData.short_description;
+            currentFlashData.action_label = document.getElementById('flash-edit-action').value.trim() || currentFlashData.action_label;
+            const dlVal = document.getElementById('flash-edit-deadline').value;
+            if (dlVal) {
+                currentFlashData.reg_deadline = new Date(dlVal).toISOString();
+            }
+            currentFlashData.status = status;
+
+            const publishBtn = document.getElementById('flash-publish-btn');
+            publishBtn.disabled = true;
+
+            try {
+                const res = await fetch('/api/admin/events', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(currentFlashData)
+                });
+                const data = await res.json();
+                if (res.ok && data.success) {
+                    alert(`✅ Flash Event ${status === 'Published' ? 'Published' : 'Saved as Draft'} Successfully!\nEvent: "${data.event.title}"`);
+                    closeFlashModal();
+                    loadEvents();
+                } else {
+                    alert(`Error creating event: ${data.errors ? data.errors.join('\n') : (data.error || 'Server error')}`);
+                }
+            } catch (err) {
+                alert('Network error while saving Flash Event.');
+            } finally {
+                publishBtn.disabled = false;
+            }
+        }
+
+        function transferFlashToManualForm() {
+            if (!currentFlashData) return;
+            closeFlashModal();
+            openCreateModal();
+
+            // Populate manual modal fields
+            document.getElementById('field-title').value = document.getElementById('flash-edit-title').value || currentFlashData.title;
+            document.getElementById('field-category').value = currentFlashData.category || activeFlashCategory;
+            document.getElementById('field-organizer').value = document.getElementById('flash-edit-org').value || currentFlashData.organizer;
+            document.getElementById('field-short-desc').value = currentFlashData.short_description || '';
+            document.getElementById('field-full-desc').value = currentFlashData.full_description || '';
+            document.getElementById('field-dest-url').value = currentFlashData.destination_url || '';
+            document.getElementById('field-action-label').value = document.getElementById('flash-edit-action').value || currentFlashData.action_label;
+            document.getElementById('field-prize-desc').value = document.getElementById('flash-edit-prize').value || currentFlashData.prize_description;
+            document.getElementById('field-prize-amount').value = currentFlashData.prize_amount || '';
+
+            // Logo & Banner
+            document.getElementById('field-org-logo').value = currentFlashData.org_logo || '';
+            document.getElementById('org-logo-preview-img').src = currentFlashData.org_logo || 'Assest/devengers-logo.png';
+            document.getElementById('field-thumbnail').value = currentFlashData.thumbnail || '';
+            document.getElementById('thumbnail-preview-img').src = currentFlashData.thumbnail || 'Assest/devengers-logo.png';
+
+            const fit = currentFlashData.banner_fit || 'cover';
+            document.getElementById('field-banner-fit').value = fit;
+            if (fit === 'cover') {
+                document.getElementById('banner-fit-cover').checked = true;
+                document.getElementById('thumbnail-preview-img').className = 'w-full h-full object-cover';
+            } else {
+                document.getElementById('banner-fit-contain').checked = true;
+                document.getElementById('thumbnail-preview-img').className = 'w-full h-full object-contain';
+            }
+
+            const dlVal = document.getElementById('flash-edit-deadline').value;
+            if (dlVal) {
+                document.getElementById('field-reg-deadline').value = dlVal;
+            }
+        }
+
+        async function handleFormSubmit(e) {
+            e.preventDefault();
+            const errorBox = document.getElementById('modal-error-box');
+            const errorList = document.getElementById('modal-error-list');
+            const saveBtn = document.getElementById('modal-save-btn');
+
+            errorBox.classList.add('hidden');
+            errorList.innerHTML = '';
+
+            const eventId = document.getElementById('event-id').value;
+            const isEdit = Boolean(eventId);
+            const categoryVal = document.getElementById('field-category').value;
+            const isJobOrIntern = categoryVal === 'Jobs' || categoryVal === 'Internships';
+
+            let finalOrgLogo = document.getElementById('field-org-logo').value.trim();
+            if (!finalOrgLogo || (isJobOrIntern && finalOrgLogo.includes('devengers'))) {
+                finalOrgLogo = isJobOrIntern ? 'Assest/company-default-logo.svg' : 'Assest/devengers-logo.png';
+            }
+
+            let finalThumbnail = document.getElementById('field-thumbnail').value.trim();
+            if (!finalThumbnail || (isJobOrIntern && finalThumbnail.includes('devengers'))) {
+                finalThumbnail = isJobOrIntern ? 'Assest/company-default-logo.svg' : 'Assest/devengers-logo.png';
+            }
+
+            const payload = {
+                title: document.getElementById('field-title').value.trim(),
+                category: categoryVal,
+                organizer: document.getElementById('field-organizer').value.trim(),
+                action_label: document.getElementById('field-action-label').value.trim() || 'Register Now',
+                location: document.getElementById('field-location').value.trim() || '(Remote)',
+                job_type: document.getElementById('field-job-type').value,
+                experience_level: document.getElementById('field-experience-level').value,
+                org_logo: finalOrgLogo,
+                thumbnail: finalThumbnail,
+                banner_fit: document.getElementById('field-banner-fit').value || 'cover',
+                short_description: document.getElementById('field-short-desc').value.trim(),
+                full_description: document.getElementById('field-full-desc').value.trim(),
+                reg_open_date: document.getElementById('field-reg-open').value ? new Date(document.getElementById('field-reg-open').value).toISOString() : null,
+                reg_deadline: document.getElementById('field-reg-deadline').value ? new Date(document.getElementById('field-reg-deadline').value).toISOString() : '',
+                event_start_date: document.getElementById('field-event-start').value ? new Date(document.getElementById('field-event-start').value).toISOString() : null,
+                event_end_date: document.getElementById('field-event-end').value ? new Date(document.getElementById('field-event-end').value).toISOString() : null,
+                prize_amount: document.getElementById('field-prize-amount').value ? parseFloat(document.getElementById('field-prize-amount').value) : null,
+                prize_currency: document.getElementById('field-prize-currency').value,
+                prize_description: document.getElementById('field-prize-desc').value.trim(),
+                reg_fee: parseFloat(document.getElementById('field-reg-fee').value || 0),
+                destination_url: document.getElementById('field-dest-url').value.trim(),
+                status: document.querySelector('input[name="modal-status"]:checked').value
+            };
+
+            saveBtn.disabled = true;
+            saveBtn.textContent = 'SAVING...';
+
+            try {
+                const url = isEdit ? `/api/admin/events/${eventId}` : '/api/admin/events';
+                const method = isEdit ? 'PUT' : 'POST';
+
+                const res = await fetch(url, {
+                    method: method,
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                const data = await res.json();
+
+                if (res.ok && data.success) {
+                    closeModal();
+                    loadEvents();
+                } else {
+                    const errs = data.errors || [data.error || 'Failed to save event.'];
+                    errorList.innerHTML = errs.map(err => `<li>${escapeHtml(err)}</li>`).join('');
+                    errorBox.classList.remove('hidden');
+                }
+            } catch (err) {
+                errorList.innerHTML = '<li>Network error while saving.</li>';
+                errorBox.classList.remove('hidden');
+            } finally {
+                saveBtn.disabled = false;
+                saveBtn.textContent = 'Save Event';
+            }
+        }
+
+        async function togglePublish(eventId, currentStatus) {
+            const newStatus = (currentStatus === 'Published') ? 'Unpublished' : 'Published';
+            try {
+                const res = await fetch(`/api/admin/events/${eventId}/status`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ status: newStatus })
+                });
+                const data = await res.json();
+                if (res.ok && data.success) {
+                    loadEvents();
+                } else {
+                    alert(`Could not update status: ${data.error || 'Server error'}`);
+                }
+            } catch (e) {
+                alert('Network error while toggling status.');
+            }
+        }
+
+        async function confirmDelete(eventId, eventTitle) {
+            if (!confirm(`Are you sure you want to permanently delete "${eventTitle}"?`)) {
+                return;
+            }
+            try {
+                const res = await fetch(`/api/admin/events/${eventId}`, { method: 'DELETE' });
+                const data = await res.json();
+                if (res.ok && data.success) {
+                    loadEvents();
+                } else {
+                    alert(`Delete failed: ${data.error || 'Server error'}`);
+                }
+            } catch (e) {
+                alert('Network error while deleting event.');
+            }
+        }
+
+        function formatDate(dateStr) {
+            if (!dateStr) return '—';
+            try {
+                const d = new Date(dateStr);
+                return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric', hour: '2-digit', minute: '2-digit' });
+            } catch (e) {
+                return dateStr;
+            }
+        }
+
+        // Banner Fill Mode Handler
+        function handleBannerFitChange(mode) {
+            const fitInput = document.getElementById('field-banner-fit');
+            fitInput.value = mode;
+            const preview = document.getElementById('thumbnail-preview-img');
+            if (mode === 'contain') {
+                preview.className = 'w-full h-full object-contain p-2';
+            } else {
+                preview.className = 'w-full h-full object-cover';
+            }
+        }
+
+        // 16:9 Banner Interactive Crop Tool
+        let cropImg = new Image();
+        let cropScale = 1;
+        let cropPanX = 0;
+        let cropPanY = 0;
+        let isDragging = false;
+        let dragStartX = 0;
+        let dragStartY = 0;
+        let baseCoverScale = 1;
+
+        function resetCropPosition() {
+            const canvas = document.getElementById('crop-canvas');
+            if (!cropImg.naturalWidth || !cropImg.naturalHeight) return;
+
+            // Calculate base scale so image covers 1200x675 canvas
+            baseCoverScale = Math.max(canvas.width / cropImg.naturalWidth, canvas.height / cropImg.naturalHeight);
+            cropScale = 1;
+            document.getElementById('crop-zoom').value = '1';
+            const valEl = document.getElementById('crop-zoom-val');
+            if (valEl) valEl.textContent = '1.0x';
+
+            const drawW = cropImg.naturalWidth * baseCoverScale * cropScale;
+            const drawH = cropImg.naturalHeight * baseCoverScale * cropScale;
+            cropPanX = (canvas.width - drawW) / 2;
+            cropPanY = (canvas.height - drawH) / 2;
+
+            drawCropCanvas();
+        }
+
+        function openCropModal() {
+            const currentSrc = document.getElementById('field-thumbnail').value || 'Assest/devengers-logo.png';
+            cropImg = new Image();
+            cropImg.crossOrigin = 'anonymous';
+            cropImg.onload = () => {
+                resetCropPosition();
+                document.getElementById('crop-modal').classList.remove('hidden');
+            };
+            cropImg.onerror = () => {
+                alert('Could not load image into crop editor. Please make sure image URL is valid or upload an image file.');
+            };
+            cropImg.src = currentSrc;
+        }
+
+        function closeCropModal() {
+            document.getElementById('crop-modal').classList.add('hidden');
+        }
+
+        function drawCropCanvas() {
+            const canvas = document.getElementById('crop-canvas');
+            const ctx = canvas.getContext('2d');
+            ctx.fillStyle = '#0a0a0a';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            if (!cropImg.complete || cropImg.naturalWidth === 0) return;
+
+            const drawW = cropImg.naturalWidth * baseCoverScale * cropScale;
+            const drawH = cropImg.naturalHeight * baseCoverScale * cropScale;
+
+            ctx.drawImage(cropImg, cropPanX, cropPanY, drawW, drawH);
+        }
+
+        function initCropEvents() {
+            const wrapper = document.getElementById('crop-canvas-wrapper');
+            const canvas = document.getElementById('crop-canvas');
+            const zoomSlider = document.getElementById('crop-zoom');
+
+            zoomSlider.addEventListener('input', (e) => {
+                const prevScale = cropScale;
+                cropScale = parseFloat(e.target.value);
+                const valEl = document.getElementById('crop-zoom-val');
+                if (valEl) valEl.textContent = `${cropScale.toFixed(2)}x`;
+
+                const cx = canvas.width / 2;
+                const cy = canvas.height / 2;
+                cropPanX = cx - (cx - cropPanX) * (cropScale / prevScale);
+                cropPanY = cy - (cy - cropPanY) * (cropScale / prevScale);
+                drawCropCanvas();
+            });
+
+            // Wheel zoom
+            wrapper.addEventListener('wheel', (e) => {
+                e.preventDefault();
+                const delta = e.deltaY < 0 ? 0.05 : -0.05;
+                const newScale = Math.min(3, Math.max(0.5, cropScale + delta));
+                if (newScale !== cropScale) {
+                    const prevScale = cropScale;
+                    cropScale = newScale;
+                    zoomSlider.value = cropScale.toFixed(2);
+                    const valEl = document.getElementById('crop-zoom-val');
+                    if (valEl) valEl.textContent = `${cropScale.toFixed(2)}x`;
+
+                    const rect = canvas.getBoundingClientRect();
+                    const scaleFactor = canvas.width / rect.width;
+                    const mx = (e.clientX - rect.left) * scaleFactor;
+                    const my = (e.clientY - rect.top) * scaleFactor;
+
+                    cropPanX = mx - (mx - cropPanX) * (cropScale / prevScale);
+                    cropPanY = my - (my - cropPanY) * (cropScale / prevScale);
+                    drawCropCanvas();
+                }
+            }, { passive: false });
+
+            const onStart = (clientX, clientY) => {
+                isDragging = true;
+                dragStartX = clientX;
+                dragStartY = clientY;
+            };
+
+            const onMove = (clientX, clientY) => {
+                if (!isDragging) return;
+                const dx = clientX - dragStartX;
+                const dy = clientY - dragStartY;
+                dragStartX = clientX;
+                dragStartY = clientY;
+
+                const rect = canvas.getBoundingClientRect();
+                const scaleFactor = canvas.width / rect.width;
+                cropPanX += dx * scaleFactor;
+                cropPanY += dy * scaleFactor;
+                drawCropCanvas();
+            };
+
+            const onEnd = () => {
+                isDragging = false;
+            };
+
+            wrapper.addEventListener('mousedown', (e) => onStart(e.clientX, e.clientY));
+            window.addEventListener('mousemove', (e) => onMove(e.clientX, e.clientY));
+            window.addEventListener('mouseup', onEnd);
+
+            wrapper.addEventListener('touchstart', (e) => {
+                if (e.touches.length === 1) {
+                    onStart(e.touches[0].clientX, e.touches[0].clientY);
+                }
+            }, { passive: true });
+
+            window.addEventListener('touchmove', (e) => {
+                if (isDragging && e.touches.length === 1) {
+                    onMove(e.touches[0].clientX, e.touches[0].clientY);
+                }
+            }, { passive: true });
+
+            window.addEventListener('touchend', onEnd);
+        }
+
+        async function applyCanvasCrop() {
+            const applyBtn = document.getElementById('crop-apply-btn');
+            applyBtn.disabled = true;
+            applyBtn.textContent = 'Optimizing & Cropping...';
+
+            try {
+                const canvas = document.getElementById('crop-canvas');
+                canvas.toBlob(async (blob) => {
+                    if (!blob) {
+                        alert('Could not generate crop image blob.');
+                        applyBtn.disabled = false;
+                        applyBtn.textContent = 'Apply & Fully Fill Banner';
+                        return;
+                    }
+
+                    const formData = new FormData();
+                    formData.append('thumbnail', blob, 'banner-16x9-cropped.png');
+
+                    try {
+                        const res = await fetch('/api/admin/upload', {
+                            method: 'POST',
+                            body: formData
+                        });
+                        const data = await res.json();
+                        if (res.ok && data.success) {
+                            document.getElementById('field-thumbnail').value = data.url;
+                            const preview = document.getElementById('thumbnail-preview-img');
+                            preview.src = data.url;
+                            preview.className = 'w-full h-full object-cover';
+                            document.getElementById('banner-fit-cover').checked = true;
+                            document.getElementById('field-banner-fit').value = 'cover';
+
+                            document.getElementById('upload-status-msg').textContent = '✅ Banner cropped to 16:9 & ready to fully fill space!';
+                            closeCropModal();
+                        } else {
+                            alert(`Upload failed: ${data.error || 'Server error'}`);
+                        }
+                    } catch (err) {
+                        alert('Failed to upload cropped banner.');
+                    } finally {
+                        applyBtn.disabled = false;
+                        applyBtn.textContent = 'Apply & Fully Fill Banner';
+                    }
+                }, 'image/png');
+            } catch (err) {
+                console.error(err);
+                alert('An error occurred during crop operation.');
+                applyBtn.disabled = false;
+                applyBtn.textContent = 'Apply & Fully Fill Banner';
+            }
+        }
+
+        // Auto-Sync Handlers
+        async function loadSyncStatus() {
+            try {
+                const res = await fetch('/api/admin/jobs/sync-status');
+                const data = await res.json();
+                if (res.ok && data.success) {
+                    const statusLabel = document.getElementById('sync-last-run-label');
+                    if (data.last_sync_time) {
+                        const syncDate = new Date(data.last_sync_time);
+                        statusLabel.textContent = `Last run: ${syncDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}, ${syncDate.toLocaleDateString([], { month: 'short', day: 'numeric' })} (${data.last_sync_count} opportunities synced)`;
+                    } else {
+                        statusLabel.textContent = 'Next run scheduled tonight at 11:59 PM IST.';
+                    }
+                }
+            } catch (err) {
+                console.error('Failed to load sync status:', err);
+            }
+        }
+
+        async function triggerJobSync() {
+            const btn = document.getElementById('trigger-sync-btn');
+            const spinner = document.getElementById('sync-spinner');
+            const btnText = document.getElementById('sync-btn-text');
+
+            btn.disabled = true;
+            spinner.classList.remove('hidden');
+            btnText.textContent = 'Crawling Google & Unstop...';
+
+            try {
+                const res = await fetch('/api/admin/jobs/sync', { method: 'POST' });
+                const data = await res.json();
+                if (res.ok && data.success) {
+                    alert(`✅ Sync Completed Successfully!\nAdded ${data.result.jobs_added} Jobs and ${data.result.internships_added} Internships to your database.`);
+                    loadEvents();
+                    loadSyncStatus();
+                } else {
+                    alert(`Sync issue: ${data.error || 'Server error'}`);
+                }
+            } catch (err) {
+                alert('Network error while running job sync.');
+            } finally {
+                btn.disabled = false;
+                spinner.classList.add('hidden');
+                btnText.textContent = '⚡ Sync Now';
+            }
+        }
+
+        function escapeHtml(text) {
+            if (!text) return '';
+            return text.replace(/[&<>"']/g, function(m) {
+                return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' }[m];
+            });
+        }
+    </script>
+</body>
+</html>

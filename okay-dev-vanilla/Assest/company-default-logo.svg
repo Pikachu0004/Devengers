@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" fill="none">
+  <rect width="64" height="64" rx="16" fill="#181818" stroke="#333333" stroke-width="2"/>
+  <!-- Briefcase / Corporate Tech Icon -->
+  <path d="M22 22C22 19.7909 23.7909 18 26 18H38C40.2091 18 42 19.7909 42 22V24H48C49.1046 24 50 24.8954 50 26V44C50 45.1046 49.1046 46 48 46H16C14.8954 46 14 45.1046 14 44V26C14 24.8954 14.8954 24 16 24H22V22Z" fill="#222222" stroke="#CDFF29" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M26 24V22C26 20.8954 26.8954 20 28 20H36C37.1046 20 38 20.8954 38 22V24" stroke="#CDFF29" stroke-width="2" stroke-linecap="round"/>
+  <path d="M14 34C18 36 26 38 32 38C38 38 46 36 50 34" stroke="#666666" stroke-width="1.5" stroke-linecap="round"/>
+  <circle cx="32" cy="34" r="2.5" fill="#CDFF29"/>
+</svg>

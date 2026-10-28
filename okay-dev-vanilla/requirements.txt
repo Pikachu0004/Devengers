@@ -1,0 +1,4 @@
+# Devengers Platform dependencies
+# Zero external runtime dependencies - powered by Python 3 standard library & SQLite
+# Standard build compatibility
+

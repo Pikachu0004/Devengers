@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Free Account | Join Devengers Engineering Community</title>
+    <meta name="description" content="Create a free Devengers account to join 10,000+ engineering students. Solve daily DSA coding streaks, access campus resources, win hackathons, and earn verified credentials.">
+    <meta name="keywords" content="Join Devengers, Developer Sign Up, Student Community Register, Free Tech Account, Coding Community, Engineering Students">
+    <meta name="author" content="Devengers Community">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <meta name="theme-color" content="#7B42F6">
+    <meta name="msapplication-TileColor" content="#7B42F6">
+    <link rel="canonical" href="https://devengers.org/register">
+
+    <!-- Open Graph / Meta -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://devengers.org/register">
+    <meta property="og:site_name" content="Devengers">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:title" content="Create Free Account | Join Devengers Engineering Community">
+    <meta property="og:description" content="Join thousands of engineering students mastering DSA, participating in hackathons, and building real-world projects.">
+    <meta property="og:image" content="https://devengers.org/og-image.jpg">
+    <meta property="og:image:secure_url" content="https://devengers.org/og-image.jpg">
+    <meta property="og:image:type" content="image/jpeg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="675">
+    <meta property="og:image:alt" content="Join Devengers Developer Community">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@devengers">
+    <meta name="twitter:creator" content="@devengers">
+    <meta name="twitter:url" content="https://devengers.org/register">
+    <meta name="twitter:title" content="Create Free Account | Join Devengers Engineering Community">
+    <meta name="twitter:description" content="Join thousands of engineering students mastering DSA and building real-world projects.">
+    <meta name="twitter:image" content="https://devengers.org/og-image.jpg">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico?v=3">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon.png?v=3">
+    <link rel="icon" type="image/png" sizes="192x192" href="favicon.png?v=3">
+    <link rel="apple-touch-icon" href="favicon.png?v=3">
+
+    <!-- Structured Data (JSON-LD) for Google Sitelinks & Breadcrumbs -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Devengers Home",
+              "item": "https://devengers.org/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Sign Up",
+              "item": "https://devengers.org/register"
+            }
+          ]
+        },
+        {
+          "@type": "WebPage",
+          "@id": "https://devengers.org/register#webpage",
+          "name": "Create Free Account | Devengers",
+          "url": "https://devengers.org/register",
+          "description": "Devengers free account registration for engineering students and programmers.",
+          "potentialAction": {
+            "@type": "Action",
+            "name": "Register",
+            "target": "https://devengers.org/register"
+          }
+        }
+      ]
+    }
+    </script>
+    <!-- Tailwind CSS (via CDN for local dev) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css?v=4">
+    <script src="theme.js"></script>
+    <script src="auth.js"></script>
+    <style>
+        .bg-grid {
+            background-color: #1a1a1a;
+            background-image: 
+                linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+            background-size: 80px 80px;
+            background-position: center center;
+        }
+        .form-input {
+            background-color: #1a1a1a;
+            border: 1px solid #333;
+            color: white;
+            transition: border-color 0.2s;
+        }
+        .form-input:focus {
+            border-color: #7B42F6;
+            outline: none;
+        }
+        .shadow-brutal {
+            box-shadow: 4px 4px 0px 0px rgba(0,0,0,1);
+        }
+        .shadow-brutal-sm {
+            box-shadow: 2px 2px 0px 0px rgba(0,0,0,1);
+        }
+    </style>
+</head>
+<body class="bg-grid m-0 p-0 overflow-x-hidden antialiased text-white min-h-screen flex flex-col justify-center relative">
+    
+    <!-- NAVIGATION (Fixed) -->
+    <nav class="devengers-navbar-fixed fixed top-6 left-0 w-full z-50 flex justify-center px-4">
+        <!-- Purple Navbar Background (#7B42F6) -->
+        <div class="devengers-navbar-notch bg-[#7B42F6] shadow-brutal border-4 border-black rounded-full px-6 md:px-8 py-3 w-full max-w-[1400px] flex items-center justify-between">
+            <!-- Avengers Animated Logo -->
+            <a href="index.html" class="flex items-center group select-none" title="Devengers Home">
+                <div class="devengers-nav-logo font-black text-2xl md:text-[30px] tracking-tighter uppercase rounded-full transition-transform duration-300"
+                    style="-webkit-text-stroke: 2px black; color: #CDFF29; text-shadow: 3px 3px 0px black; line-height: 1;">
+                    <span class="devengers-badge-icon">
+                        <svg class="w-3.5 h-3.5 text-[#CDFF29]" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
+                        </svg>
+                    </span>
+                    <span class="logo-char">D</span><span class="logo-char">E</span><span class="logo-char">V</span><span class="logo-char">E</span><span class="logo-char">N</span><span class="logo-char">G</span><span class="logo-char">E</span><span class="logo-char">R</span><span class="logo-char">S</span>
+                </div>
+            </a>
+
+            <!-- Center Links -->
+            <div class="hidden md:flex gap-6 lg:gap-8 text-[11px] font-bold uppercase tracking-widest text-white/80">
+                <a href="events.html" class="nav-link">Events</a>
+                <a href="learn.html" class="nav-link">Learn</a>
+                <a href="campus.html" class="nav-link">Campus Resource</a>
+                <a href="dsa.html" class="nav-link">DSA Streak</a>
+                <a href="gallery.html" class="nav-link">Gallery</a>
+                <a href="certificates.html" class="nav-link">Certificates</a>
+            </div>
+
+            <!-- Right Links & Action Buttons -->
+            <div class="flex items-center gap-3 sm:gap-4">
+                <!-- Theme Toggle Button -->
+                <button type="button" onclick="window.DevengersTheme.toggleTheme()" class="theme-toggle-btn" title="Toggle Eye-Comfort Peach Theme" aria-label="Toggle Theme">
+                    <div class="toggle-thumb">🌙</div>
+                </button>
+
+                <!-- Notifications Bell with Dynamic Red Dot -->
+                <div class="relative">
+                    <button type="button" id="nav-notification-btn" onclick="window.DevengersNotifications.toggleDropdown(event)"
+                        class="nav-notification-btn flex items-center justify-center w-8 h-8 text-white/80 hover:text-white transition-colors relative cursor-pointer"
+                        title="Notifications" aria-label="Notifications">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 transition-transform hover:scale-110" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+                        </svg>
+                        <span id="nav-notification-dot" class="nav-notification-dot hidden"></span>
+                    </button>
+                </div>
+
+                <!-- Profile Symbol Button with Instagram Ring -->
+                <a href="profile.html" class="nav-profile-btn group" title="My Profile" aria-label="My Profile">
+                    <span class="nav-profile-inner">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-white transition-transform group-hover:scale-110" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                        </svg>
+                    </span>
+                </a>
+
+                <a href="login.html" class="hidden md:block text-[11px] font-bold uppercase tracking-widest text-white/80 hover:text-white transition-colors">LOGIN</a>
+                <a href="register.html" class="bg-white text-black px-5 py-2 rounded-full text-[11px] font-bold uppercase tracking-widest hover:bg-[#CDFF29] transition-colors flex items-center gap-1.5 shadow-sm">
+                    SIGN UP <span class="font-normal text-sm leading-none">&rarr;</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- MAIN REGISTER CONTENT -->
+    <main class="w-full max-w-lg mx-auto px-4 sm:px-6 pt-24 sm:pt-32 pb-16 flex flex-col items-center">
+        
+        <!-- Heading -->
+        <h1 class="font-black text-4xl sm:text-5xl md:text-[60px] text-white uppercase tracking-tighter leading-none drop-shadow-lg mb-3">SIGN UP</h1>
+        <p class="text-gray-400 text-xs font-mono mb-6 sm:mb-8 text-center">Join Devengers Developer Community &bull; Email OTP Verified</p>
+        
+        <!-- Error Banner -->
+        <div id="register-error" class="hidden w-full mb-6 p-4 rounded-xl bg-red-950/70 border border-red-500/60 text-red-200 text-xs font-mono flex items-center gap-2">
+        </div>
+
+        <!-- Success Banner -->
+        <div id="register-success" class="hidden w-full mb-6 p-4 rounded-xl bg-green-950/70 border border-green-500/60 text-green-200 text-xs font-mono flex items-center gap-2">
+        </div>
+
+        <!-- Form -->
+        <form id="register-form" onsubmit="handleRegisterSubmit(event)" class="w-full flex flex-col gap-4">
+            
+            <!-- Full Name -->
+            <div class="flex flex-col gap-1.5">
+                <label class="text-[10px] font-mono tracking-widest text-gray-400 uppercase">
+                    FULL NAME <span class="text-red-500">*</span>
+                </label>
+                <input type="text" id="reg-name" placeholder="Kishan Kumar" class="form-input rounded-xl px-4 py-3 w-full text-sm" required autofocus>
+            </div>
+
+            <!-- Email & Send OTP Action -->
+            <div class="flex flex-col gap-1.5">
+                <label class="text-[10px] font-mono tracking-widest text-gray-400 uppercase flex justify-between items-center">
+                    <span>EMAIL ADDRESS <span class="text-red-500">*</span></span>
+                    <span id="otp-timer-label" class="text-[#CDFF29] font-normal normal-case hidden">Code sent!</span>
+                </label>
+                <div class="flex gap-2">
+                    <input type="email" id="reg-email" placeholder="student@devengers.org" class="form-input rounded-xl px-4 py-3 flex-1 text-sm" required>
+                    <button type="button" id="btn-send-otp" onclick="handleSendOtp()" class="bg-[#7B42F6] hover:bg-[#6833d8] text-white px-4 py-3 rounded-xl text-xs font-mono font-bold uppercase tracking-wider shrink-0 transition-colors shadow-brutal-sm cursor-pointer">
+                        Send OTP
+                    </button>
+                </div>
+            </div>
+
+            <!-- OTP Input Section (Animated/Shown when OTP requested) -->
+            <div id="otp-container" class="p-4 rounded-2xl bg-black/50 border-2 border-dashed border-[#7B42F6]/60 flex flex-col gap-2">
+                <div class="flex items-center justify-between">
+                    <label class="text-[10px] font-mono tracking-widest text-gray-300 uppercase font-bold flex items-center gap-1.5">
+                        <span class="text-[#CDFF29]">🔒</span> 6-DIGIT EMAIL VERIFICATION OTP <span class="text-red-500">*</span>
+                    </label>
+                    <button type="button" id="btn-resend-otp" onclick="handleSendOtp()" class="text-[11px] font-mono text-gray-400 hover:text-white uppercase disabled:opacity-40 disabled:cursor-not-allowed" disabled>
+                        Resend (60s)
+                    </button>
+                </div>
+                <input type="text" id="reg-otp" maxlength="6" pattern="\d{6}" placeholder="Enter 6-digit code" class="form-input rounded-xl px-4 py-3 w-full text-center tracking-[0.4em] font-mono text-lg font-bold border-[#7B42F6]/70 focus:border-[#CDFF29]" required>
+                <p class="text-[10px] font-mono text-gray-400">A 6-digit code will be sent to your inbox. Tip: If not seen in 30s, check your Spam or Promotions folder and tap &ldquo;Report Not Spam&rdquo;.</p>
+            </div>
+
+            <!-- Password -->
+            <div class="flex flex-col gap-1.5">
+                <label class="text-[10px] font-mono tracking-widest text-gray-400 uppercase">
+                    PASSWORD (MIN 6 CHARACTERS) <span class="text-red-500">*</span>
+                </label>
+                <input type="password" id="reg-password" minlength="6" placeholder="••••••••" class="form-input rounded-xl px-4 py-3 w-full text-sm" required>
+            </div>
+
+            <!-- College & Grad Year -->
+            <div class="grid grid-cols-2 gap-3">
+                <div class="flex flex-col gap-1.5">
+                    <label class="text-[10px] font-mono tracking-widest text-gray-400 uppercase">
+                        COLLEGE / INSTITUTE
+                    </label>
+                    <input type="text" id="reg-college" placeholder="e.g. IIT, VIT, SRM" class="form-input rounded-xl px-3 py-2.5 w-full text-xs">
+                </div>
+                <div class="flex flex-col gap-1.5">
+                    <label class="text-[10px] font-mono tracking-widest text-gray-400 uppercase">
+                        GRAD YEAR
+                    </label>
+                    <input type="text" id="reg-gradyear" placeholder="e.g. 2027" class="form-input rounded-xl px-3 py-2.5 w-full text-xs">
+                </div>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" id="btn-submit" class="bg-white text-black font-bold uppercase tracking-widest text-sm px-8 py-4 rounded-full w-full mt-2 hover:bg-[#CDFF29] transition-all shadow-xl cursor-pointer">
+                VERIFY &amp; CREATE PROFILE &rarr;
+            </button>
+        </form>
+
+        <!-- Switch to Login -->
+        <p class="mt-8 text-sm text-gray-400">
+            Already a member? <a href="login.html" class="text-white font-bold hover:underline">Log in</a>
+        </p>
+
+    </main>
+
+    <script>
+        let resendTimer = null;
+
+        async function handleSendOtp() {
+            const emailInput = document.getElementById('reg-email');
+            const email = emailInput.value.trim();
+            const errBox = document.getElementById('register-error');
+            const succBox = document.getElementById('register-success');
+            const sendBtn = document.getElementById('btn-send-otp');
+            const resendBtn = document.getElementById('btn-resend-otp');
+
+            errBox.classList.add('hidden');
+            succBox.classList.add('hidden');
+
+            if (!email || !email.includes('@')) {
+                errBox.textContent = 'Please enter a valid email address first.';
+                errBox.classList.remove('hidden');
+                emailInput.focus();
+                return;
+            }
+
+            sendBtn.disabled = true;
+            sendBtn.textContent = 'Sending...';
+
+            try {
+                const res = await fetch('/api/auth/send-otp', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email: email, purpose: 'signup' })
+                });
+                const data = await res.json();
+
+                if (res.ok && data.success) {
+                    succBox.textContent = data.message || `✓ 6-digit OTP code dispatched to ${email}`;
+                    succBox.classList.remove('hidden');
+
+                    // Focus on OTP input
+                    document.getElementById('reg-otp').focus();
+
+                    // Start cooldown timer
+                    startResendCountdown(60);
+                } else {
+                    errBox.textContent = data.error || 'Failed to send OTP. Please check your email and try again.';
+                    errBox.classList.remove('hidden');
+                    sendBtn.disabled = false;
+                    sendBtn.textContent = 'Send OTP';
+                }
+            } catch (err) {
+                errBox.textContent = 'Network error sending OTP. Please check your connection.';
+                errBox.classList.remove('hidden');
+                sendBtn.disabled = false;
+                sendBtn.textContent = 'Send OTP';
+            }
+        }
+
+        function startResendCountdown(seconds) {
+            const sendBtn = document.getElementById('btn-send-otp');
+            const resendBtn = document.getElementById('btn-resend-otp');
+            const timerLabel = document.getElementById('otp-timer-label');
+
+            sendBtn.disabled = true;
+            resendBtn.disabled = true;
+            timerLabel.classList.remove('hidden');
+
+            let remaining = seconds;
+            sendBtn.textContent = `Sent (${remaining}s)`;
+            resendBtn.textContent = `Resend (${remaining}s)`;
+
+            clearInterval(resendTimer);
+            resendTimer = setInterval(() => {
+                remaining--;
+                if (remaining <= 0) {
+                    clearInterval(resendTimer);
+                    sendBtn.disabled = false;
+                    sendBtn.textContent = 'Send OTP';
+                    resendBtn.disabled = false;
+                    resendBtn.textContent = 'Resend OTP';
+                    timerLabel.classList.add('hidden');
+                } else {
+                    sendBtn.textContent = `Sent (${remaining}s)`;
+                    resendBtn.textContent = `Resend (${remaining}s)`;
+                }
+            }, 1000);
+        }
+
+        async function handleRegisterSubmit(e) {
+            e.preventDefault();
+            const btn = document.getElementById('btn-submit');
+            const errBox = document.getElementById('register-error');
+            const succBox = document.getElementById('register-success');
+            errBox.classList.add('hidden');
+            succBox.classList.add('hidden');
+
+            const otp = document.getElementById('reg-otp').value.trim();
+            if (!otp || otp.length !== 6) {
+                errBox.textContent = 'Please enter the 6-digit OTP code sent to your email.';
+                errBox.classList.remove('hidden');
+                document.getElementById('reg-otp').focus();
+                return;
+            }
+            
+            btn.disabled = true;
+            btn.textContent = 'VERIFYING CODE & CREATING PROFILE...';
+
+            const payload = {
+                full_name: document.getElementById('reg-name').value.trim(),
+                email: document.getElementById('reg-email').value.trim(),
+                password: document.getElementById('reg-password').value,
+                otp: otp,
+                college_name: document.getElementById('reg-college').value.trim(),
+                grad_year: document.getElementById('reg-gradyear').value.trim()
+            };
+
+            try {
+                const res = await fetch('/api/auth/register', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                const data = await res.json();
+                if (res.ok && data.success) {
+                    succBox.textContent = '✓ Email verified & account created! Redirecting to your developer profile...';
+                    succBox.classList.remove('hidden');
+                    setTimeout(() => {
+                        window.location.href = data.redirect || 'profile.html';
+                    }, 600);
+                } else {
+                    errBox.textContent = data.error || 'Failed to register account. Please check your OTP and details.';
+                    errBox.classList.remove('hidden');
+                    btn.disabled = false;
+                    btn.textContent = 'VERIFY & CREATE PROFILE →';
+                }
+            } catch (err) {
+                errBox.textContent = 'Network error connecting to Devengers server.';
+                errBox.classList.remove('hidden');
+                btn.disabled = false;
+                btn.textContent = 'VERIFY & CREATE PROFILE →';
+            }
+        }
+    </script>
+</body>
+</html>

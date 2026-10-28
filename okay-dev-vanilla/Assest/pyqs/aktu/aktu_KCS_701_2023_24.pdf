@@ -1,0 +1,101 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [3 0 R 5 0 R] /Count 2 >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842]
+   /Contents 4 0 R
+   /Resources << /Font << /F1 7 0 R /F2 8 0 R >> >> >>
+endobj
+4 0 obj
+<< /Length 4355 >>
+stream
+BT /F1 13 Tf 50 800 Td (DR. A.P.J. ABDUL KALAM TECHNICAL UNIVERSITY) Tj ET
+BT /F2 9.5 Tf 50 786 Td (B.TECH. COMPUTER SCIENCE & ENGINEERING / ALLIED BRANCHES) Tj ET
+BT /F1 10.5 Tf 50 772 Td (END SEMESTER EXAMINATION \(2023-24\) -- SEMESTER 7) Tj ET
+BT /F1 11 Tf 50 756 Td (COURSE: MACHINE LEARNING \(KCS-701\)) Tj ET
+BT /F2 9 Tf 50 742 Td (Time Allowed: 3 Hours                       Maximum Marks: 100 Marks                       Paper Code: KCS-701) Tj ET
+BT /F2 8.5 Tf 50 730 Td (Roll Number: [   ] [   ] [   ] [   ] [   ] [   ] [   ] [   ] [   ] [   ] [   ] [   ]   |   Total Printed Pages: 2) Tj ET
+BT /F2 8 Tf 50 718 Td (-----------------------------------------------------------------------------------------------------------------------------------------------------) Tj ET
+BT /F2 8.5 Tf 50 706 Td (NOTE: Attempt all Sections. Assume suitable missing data if any. Programmable calculators are NOT permitted.) Tj ET
+BT /F2 8 Tf 50 696 Td (=====================================================================================================================) Tj ET
+BT /F1 10.5 Tf 50 680 Td (SECTION A: Short Answer Type Questions \(Attempt ALL questions\) [10 x 2 = 20 Marks]) Tj ET
+BT /F2 9 Tf 55 664 Td (Q1. \(a\) Differentiate between supervised, unsupervised, and reinforcement learning.) Tj ET
+BT /F2 9 Tf 55 649 Td (Q1. \(b\) Explain bias-variance tradeoff with graphical illustration.) Tj ET
+BT /F2 9 Tf 55 634 Td (Q1. \(c\) What is cost function and gradient descent optimization in linear regression?) Tj ET
+BT /F2 9 Tf 55 619 Td (Q1. \(d\) Define precision, recall, F1-score, and ROC-AUC curve in classification.) Tj ET
+BT /F2 9 Tf 55 604 Td (Q1. \(e\) What is difference between L1 regularization \(Lasso\) and L2 regularization \(Ridge\)?) Tj ET
+BT /F2 9 Tf 55 589 Td (Q1. \(f\) What is maximum margin hyperplane in Support Vector Machines \(SVM\)?) Tj ET
+BT /F2 9 Tf 55 574 Td (Q1. \(g\) Explain Kernel Trick in SVM and name two popular kernel functions.) Tj ET
+BT /F2 9 Tf 55 559 Td (Q1. \(h\) What is curse of dimensionality? How does PCA alleviate it?) Tj ET
+BT /F2 9 Tf 55 544 Td (Q1. \(i\) Differentiate between Bagging and Boosting ensemble methods.) Tj ET
+BT /F2 9 Tf 55 529 Td (Q1. \(j\) What is backpropagation in Multi-Layer Perceptron \(MLP\) neural networks?) Tj ET
+BT /F1 10.5 Tf 50 506 Td (SECTION B: Analytical & Computational Problems \(Attempt any THREE\) [3 x 10 = 30 Marks]) Tj ET
+BT /F2 9 Tf 55 490 Td (Q2. \(a\) Derive gradient descent update rule for parameters theta_0 and theta_1 in Univariate Linear Regression.) Tj ET
+BT /F2 9 Tf 55 475 Td (Q2. \(b\) Construct Decision Tree using ID3 algorithm with Information Gain and Entropy for given training dataset.) Tj ET
+BT /F2 9 Tf 55 460 Td (Q2. \(c\) Apply K-Means clustering algorithm on 1D points: {2, 4, 10, 12, 3, 20, 30, 11, 25} with k = 2 for 3 iterations.) Tj ET
+BT /F2 9 Tf 55 445 Td (Q2. \(d\) Derive backpropagation gradient equations for single hidden-layer neural network with sigmoid activation.) Tj ET
+BT /F2 9 Tf 55 430 Td (Q2. \(e\) Explain Principal Component Analysis \(PCA\) step-by-step: Covariance matrix, eigenvalues, eigenvectors, projection.) Tj ET
+BT /F1 10.5 Tf 50 407 Td (SECTION C: Long Technical & Design Questions \(Attempt any ONE from each\) [5 x 10 = 50 Marks]) Tj ET
+BT /F1 9 Tf 55 391 Td (Q3. \(a\) Explain Logistic Regression, sigmoid activation function, and derive cross-entropy loss function.  [10 Marks]) Tj ET
+BT /F2 8.5 Tf 90 378 Td (-- OR --) Tj ET
+BT /F2 9 Tf 75 365 Td (\(b\) Explain Naive Bayes classifier, Bayes theorem, and Laplace smoothing for text classification.  [10 Marks]) Tj ET
+BT /F1 9 Tf 55 349 Td (Q4. \(a\) Explain Soft-Margin SVM with slack variables and dual Lagrangian formulation.  [10 Marks]) Tj ET
+BT /F2 8.5 Tf 90 336 Td (-- OR --) Tj ET
+BT /F2 9 Tf 75 323 Td (\(b\) Explain Random Forest algorithm: Bootstrap aggregation, random feature subspace, out-of-bag error.  [10 Marks]) Tj ET
+BT /F1 9 Tf 55 307 Td (Q5. \(a\) Explain AdaBoost \(Adaptive Boosting\) algorithm step-by-step with sample weight updates.  [10 Marks]) Tj ET
+BT /F2 8.5 Tf 90 294 Td (-- OR --) Tj ET
+BT /F2 9 Tf 75 281 Td (\(b\) Explain Gradient Boosting and XGBoost \(Extreme Gradient Boosting\) with tree pruning.  [10 Marks]) Tj ET
+BT /F2 8 Tf 220 30 Td ([ DEVENGERS CAMPUS RESOURCE LIBRARY -- PAGE 1 OF 2 -- KCS-701 ]) Tj ET
+endstream
+endobj
+5 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842]
+   /Contents 6 0 R
+   /Resources << /Font << /F1 7 0 R /F2 8 0 R >> >> >>
+endobj
+6 0 obj
+<< /Length 1805 >>
+stream
+BT /F1 11 Tf 50 800 Td (MACHINE LEARNING \(KCS-701\) -- CONTINUED \(PAGE 2\)) Tj ET
+BT /F2 8.5 Tf 50 786 Td (-----------------------------------------------------------------------------------------------------------------------------------------------------) Tj ET
+BT /F1 9.5 Tf 55 765 Td (Q6. \(a\) Explain Hierarchical Clustering: Agglomerative vs Divisive, and Single, Complete, Average linkage.  [10 Marks]) Tj ET
+BT /F2 8.5 Tf 90 750 Td (-- OR --) Tj ET
+BT /F2 9 Tf 75 735 Td (\(b\) Explain DBSCAN \(Density-Based Spatial Clustering\) algorithm: Core points, border points, and noise.  [10 Marks]) Tj ET
+BT /F1 9.5 Tf 55 715 Td (Q7. \(a\) Explain K-Fold Cross Validation, Stratified K-Fold, and Hyperparameter Tuning with GridSearch.  [10 Marks]) Tj ET
+BT /F2 8.5 Tf 90 700 Td (-- OR --) Tj ET
+BT /F2 9 Tf 75 685 Td (\(b\) Explain vanishing gradient problem and how ReLU, Leaky ReLU, and batch normalization resolve it.  [10 Marks]) Tj ET
+BT /F1 10.5 Tf 50 655 Td (EXAMINATION EVALUATION SCHEME & RUBRIC GUIDELINES:) Tj ET
+BT /F2 8.5 Tf 55 640 Td (1. Section A: Direct definition, time complexity analysis, formula derivation, or syntax verification.) Tj ET
+BT /F2 8.5 Tf 55 627 Td (2. Section B: Step-by-step mathematical proof, trace tables, algorithmic pseudocode, and state diagrams.) Tj ET
+BT /F2 8.5 Tf 55 614 Td (3. Section C: Architectural design, full code implementation, edge case handling, and space/time tradeoffs.) Tj ET
+BT /F2 8.5 Tf 50 595 Td (-----------------------------------------------------------------------------------------------------------------------------------------------------) Tj ET
+BT /F1 9 Tf 160 580 Td (*** END OF QUESTION PAPER -- DEVENGERS ACADEMIC VAULT ***) Tj ET
+BT /F2 8 Tf 220 30 Td ([ DEVENGERS CAMPUS RESOURCE LIBRARY -- PAGE 2 OF 2 -- KCS-701 ]) Tj ET
+endstream
+endobj
+7 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold >>
+endobj
+8 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+xref
+0 9
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000121 00000 n 
+0000000263 00000 n 
+0000004670 00000 n 
+0000004812 00000 n 
+0000006669 00000 n 
+0000006744 00000 n 
+trailer
+<< /Size 9 /Root 1 0 R >>
+startxref
+6814
+%%EOF

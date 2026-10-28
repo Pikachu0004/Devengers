@@ -1,0 +1,1168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learn: Free CS Courses, Developer Roadmaps &amp; Docs | Devengers</title>
+    <meta name="description" content="Master Web Development, AI/ML, DevOps, Cloud Computing, and Core CS with Devengers interactive roadmaps, free curated courses, and official documentation.">
+    <meta name="keywords" content="CS Courses, Computer Science Roadmaps, Full-Stack Roadmap, AI ML Roadmap, DevOps Roadmap, Engineering Study Material, Free Coding Courses, Devengers Learn">
+    <meta name="author" content="Devengers Community">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <meta name="theme-color" content="#7B42F6">
+    <meta name="msapplication-TileColor" content="#7B42F6">
+    <link rel="canonical" href="https://devengers.org/learn">
+
+    <!-- Open Graph / Meta -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://devengers.org/learn">
+    <meta property="og:site_name" content="Devengers">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:title" content="Learn: Free CS Courses, Developer Roadmaps &amp; Docs | Devengers">
+    <meta property="og:description" content="Discover handpicked free courses, official engineering documentation, and interactive roadmaps tailored for developers.">
+    <meta property="og:image" content="https://devengers.org/og-image.jpg">
+    <meta property="og:image:secure_url" content="https://devengers.org/og-image.jpg">
+    <meta property="og:image:type" content="image/jpeg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="675">
+    <meta property="og:image:alt" content="Devengers Interactive Learning Roadmaps and Free Courses">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@devengers">
+    <meta name="twitter:creator" content="@devengers">
+    <meta name="twitter:url" content="https://devengers.org/learn">
+    <meta name="twitter:title" content="Learn: Free CS Courses, Developer Roadmaps &amp; Docs | Devengers">
+    <meta name="twitter:description" content="Discover handpicked free courses, official engineering documentation, and interactive roadmaps.">
+    <meta name="twitter:image" content="https://devengers.org/og-image.jpg">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico?v=3">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon.png?v=3">
+    <link rel="icon" type="image/png" sizes="192x192" href="favicon.png?v=3">
+    <link rel="apple-touch-icon" href="favicon.png?v=3">
+
+    <!-- Structured Data (JSON-LD) for Google Rich Results & Breadcrumbs -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Devengers Home",
+              "item": "https://devengers.org/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Learn & Roadmaps",
+              "item": "https://devengers.org/learn"
+            }
+          ]
+        },
+        {
+          "@type": "Course",
+          "name": "Devengers Computer Science & Engineering Roadmaps",
+          "description": "Structured curriculum paths for Modern Full-Stack Web Development, Artificial Intelligence & Machine Learning, DevOps, Cloud Infrastructure, and Core Systems.",
+          "provider": {
+            "@type": "EducationalOrganization",
+            "name": "Devengers",
+            "sameAs": "https://devengers.org/"
+          },
+          "isAccessibleForFree": true
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "Are Devengers courses and roadmaps free?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes, every roadmap, course curriculum, and documentation guide on Devengers Learn is 100% free with no paywalls or hidden subscriptions."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What topics are included in the Devengers Roadmaps?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Roadmaps cover Frontend (HTML, CSS, React, Next.js), Backend (Node.js, Python, Golang, Databases), AI/ML, Cloud Computing (AWS, GCP), and Data Structures & Algorithms."
+              }
+            }
+          ]
+        }
+      ]
+    }
+    </script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;800&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css?v=3">
+    <script src="theme.js"></script>
+    <script src="auth.js"></script>
+    <style>
+        body {
+            font-family: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+            background-color: #111111;
+        }
+        .font-mono-code {
+            font-family: 'JetBrains Mono', monospace;
+        }
+        .shadow-brutal {
+            box-shadow: 4px 4px 0px 0px rgba(0,0,0,1);
+        }
+        .shadow-brutal-sm {
+            box-shadow: 2px 2px 0px 0px rgba(0,0,0,1);
+        }
+        .shadow-brutal-lime {
+            box-shadow: 5px 5px 0px 0px #CDFF29;
+        }
+        .shadow-brutal-purple {
+            box-shadow: 5px 5px 0px 0px #7B42F6;
+        }
+        .bg-grid-subtle {
+            background-image: 
+                radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+                linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+            background-size: 24px 24px, 96px 96px, 96px 96px;
+        }
+        .course-card {
+            transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s;
+        }
+        .course-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 6px 6px 0px 0px #CDFF29;
+        }
+        .course-card.is-completed {
+            border-color: #CDFF29;
+        }
+        .coming-soon-glow {
+            position: relative;
+            background: radial-gradient(circle at 50% 0%, rgba(123, 66, 246, 0.25), transparent 70%);
+        }
+        .toast-notify {
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+    </style>
+</head>
+<body class="m-0 p-0 overflow-x-hidden antialiased text-white min-h-screen flex flex-col bg-grid-subtle">
+    
+    <!-- Toast Notification -->
+    <div id="toast" class="toast-notify fixed bottom-6 right-6 z-50 transform translate-y-24 opacity-0 pointer-events-none bg-black/95 border-2 border-[#CDFF29] text-white px-5 py-3 rounded-2xl shadow-brutal-lime font-mono text-xs flex items-center gap-3">
+        <span id="toast-icon" class="text-base">✓</span>
+        <span id="toast-message">Progress saved!</span>
+    </div>
+
+    <!-- NAVIGATION (Fixed) -->
+    <nav class="devengers-navbar-fixed fixed top-6 left-0 w-full z-50 flex justify-center px-4">
+        <!-- Purple Navbar Background (#7B42F6) -->
+        <div class="devengers-navbar-notch bg-[#7B42F6] shadow-brutal border-4 border-black rounded-full px-6 md:px-8 py-3 w-full max-w-[1400px] flex items-center justify-between">
+            <!-- Avengers Animated Logo -->
+            <a href="index.html" class="flex items-center group select-none" title="Devengers Home">
+                <div class="devengers-nav-logo font-black text-2xl md:text-[30px] tracking-tighter uppercase rounded-full transition-transform duration-300"
+                    style="-webkit-text-stroke: 2px black; color: #CDFF29; text-shadow: 3px 3px 0px black; line-height: 1;">
+                    <span class="devengers-badge-icon">
+                        <svg class="w-3.5 h-3.5 text-[#CDFF29]" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
+                        </svg>
+                    </span>
+                    <span class="logo-char">D</span><span class="logo-char">E</span><span class="logo-char">V</span><span class="logo-char">E</span><span class="logo-char">N</span><span class="logo-char">G</span><span class="logo-char">E</span><span class="logo-char">R</span><span class="logo-char">S</span>
+                </div>
+            </a>
+
+            <!-- Center Links -->
+            <div class="hidden md:flex gap-6 lg:gap-8 text-[11px] font-bold uppercase tracking-widest text-white/80">
+                <a href="events.html" class="nav-link">Events</a>
+                <a href="learn.html" class="nav-link">Learn</a>
+                <a href="campus.html" class="nav-link">Campus Resource</a>
+                <a href="dsa.html" class="nav-link">DSA Streak</a>
+                <a href="gallery.html" class="nav-link">Gallery</a>
+                <a href="certificates.html" class="nav-link">Certificates</a>
+            </div>
+
+            <!-- Right Links & Action Buttons -->
+            <div class="flex items-center gap-3 sm:gap-4">
+                <!-- Theme Toggle Button -->
+                <button type="button" onclick="window.DevengersTheme.toggleTheme()" class="theme-toggle-btn" title="Toggle Eye-Comfort Peach Theme" aria-label="Toggle Theme">
+                    <div class="toggle-thumb">🌙</div>
+                </button>
+
+                <!-- Notifications Bell with Dynamic Red Dot -->
+                <div class="relative">
+                    <button type="button" id="nav-notification-btn" onclick="window.DevengersNotifications.toggleDropdown(event)"
+                        class="nav-notification-btn flex items-center justify-center w-8 h-8 text-white/80 hover:text-white transition-colors relative cursor-pointer"
+                        title="Notifications" aria-label="Notifications">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 transition-transform hover:scale-110" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+                        </svg>
+                        <span id="nav-notification-dot" class="nav-notification-dot hidden"></span>
+                    </button>
+                </div>
+
+                <!-- Profile Symbol Button with Instagram Ring -->
+                <a href="profile.html" class="nav-profile-btn group" title="My Profile" aria-label="My Profile">
+                    <span class="nav-profile-inner">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-white transition-transform group-hover:scale-110" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                        </svg>
+                    </span>
+                </a>
+
+                <a href="login.html" class="hidden md:block text-[11px] font-bold uppercase tracking-widest text-white/80 hover:text-white transition-colors">LOGIN</a>
+                <a href="register.html" class="bg-white text-black px-5 py-2 rounded-full text-[11px] font-bold uppercase tracking-widest hover:bg-[#CDFF29] transition-colors flex items-center gap-1.5 shadow-sm">
+                    SIGN UP <span class="font-normal text-sm leading-none">&rarr;</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- MAIN CONTENT -->
+    <main class="flex-grow w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-12 pt-36 md:pt-40 pb-24">
+        
+        <!-- HERO HEADER -->
+        <div class="mb-10">
+            <div class="flex items-center gap-3 mb-3">
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#CDFF29] text-black font-mono text-xs font-black uppercase tracking-wider shadow-brutal-sm border border-black">
+                    <span class="w-2 h-2 rounded-full bg-black animate-ping"></span>
+                    ENGINEERING ROADMAPS & COURSES
+                </span>
+                <span class="text-xs font-mono text-gray-400 uppercase tracking-widest hidden sm:inline-block">
+                    // 100% FREE CS TRACKS • OFFICIAL DOCS • PDF GUIDES
+                </span>
+            </div>
+
+            <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 border-b-2 border-zinc-800 pb-8">
+                <div>
+                    <h1 class="font-black text-5xl sm:text-7xl md:text-[110px] lg:text-[150px] text-white uppercase tracking-tighter leading-none drop-shadow-lg select-none">
+                        LEARN<span class="text-[#CDFF29]">.</span>
+                    </h1>
+                    <p class="text-gray-300 text-xs sm:text-base md:text-lg max-w-2xl font-normal leading-relaxed mt-2">
+                        Curated free courses, official engineering roadmaps, and downloadable study guides designed for B.Tech & Computer Science students.
+                    </p>
+                </div>
+
+                <!-- Stats Badges & Streak Shortcut -->
+                <div class="grid grid-cols-3 gap-2 sm:gap-4 w-full lg:w-auto mt-4 lg:mt-0">
+                    <div class="bg-zinc-900 border-2 border-black rounded-xl p-2.5 sm:p-4 shadow-brutal-sm text-center min-w-0">
+                        <div id="stat-total-courses" class="text-xl sm:text-3xl font-black text-[#CDFF29]">12</div>
+                        <div class="text-[9px] sm:text-[10px] font-mono uppercase text-gray-400 font-bold tracking-wider truncate">Curated Tracks</div>
+                    </div>
+                    <div class="bg-zinc-900 border-2 border-black rounded-xl p-2.5 sm:p-4 shadow-brutal-sm text-center min-w-0">
+                        <div id="stat-user-completed" class="text-xl sm:text-3xl font-black text-[#00D2FF]">0</div>
+                        <div class="text-[9px] sm:text-[10px] font-mono uppercase text-gray-400 font-bold tracking-wider truncate">Completed</div>
+                    </div>
+                    <a href="profile.html" class="bg-zinc-900 hover:bg-zinc-800 border-2 border-black rounded-xl p-2.5 sm:p-4 shadow-brutal-sm text-center min-w-0 transition-colors group">
+                        <div id="stat-user-streak" class="text-xl sm:text-3xl font-black text-orange-400 group-hover:scale-105 transition-transform">🔥 1d</div>
+                        <div class="text-[9px] sm:text-[10px] font-mono uppercase text-gray-400 font-bold tracking-wider truncate">Streak &#8599;</div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- MAIN VIEW SWITCHER: FREE COURSES vs PAID COURSES (DEVENGERS ELITE PRO) -->
+        <div class="flex items-center justify-between flex-wrap gap-4 mb-8">
+            <div class="w-full sm:w-auto flex p-1 sm:p-1.5 bg-zinc-900/90 border-2 border-black rounded-2xl shadow-brutal">
+                <button id="view-tab-free" onclick="switchView('free')" class="flex-1 sm:flex-initial px-3 sm:px-5 py-2 sm:py-2.5 rounded-xl font-mono text-[11px] sm:text-xs md:text-sm font-black uppercase tracking-wider transition-all duration-200 bg-[#CDFF29] text-black shadow-brutal-sm flex items-center justify-center gap-1.5 sm:gap-2">
+                    <span class="w-2 h-2 rounded-full bg-black"></span>
+                    <span>Free Courses</span>
+                    <span id="badge-free-count" class="ml-1 px-1.5 py-0.5 rounded bg-black text-[#CDFF29] text-[9px] sm:text-[10px] font-bold">12</span>
+                </button>
+                <button id="view-tab-paid" onclick="switchView('paid')" class="flex-1 sm:flex-initial px-3 sm:px-5 py-2 sm:py-2.5 rounded-xl font-mono text-[11px] sm:text-xs md:text-sm font-bold uppercase tracking-wider text-gray-400 hover:text-white transition-all duration-200 flex items-center justify-center gap-1.5 sm:gap-2">
+                    <span class="w-2 h-2 rounded-full bg-purple-500"></span>
+                    <span>Elite Pro</span>
+                    <span class="hidden sm:inline-block px-2 py-0.5 rounded-full bg-purple-900/60 text-purple-300 text-[10px] font-bold uppercase tracking-widest border border-purple-500/30">Soon</span>
+                </button>
+            </div>
+
+            <!-- Profile Sync Status -->
+            <div id="user-sync-status" class="text-xs font-mono text-gray-400 flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span>
+                <span id="sync-status-text">Log in to sync course ticks to your profile</span>
+            </div>
+        </div>
+
+        <!-- ========================================== -->
+        <!-- FREE COURSES & RESOURCES VIEW SECTION     -->
+        <!-- ========================================== -->
+        <section id="section-free-courses" class="space-y-8">
+            
+            <!-- Category Filter Pills & Search -->
+            <div class="bg-zinc-900/80 border-2 border-black rounded-2xl p-4 md:p-6 shadow-brutal space-y-4">
+                
+                <!-- Row 1: Search & Format Selector -->
+                <div class="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4">
+                    <!-- Search Input -->
+                    <div class="flex items-center border-2 border-zinc-700 rounded-xl px-4 py-2.5 bg-black/60 flex-1 focus-within:border-[#CDFF29] transition-colors">
+                        <svg class="w-5 h-5 text-gray-400 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                        </svg>
+                        <input type="text" id="course-search-input" oninput="applyFilters()" placeholder="Search by skill, topic, or provider (e.g. 'HTML', 'DSA', 'Harvard', 'Python')..." class="outline-none w-full text-sm font-medium bg-transparent text-white placeholder-gray-500">
+                        <button id="search-clear-btn" onclick="clearSearch()" class="hidden text-xs text-gray-400 hover:text-white uppercase font-mono px-2 py-1">Clear</button>
+                    </div>
+
+                    <!-- Resource Type Selector -->
+                    <div class="flex items-center gap-2 overflow-x-auto pb-1 md:pb-0">
+                        <button onclick="setResourceTypeFilter('all')" data-type="all" class="type-pill px-3 py-2 rounded-lg font-mono text-xs font-bold uppercase tracking-wider border-2 border-black bg-white text-black shadow-brutal-sm">
+                            All Formats
+                        </button>
+                        <button onclick="setResourceTypeFilter('free')" data-type="free" class="type-pill px-3 py-2 rounded-lg font-mono text-xs font-bold uppercase tracking-wider border-2 border-zinc-700 bg-black/40 text-gray-300 hover:border-white transition-colors">
+                            🎓 Free Courses
+                        </button>
+                        <button onclick="setResourceTypeFilter('doc')" data-type="doc" class="type-pill px-3 py-2 rounded-lg font-mono text-xs font-bold uppercase tracking-wider border-2 border-zinc-700 bg-black/40 text-gray-300 hover:border-white transition-colors">
+                            📖 Official Docs
+                        </button>
+                        <button onclick="setResourceTypeFilter('pdf')" data-type="pdf" class="type-pill px-3 py-2 rounded-lg font-mono text-xs font-bold uppercase tracking-wider border-2 border-zinc-700 bg-black/40 text-gray-300 hover:border-white transition-colors">
+                            📑 PDF Cheatsheets
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Row 2: Category Tracks Filter Pills -->
+                <div class="pt-2 border-t border-zinc-800">
+                    <div class="text-[11px] font-mono uppercase tracking-widest text-gray-400 mb-2 font-bold flex items-center justify-between">
+                        <span>SELECT ENGINEERING TRACK:</span>
+                        <span id="active-filter-label" class="text-[#CDFF29]">Viewing: All Tracks</span>
+                    </div>
+                    <div class="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-thin">
+                        <button onclick="setCategoryFilter('all')" data-cat="all" class="cat-pill whitespace-nowrap px-4 py-2 rounded-full font-mono text-xs font-black uppercase tracking-wider border-2 border-black bg-[#CDFF29] text-black shadow-brutal-sm">
+                            ⚡ All Tracks
+                        </button>
+                        <button onclick="setCategoryFilter('Web Development')" data-cat="Web Development" class="cat-pill whitespace-nowrap px-4 py-2 rounded-full font-mono text-xs font-bold uppercase tracking-wider border-2 border-zinc-700 bg-black/50 text-gray-300 hover:border-white transition-colors">
+                            🌐 Web Development
+                        </button>
+                        <button onclick="setCategoryFilter('DSA & Algorithms')" data-cat="DSA & Algorithms" class="cat-pill whitespace-nowrap px-4 py-2 rounded-full font-mono text-xs font-bold uppercase tracking-wider border-2 border-zinc-700 bg-black/50 text-gray-300 hover:border-white transition-colors">
+                            🧩 DSA & Algorithms
+                        </button>
+                        <button onclick="setCategoryFilter('AI & Machine Learning')" data-cat="AI & Machine Learning" class="cat-pill whitespace-nowrap px-4 py-2 rounded-full font-mono text-xs font-bold uppercase tracking-wider border-2 border-zinc-700 bg-black/50 text-gray-300 hover:border-white transition-colors">
+                            🤖 AI & Machine Learning
+                        </button>
+                        <button onclick="setCategoryFilter('Core CS & Systems')" data-cat="Core CS & Systems" class="cat-pill whitespace-nowrap px-4 py-2 rounded-full font-mono text-xs font-bold uppercase tracking-wider border-2 border-zinc-700 bg-black/50 text-gray-300 hover:border-white transition-colors">
+                            ⚙️ Core CS & Systems
+                        </button>
+                        <button onclick="setCategoryFilter('Cheatsheets & PDFs')" data-cat="Cheatsheets & PDFs" class="cat-pill whitespace-nowrap px-4 py-2 rounded-full font-mono text-xs font-bold uppercase tracking-wider border-2 border-zinc-700 bg-black/50 text-gray-300 hover:border-white transition-colors">
+                            📑 Cheatsheets & PDFs
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- COURSES GRID (Clean, Spacious & User-Friendly) -->
+            <div id="courses-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Dynamically rendered via JS -->
+                <div class="col-span-full py-20 text-center">
+                    <div class="inline-block animate-spin rounded-full h-8 w-8 border-4 border-[#CDFF29] border-t-transparent mb-4"></div>
+                    <p class="font-mono text-sm text-gray-400">Loading verified courses & documentation...</p>
+                </div>
+            </div>
+
+            <!-- Empty State -->
+            <div id="courses-empty-state" class="hidden text-center py-20 bg-zinc-900/40 border-2 border-dashed border-zinc-700 rounded-3xl p-8">
+                <div class="text-4xl mb-3">🔍</div>
+                <h3 class="text-xl font-black uppercase text-white mb-2">No Courses or Docs Matched</h3>
+                <p class="text-gray-400 text-sm max-w-md mx-auto mb-6">
+                    Try adjusting your search keywords or switching to "All Tracks" to browse all curated B.Tech resources.
+                </p>
+                <button onclick="resetAllFilters()" class="px-6 py-2.5 rounded-full bg-[#CDFF29] text-black font-mono text-xs font-bold uppercase tracking-wider shadow-brutal-sm border border-black hover:bg-white transition-colors">
+                    Reset All Filters
+                </button>
+            </div>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- PAID COURSES / DEVENGERS ELITE PRO SECTION -->
+        <!-- ========================================== -->
+        <section id="section-paid-courses" class="hidden space-y-12">
+            
+            <!-- Coming Soon Hero Card -->
+            <div class="coming-soon-glow bg-zinc-900 border-4 border-black rounded-3xl p-8 sm:p-12 lg:p-16 shadow-brutal-purple relative overflow-hidden">
+                <!-- Diagonal Watermark -->
+                <div class="absolute -right-10 -bottom-10 text-[140px] sm:text-[220px] font-black font-mono text-white/[0.03] select-none pointer-events-none uppercase">
+                    ELITE
+                </div>
+
+                <div class="relative z-10 max-w-3xl">
+                    <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#7B42F6] text-white border-2 border-black font-mono text-xs font-black tracking-widest uppercase mb-6 shadow-brutal-sm">
+                        <span class="w-2 h-2 rounded-full bg-[#CDFF29] animate-pulse"></span>
+                        <span id="coming-soon-badge-text">COMING SOON // ELITE PRO</span>
+                    </div>
+
+                    <h2 id="coming-soon-title-text" class="text-4xl sm:text-6xl lg:text-7xl font-black uppercase tracking-tight text-white leading-tight mb-4 drop-shadow-md">
+                        DEVENGERS ELITE PRO
+                    </h2>
+
+                    <p id="coming-soon-subtitle-text" class="text-gray-300 text-base sm:text-lg md:text-xl font-normal leading-relaxed mb-8">
+                        Upcoming cohort masterclasses in Web Dev, DSA, and winning national & global hackathons.
+                    </p>
+
+                    <!-- Waitlist Form -->
+                    <div class="bg-black/80 border-2 border-zinc-700 rounded-2xl p-4 sm:p-6 shadow-brutal max-w-xl">
+                        <h4 class="font-mono text-xs uppercase tracking-wider text-[#CDFF29] font-bold mb-2">
+                            // PRIORITY ACCESS WAITLIST
+                        </h4>
+                        <p class="text-xs text-gray-400 mb-4">
+                            Be the first to know when registrations open. Founding cohorts get exclusive early bird scholarship passes.
+                        </p>
+                        
+                        <form id="waitlist-form" onsubmit="handleWaitlistSubmit(event)" class="flex flex-col sm:flex-row gap-3">
+                            <input type="email" id="waitlist-email" required placeholder="Enter your email to reserve a spot..." class="bg-zinc-900 border-2 border-zinc-700 text-white rounded-xl px-4 py-3 text-sm flex-1 outline-none focus:border-[#CDFF29] transition-colors">
+                            <button type="submit" class="bg-[#CDFF29] hover:bg-white text-black font-mono text-xs font-black uppercase tracking-wider px-6 py-3 rounded-xl border-2 border-black shadow-brutal-sm transition-colors cursor-pointer flex-shrink-0">
+                                Get Notified &rarr;
+                            </button>
+                        </form>
+                        <div id="waitlist-feedback" class="hidden mt-3 text-xs font-mono text-[#CDFF29]"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- The 3 Elite Pro Upcoming Cohort Masterclasses -->
+            <div>
+                <div class="flex items-center gap-2 mb-6">
+                    <span class="w-3 h-3 bg-[#7B42F6] rounded-sm"></span>
+                    <h3 class="text-xl sm:text-2xl font-black uppercase tracking-tight text-white">
+                        Upcoming Elite Pro Masterclasses
+                    </h3>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <!-- Masterclass 1: Web Dev Full Course -->
+                    <div class="bg-zinc-900 border-2 border-black rounded-2xl p-6 shadow-brutal flex flex-col justify-between hover:-translate-y-1 transition-transform">
+                        <div>
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="w-10 h-10 rounded-xl bg-[#00D2FF] text-black flex items-center justify-center font-mono font-black text-base border-2 border-black shadow-brutal-sm">
+                                    01
+                                </div>
+                                <span class="px-2 py-0.5 rounded bg-cyan-900/40 text-[#00D2FF] font-mono text-[10px] font-bold uppercase tracking-wider border border-cyan-500/30">
+                                    FULL STACK MASTERCLASS
+                                </span>
+                            </div>
+                            <h4 class="text-xl font-black uppercase text-white mb-2">
+                                Web Dev Full Course
+                            </h4>
+                            <p class="text-gray-300 text-xs sm:text-sm leading-relaxed mb-4">
+                                Complete end-to-end full stack engineering. Master modern reactive frontends, scalable REST/GraphQL APIs, distributed databases, authentication, and cloud CI/CD deployment.
+                            </p>
+                        </div>
+                        <div class="pt-4 border-t border-zinc-800 font-mono text-xs text-gray-400 space-y-1">
+                            <div class="flex items-center justify-between">
+                                <span>Curriculum:</span>
+                                <span class="text-white font-bold">Frontend to Cloud</span>
+                            </div>
+                            <div class="flex items-center justify-between text-[#CDFF29]">
+                                <span>Status:</span>
+                                <span class="font-bold">Cohort Launching Soon</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Masterclass 2: DSA Full Course -->
+                    <div class="bg-zinc-900 border-2 border-black rounded-2xl p-6 shadow-brutal flex flex-col justify-between hover:-translate-y-1 transition-transform">
+                        <div>
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="w-10 h-10 rounded-xl bg-[#7B42F6] text-white flex items-center justify-center font-mono font-black text-base border-2 border-black shadow-brutal-sm">
+                                    02
+                                </div>
+                                <span class="px-2 py-0.5 rounded bg-purple-900/40 text-purple-300 font-mono text-[10px] font-bold uppercase tracking-wider border border-purple-500/30">
+                                    ALGORITHMS MASTERCLASS
+                                </span>
+                            </div>
+                            <h4 class="text-xl font-black uppercase text-white mb-2">
+                                DSA Full Course
+                            </h4>
+                            <p class="text-gray-300 text-xs sm:text-sm leading-relaxed mb-4">
+                                Deep dive into fundamental and advanced data structures. Master algorithmic problem-solving patterns, graphs, trees, dynamic programming, and high-frequency technical interview questions.
+                            </p>
+                        </div>
+                        <div class="pt-4 border-t border-zinc-800 font-mono text-xs text-gray-400 space-y-1">
+                            <div class="flex items-center justify-between">
+                                <span>Curriculum:</span>
+                                <span class="text-white font-bold">Algorithms & Patterns</span>
+                            </div>
+                            <div class="flex items-center justify-between text-[#CDFF29]">
+                                <span>Status:</span>
+                                <span class="font-bold">Cohort Launching Soon</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Masterclass 3: How to Win Hackathons Masterclass -->
+                    <div class="bg-zinc-900 border-2 border-black rounded-2xl p-6 shadow-brutal flex flex-col justify-between hover:-translate-y-1 transition-transform">
+                        <div>
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="w-10 h-10 rounded-xl bg-[#CDFF29] text-black flex items-center justify-center font-mono font-black text-base border-2 border-black shadow-brutal-sm">
+                                    03
+                                </div>
+                                <span class="px-2 py-0.5 rounded bg-lime-900/40 text-[#CDFF29] font-mono text-[10px] font-bold uppercase tracking-wider border border-lime-500/30">
+                                    WINNING MASTERCLASS
+                                </span>
+                            </div>
+                            <h4 class="text-xl font-black uppercase text-white mb-2">
+                                How to Win Hackathons
+                            </h4>
+                            <p class="text-gray-300 text-xs sm:text-sm leading-relaxed mb-4">
+                                The proven championship playbook. Learn how to discover winning problem statements, build impressive MVPs in 24 hours, craft high-scoring pitch decks, and impress hackathon judges.
+                            </p>
+                        </div>
+                        <div class="pt-4 border-t border-zinc-800 font-mono text-xs text-gray-400 space-y-1">
+                            <div class="flex items-center justify-between">
+                                <span>Curriculum:</span>
+                                <span class="text-white font-bold">Ideation, MVP & Pitch</span>
+                            </div>
+                            <div class="flex items-center justify-between text-[#CDFF29]">
+                                <span>Status:</span>
+                                <span class="font-bold">Cohort Launching Soon</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- SECTION: Site Footer (Matching index.html) -->
+    <footer class="relative bg-[#0b0b0b] w-full pt-28 pb-16 px-6 overflow-hidden text-center select-none" id="site-footer">
+        <!-- SVG Grid Lines Background -->
+        <svg class="absolute inset-0 w-full h-full pointer-events-none opacity-20" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <pattern id="footer-grid-pattern" width="24" height="24" patternUnits="userSpaceOnUse">
+                    <line x1="0" y1="24" x2="24" y2="24" stroke="#ffffff" stroke-width="1" stroke-dasharray="3,3" />
+                    <line x1="24" y1="0" x2="24" y2="24" stroke="#ffffff" stroke-width="1" stroke-dasharray="3,3" />
+                </pattern>
+                <pattern id="footer-major-grid" width="120" height="120" patternUnits="userSpaceOnUse">
+                    <line x1="0" y1="120" x2="120" y2="120" stroke="#ffffff" stroke-width="1" stroke-opacity="0.35" />
+                    <line x1="120" y1="0" x2="120" y2="120" stroke="#ffffff" stroke-width="1" stroke-opacity="0.35" />
+                </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#footer-grid-pattern)" />
+            <rect width="100%" height="100%" fill="url(#footer-major-grid)" />
+        </svg>
+
+        <div class="relative z-10 max-w-[1000px] mx-auto flex flex-col items-center">
+
+            <!-- Eyebrow -->
+            <p class="text-white text-[15px] md:text-[18px] font-semibold tracking-tight mb-7">
+                A Technology &amp; Developer Community
+            </p>
+
+            <!-- 3D Extruded Logo (DEVENGERS) -->
+            <div class="w-full max-w-[620px] flex justify-center mb-8 px-4">
+                <svg class="w-full h-auto overflow-visible select-none drop-shadow-lg transition-transform hover:scale-[1.02] duration-300" viewBox="0 0 850 140" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <style>
+                            .svg-devengers-text {
+                                font-family: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+                                font-weight: 900;
+                                font-size: 88px;
+                                letter-spacing: -2px;
+                                text-anchor: middle;
+                                dominant-baseline: central;
+                            }
+                        </style>
+                    </defs>
+                    <g transform="translate(425, 65) skewX(-5)">
+                        <!-- Bottom Black Shadow -->
+                        <text class="svg-devengers-text" x="-18" y="18" fill="#000000" stroke="#000000" stroke-width="8" stroke-linejoin="round">DEVENGERS</text>
+                        <text class="svg-devengers-text" x="-17" y="17" fill="#000000" stroke="#000000" stroke-width="8" stroke-linejoin="round">DEVENGERS</text>
+                        
+                        <!-- 3D White/Gray Extrusion Layers -->
+                        <text class="svg-devengers-text" x="-16" y="16" fill="#e2e2e2" stroke="#e2e2e2" stroke-width="8" stroke-linejoin="round">DEVENGERS</text>
+                        <text class="svg-devengers-text" x="-15" y="15" fill="#e2e2e2" stroke="#e2e2e2" stroke-width="8" stroke-linejoin="round">DEVENGERS</text>
+                        <text class="svg-devengers-text" x="-14" y="14" fill="#e2e2e2" stroke="#e2e2e2" stroke-width="8" stroke-linejoin="round">DEVENGERS</text>
+                        <text class="svg-devengers-text" x="-13" y="13" fill="#e2e2e2" stroke="#e2e2e2" stroke-width="8" stroke-linejoin="round">DEVENGERS</text>
+                        <text class="svg-devengers-text" x="-12" y="12" fill="#e2e2e2" stroke="#e2e2e2" stroke-width="8" stroke-linejoin="round">DEVENGERS</text>
+                        <text class="svg-devengers-text" x="-11" y="11" fill="#e2e2e2" stroke="#e2e2e2" stroke-width="8" stroke-linejoin="round">DEVENGERS</text>
+                        <text class="svg-devengers-text" x="-10" y="10" fill="#e2e2e2" stroke="#e2e2e2" stroke-width="8" stroke-linejoin="round">DEVENGERS</text>
+                        <text class="svg-devengers-text" x="-9" y="9" fill="#e2e2e2" stroke="#e2e2e2" stroke-width="8" stroke-linejoin="round">DEVENGERS</text>
+                        <text class="svg-devengers-text" x="-8" y="8" fill="#e2e2e2" stroke="#e2e2e2" stroke-width="8" stroke-linejoin="round">DEVENGERS</text>
+                        <text class="svg-devengers-text" x="-7" y="7" fill="#e2e2e2" stroke="#e2e2e2" stroke-width="8" stroke-linejoin="round">DEVENGERS</text>
+                        <text class="svg-devengers-text" x="-6" y="6" fill="#e2e2e2" stroke="#e2e2e2" stroke-width="8" stroke-linejoin="round">DEVENGERS</text>
+                        <text class="svg-devengers-text" x="-5" y="5" fill="#e2e2e2" stroke="#e2e2e2" stroke-width="8" stroke-linejoin="round">DEVENGERS</text>
+                        <text class="svg-devengers-text" x="-4" y="4" fill="#e2e2e2" stroke="#e2e2e2" stroke-width="8" stroke-linejoin="round">DEVENGERS</text>
+                        <text class="svg-devengers-text" x="-3" y="3" fill="#ffffff" stroke="#ffffff" stroke-width="8" stroke-linejoin="round">DEVENGERS</text>
+                        <text class="svg-devengers-text" x="-2" y="2" fill="#ffffff" stroke="#ffffff" stroke-width="8" stroke-linejoin="round">DEVENGERS</text>
+                        <text class="svg-devengers-text" x="-1" y="1" fill="#ffffff" stroke="#ffffff" stroke-width="8" stroke-linejoin="round">DEVENGERS</text>
+
+                        <!-- Top Front White Outline -->
+                        <text class="svg-devengers-text" x="0" y="0" fill="#ffffff" stroke="#ffffff" stroke-width="8" stroke-linejoin="round">DEVENGERS</text>
+                        <!-- Top Front Solid Black Face -->
+                        <text class="svg-devengers-text" x="0" y="0" fill="#000000">DEVENGERS</text>
+                    </g>
+                </svg>
+            </div>
+
+            <!-- Subtitle -->
+            <h3 class="text-white text-[22px] sm:text-[26px] md:text-[30px] font-semibold tracking-tight leading-[1.3] max-w-[620px] mb-8">
+                Join for free and build with<br class="hidden sm:inline"> creative developers on the internet.
+            </h3>
+
+            <!-- Pill CTA Button -->
+            <a href="https://whatsapp.com/channel/0029VbCVGAd8KMql7Ie3ew43" target="_blank" rel="noopener noreferrer"
+                class="inline-flex items-center gap-2 bg-white text-black font-semibold text-[13px] md:text-[14px] px-7 py-3 rounded-full hover:bg-gray-200 transition-all shadow-md group mb-16">
+                <span>Join Devengers</span>
+                <span class="text-base font-normal leading-none group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform">&#8599;</span>
+            </a>
+
+            <!-- Navigation Links Row 1 -->
+            <div class="flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-white font-medium text-[15px] md:text-[16px] tracking-normal mb-4">
+                <a href="index.html" class="hover:text-gray-300 transition-colors">Home</a>
+                <a href="events.html" class="hover:text-gray-300 transition-colors">Events</a>
+                <a href="learn.html" class="hover:text-gray-300 transition-colors">Learn</a>
+                <a href="campus.html" class="hover:text-gray-300 transition-colors">Campus Resource</a>
+                <a href="gallery.html" class="hover:text-gray-300 transition-colors">Gallery</a>
+                <a href="dsa.html" class="hover:text-gray-300 transition-colors">DSA Streak</a>
+                <a href="directory.html" class="hover:text-gray-300 transition-colors">Directory</a>
+            </div>
+
+            <!-- Navigation Links Row 2 -->
+            <div class="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-gray-400 font-normal text-[13px] md:text-[14px] tracking-normal mb-8">
+                <a href="index.html#social-section" class="hover:text-white transition-colors">About</a>
+                <a href="index.html#faq-section" class="hover:text-white transition-colors">FAQs</a>
+                <a href="mailto:event@devengers.org?subject=Campus%20Event%20or%20Hackathon%20Inquiry" class="hover:text-white transition-colors">Partnerships</a>
+                <a href="mailto:support@devengers.org?subject=General%20Inquiry%20-%20Devengers" class="hover:text-white transition-colors">Contact</a>
+                <a href="login.html" class="hover:text-white transition-colors">Login</a>
+                <a href="register.html" class="hover:text-white transition-colors">Sign up</a>
+                <a href="index.html#footer-cta-section" class="hover:text-white transition-colors">Campus Chapter</a>
+            </div>
+
+            <!-- Social Media Icons Row -->
+            <div class="flex items-center justify-center gap-6 text-white mb-8">
+                <!-- WhatsApp Channel -->
+                <a href="https://whatsapp.com/channel/0029VbCVGAd8KMql7Ie3ew43" target="_blank" rel="noopener noreferrer"
+                    class="hover:text-[#25D366] transition-colors" title="WhatsApp Channel" aria-label="WhatsApp Channel">
+                    <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                        <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2ZM12.05 20.16C10.57 20.16 9.12 19.76 7.85 19.01L7.55 18.83L4.44 19.65L5.27 16.61L5.07 16.3C4.24 14.98 3.81 13.47 3.81 11.91C3.81 7.37 7.5 3.68 12.05 3.68C14.25 3.68 16.31 4.54 17.87 6.1C19.42 7.66 20.28 9.72 20.28 11.92C20.28 16.46 16.59 20.16 12.05 20.16ZM16.57 14.33C16.32 14.21 15.1 13.61 14.87 13.53C14.64 13.44 14.48 13.4 14.31 13.65C14.15 13.89 13.68 14.45 13.53 14.62C13.39 14.78 13.25 14.8 13 14.68C12.75 14.55 11.95 14.29 11 13.45C10.26 12.79 9.76 11.98 9.62 11.73C9.47 11.49 9.6 11.35 9.73 11.23C9.84 11.12 9.98 10.94 10.1 10.8C10.23 10.66 10.27 10.55 10.35 10.39C10.43 10.22 10.39 10.08 10.33 9.96C10.27 9.84 9.78 8.63 9.57 8.14C9.37 7.66 9.17 7.72 9.02 7.71C8.88 7.71 8.71 7.71 8.55 7.71C8.38 7.71 8.12 7.77 7.89 8.02C7.67 8.26 7.03 8.86 7.03 10.08C7.03 11.3 7.92 12.48 8.04 12.65C8.16 12.81 9.78 15.31 12.26 16.38C12.85 16.64 13.31 16.79 13.67 16.91C14.26 17.09 14.8 17.07 15.22 17C15.7 16.93 16.69 16.4 16.9 15.81C17.11 15.22 17.11 14.71 17.05 14.6C16.98 14.5 16.82 14.45 16.57 14.33Z" />
+                    </svg>
+                </a>
+                <!-- Instagram -->
+                <a href="https://www.instagram.com/officialdevengers" target="_blank" rel="noopener noreferrer"
+                    class="hover:text-[#E1306C] transition-colors" title="Instagram" aria-label="Instagram">
+                    <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                        <rect x="2.5" y="2.5" width="19" height="19" rx="5" />
+                        <circle cx="12" cy="12" r="4.2" />
+                        <circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" />
+                    </svg>
+                </a>
+                <!-- LinkedIn -->
+                <a href="https://www.linkedin.com/company/officialdevengers" target="_blank" rel="noopener noreferrer"
+                    class="hover:text-[#0077B5] transition-colors" title="LinkedIn" aria-label="LinkedIn">
+                    <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                        <rect x="2.5" y="2.5" width="19" height="19" rx="4" />
+                        <circle cx="7.5" cy="8" r="1.3" fill="currentColor" />
+                        <path d="M6.3 11.2h2.4v6.5H6.3z" fill="currentColor" />
+                        <path d="M11 11.2h2.2v1c.4-.7 1.3-1.2 2.4-1.2 2.1 0 3.1 1.3 3.1 3.5v4.2h-2.3v-3.7c0-1-.4-1.7-1.4-1.7-1 0-1.5.7-1.5 1.7v3.7H11z" fill="currentColor" />
+                    </svg>
+                </a>
+                <!-- YouTube -->
+                <a href="https://www.youtube.com/@officialdevengers" target="_blank" rel="noopener noreferrer"
+                    class="hover:text-[#FF0000] transition-colors" title="YouTube" aria-label="YouTube">
+                    <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                        <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+                    </svg>
+                </a>
+                <!-- Devengers Community Smiley -->
+                <a href="index.html" class="hover:text-[#FCE205] transition-colors" title="Devengers Community" aria-label="Devengers Community">
+                    <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                        <circle cx="12" cy="12" r="9" />
+                        <circle cx="9" cy="9.5" r="1" fill="currentColor" />
+                        <circle cx="15" cy="9.5" r="1" fill="currentColor" />
+                        <path d="M8.5 14c.8 1.5 2 2.2 3.5 2.2s2.7-.7 3.5-2.2" stroke-linecap="round" />
+                    </svg>
+                </a>
+                <!-- Admin Login Icon -->
+                <a href="admin-events.html" class="admin-only hidden hover:text-[#CDFF29] transition-colors p-1.5 rounded-lg border border-gray-800 hover:border-[#CDFF29]/40 bg-black/40 hover:bg-[#CDFF29]/10 items-center justify-center text-gray-500" title="Admin Portal" aria-label="Admin Portal">
+                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                        <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                    </svg>
+                </a>
+            </div>
+
+            <!-- Copyright and Legal -->
+            <p class="text-[#888888] font-mono text-[11px] uppercase tracking-wider mb-2">
+                DEVENGERS COMMUNITY &copy; 2026 ALL RIGHTS RESERVED
+            </p>
+            <div class="flex flex-wrap items-center justify-center gap-x-2 gap-y-1 text-[#888888] font-mono text-[10px] uppercase tracking-wider">
+                <a href="campus.html" class="hover:text-white transition-colors">Terms</a>
+                <span>|</span>
+                <a href="campus.html" class="hover:text-white transition-colors">Privacy</a>
+                <span>|</span>
+                <a href="campus.html" class="hover:text-white transition-colors">Acceptable Use</a>
+                <span>|</span>
+                <a href="mailto:support@devengers.org" class="hover:text-white transition-colors">Campus Support</a>
+                <span>|</span>
+                <a href="mailto:event@devengers.org" class="hover:text-white transition-colors">Partnerships</a>
+                <span>|</span>
+                <a href="campus.html" class="hover:text-white transition-colors">Cookie Policy</a>
+                <span>|</span>
+                <a href="campus.html" class="hover:text-white transition-colors">Community Guidelines</a>
+                <span class="admin-only hidden">|</span>
+                <a href="admin-events.html" class="admin-only hidden hover:text-[#CDFF29] text-gray-400 transition-colors items-center gap-1 font-bold">
+                    <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                        <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                    </svg>
+                    <span>Admin</span>
+                </a>
+            </div>
+
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        let allCourses = [];
+        let completedCourseIds = new Set();
+        let comingSoonSettings = {};
+        let currentTab = 'free'; // 'free' | 'paid'
+        let currentCategory = 'all';
+        let currentResourceType = 'all';
+        let currentUser = null;
+
+        // Load data on page init
+        document.addEventListener('DOMContentLoaded', async () => {
+            await checkAuthStatus();
+            await fetchCourses();
+        });
+
+        async function checkAuthStatus() {
+            try {
+                const res = await fetch('/api/auth/me');
+                const data = await res.json();
+                if (data.authenticated && data.user) {
+                    currentUser = data.user;
+                    if (currentUser.completed_course_ids) {
+                        completedCourseIds = new Set(currentUser.completed_course_ids);
+                    }
+                    updateNavForLoggedInUser(currentUser);
+                    updateUserStats(currentUser);
+                }
+            } catch (err) {
+                console.warn("Auth check error:", err);
+            }
+        }
+
+        function updateNavForLoggedInUser(user) {
+            const authSlot = document.getElementById('auth-nav-slot');
+            const adminShortcut = document.getElementById('admin-shortcut');
+            const syncStatusText = document.getElementById('sync-status-text');
+
+            if (user.role === 'admin' && adminShortcut) {
+                adminShortcut.classList.remove('hidden');
+            }
+
+            if (syncStatusText) {
+                syncStatusText.textContent = `Tracking progress for ${user.name || user.email}`;
+            }
+
+            if (authSlot) {
+                const avatarHtml = user.avatar_url && user.avatar_url.trim()
+                    ? `<img src="${user.avatar_url}" alt="Profile" class="w-5 h-5 rounded-full object-cover">`
+                    : `<span class="text-[10px] font-bold text-[#CDFF29]">${(user.name||user.email||'D').slice(0,2).toUpperCase()}</span>`;
+                authSlot.innerHTML = `
+                    <div class="flex items-center gap-3">
+                        <a href="profile.html" class="flex items-center gap-2 bg-black/40 hover:bg-black/60 px-3 py-1.5 rounded-full border border-black/40 text-xs font-mono transition-colors">
+                            ${avatarHtml}
+                            <span class="text-white font-bold hidden sm:inline-block">${escapeHtml(user.name || user.email)}</span>
+                            <span class="px-1.5 py-0.2 rounded bg-[#CDFF29] text-black font-black text-[9px] uppercase">L${user.rank ? user.rank.level : 1}</span>
+                        </a>
+                    </div>
+                `;
+            }
+        }
+
+        function updateUserStats(user) {
+            const completedCount = completedCourseIds.size;
+            const completedElem = document.getElementById('stat-user-completed');
+            const streakElem = document.getElementById('stat-user-streak');
+
+            if (completedElem) completedElem.textContent = completedCount;
+            if (streakElem) {
+                streakElem.textContent = `🔥 ${user.daily_streak || 1}d`;
+            }
+        }
+
+        async function fetchCourses() {
+            try {
+                const res = await fetch('/api/courses');
+                const data = await res.json();
+                if (data.success) {
+                    allCourses = data.courses || [];
+                    comingSoonSettings = data.coming_soon || {};
+
+                    updateComingSoonUI();
+
+                    const freeCount = allCourses.length;
+                    const freeBadge = document.getElementById('badge-free-count');
+                    const statTotal = document.getElementById('stat-total-courses');
+                    if (freeBadge) freeBadge.textContent = freeCount;
+                    if (statTotal) statTotal.textContent = `${freeCount}`;
+
+                    applyFilters();
+                }
+            } catch (err) {
+                console.error("Failed to fetch courses:", err);
+                const grid = document.getElementById('courses-grid');
+                if (grid) {
+                    grid.innerHTML = `
+                        <div class="col-span-full py-12 text-center text-red-400 font-mono text-sm">
+                            Failed to load learning resources. Please refresh or check connection.
+                        </div>
+                    `;
+                }
+            }
+        }
+
+        function updateComingSoonUI() {
+            if (!comingSoonSettings) return;
+
+            const badgeElem = document.getElementById('coming-soon-badge-text');
+            const titleElem = document.getElementById('coming-soon-title-text');
+            const subElem = document.getElementById('coming-soon-subtitle-text');
+
+            if (badgeElem && comingSoonSettings.paid_coming_soon_badge) {
+                badgeElem.textContent = comingSoonSettings.paid_coming_soon_badge;
+            }
+            if (titleElem && comingSoonSettings.paid_coming_soon_title) {
+                titleElem.textContent = comingSoonSettings.paid_coming_soon_title;
+            }
+            if (subElem && comingSoonSettings.paid_coming_soon_subtitle) {
+                subElem.textContent = comingSoonSettings.paid_coming_soon_subtitle;
+            }
+        }
+
+        function switchView(tab) {
+            currentTab = tab;
+            const freeSection = document.getElementById('section-free-courses');
+            const paidSection = document.getElementById('section-paid-courses');
+            const tabFree = document.getElementById('view-tab-free');
+            const tabPaid = document.getElementById('view-tab-paid');
+
+            if (tab === 'free') {
+                freeSection.classList.remove('hidden');
+                paidSection.classList.add('hidden');
+
+                tabFree.className = "px-5 py-2.5 rounded-xl font-mono text-xs sm:text-sm font-black uppercase tracking-wider transition-all duration-200 bg-[#CDFF29] text-black shadow-brutal-sm flex items-center gap-2";
+                tabPaid.className = "px-5 py-2.5 rounded-xl font-mono text-xs sm:text-sm font-bold uppercase tracking-wider text-gray-400 hover:text-white transition-all duration-200 flex items-center gap-2";
+            } else {
+                freeSection.classList.add('hidden');
+                paidSection.classList.remove('hidden');
+
+                tabPaid.className = "px-5 py-2.5 rounded-xl font-mono text-xs sm:text-sm font-black uppercase tracking-wider transition-all duration-200 bg-[#7B42F6] text-white shadow-brutal-sm flex items-center gap-2";
+                tabFree.className = "px-5 py-2.5 rounded-xl font-mono text-xs sm:text-sm font-bold uppercase tracking-wider text-gray-400 hover:text-white transition-all duration-200 flex items-center gap-2";
+            }
+        }
+
+        function setCategoryFilter(cat) {
+            currentCategory = cat;
+            document.querySelectorAll('.cat-pill').forEach(btn => {
+                if (btn.getAttribute('data-cat') === cat) {
+                    btn.className = "cat-pill whitespace-nowrap px-4 py-2 rounded-full font-mono text-xs font-black uppercase tracking-wider border-2 border-black bg-[#CDFF29] text-black shadow-brutal-sm";
+                } else {
+                    btn.className = "cat-pill whitespace-nowrap px-4 py-2 rounded-full font-mono text-xs font-bold uppercase tracking-wider border-2 border-zinc-700 bg-black/50 text-gray-300 hover:border-white transition-colors";
+                }
+            });
+
+            const activeLabel = document.getElementById('active-filter-label');
+            if (activeLabel) {
+                activeLabel.textContent = `Viewing: ${cat === 'all' ? 'All Tracks' : cat}`;
+            }
+
+            applyFilters();
+        }
+
+        function setResourceTypeFilter(type) {
+            currentResourceType = type;
+            document.querySelectorAll('.type-pill').forEach(btn => {
+                if (btn.getAttribute('data-type') === type) {
+                    btn.className = "type-pill px-3 py-2 rounded-lg font-mono text-xs font-bold uppercase tracking-wider border-2 border-black bg-white text-black shadow-brutal-sm";
+                } else {
+                    btn.className = "type-pill px-3 py-2 rounded-lg font-mono text-xs font-bold uppercase tracking-wider border-2 border-zinc-700 bg-black/40 text-gray-300 hover:border-white transition-colors";
+                }
+            });
+            applyFilters();
+        }
+
+        function clearSearch() {
+            const input = document.getElementById('course-search-input');
+            if (input) input.value = '';
+            document.getElementById('search-clear-btn').classList.add('hidden');
+            applyFilters();
+        }
+
+        function resetAllFilters() {
+            const input = document.getElementById('course-search-input');
+            if (input) input.value = '';
+            setCategoryFilter('all');
+            setResourceTypeFilter('all');
+        }
+
+        function applyFilters() {
+            const searchInput = document.getElementById('course-search-input');
+            const searchVal = (searchInput?.value || '').trim().toLowerCase();
+            const clearBtn = document.getElementById('search-clear-btn');
+            if (clearBtn) {
+                if (searchVal) clearBtn.classList.remove('hidden');
+                else clearBtn.classList.add('hidden');
+            }
+
+            let filtered = allCourses.filter(c => {
+                if (currentCategory !== 'all' && c.category !== currentCategory) {
+                    return false;
+                }
+
+                if (currentResourceType !== 'all') {
+                    if (currentResourceType === 'free' && c.type !== 'free') return false;
+                    if (currentResourceType === 'doc' && c.type !== 'doc') return false;
+                    if (currentResourceType === 'pdf' && c.type !== 'pdf') return false;
+                }
+
+                if (searchVal) {
+                    const textCorpus = [
+                        c.title || '',
+                        c.what_you_learn || '',
+                        c.what_you_get || '',
+                        c.tags || '',
+                        c.provider || '',
+                        c.category || ''
+                    ].join(' ').toLowerCase();
+
+                    if (!textCorpus.includes(searchVal)) {
+                        return false;
+                    }
+                }
+
+                return true;
+            });
+
+            renderCourseCards(filtered);
+        }
+
+        function renderCourseCards(courses) {
+            const grid = document.getElementById('courses-grid');
+            const empty = document.getElementById('courses-empty-state');
+
+            if (!courses || courses.length === 0) {
+                grid.innerHTML = '';
+                empty.classList.remove('hidden');
+                return;
+            }
+
+            empty.classList.add('hidden');
+            grid.innerHTML = courses.map(c => generateCourseCardHTML(c)).join('');
+        }
+
+        function generateCourseCardHTML(c) {
+            const isCompleted = completedCourseIds.has(c.id);
+
+            // Type Pill
+            let typeBadge = '';
+            if (c.type === 'free') {
+                typeBadge = `<span class="px-2 py-0.5 rounded bg-[#CDFF29] text-black font-mono text-[10px] font-black uppercase tracking-wider border border-black shadow-brutal-sm">FREE</span>`;
+            } else if (c.type === 'doc') {
+                typeBadge = `<span class="px-2 py-0.5 rounded bg-[#00D2FF] text-black font-mono text-[10px] font-black uppercase tracking-wider border border-black shadow-brutal-sm">OFFICIAL DOCS</span>`;
+            } else if (c.type === 'pdf') {
+                typeBadge = `<span class="px-2 py-0.5 rounded bg-[#FF5E8E] text-black font-mono text-[10px] font-black uppercase tracking-wider border border-black shadow-brutal-sm">PDF BOOK</span>`;
+            } else {
+                typeBadge = `<span class="px-2 py-0.5 rounded bg-purple-500 text-white font-mono text-[10px] font-black uppercase tracking-wider border border-black shadow-brutal-sm">PAID</span>`;
+            }
+
+            // Certificate Badge
+            const certBadge = c.has_certificate ? `
+                <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-amber-400/20 text-amber-300 border border-amber-400/40 text-[10px] font-mono font-bold uppercase tracking-wider">
+                    🎓 Certificate
+                </span>
+            ` : '';
+
+            // Clean 2-3 Bullet Points
+            const learnLines = (c.what_you_learn || '').split('\n').filter(l => l.trim().length > 0);
+            const learnItemsHTML = learnLines.slice(0, 3).map(line => {
+                const clean = line.replace(/^[•\-\*]\s*/, '').trim();
+                return `
+                    <li class="flex items-start gap-2 text-xs text-gray-300 leading-snug">
+                        <span class="text-[#CDFF29] font-bold text-xs mt-0.5">&#10003;</span>
+                        <span>${escapeHtml(clean)}</span>
+                    </li>
+                `;
+            }).join('');
+
+            // Secondary Doc / PDF Action
+            let docButtonHTML = '';
+            if (c.doc_url) {
+                const docLabel = c.type === 'pdf' ? '📑 PDF Book' : '📖 Official Docs';
+                docButtonHTML = `
+                    <a href="${escapeHtml(c.doc_url)}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-1 px-3 py-2 rounded-xl bg-zinc-800 hover:bg-zinc-700 text-gray-200 border border-zinc-700 font-mono text-xs font-bold transition-colors">
+                        <span>${docLabel}</span>
+                        <span class="text-xs">&#8599;</span>
+                    </a>
+                `;
+            }
+
+            // Tick Button Appearance
+            const tickButtonHTML = `
+                <button onclick="toggleCourseCompleted('${c.id}', event)" class="course-tick-btn inline-flex items-center gap-1.5 px-3 py-1 rounded-full font-mono text-xs font-bold transition-all border ${isCompleted ? 'bg-[#CDFF29] text-black border-black shadow-brutal-sm' : 'bg-black/60 text-gray-300 border-zinc-700 hover:border-[#CDFF29] hover:text-white'}" title="Tick to record progress on your Devengers profile">
+                    <span>${isCompleted ? '✓' : '○'}</span>
+                    <span>${isCompleted ? 'Completed' : 'Mark Done'}</span>
+                </button>
+            `;
+
+            return `
+                <article class="course-card ${isCompleted ? 'is-completed' : ''} bg-zinc-900 border-2 border-black rounded-2xl overflow-hidden shadow-brutal flex flex-col justify-between">
+                    <div>
+                        <!-- Thumbnail Header (16:9) -->
+                        <div class="relative w-full aspect-[16/9] bg-zinc-950 overflow-hidden border-b-2 border-black">
+                            <img src="${escapeHtml(c.thumbnail || 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=1200&q=80')}" alt="${escapeHtml(c.title)}" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105" loading="lazy">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
+                            
+                            <!-- Badges Overlay -->
+                            <div class="absolute top-3 left-3 flex items-center gap-2 flex-wrap">
+                                ${typeBadge}
+                                ${certBadge}
+                            </div>
+
+                            <!-- Tick Button Top Right -->
+                            <div class="absolute top-3 right-3">
+                                ${tickButtonHTML}
+                            </div>
+
+                            <!-- Track & Provider Footer Overlay -->
+                            <div class="absolute bottom-3 left-3 right-3 flex items-center justify-between text-[11px] font-mono text-white/90">
+                                <span class="bg-black/80 px-2 py-0.5 rounded backdrop-blur-sm border border-white/20 font-bold uppercase tracking-wider text-[#00D2FF]">
+                                    ${escapeHtml(c.category)}
+                                </span>
+                                <span class="bg-black/80 px-2 py-0.5 rounded backdrop-blur-sm border border-white/20 text-gray-300">
+                                    🏛️ ${escapeHtml(c.provider || 'Devengers')}
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- Card Body (Clean, Uncluttered) -->
+                        <div class="p-5 space-y-3.5">
+                            <!-- Title -->
+                            <h3 class="text-base sm:text-lg font-black text-white uppercase tracking-tight leading-snug line-clamp-2 hover:text-[#CDFF29] transition-colors">
+                                <a href="${escapeHtml(c.destination_url)}" target="_blank" rel="noopener noreferrer">
+                                    ${escapeHtml(c.title)}
+                                </a>
+                            </h3>
+
+                            <!-- What You Will Learn (Crisp points) -->
+                            <div class="bg-black/40 border border-zinc-800 rounded-xl p-3 space-y-1.5">
+                                <div class="text-[10px] font-mono font-bold uppercase tracking-widest text-[#CDFF29]">
+                                    KEY SKILLS COVERED
+                                </div>
+                                <ul class="space-y-1">
+                                    ${learnItemsHTML}
+                                </ul>
+                            </div>
+
+                            <!-- What You Get (Clean single line perks) -->
+                            <div class="text-[11px] font-mono text-gray-400 bg-zinc-950/60 border border-zinc-800/80 px-3 py-1.5 rounded-lg truncate" title="${escapeHtml(c.what_you_get || '')}">
+                                🎁 ${escapeHtml(c.what_you_get || 'Free Lifetime Access • Hands-on Projects')}
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card Actions Footer -->
+                    <div class="p-5 pt-0 border-t border-zinc-800/80 mt-2 flex items-center gap-2">
+                        <a href="${escapeHtml(c.destination_url)}" target="_blank" rel="noopener noreferrer" class="flex-1 inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-xl bg-[#CDFF29] hover:bg-white text-black font-mono text-xs font-black uppercase tracking-wider border-2 border-black shadow-brutal-sm transition-all hover:translate-x-0.5">
+                            <span>${escapeHtml(c.action_label || 'Start Course')}</span>
+                            <span>&rarr;</span>
+                        </a>
+                        ${docButtonHTML}
+                    </div>
+                </article>
+            `;
+        }
+
+        async function toggleCourseCompleted(courseId, e) {
+            if (e) {
+                e.preventDefault();
+                e.stopPropagation();
+            }
+
+            if (!currentUser) {
+                showToast("Please log in to track course completion on your Devengers profile!", "🔒");
+                setTimeout(() => {
+                    window.location.href = 'login.html?redirect=learn.html';
+                }, 1500);
+                return;
+            }
+
+            try {
+                const res = await fetch('/api/user/course-progress', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({ course_id: courseId })
+                });
+                const data = await res.json();
+                if (data.success) {
+                    if (data.completed) {
+                        completedCourseIds.add(courseId);
+                        showToast(`✓ Marked course as completed! Level ${data.rank.level} • ${data.rank.title}`, "🎉");
+                    } else {
+                        completedCourseIds.delete(courseId);
+                        showToast("Marked course as in progress.", "○");
+                    }
+
+                    if (data.rank) currentUser.rank = data.rank;
+                    updateUserStats(currentUser);
+                    applyFilters();
+                }
+            } catch (err) {
+                console.error("Course progress error:", err);
+                showToast("Failed to update progress. Please check connection.", "⚠️");
+            }
+        }
+
+        function showToast(message, icon = "✓") {
+            const toast = document.getElementById('toast');
+            const msg = document.getElementById('toast-message');
+            const icn = document.getElementById('toast-icon');
+
+            if (!toast) return;
+            msg.textContent = message;
+            icn.textContent = icon;
+
+            toast.classList.remove('translate-y-24', 'opacity-0', 'pointer-events-none');
+            setTimeout(() => {
+                toast.classList.add('translate-y-24', 'opacity-0', 'pointer-events-none');
+            }, 3000);
+        }
+
+        function handleWaitlistSubmit(e) {
+            e.preventDefault();
+            const emailInput = document.getElementById('waitlist-email');
+            const feedback = document.getElementById('waitlist-feedback');
+            const email = (emailInput?.value || '').trim();
+
+            if (!email) return;
+
+            if (feedback) {
+                feedback.classList.remove('hidden');
+                feedback.innerHTML = `
+                    <span class="text-green-400 font-bold">&#10003; Spot reserved for <b>${escapeHtml(email)}</b>!</span> You will receive priority cohort syllabus when admissions open.
+                `;
+            }
+            if (emailInput) emailInput.value = '';
+        }
+
+        function escapeHtml(str) {
+            if (!str) return '';
+            return String(str)
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#039;');
+        }
+    </script>
+</body>
+</html>

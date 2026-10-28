@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <!-- Homepage -->
+  <url>
+    <loc>https://devengers.org/</loc>
+    <lastmod>2026-10-27</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://devengers.org/og-image.jpg</image:loc>
+      <image:title>Devengers Engineering Community Platform</image:title>
+      <image:caption>Learn, Build, Lead - Elite engineering student community</image:caption>
+    </image:image>
+  </url>
+
+  <!-- DSA Streak & 0-to-Hero Roadmap -->
+  <url>
+    <loc>https://devengers.org/dsa</loc>
+    <lastmod>2026-10-27</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.95</priority>
+    <image:image>
+      <image:loc>https://devengers.org/og-image.jpg</image:loc>
+      <image:title>Devengers DSA 0-to-Hero Roadmap</image:title>
+      <image:caption>Daily Problem of the Day (POTD) and 500+ curated DSA challenges</image:caption>
+    </image:image>
+  </url>
+
+  <!-- Events & Live Hackathons -->
+  <url>
+    <loc>https://devengers.org/events</loc>
+    <lastmod>2026-10-27</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.90</priority>
+    <image:image>
+      <image:loc>https://devengers.org/og-image.jpg</image:loc>
+      <image:title>Devengers Hackathons &amp; Events</image:title>
+      <image:caption>Live tech hackathons, coding workshops, and prizes</image:caption>
+    </image:image>
+  </url>
+
+  <!-- Campus PYQs & Subject Notes -->
+  <url>
+    <loc>https://devengers.org/campus</loc>
+    <lastmod>2026-10-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <!-- Interactive Courses & CS Roadmaps -->
+  <url>
+    <loc>https://devengers.org/learn</loc>
+    <lastmod>2026-10-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <!-- Certificate Verification Portal -->
+  <url>
+    <loc>https://devengers.org/certificates</loc>
+    <lastmod>2026-10-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <!-- Job Board & Internships -->
+  <url>
+    <loc>https://devengers.org/jobs</loc>
+    <lastmod>2026-10-27</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <!-- Community Projects Showcase -->
+  <url>
+    <loc>https://devengers.org/gallery</loc>
+    <lastmod>2026-10-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.80</priority>
+  </url>
+
+  <!-- Member Directory -->
+  <url>
+    <loc>https://devengers.org/directory</loc>
+    <lastmod>2026-10-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.75</priority>
+  </url>
+
+  <!-- Member Login -->
+  <url>
+    <loc>https://devengers.org/login</loc>
+    <lastmod>2026-10-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.70</priority>
+  </url>
+
+  <!-- Member Registration -->
+  <url>
+    <loc>https://devengers.org/register</loc>
+    <lastmod>2026-10-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.70</priority>
+  </url>
+</urlset>

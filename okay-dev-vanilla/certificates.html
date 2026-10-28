@@ -1,0 +1,1187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certificates Verification &amp; Download Portal | Devengers</title>
+    <meta name="description" content="Verify and instantly download cryptographically signed certificates for Devengers events, hackathons, and workshops with tamper-proof QR verification.">
+    <meta name="keywords" content="Certificate Verification, Verified Certificates, Devengers Certificate, Download Certificate, Hackathon Certificate, Digital Credentials, Engineering Certificates">
+    <meta name="author" content="Devengers Community">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <meta name="theme-color" content="#7B42F6">
+    <meta name="msapplication-TileColor" content="#7B42F6">
+    <link rel="canonical" href="https://devengers.org/certificates">
+
+    <!-- Open Graph / Meta -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://devengers.org/certificates">
+    <meta property="og:site_name" content="Devengers">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:title" content="Certificates Verification &amp; Download Portal | Devengers">
+    <meta property="og:description" content="Verify and download official cryptographically signed certificates with QR code verification.">
+    <meta property="og:image" content="https://devengers.org/og-image.jpg">
+    <meta property="og:image:secure_url" content="https://devengers.org/og-image.jpg">
+    <meta property="og:image:type" content="image/jpeg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="675">
+    <meta property="og:image:alt" content="Devengers Certificate Verification Portal">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@devengers">
+    <meta name="twitter:creator" content="@devengers">
+    <meta name="twitter:url" content="https://devengers.org/certificates">
+    <meta name="twitter:title" content="Certificates Verification &amp; Download Portal | Devengers">
+    <meta name="twitter:description" content="Verify and download official cryptographically signed certificates.">
+    <meta name="twitter:image" content="https://devengers.org/og-image.jpg">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico?v=3">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon.png?v=3">
+    <link rel="icon" type="image/png" sizes="192x192" href="favicon.png?v=3">
+    <link rel="apple-touch-icon" href="favicon.png?v=3">
+
+    <!-- Structured Data (JSON-LD) for Google Rich Results & Breadcrumbs -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Devengers Home",
+              "item": "https://devengers.org/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Certificates Portal",
+              "item": "https://devengers.org/certificates"
+            }
+          ]
+        },
+        {
+          "@type": "EducationalOccupationalCredential",
+          "name": "Devengers Verified Engineering Credential",
+          "description": "Cryptographically signed digital certificate awarded for completing hackathons, coding streak milestones, and engineering bootcamps.",
+          "credentialCategory": "Certificate",
+          "recognizedBy": {
+            "@type": "Organization",
+            "name": "Devengers",
+            "url": "https://devengers.org"
+          }
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "How do I verify a Devengers certificate?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Enter the unique Certificate ID in the search box on the verification portal or scan the QR code printed on the physical or PDF certificate to confirm its authenticity in real time."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Can I add Devengers certificates to LinkedIn?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes, every certificate has an 'Add to LinkedIn' button that auto-populates the issuing organization, credential name, issue date, and permanent verification URL."
+              }
+            }
+          ]
+        }
+      ]
+    }
+    </script>
+
+    <!-- Google Fonts for Typography & Certificate Calligraphy -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cinzel:wght@500;700;900&family=Great+Vibes&family=Inter:wght@400;500;600;700&family=Montserrat:wght@400;600;700;900&family=Playfair+Display:ital,wght@0,600;0,800;1,600&family=Space+Grotesk:wght@400;500;700;900&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'acid': '#CDFF29',
+                        'gold': '#F7D070',
+                    },
+                    fontFamily: {
+                        'sans': ['"Space Grotesk"', 'sans-serif'],
+                        'display': ['"Space Grotesk"', 'sans-serif'],
+                        'serif-luxury': ['"Playfair Display"', 'serif'],
+                        'cinzel': ['"Cinzel"', 'serif'],
+                        'calligraphy': ['"Great Vibes"', 'cursive'],
+                    },
+                    boxShadow: {
+                        'brutal': '4px 4px 0px 0px rgba(0,0,0,1)',
+                        'brutal-gold': '4px 4px 0px 0px #F7D070',
+                        'brutal-lime': '4px 4px 0px 0px #CDFF29',
+                        'glow-gold': '0 0 35px -5px rgba(247, 208, 112, 0.4)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Custom Global CSS -->
+    <link rel="stylesheet" href="style.css?v=20261019">
+    <script src="theme.js"></script>
+    <script src="auth.js"></script>
+
+    <!-- External Client-Side PDF, ZIP & Confetti Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+
+    <style>
+        .cert-glow-mesh {
+            background-color: #0b0c10;
+            background-image: 
+                radial-gradient(circle at 15% 20%, rgba(205, 255, 41, 0.08) 0%, transparent 40%),
+                radial-gradient(circle at 85% 75%, rgba(247, 208, 112, 0.09) 0%, transparent 45%),
+                radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+            background-size: 100% 100%, 100% 100%, 28px 28px;
+        }
+
+        .glass-panel {
+            background: rgba(18, 18, 22, 0.75);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 2px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .glass-panel-gold {
+            background: rgba(22, 20, 16, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 2px solid rgba(247, 208, 112, 0.35);
+        }
+
+        /* Certificate Live Stage */
+        .cert-canvas-frame {
+            position: relative;
+            background: #000;
+            border-radius: 16px;
+            box-shadow: 0 25px 60px -15px rgba(0,0,0,0.9), 0 0 30px rgba(247, 208, 112, 0.2);
+            border: 3px solid #222;
+            overflow: hidden;
+        }
+
+        /* Scan beam animation when searching */
+        @keyframes scanBeam {
+            0% { transform: translateY(-100%); opacity: 0; }
+            50% { opacity: 0.8; }
+            100% { transform: translateY(100%); opacity: 0; }
+        }
+
+        .scanning-beam {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, transparent 0%, rgba(205, 255, 41, 0.25) 50%, transparent 100%);
+            animation: scanBeam 1.8s ease-in-out infinite;
+            pointer-events: none;
+        }
+    </style>
+</head>
+
+<body class="cert-glow-mesh text-white font-sans antialiased overflow-x-hidden min-h-screen flex flex-col justify-between">
+
+    <!-- ==========================================================================
+       NAVIGATION BAR (Fixed Devengers Purple Pill)
+       ========================================================================== -->
+    <!-- NAVIGATION (Fixed) -->
+    <nav class="devengers-navbar-fixed fixed top-6 left-0 w-full z-50 flex justify-center px-4">
+        <!-- Purple Navbar Background (#7B42F6) -->
+        <div class="devengers-navbar-notch bg-[#7B42F6] shadow-brutal border-4 border-black rounded-full px-6 md:px-8 py-3 w-full max-w-[1400px] flex items-center justify-between">
+            <!-- Avengers Animated Logo -->
+            <a href="index.html" class="flex items-center group select-none" title="Devengers Home">
+                <div class="devengers-nav-logo font-black text-2xl md:text-[30px] tracking-tighter uppercase rounded-full transition-transform duration-300"
+                    style="-webkit-text-stroke: 2px black; color: #CDFF29; text-shadow: 3px 3px 0px black; line-height: 1;">
+                    <span class="devengers-badge-icon">
+                        <svg class="w-3.5 h-3.5 text-[#CDFF29]" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
+                        </svg>
+                    </span>
+                    <span class="logo-char">D</span><span class="logo-char">E</span><span class="logo-char">V</span><span class="logo-char">E</span><span class="logo-char">N</span><span class="logo-char">G</span><span class="logo-char">E</span><span class="logo-char">R</span><span class="logo-char">S</span>
+                </div>
+            </a>
+
+            <!-- Center Links -->
+            <div class="hidden md:flex gap-6 lg:gap-8 text-[11px] font-bold uppercase tracking-widest text-white/80">
+                <a href="events.html" class="nav-link">Events</a>
+                <a href="learn.html" class="nav-link">Learn</a>
+                <a href="campus.html" class="nav-link">Campus Resource</a>
+                <a href="dsa.html" class="nav-link">DSA Streak</a>
+                <a href="gallery.html" class="nav-link">Gallery</a>
+                <a href="certificates.html" class="nav-link">Certificates</a>
+            </div>
+
+            <!-- Right Links & Action Buttons -->
+            <div class="flex items-center gap-3 sm:gap-4">
+                <!-- Theme Toggle Button -->
+                <button type="button" onclick="window.DevengersTheme.toggleTheme()" class="theme-toggle-btn" title="Toggle Eye-Comfort Peach Theme" aria-label="Toggle Theme">
+                    <div class="toggle-thumb">🌙</div>
+                </button>
+
+                <!-- Notifications Bell with Dynamic Red Dot -->
+                <div class="relative">
+                    <button type="button" id="nav-notification-btn" onclick="window.DevengersNotifications.toggleDropdown(event)"
+                        class="nav-notification-btn flex items-center justify-center w-8 h-8 text-white/80 hover:text-white transition-colors relative cursor-pointer"
+                        title="Notifications" aria-label="Notifications">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 transition-transform hover:scale-110" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+                        </svg>
+                        <span id="nav-notification-dot" class="nav-notification-dot hidden"></span>
+                    </button>
+                </div>
+
+                <!-- Profile Symbol Button with Instagram Ring -->
+                <a href="profile.html" class="nav-profile-btn group" title="My Profile" aria-label="My Profile">
+                    <span class="nav-profile-inner">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-white transition-transform group-hover:scale-110" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                        </svg>
+                    </span>
+                </a>
+
+                <a href="login.html" class="hidden md:block text-[11px] font-bold uppercase tracking-widest text-white/80 hover:text-white transition-colors">LOGIN</a>
+                <a href="register.html" class="bg-white text-black px-5 py-2 rounded-full text-[11px] font-bold uppercase tracking-widest hover:bg-[#CDFF29] transition-colors flex items-center gap-1.5 shadow-sm">
+                    SIGN UP <span class="font-normal text-sm leading-none">&rarr;</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ==========================================================================
+       MAIN HERO & VERIFICATION PORTAL SECTION
+       ========================================================================== -->
+    <main class="w-full max-w-[1300px] mx-auto px-4 sm:px-6 pt-32 pb-20 flex-1 flex flex-col gap-12">
+        
+        <!-- HERO HEADLINE -->
+        <header class="text-center flex flex-col items-center gap-3 sm:gap-4 max-w-3xl mx-auto">
+            <div class="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 rounded-full bg-zinc-900/90 border border-zinc-700/80 shadow-brutal-sm text-[11px] sm:text-xs font-mono text-[#F7D070]">
+                <span class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span>
+                <span class="font-bold">OFFICIAL CREDENTIAL VERIFICATION PORTAL</span>
+            </div>
+
+            <h1 class="text-2xl sm:text-5xl md:text-6xl font-black uppercase tracking-tight text-white leading-tight">
+                Verify &amp; Claim Your <br>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#CDFF29] via-[#F7D070] to-[#CDFF29]"
+                      style="-webkit-text-stroke: 1.5px black;">
+                    Official Certificates
+                </span>
+            </h1>
+
+            <p class="text-gray-300 text-xs sm:text-base leading-relaxed">
+                Select your competition, enter your registered <strong>Email</strong> or <strong>Full Name</strong>, and our verification engine will instantly locate, dynamically generate, and render your authentic credential.
+            </p>
+        </header>
+
+        <!-- ==========================================================================
+           SEARCH & VERIFICATION CARD
+           ========================================================================== -->
+        <section class="w-full max-w-4xl mx-auto glass-panel border-3 sm:border-4 border-black rounded-2xl sm:rounded-3xl p-4 sm:p-8 shadow-brutal flex flex-col gap-6 relative overflow-hidden">
+            <div id="search-scanner" class="hidden scanning-beam"></div>
+
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-5 items-end">
+                
+                <!-- 1. Competition Selector (6 Cols) -->
+                <div class="md:col-span-6 flex flex-col gap-1.5">
+                    <label class="text-xs font-mono uppercase tracking-wider text-gray-300 font-bold flex items-center justify-between">
+                        <span>1. Select Competition *</span>
+                        <span id="active-comp-date" class="text-[11px] text-[#F7D070] font-normal">Loading...</span>
+                    </label>
+                    <div class="relative">
+                        <select id="search-competition" class="w-full bg-[#16161a] border-2 border-zinc-700 focus:border-[#CDFF29] text-white px-4 py-3 rounded-xl text-sm font-semibold outline-none appearance-none transition-all cursor-pointer"
+                                onchange="onCompetitionChanged(this.value)">
+                            <option value="" disabled selected>Select participating competition...</option>
+                            <!-- Dynamically loaded from /api/certificates/competitions -->
+                        </select>
+                        <div class="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-gray-400 text-xs">
+                            ▼
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. Participant Name or Email Input (6 Cols) -->
+                <div class="md:col-span-6 flex flex-col gap-1.5">
+                    <label class="text-xs font-mono uppercase tracking-wider text-gray-300 font-bold flex items-center justify-between">
+                        <span>2. Participant Name or Email *</span>
+                        <span class="text-[10px] text-gray-400 font-normal">Either is accepted</span>
+                    </label>
+                    <div class="relative">
+                        <input type="text" id="search-query" placeholder="e.g. yourname@gmail.com or Full Name"
+                               class="w-full bg-[#16161a] border-2 border-zinc-700 focus:border-[#CDFF29] text-white px-4 py-3 rounded-xl text-sm font-semibold outline-none transition-all placeholder-gray-500"
+                               onkeydown="if(event.key==='Enter') verifyCertificate()">
+                        <button type="button" onclick="document.getElementById('search-query').value=''"
+                                class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-white p-1 text-sm font-bold">
+                            &times;
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Primary Action Button -->
+            <div class="flex items-center justify-between flex-wrap gap-4 pt-2 border-t border-white/5">
+                <div class="text-xs font-mono text-gray-400 flex items-center gap-2">
+                    <span class="text-green-400 text-sm">🔒</span>
+                    <span>Instant match on verified participant roster</span>
+                </div>
+
+                <button type="button" id="verify-btn" onclick="verifyCertificate()"
+                        class="w-full sm:w-auto bg-[#CDFF29] hover:bg-[#b8e622] text-black border-2 border-black px-8 py-3.5 rounded-2xl font-black text-sm uppercase tracking-wider shadow-brutal flex items-center justify-center gap-2 transition-transform hover:-translate-y-0.5 cursor-pointer">
+                    <span id="verify-spinner" class="hidden w-4 h-4 border-2 border-black border-t-transparent rounded-full animate-spin"></span>
+                    <span id="verify-btn-text">🔍 Fetch &amp; Verify Certificate</span>
+                </button>
+            </div>
+
+            <!-- Error Banner -->
+            <div id="verify-error-box" class="hidden p-4 rounded-xl bg-red-950/70 border-2 border-red-700 text-red-200 text-xs font-mono flex items-start justify-between gap-3">
+                <div class="flex items-start gap-2">
+                    <span class="text-base leading-none">⚠️</span>
+                    <div id="verify-error-msg">Participant record not found.</div>
+                </div>
+                <button type="button" onclick="openRaiseIssueModal()" class="text-[#F7D070] underline font-bold whitespace-nowrap hover:text-white">
+                    Raise Issue &rarr;
+                </button>
+            </div>
+
+        </section>
+
+
+        <!-- ==========================================================================
+           VERIFIED CERTIFICATE SHOWCASE & DOWNLOAD STAGE (Hidden until verified)
+           ========================================================================== -->
+        <section id="cert-showcase" class="hidden w-full max-w-5xl mx-auto flex flex-col gap-6 transition-all duration-500">
+            
+            <!-- Verified Header Card -->
+            <div class="glass-panel-gold rounded-3xl p-6 sm:p-8 border-4 border-black shadow-brutal flex flex-col sm:flex-row items-center justify-between gap-6">
+                
+                <div class="flex items-center gap-4">
+                    <div class="w-14 h-14 rounded-2xl bg-[#CDFF29] border-2 border-black flex items-center justify-center text-3xl shadow-brutal-sm">
+                        🏆
+                    </div>
+                    <div>
+                        <div class="flex items-center gap-2 mb-1">
+                            <span class="px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider bg-green-500/90 text-black">
+                                Verified Credential
+                            </span>
+                            <span id="showcase-cert-no" class="text-xs font-mono font-bold text-[#F7D070]">DEV-2026-HACK-0001</span>
+                        </div>
+                        <h2 id="showcase-participant-name" class="text-2xl sm:text-3xl font-black uppercase text-white leading-tight">
+                            Kishan Kumar
+                        </h2>
+                        <div id="showcase-role-badge" class="text-xs font-mono text-[#CDFF29] font-bold">
+                            Winner - 1st Place &bull; Devengers National Hackathon 2026
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Download Dropdown / Buttons -->
+                <div class="flex items-center gap-3 flex-wrap">
+                    <button type="button" onclick="downloadJPG()"
+                            class="bg-zinc-800 hover:bg-zinc-700 text-white border-2 border-black px-4 py-2.5 rounded-xl text-xs font-mono font-bold uppercase tracking-wider shadow-brutal-sm flex items-center gap-2 transition-transform hover:-translate-y-0.5">
+                        <span>🖼️ JPG (1080p)</span>
+                    </button>
+
+                    <button type="button" onclick="downloadPDF()"
+                            class="bg-zinc-800 hover:bg-zinc-700 text-[#F7D070] border-2 border-black px-4 py-2.5 rounded-xl text-xs font-mono font-bold uppercase tracking-wider shadow-brutal-sm flex items-center gap-2 transition-transform hover:-translate-y-0.5">
+                        <span>📄 Official PDF</span>
+                    </button>
+
+                    <button type="button" onclick="downloadZIP()"
+                            class="bg-[#CDFF29] hover:bg-[#b8e622] text-black border-2 border-black px-5 py-2.5 rounded-xl text-xs font-mono font-black uppercase tracking-wider shadow-brutal flex items-center gap-2 transition-transform hover:-translate-y-0.5">
+                        <span id="zip-btn-spinner" class="hidden w-3 h-3 border-2 border-black border-t-transparent rounded-full animate-spin"></span>
+                        <span>📦 Download All (.ZIP)</span>
+                    </button>
+                </div>
+
+            </div>
+
+            <!-- HIGH-RESOLUTION HTML5 CANVAS CONTAINER -->
+            <div class="cert-canvas-frame w-full aspect-[16/9] flex items-center justify-center p-1 sm:p-2">
+                <canvas id="certificate-canvas" width="1920" height="1080"
+                        class="w-full h-full object-contain rounded-xl select-none">
+                </canvas>
+            </div>
+
+            <!-- Verification Metadata & Actions Footer -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="glass-panel p-4 rounded-2xl border border-zinc-800 flex items-center gap-3">
+                    <div class="text-2xl">📅</div>
+                    <div>
+                        <div class="text-[10px] font-mono uppercase text-gray-400">Date Issued</div>
+                        <div id="showcase-date-issued" class="text-xs font-mono font-bold text-white">October 20, 2026</div>
+                    </div>
+                </div>
+
+                <div class="glass-panel p-4 rounded-2xl border border-zinc-800 flex items-center gap-3">
+                    <div class="text-2xl">🔐</div>
+                    <div>
+                        <div class="text-[10px] font-mono uppercase text-gray-400">Verification Hash</div>
+                        <div id="showcase-hash" class="text-xs font-mono font-bold text-[#CDFF29]">DEV-VERIFIED-AUTH</div>
+                    </div>
+                </div>
+
+                <div class="glass-panel p-4 rounded-2xl border border-zinc-800 flex items-center justify-between">
+                    <div>
+                        <div class="text-[10px] font-mono uppercase text-gray-400">Direct Share Link</div>
+                        <div class="text-xs font-mono text-gray-300">Share on LinkedIn</div>
+                    </div>
+                    <button type="button" onclick="copyVerificationLink()"
+                            class="bg-zinc-800 hover:bg-zinc-700 text-white px-3 py-1.5 rounded-lg text-xs font-mono border border-zinc-700 transition-colors">
+                        📋 Copy Link
+                    </button>
+                </div>
+            </div>
+
+        </section>
+
+
+        <!-- ==========================================================================
+           "RAISE ISSUE" SUPPORT SECTION (As requested by User)
+           ========================================================================== -->
+        <section class="w-full max-w-4xl mx-auto glass-panel border-2 border-zinc-800 rounded-3xl p-6 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-6 shadow-brutal">
+            <div class="flex items-start gap-4">
+                <div class="w-12 h-12 rounded-2xl bg-zinc-900 border border-zinc-700 flex items-center justify-center text-2xl flex-shrink-0">
+                    ✉️
+                </div>
+                <div>
+                    <h3 class="text-lg font-black uppercase text-white mb-1">
+                        Notice an Error or Can't Find Your Certificate?
+                    </h3>
+                    <p class="text-xs text-gray-400 max-w-xl leading-relaxed">
+                        If your name is misspelled, your email is not matching, or your certificate is missing from the competition roster, you can raise an official issue. Our team reviews and rectifies records directly via <a href="mailto:support@devengers.org" class="text-[#F7D070] underline">support@devengers.org</a>.
+                    </p>
+                </div>
+            </div>
+
+            <button type="button" onclick="openRaiseIssueModal()"
+                    class="w-full sm:w-auto bg-zinc-900 hover:bg-zinc-800 text-[#F7D070] border-2 border-[#F7D070]/60 hover:border-[#F7D070] px-6 py-3 rounded-2xl font-bold text-xs uppercase tracking-wider shadow-brutal-sm flex items-center justify-center gap-2 transition-all flex-shrink-0 cursor-pointer">
+                <span>⚠️ Raise Issue / Contact Support</span>
+            </button>
+        </section>
+
+    </main>
+
+
+    <!-- ==========================================================================
+       MODAL: RAISE ISSUE DIALOG
+       ========================================================================== -->
+    <div id="raise-issue-modal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-md hidden overflow-y-auto p-4 flex justify-center items-center">
+        <div class="bg-[#121212] border-4 border-black w-full max-w-xl rounded-3xl shadow-brutal overflow-hidden flex flex-col">
+            
+            <div class="bg-zinc-900 border-b-2 border-zinc-800 px-6 py-4 flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                    <span class="text-xl">⚠️</span>
+                    <div>
+                        <h3 class="text-lg font-black uppercase text-white">Raise Certificate Issue</h3>
+                        <p class="text-[11px] font-mono text-gray-400">Directly routed to support@devengers.org</p>
+                    </div>
+                </div>
+                <button type="button" onclick="closeRaiseIssueModal()" class="text-gray-400 hover:text-white text-2xl font-bold">&times;</button>
+            </div>
+
+            <form id="raise-issue-form" onsubmit="submitCertificateIssue(event)" class="p-6 flex flex-col gap-4">
+                
+                <div>
+                    <label class="block text-xs font-mono uppercase text-gray-300 font-bold mb-1">Competition *</label>
+                    <input type="text" id="issue-comp-title" readonly class="w-full bg-zinc-950 border border-zinc-800 text-gray-300 px-3 py-2 rounded-xl text-xs font-mono">
+                    <input type="hidden" id="issue-comp-id">
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-xs font-mono uppercase text-gray-300 font-bold mb-1">Your Full Name *</label>
+                        <input type="text" id="issue-participant-name" required placeholder="e.g. Kishan Kumar"
+                               class="w-full bg-[#16161a] border border-zinc-700 text-white px-3 py-2 rounded-xl text-xs">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-mono uppercase text-gray-300 font-bold mb-1">Registered Email *</label>
+                        <input type="email" id="issue-participant-email" required placeholder="e.g. kishan@example.com"
+                               class="w-full bg-[#16161a] border border-zinc-700 text-white px-3 py-2 rounded-xl text-xs">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-mono uppercase text-gray-300 font-bold mb-1">Issue Category *</label>
+                    <select id="issue-type" class="w-full bg-[#16161a] border border-zinc-700 text-white px-3 py-2 rounded-xl text-xs">
+                        <option value="Name Misspelled">Name Misspelled / Typo on Certificate</option>
+                        <option value="Certificate Not Found">Certificate Not Found on Portal</option>
+                        <option value="Email Mismatch">Email Mismatch / Changed Email Address</option>
+                        <option value="Rank or Award Incorrect">Rank / Role / Award Title Incorrect</option>
+                        <option value="Download Error">JPG or PDF Download Issue</option>
+                        <option value="Other">Other Discrepancy</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-mono uppercase text-gray-300 font-bold mb-1">Details &amp; Correction Needed *</label>
+                    <textarea id="issue-message" rows="3" required placeholder="Please describe what needs to be corrected (e.g. Please change Kishan K. to Kishan Kumar)"
+                              class="w-full bg-[#16161a] border border-zinc-700 text-white px-3 py-2 rounded-xl text-xs"></textarea>
+                </div>
+
+                <div class="p-3 bg-black/40 rounded-xl border border-zinc-800 text-[11px] font-mono text-gray-400">
+                    💡 Submitting will log an official ticket and open your email client pre-addressed to <strong class="text-[#F7D070]">support@devengers.org</strong>.
+                </div>
+
+                <div class="pt-2 flex justify-end gap-3">
+                    <button type="button" onclick="closeRaiseIssueModal()" class="px-4 py-2 text-xs font-mono font-bold uppercase text-gray-400 hover:text-white">
+                        Cancel
+                    </button>
+                    <button type="submit" id="issue-submit-btn"
+                            class="bg-[#CDFF29] hover:bg-[#b8e622] text-black border-2 border-black px-6 py-2.5 rounded-xl font-black text-xs uppercase shadow-brutal flex items-center gap-2">
+                        <span>Submit Issue &amp; Open Email</span>
+                    </button>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+
+
+    <!-- ==========================================================================
+       FOOTER
+       ========================================================================== -->
+    <!-- SECTION: Site Footer (Matching index.html) -->
+    <footer class="relative bg-[#0b0b0b] w-full pt-28 pb-16 px-6 overflow-hidden text-center select-none" id="site-footer">
+        <!-- SVG Grid Lines Background -->
+        <svg class="absolute inset-0 w-full h-full pointer-events-none opacity-20" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <pattern id="footer-grid-pattern" width="24" height="24" patternUnits="userSpaceOnUse">
+                    <line x1="0" y1="24" x2="24" y2="24" stroke="#ffffff" stroke-width="1" stroke-dasharray="3,3" />
+                    <line x1="24" y1="0" x2="24" y2="24" stroke="#ffffff" stroke-width="1" stroke-dasharray="3,3" />
+                </pattern>
+                <pattern id="footer-major-grid" width="120" height="120" patternUnits="userSpaceOnUse">
+                    <line x1="0" y1="120" x2="120" y2="120" stroke="#ffffff" stroke-width="1" stroke-opacity="0.35" />
+                    <line x1="120" y1="0" x2="120" y2="120" stroke="#ffffff" stroke-width="1" stroke-opacity="0.35" />
+                </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#footer-grid-pattern)" />
+            <rect width="100%" height="100%" fill="url(#footer-major-grid)" />
+        </svg>
+
+        <div class="relative z-10 max-w-[1000px] mx-auto flex flex-col items-center">
+
+            <!-- Eyebrow -->
+            <p class="text-white text-[15px] md:text-[18px] font-semibold tracking-tight mb-7">
+                A Technology &amp; Developer Community
+            </p>
+
+            <!-- 3D Extruded Logo (DEVENGERS) -->
+            <div class="w-full max-w-[620px] flex justify-center mb-8 px-4">
+                <svg class="w-full h-auto overflow-visible select-none drop-shadow-lg transition-transform hover:scale-[1.02] duration-300" viewBox="0 0 850 140" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <style>
+                            .svg-devengers-text {
+                                font-family: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+                                font-weight: 900;
+                                font-size: 88px;
+                                letter-spacing: -2px;
+                                text-anchor: middle;
+                                dominant-baseline: central;
+                            }
+                        </style>
+                    </defs>
+                    <g transform="translate(425, 65) skewX(-5)">
+                        <!-- Bottom Black Shadow -->
+                        <text class="svg-devengers-text" x="-18" y="18" fill="#000000" stroke="#000000" stroke-width="8" stroke-linejoin="round">DEVENGERS</text>
+                        <text class="svg-devengers-text" x="-17" y="17" fill="#000000" stroke="#000000" stroke-width="8" stroke-linejoin="round">DEVENGERS</text>
+                        
+                        <!-- 3D White/Gray Extrusion Layers -->
+                        <text class="svg-devengers-text" x="-16" y="16" fill="#e2e2e2" stroke="#e2e2e2" stroke-width="8" stroke-linejoin="round">DEVENGERS</text>
+                        <text class="svg-devengers-text" x="-15" y="15" fill="#e2e2e2" stroke="#e2e2e2" stroke-width="8" stroke-linejoin="round">DEVENGERS</text>
+                        <text class="svg-devengers-text" x="-14" y="14" fill="#e2e2e2" stroke="#e2e2e2" stroke-width="8" stroke-linejoin="round">DEVENGERS</text>
+                        <text class="svg-devengers-text" x="-13" y="13" fill="#e2e2e2" stroke="#e2e2e2" stroke-width="8" stroke-linejoin="round">DEVENGERS</text>
+                        <text class="svg-devengers-text" x="-12" y="12" fill="#e2e2e2" stroke="#e2e2e2" stroke-width="8" stroke-linejoin="round">DEVENGERS</text>
+                        <text class="svg-devengers-text" x="-11" y="11" fill="#e2e2e2" stroke="#e2e2e2" stroke-width="8" stroke-linejoin="round">DEVENGERS</text>
+                        <text class="svg-devengers-text" x="-10" y="10" fill="#e2e2e2" stroke="#e2e2e2" stroke-width="8" stroke-linejoin="round">DEVENGERS</text>
+                        <text class="svg-devengers-text" x="-9" y="9" fill="#e2e2e2" stroke="#e2e2e2" stroke-width="8" stroke-linejoin="round">DEVENGERS</text>
+                        <text class="svg-devengers-text" x="-8" y="8" fill="#e2e2e2" stroke="#e2e2e2" stroke-width="8" stroke-linejoin="round">DEVENGERS</text>
+                        <text class="svg-devengers-text" x="-7" y="7" fill="#e2e2e2" stroke="#e2e2e2" stroke-width="8" stroke-linejoin="round">DEVENGERS</text>
+                        <text class="svg-devengers-text" x="-6" y="6" fill="#e2e2e2" stroke="#e2e2e2" stroke-width="8" stroke-linejoin="round">DEVENGERS</text>
+                        <text class="svg-devengers-text" x="-5" y="5" fill="#e2e2e2" stroke="#e2e2e2" stroke-width="8" stroke-linejoin="round">DEVENGERS</text>
+                        <text class="svg-devengers-text" x="-4" y="4" fill="#e2e2e2" stroke="#e2e2e2" stroke-width="8" stroke-linejoin="round">DEVENGERS</text>
+                        <text class="svg-devengers-text" x="-3" y="3" fill="#ffffff" stroke="#ffffff" stroke-width="8" stroke-linejoin="round">DEVENGERS</text>
+                        <text class="svg-devengers-text" x="-2" y="2" fill="#ffffff" stroke="#ffffff" stroke-width="8" stroke-linejoin="round">DEVENGERS</text>
+                        <text class="svg-devengers-text" x="-1" y="1" fill="#ffffff" stroke="#ffffff" stroke-width="8" stroke-linejoin="round">DEVENGERS</text>
+
+                        <!-- Top Front White Outline -->
+                        <text class="svg-devengers-text" x="0" y="0" fill="#ffffff" stroke="#ffffff" stroke-width="8" stroke-linejoin="round">DEVENGERS</text>
+                        <!-- Top Front Solid Black Face -->
+                        <text class="svg-devengers-text" x="0" y="0" fill="#000000">DEVENGERS</text>
+                    </g>
+                </svg>
+            </div>
+
+            <!-- Subtitle -->
+            <h3 class="text-white text-[22px] sm:text-[26px] md:text-[30px] font-semibold tracking-tight leading-[1.3] max-w-[620px] mb-8">
+                Join for free and build with<br class="hidden sm:inline"> creative developers on the internet.
+            </h3>
+
+            <!-- Pill CTA Button -->
+            <a href="https://whatsapp.com/channel/0029VbCVGAd8KMql7Ie3ew43" target="_blank" rel="noopener noreferrer"
+                class="inline-flex items-center gap-2 bg-white text-black font-semibold text-[13px] md:text-[14px] px-7 py-3 rounded-full hover:bg-gray-200 transition-all shadow-md group mb-16">
+                <span>Join Devengers</span>
+                <span class="text-base font-normal leading-none group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform">&#8599;</span>
+            </a>
+
+            <!-- Navigation Links Row 1 -->
+            <div class="flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-white font-medium text-[15px] md:text-[16px] tracking-normal mb-4">
+                <a href="index.html" class="hover:text-gray-300 transition-colors">Home</a>
+                <a href="events.html" class="hover:text-gray-300 transition-colors">Events</a>
+                <a href="learn.html" class="hover:text-gray-300 transition-colors">Learn</a>
+                <a href="campus.html" class="hover:text-gray-300 transition-colors">Campus Resource</a>
+                <a href="gallery.html" class="hover:text-gray-300 transition-colors">Gallery</a>
+                <a href="dsa.html" class="hover:text-gray-300 transition-colors">DSA Streak</a>
+                <a href="directory.html" class="hover:text-gray-300 transition-colors">Directory</a>
+            </div>
+
+            <!-- Navigation Links Row 2 -->
+            <div class="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-gray-400 font-normal text-[13px] md:text-[14px] tracking-normal mb-8">
+                <a href="index.html#social-section" class="hover:text-white transition-colors">About</a>
+                <a href="index.html#faq-section" class="hover:text-white transition-colors">FAQs</a>
+                <a href="mailto:event@devengers.org?subject=Campus%20Event%20or%20Hackathon%20Inquiry" class="hover:text-white transition-colors">Partnerships</a>
+                <a href="mailto:support@devengers.org?subject=General%20Inquiry%20-%20Devengers" class="hover:text-white transition-colors">Contact</a>
+                <a href="login.html" class="hover:text-white transition-colors">Login</a>
+                <a href="register.html" class="hover:text-white transition-colors">Sign up</a>
+                <a href="index.html#footer-cta-section" class="hover:text-white transition-colors">Campus Chapter</a>
+            </div>
+
+            <!-- Social Media Icons Row -->
+            <div class="flex items-center justify-center gap-6 text-white mb-8">
+                <!-- WhatsApp Channel -->
+                <a href="https://whatsapp.com/channel/0029VbCVGAd8KMql7Ie3ew43" target="_blank" rel="noopener noreferrer"
+                    class="hover:text-[#25D366] transition-colors" title="WhatsApp Channel" aria-label="WhatsApp Channel">
+                    <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                        <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2ZM12.05 20.16C10.57 20.16 9.12 19.76 7.85 19.01L7.55 18.83L4.44 19.65L5.27 16.61L5.07 16.3C4.24 14.98 3.81 13.47 3.81 11.91C3.81 7.37 7.5 3.68 12.05 3.68C14.25 3.68 16.31 4.54 17.87 6.1C19.42 7.66 20.28 9.72 20.28 11.92C20.28 16.46 16.59 20.16 12.05 20.16ZM16.57 14.33C16.32 14.21 15.1 13.61 14.87 13.53C14.64 13.44 14.48 13.4 14.31 13.65C14.15 13.89 13.68 14.45 13.53 14.62C13.39 14.78 13.25 14.8 13 14.68C12.75 14.55 11.95 14.29 11 13.45C10.26 12.79 9.76 11.98 9.62 11.73C9.47 11.49 9.6 11.35 9.73 11.23C9.84 11.12 9.98 10.94 10.1 10.8C10.23 10.66 10.27 10.55 10.35 10.39C10.43 10.22 10.39 10.08 10.33 9.96C10.27 9.84 9.78 8.63 9.57 8.14C9.37 7.66 9.17 7.72 9.02 7.71C8.88 7.71 8.71 7.71 8.55 7.71C8.38 7.71 8.12 7.77 7.89 8.02C7.67 8.26 7.03 8.86 7.03 10.08C7.03 11.3 7.92 12.48 8.04 12.65C8.16 12.81 9.78 15.31 12.26 16.38C12.85 16.64 13.31 16.79 13.67 16.91C14.26 17.09 14.8 17.07 15.22 17C15.7 16.93 16.69 16.4 16.9 15.81C17.11 15.22 17.11 14.71 17.05 14.6C16.98 14.5 16.82 14.45 16.57 14.33Z" />
+                    </svg>
+                </a>
+                <!-- Instagram -->
+                <a href="https://www.instagram.com/officialdevengers" target="_blank" rel="noopener noreferrer"
+                    class="hover:text-[#E1306C] transition-colors" title="Instagram" aria-label="Instagram">
+                    <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                        <rect x="2.5" y="2.5" width="19" height="19" rx="5" />
+                        <circle cx="12" cy="12" r="4.2" />
+                        <circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" />
+                    </svg>
+                </a>
+                <!-- LinkedIn -->
+                <a href="https://www.linkedin.com/company/officialdevengers" target="_blank" rel="noopener noreferrer"
+                    class="hover:text-[#0077B5] transition-colors" title="LinkedIn" aria-label="LinkedIn">
+                    <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                        <rect x="2.5" y="2.5" width="19" height="19" rx="4" />
+                        <circle cx="7.5" cy="8" r="1.3" fill="currentColor" />
+                        <path d="M6.3 11.2h2.4v6.5H6.3z" fill="currentColor" />
+                        <path d="M11 11.2h2.2v1c.4-.7 1.3-1.2 2.4-1.2 2.1 0 3.1 1.3 3.1 3.5v4.2h-2.3v-3.7c0-1-.4-1.7-1.4-1.7-1 0-1.5.7-1.5 1.7v3.7H11z" fill="currentColor" />
+                    </svg>
+                </a>
+                <!-- YouTube -->
+                <a href="https://www.youtube.com/@officialdevengers" target="_blank" rel="noopener noreferrer"
+                    class="hover:text-[#FF0000] transition-colors" title="YouTube" aria-label="YouTube">
+                    <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                        <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+                    </svg>
+                </a>
+                <!-- Devengers Community Smiley -->
+                <a href="index.html" class="hover:text-[#FCE205] transition-colors" title="Devengers Community" aria-label="Devengers Community">
+                    <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                        <circle cx="12" cy="12" r="9" />
+                        <circle cx="9" cy="9.5" r="1" fill="currentColor" />
+                        <circle cx="15" cy="9.5" r="1" fill="currentColor" />
+                        <path d="M8.5 14c.8 1.5 2 2.2 3.5 2.2s2.7-.7 3.5-2.2" stroke-linecap="round" />
+                    </svg>
+                </a>
+                <!-- Admin Login Icon -->
+                <a href="admin-events.html" class="admin-only hidden hover:text-[#CDFF29] transition-colors p-1.5 rounded-lg border border-gray-800 hover:border-[#CDFF29]/40 bg-black/40 hover:bg-[#CDFF29]/10 items-center justify-center text-gray-500" title="Admin Portal" aria-label="Admin Portal">
+                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                        <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                    </svg>
+                </a>
+            </div>
+
+            <!-- Copyright and Legal -->
+            <p class="text-[#888888] font-mono text-[11px] uppercase tracking-wider mb-2">
+                DEVENGERS COMMUNITY &copy; 2026 ALL RIGHTS RESERVED
+            </p>
+            <div class="flex flex-wrap items-center justify-center gap-x-2 gap-y-1 text-[#888888] font-mono text-[10px] uppercase tracking-wider">
+                <a href="campus.html" class="hover:text-white transition-colors">Terms</a>
+                <span>|</span>
+                <a href="campus.html" class="hover:text-white transition-colors">Privacy</a>
+                <span>|</span>
+                <a href="campus.html" class="hover:text-white transition-colors">Acceptable Use</a>
+                <span>|</span>
+                <a href="mailto:support@devengers.org" class="hover:text-white transition-colors">Campus Support</a>
+                <span>|</span>
+                <a href="mailto:event@devengers.org" class="hover:text-white transition-colors">Partnerships</a>
+                <span>|</span>
+                <a href="campus.html" class="hover:text-white transition-colors">Cookie Policy</a>
+                <span>|</span>
+                <a href="campus.html" class="hover:text-white transition-colors">Community Guidelines</a>
+                <span class="admin-only hidden">|</span>
+                <a href="admin-events.html" class="admin-only hidden hover:text-[#CDFF29] text-gray-400 transition-colors items-center gap-1 font-bold">
+                    <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                        <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                    </svg>
+                    <span>Admin</span>
+                </a>
+            </div>
+
+        </div>
+    </footer>
+
+
+    <!-- ==========================================================================
+       CLIENT-SIDE SCRIPT: LOGIC, REAL-TIME FETCH, HIGH-DPI CANVAS & EXPORTS
+       ========================================================================== -->
+    <script>
+        let availableCompetitions = [];
+        let verifiedRecord = null; // Holds participant & competition config
+
+        document.addEventListener('DOMContentLoaded', async () => {
+            await loadCompetitionsDropdown();
+
+            // Check URL parameters (e.g. ?comp=...&q=...)
+            const urlParams = new URLSearchParams(window.location.search);
+            const compParam = urlParams.get('comp');
+            const qParam = urlParams.get('q');
+            if (compParam) {
+                document.getElementById('search-competition').value = compParam;
+                onCompetitionChanged(compParam);
+            }
+            if (qParam) {
+                document.getElementById('search-query').value = qParam;
+                if (compParam) {
+                    verifyCertificate();
+                }
+            }
+        });
+
+        // ==========================================
+        // 1. LOAD COMPETITIONS DROPDOWN
+        // ==========================================
+        async function loadCompetitionsDropdown() {
+            try {
+                const res = await fetch('/api/certificates/competitions');
+                const data = await res.json();
+                if (data.success) {
+                    availableCompetitions = data.competitions || [];
+                    const sel = document.getElementById('search-competition');
+                    sel.innerHTML = '<option value="" disabled selected>Select participating competition...</option>' + 
+                        availableCompetitions.map(c => `
+                            <option value="${c.id}">
+                                ${c.title} (${c.issue_date || 'Live'})
+                            </option>
+                        `).join('');
+
+                    if (availableCompetitions.length > 0) {
+                        sel.selectedIndex = 1;
+                        onCompetitionChanged(sel.value);
+                    }
+                }
+            } catch (e) {
+                console.error("Failed to load competitions:", e);
+            }
+        }
+
+        function onCompetitionChanged(compId) {
+            const comp = availableCompetitions.find(c => c.id === compId);
+            const dateEl = document.getElementById('active-comp-date');
+            if (comp) {
+                dateEl.textContent = `📅 ${comp.issue_date || 'Date: Active'}`;
+                // Set raise issue default title
+                document.getElementById('issue-comp-title').value = comp.title;
+                document.getElementById('issue-comp-id').value = comp.id;
+            }
+        }
+
+        function quickFillDemo(compId, query) {
+            document.getElementById('search-competition').value = compId;
+            onCompetitionChanged(compId);
+            document.getElementById('search-query').value = query;
+            verifyCertificate();
+        }
+
+        // ==========================================
+        // 2. REAL-TIME CERTIFICATE VERIFICATION
+        // ==========================================
+        async function verifyCertificate() {
+            const compId = document.getElementById('search-competition').value;
+            const query = document.getElementById('search-query').value.trim();
+
+            const errBox = document.getElementById('verify-error-box');
+            const errMsg = document.getElementById('verify-error-msg');
+            const spinner = document.getElementById('verify-spinner');
+            const btnText = document.getElementById('verify-btn-text');
+            const scanner = document.getElementById('search-scanner');
+
+            if (!compId) {
+                errBox.classList.remove('hidden');
+                errMsg.textContent = "Please select a competition from the dropdown.";
+                return;
+            }
+            if (!query) {
+                errBox.classList.remove('hidden');
+                errMsg.textContent = "Please enter your participant name or registered email.";
+                return;
+            }
+
+            errBox.classList.add('hidden');
+            spinner.classList.remove('hidden');
+            scanner.classList.remove('hidden');
+            btnText.textContent = "Scanning Records...";
+
+            try {
+                const res = await fetch('/api/certificates/verify', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ competition_id: compId, query: query })
+                });
+
+                const data = await res.json();
+
+                if (!res.ok || !data.success || !data.found) {
+                    errBox.classList.remove('hidden');
+                    errMsg.textContent = data.message || `No certificate found for '${query}'. It is not required that name match exactly; if email is registered, certificate will be located.`;
+                    document.getElementById('cert-showcase').classList.add('hidden');
+                    return;
+                }
+
+                // MATCH FOUND!
+                verifiedRecord = data;
+                displayVerifiedShowcase(data);
+
+                // Confetti blast celebration!
+                if (window.confetti) {
+                    confetti({
+                        particleCount: 100,
+                        spread: 70,
+                        origin: { y: 0.6 },
+                        colors: ['#CDFF29', '#F7D070', '#ffffff', '#FFD700']
+                    });
+                }
+
+            } catch (err) {
+                errBox.classList.remove('hidden');
+                errMsg.textContent = "Network error: " + err.message;
+            } finally {
+                spinner.classList.add('hidden');
+                scanner.classList.add('hidden');
+                btnText.textContent = "🔍 Fetch & Verify Certificate";
+            }
+        }
+
+        // ==========================================
+        // 3. RENDER ON HIGH-DPI CANVAS
+        // ==========================================
+        async function displayVerifiedShowcase(data) {
+            const p = data.participant;
+            const c = data.competition;
+
+            document.getElementById('showcase-cert-no').textContent = p.certificate_number;
+            document.getElementById('showcase-participant-name').textContent = p.name;
+            document.getElementById('showcase-role-badge').textContent = `${p.role_or_rank || 'Participant'} • ${c.title}`;
+            document.getElementById('showcase-date-issued').textContent = c.issue_date || p.issued_at || 'October 20, 2026';
+            document.getElementById('showcase-hash').textContent = `${p.certificate_number}-VERIFIED`;
+
+            // Prepare Raise Issue Modal prefill
+            document.getElementById('issue-comp-title').value = c.title;
+            document.getElementById('issue-comp-id').value = c.id;
+            document.getElementById('issue-participant-name').value = p.name;
+            document.getElementById('issue-participant-email').value = p.email || "";
+
+            // Render on HTML5 1920x1080 canvas
+            await drawCertificateToCanvas(data);
+
+            const showcase = document.getElementById('cert-showcase');
+            showcase.classList.remove('hidden');
+            showcase.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        function drawCertificateToCanvas(data) {
+            return new Promise((resolve, reject) => {
+                const canvas = document.getElementById('certificate-canvas');
+                const ctx = canvas.getContext('2d');
+                const p = data.participant;
+                const c = data.competition;
+
+                const img = new Image();
+                img.crossOrigin = 'anonymous';
+                img.src = c.template_url;
+
+                img.onload = () => {
+                    // Draw full template background
+                    ctx.clearRect(0, 0, 1920, 1080);
+                    ctx.drawImage(img, 0, 0, 1920, 1080);
+
+                    // Name Anchor Coordinates
+                    const posX = ((c.name_x !== undefined ? c.name_x : 50.0) / 100) * 1920;
+                    const posY = ((c.name_y !== undefined ? c.name_y : 50.0) / 100) * 1080;
+
+                    const font = c.name_font || "Playfair Display";
+                    const weight = c.name_weight || "bold";
+                    const size = c.name_size || 58;
+                    const color = c.name_color || "#F7D070";
+                    const align = c.name_align || "center";
+                    const casing = c.name_case || "capitalize";
+
+                    // Format Participant Name
+                    let formattedName = p.name || "";
+                    if (casing === 'uppercase') {
+                        formattedName = formattedName.toUpperCase();
+                    } else if (casing === 'capitalize') {
+                        formattedName = formattedName.split(' ')
+                            .map(w => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase())
+                            .join(' ');
+                    }
+
+                    // Luxury typographic drop shadow
+                    ctx.shadowColor = 'rgba(0, 0, 0, 0.75)';
+                    ctx.shadowBlur = 10;
+                    ctx.shadowOffsetX = 2;
+                    ctx.shadowOffsetY = 3;
+
+                    ctx.font = `${weight} ${size}px "${font}", serif, sans-serif`;
+                    ctx.fillStyle = color;
+                    ctx.textAlign = align;
+                    ctx.textBaseline = 'middle';
+                    ctx.fillText(formattedName, posX, posY);
+
+                    // Reset shadow for metadata
+                    ctx.shadowColor = 'transparent';
+
+                    // Optional: Render Issue Date
+                    if (c.show_date && c.issue_date) {
+                        const dateX = ((c.date_x !== undefined ? c.date_x : 35.0) / 100) * 1920;
+                        const dateY = ((c.date_y !== undefined ? c.date_y : 77.0) / 100) * 1080;
+                        ctx.font = `600 20px "Space Grotesk", sans-serif`;
+                        ctx.fillStyle = "#E0E0E0";
+                        ctx.textAlign = "center";
+                        ctx.fillText(c.issue_date, dateX, dateY);
+                    }
+
+                    // Optional: Render Certificate Serial Number
+                    if (c.show_cert_id && p.certificate_number) {
+                        const idX = ((c.cert_id_x !== undefined ? c.cert_id_x : 80.0) / 100) * 1920;
+                        const idY = ((c.cert_id_y !== undefined ? c.cert_id_y : 86.0) / 100) * 1080;
+                        ctx.font = `bold 18px monospace`;
+                        ctx.fillStyle = "#CDFF29";
+                        ctx.textAlign = "center";
+                        ctx.fillText(p.certificate_number, idX, idY);
+                    }
+
+                    resolve();
+                };
+
+                img.onerror = (err) => {
+                    console.error("Template load error:", err);
+                    reject(err);
+                };
+            });
+        }
+
+        // ==========================================
+        // 4. DOWNLOAD HANDLERS (JPG, PDF, ZIP)
+        // ==========================================
+        function downloadJPG() {
+            if (!verifiedRecord) return;
+            const canvas = document.getElementById('certificate-canvas');
+            const link = document.createElement('a');
+            const safeName = (verifiedRecord.participant.name || 'Participant').replace(/[\s/\\:]/g, '_');
+            link.download = `DEVENGERS_Certificate_${safeName}.jpg`;
+            link.href = canvas.toDataURL('image/jpeg', 0.95);
+            link.click();
+        }
+
+        function downloadPDF() {
+            if (!verifiedRecord || !window.jspdf) return;
+            const { jsPDF } = window.jspdf;
+            const canvas = document.getElementById('certificate-canvas');
+            const imgData = canvas.toDataURL('image/jpeg', 0.95);
+
+            // Create A4 Landscape PDF (297mm x 210mm)
+            const pdf = new jsPDF({
+                orientation: 'landscape',
+                unit: 'mm',
+                format: 'a4'
+            });
+
+            pdf.addImage(imgData, 'JPEG', 0, 0, 297, 210);
+            const safeName = (verifiedRecord.participant.name || 'Participant').replace(/[\s/\\:]/g, '_');
+            pdf.save(`DEVENGERS_Certificate_${safeName}.pdf`);
+        }
+
+        async function downloadZIP() {
+            if (!verifiedRecord || !window.JSZip) return;
+            const spinner = document.getElementById('zip-btn-spinner');
+            spinner.classList.remove('hidden');
+
+            try {
+                const zip = new JSZip();
+                const p = verifiedRecord.participant;
+                const c = verifiedRecord.competition;
+                const safeName = (p.name || 'Participant').replace(/[\s/\\:]/g, '_');
+
+                const canvas = document.getElementById('certificate-canvas');
+
+                // 1. Add High-Res JPG
+                const jpgB64 = canvas.toDataURL('image/jpeg', 0.95).split(',')[1];
+                zip.file(`Certificate_${safeName}.jpg`, jpgB64, { base64: true });
+
+                // 2. Add PDF
+                if (window.jspdf) {
+                    const { jsPDF } = window.jspdf;
+                    const pdf = new jsPDF({ orientation: 'landscape', unit: 'mm', format: 'a4' });
+                    pdf.addImage(canvas.toDataURL('image/jpeg', 0.95), 'JPEG', 0, 0, 297, 210);
+                    const pdfArrayBuffer = pdf.output('arraybuffer');
+                    zip.file(`Certificate_${safeName}.pdf`, pdfArrayBuffer);
+                }
+
+                // 3. Add Official Verification Receipt JSON
+                const receipt = {
+                    issuer: "DEVENGERS Tech Community",
+                    official_portal: "https://devengers.org/certificates.html",
+                    certificate_number: p.certificate_number,
+                    competition: c.title,
+                    certificate_type: c.certificate_type,
+                    issue_date: c.issue_date,
+                    recipient: {
+                        name: p.name,
+                        email: p.email,
+                        award_or_rank: p.role_or_rank
+                    },
+                    verification_status: "AUTHENTIC & VERIFIED",
+                    verified_at: new Date().toISOString()
+                };
+                zip.file("Verification_Receipt.json", JSON.stringify(receipt, null, 2));
+
+                // 4. Add Readme / LinkedIn Instructions
+                const readme = `DEVENGERS OFFICIAL CERTIFICATION CREDENTIAL
+======================================================
+Recipient: ${p.name}
+Competition: ${c.title}
+Certificate ID: ${p.certificate_number}
+Issued Date: ${c.issue_date}
+
+HOW TO ADD TO LINKEDIN:
+1. Open your LinkedIn profile.
+2. Under "Licenses & Certifications", click (+) Add.
+3. Name: ${c.certificate_type} - ${c.title}
+4. Issuing Organization: DEVENGERS
+5. Issue Date: ${c.issue_date}
+6. Credential ID: ${p.certificate_number}
+7. Credential URL: https://devengers.org/certificates.html?comp=${c.id}&q=${encodeURIComponent(p.email || p.name)}
+
+For inquiries or discrepancy resolutions: support@devengers.org
+======================================================`;
+                zip.file("README_Verification_Instructions.txt", readme);
+
+                // Generate and trigger download
+                const blob = await zip.generateAsync({ type: "blob" });
+                const link = document.createElement('a');
+                link.href = URL.createObjectURL(blob);
+                link.download = `DEVENGERS_Certificate_Bundle_${safeName}.zip`;
+                link.click();
+
+            } catch (err) {
+                alert("ZIP export error: " + err.message);
+            } finally {
+                spinner.classList.add('hidden');
+            }
+        }
+
+        function copyVerificationLink() {
+            if (!verifiedRecord) return;
+            const p = verifiedRecord.participant;
+            const c = verifiedRecord.competition;
+            const url = `${window.location.origin}/certificates.html?comp=${c.id}&q=${encodeURIComponent(p.email || p.name)}`;
+            navigator.clipboard.writeText(url).then(() => {
+                alert("Verification link copied to clipboard:\n" + url);
+            });
+        }
+
+        // ==========================================
+        // 5. RAISE ISSUE MODAL & SUBMIT
+        // ==========================================
+        function openRaiseIssueModal() {
+            document.getElementById('raise-issue-modal').classList.remove('hidden');
+        }
+
+        function closeRaiseIssueModal() {
+            document.getElementById('raise-issue-modal').classList.add('hidden');
+        }
+
+        async function submitCertificateIssue(e) {
+            e.preventDefault();
+            const compId = document.getElementById('issue-comp-id').value;
+            const compTitle = document.getElementById('issue-comp-title').value;
+            const pName = document.getElementById('issue-participant-name').value.trim();
+            const pEmail = document.getElementById('issue-participant-email').value.trim();
+            const issueType = document.getElementById('issue-type').value;
+            const message = document.getElementById('issue-message').value.trim();
+
+            const payload = {
+                competition_id: compId,
+                competition_title: compTitle,
+                participant_name: pName,
+                participant_email: pEmail,
+                issue_type: issueType,
+                message: message
+            };
+
+            try {
+                // 1. Save issue to backend SQLite
+                const res = await fetch('/api/certificates/report-issue', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                const data = await res.json();
+                const ticketId = data.issue_id || `ISSUE-${Date.now()}`;
+
+                // 2. Open email client prefilled to support@devengers.org
+                const supportEmail = "support@devengers.org";
+                const subject = encodeURIComponent(`[Certificate Issue ${ticketId}] ${compTitle} - ${pName}`);
+                const body = encodeURIComponent(
+`Hello DEVENGERS Support Team,
+
+I am reporting a certificate discrepancy with the following details:
+
+Ticket Reference ID: ${ticketId}
+Competition: ${compTitle}
+Participant Name: ${pName}
+Registered Email: ${pEmail}
+Issue Category: ${issueType}
+
+Correction Needed:
+${message}
+
+Thank you,
+${pName}`);
+
+                closeRaiseIssueModal();
+                alert(`Your ticket #${ticketId} has been registered! Opening your email client to send to support@devengers.org.`);
+                window.location.href = `mailto:${supportEmail}?subject=${subject}&body=${body}`;
+
+            } catch (err) {
+                alert("Error submitting issue: " + err.message);
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,101 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [3 0 R 5 0 R] /Count 2 >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842]
+   /Contents 4 0 R
+   /Resources << /Font << /F1 7 0 R /F2 8 0 R >> >> >>
+endobj
+4 0 obj
+<< /Length 4433 >>
+stream
+BT /F1 13 Tf 50 800 Td (MAULANA ABUL KALAM AZAD UNIVERSITY OF TECHNOLOGY) Tj ET
+BT /F2 9.5 Tf 50 786 Td (B.TECH. COMPUTER SCIENCE & ENGINEERING / ALLIED BRANCHES) Tj ET
+BT /F1 10.5 Tf 50 772 Td (END SEMESTER EXAMINATION \(2024-25\) -- SEMESTER 3) Tj ET
+BT /F1 11 Tf 50 756 Td (COURSE: COMPUTER ORGANIZATION & ARCHITECTURE \(PCC-CS302\)) Tj ET
+BT /F2 9 Tf 50 742 Td (Time Allowed: 3 Hours                       Maximum Marks: 70 Marks                       Paper Code: PCC-CS302) Tj ET
+BT /F2 8.5 Tf 50 730 Td (Roll Number: [   ] [   ] [   ] [   ] [   ] [   ] [   ] [   ] [   ] [   ] [   ] [   ]   |   Total Printed Pages: 2) Tj ET
+BT /F2 8 Tf 50 718 Td (-----------------------------------------------------------------------------------------------------------------------------------------------------) Tj ET
+BT /F2 8.5 Tf 50 706 Td (NOTE: Attempt all Sections. Assume suitable missing data if any. Programmable calculators are NOT permitted.) Tj ET
+BT /F2 8 Tf 50 696 Td (=====================================================================================================================) Tj ET
+BT /F1 10.5 Tf 50 680 Td (SECTION A: Short Answer Type Questions \(Attempt ALL questions\) [10 x 2 = 20 Marks]) Tj ET
+BT /F2 9 Tf 55 664 Td (Q1. \(a\) What is stored-program concept in Von-Neumann computer architecture?) Tj ET
+BT /F2 9 Tf 55 649 Td (Q1. \(b\) Define instruction cycle, fetch cycle, and execute cycle.) Tj ET
+BT /F2 9 Tf 55 634 Td (Q1. \(c\) What is micro-operation? Differentiate between hardwired and microprogrammed control units.) Tj ET
+BT /F2 9 Tf 55 619 Td (Q1. \(d\) Define spatial and temporal locality of reference in cache memory.) Tj ET
+BT /F2 9 Tf 55 604 Td (Q1. \(e\) What is bus arbitration? Differentiate between centralized and distributed arbitration.) Tj ET
+BT /F2 9 Tf 55 589 Td (Q1. \(f\) Calculate speedup factor in a 5-stage pipeline for 100 tasks.) Tj ET
+BT /F2 9 Tf 55 574 Td (Q1. \(g\) What is difference between memory-mapped I/O and isolated I/O?) Tj ET
+BT /F2 9 Tf 55 559 Td (Q1. \(h\) Define hit ratio and write formula for average memory access time \(AMAT\).) Tj ET
+BT /F2 9 Tf 55 544 Td (Q1. \(i\) What is pipeline hazard? Name three primary types of hazards.) Tj ET
+BT /F2 9 Tf 55 529 Td (Q1. \(j\) What is IEEE 754 single precision floating point representation format?) Tj ET
+BT /F1 10.5 Tf 50 506 Td (SECTION B: Analytical & Computational Problems \(Attempt any THREE\) [3 x 10 = 30 Marks]) Tj ET
+BT /F2 9 Tf 55 490 Td (Q2. \(a\) Multiply multiplicand \(-9\) by multiplier \(-13\) using Booth multiplication algorithm with 5-bit registers.) Tj ET
+BT /F2 9 Tf 55 475 Td (Q2. \(b\) Design a 4-bit carry lookahead adder and derive Boolean expressions for carry generation and propagation.) Tj ET
+BT /F2 9 Tf 55 460 Td (Q2. \(c\) A cache memory has 32 KB capacity, block size of 64 bytes. For 32-bit physical address, calculate tag, set, word bits for direct and 4-way set associative.) Tj ET
+BT /F2 9 Tf 55 445 Td (Q2. \(d\) Explain 5-stage instruction pipeline \(IF, ID, EX, MEM, WB\) and draw space-time diagram for 4 instructions.) Tj ET
+BT /F2 9 Tf 55 430 Td (Q2. \(e\) Explain DMA transfer modes \(Burst, Cycle Stealing, Demand Transfer\) with block diagram.) Tj ET
+BT /F1 10.5 Tf 50 407 Td (SECTION C: Long Technical & Design Questions \(Attempt any ONE from each\) [5 x 10 = 50 Marks]) Tj ET
+BT /F1 9 Tf 55 391 Td (Q3. \(a\) Explain hardwired control unit organization with state machine and decoder circuits.  [10 Marks]) Tj ET
+BT /F2 8.5 Tf 90 378 Td (-- OR --) Tj ET
+BT /F2 9 Tf 75 365 Td (\(b\) Explain microprogrammed control unit with control memory and microinstruction sequencing.  [10 Marks]) Tj ET
+BT /F1 9 Tf 55 349 Td (Q4. \(a\) Explain non-restoring division algorithm with hardware architecture and trace 11 divided by 3.  [10 Marks]) Tj ET
+BT /F2 8.5 Tf 90 336 Td (-- OR --) Tj ET
+BT /F2 9 Tf 75 323 Td (\(b\) Explain floating point arithmetic operations \(addition and multiplication\) with flowchart.  [10 Marks]) Tj ET
+BT /F1 9 Tf 55 307 Td (Q5. \(a\) Discuss data hazards, control hazards, and structural hazards in pipelining with forwarding solutions.  [10 Marks]) Tj ET
+BT /F2 8.5 Tf 90 294 Td (-- OR --) Tj ET
+BT /F2 9 Tf 75 281 Td (\(b\) Explain superscalar architecture, branch prediction, and speculative execution in modern processors.  [10 Marks]) Tj ET
+BT /F2 8 Tf 220 30 Td ([ DEVENGERS CAMPUS RESOURCE LIBRARY -- PAGE 1 OF 2 -- PCC-CS302 ]) Tj ET
+endstream
+endobj
+5 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842]
+   /Contents 6 0 R
+   /Resources << /Font << /F1 7 0 R /F2 8 0 R >> >> >>
+endobj
+6 0 obj
+<< /Length 1808 >>
+stream
+BT /F1 11 Tf 50 800 Td (COMPUTER ORGANIZATION & ARCHITECTURE \(PCC-CS302\) -- CONTINUED \(PAGE 2\)) Tj ET
+BT /F2 8.5 Tf 50 786 Td (-----------------------------------------------------------------------------------------------------------------------------------------------------) Tj ET
+BT /F1 9.5 Tf 55 765 Td (Q6. \(a\) Explain cache write policies: Write-through vs Write-back, Write-allocate vs No-write-allocate.  [10 Marks]) Tj ET
+BT /F2 8.5 Tf 90 750 Td (-- OR --) Tj ET
+BT /F2 9 Tf 75 735 Td (\(b\) Explain virtual memory architecture, page table address translation, and TLB operation.  [10 Marks]) Tj ET
+BT /F1 9.5 Tf 55 715 Td (Q7. \(a\) Explain asynchronous data transfer using strobe control and handshaking mechanisms.  [10 Marks]) Tj ET
+BT /F2 8.5 Tf 90 700 Td (-- OR --) Tj ET
+BT /F2 9 Tf 75 685 Td (\(b\) Explain interrupt-driven I/O, daisy chain priority interrupt controller, and interrupt service routine.  [10 Marks]) Tj ET
+BT /F1 10.5 Tf 50 655 Td (EXAMINATION EVALUATION SCHEME & RUBRIC GUIDELINES:) Tj ET
+BT /F2 8.5 Tf 55 640 Td (1. Section A: Direct definition, time complexity analysis, formula derivation, or syntax verification.) Tj ET
+BT /F2 8.5 Tf 55 627 Td (2. Section B: Step-by-step mathematical proof, trace tables, algorithmic pseudocode, and state diagrams.) Tj ET
+BT /F2 8.5 Tf 55 614 Td (3. Section C: Architectural design, full code implementation, edge case handling, and space/time tradeoffs.) Tj ET
+BT /F2 8.5 Tf 50 595 Td (-----------------------------------------------------------------------------------------------------------------------------------------------------) Tj ET
+BT /F1 9 Tf 160 580 Td (*** END OF QUESTION PAPER -- DEVENGERS ACADEMIC VAULT ***) Tj ET
+BT /F2 8 Tf 220 30 Td ([ DEVENGERS CAMPUS RESOURCE LIBRARY -- PAGE 2 OF 2 -- PCC-CS302 ]) Tj ET
+endstream
+endobj
+7 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold >>
+endobj
+8 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+xref
+0 9
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000121 00000 n 
+0000000263 00000 n 
+0000004748 00000 n 
+0000004890 00000 n 
+0000006750 00000 n 
+0000006825 00000 n 
+trailer
+<< /Size 9 /Root 1 0 R >>
+startxref
+6895
+%%EOF

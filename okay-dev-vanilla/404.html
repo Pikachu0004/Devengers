@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Page Not Found | Devengers</title>
+    <meta name="description" content="The page you requested could not be found. Return to the Devengers developer community home.">
+    <meta name="robots" content="noindex, follow">
+    <meta name="theme-color" content="#7B42F6">
+    <link rel="icon" type="image/x-icon" href="favicon.ico?v=2">
+    <link rel="icon" type="image/png" href="favicon.png?v=2">
+    <link rel="apple-touch-icon" href="favicon.png?v=2">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css?v=20261021">
+    <script src="theme.js"></script>
+    <script src="auth.js"></script>
+</head>
+<body class="bg-[#0b0b0b] text-white font-sans antialiased min-h-screen flex flex-col justify-between select-none overflow-x-hidden">
+
+    <!-- NAVIGATION (Fixed Canonical Notch) -->
+    <nav class="devengers-navbar-fixed fixed top-6 left-0 w-full z-50 flex justify-center px-4">
+        <div class="devengers-navbar-notch bg-[#7B42F6] shadow-brutal border-4 border-black rounded-full px-6 md:px-8 py-3 w-full max-w-[1400px] flex items-center justify-between">
+            <!-- Avengers Animated Logo -->
+            <a href="index.html" class="flex items-center group select-none" title="Devengers Home">
+                <div class="devengers-nav-logo font-black text-2xl md:text-[30px] tracking-tighter uppercase rounded-full transition-transform duration-300"
+                    style="-webkit-text-stroke: 2px black; color: #CDFF29; text-shadow: 3px 3px 0px black; line-height: 1;">
+                    <span class="devengers-badge-icon">
+                        <svg class="w-3.5 h-3.5 text-[#CDFF29]" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
+                        </svg>
+                    </span>
+                    <span class="logo-char">D</span><span class="logo-char">E</span><span class="logo-char">V</span><span class="logo-char">E</span><span class="logo-char">N</span><span class="logo-char">G</span><span class="logo-char">E</span><span class="logo-char">R</span><span class="logo-char">S</span>
+                </div>
+            </a>
+
+            <!-- Center Links -->
+            <div class="hidden md:flex gap-6 lg:gap-8 text-[11px] font-bold uppercase tracking-widest text-white/80">
+                <a href="events.html" class="nav-link">Events</a>
+                <a href="learn.html" class="nav-link">Learn</a>
+                <a href="campus.html" class="nav-link">Campus Resource</a>
+                <a href="dsa.html" class="nav-link">DSA Streak</a>
+                <a href="gallery.html" class="nav-link">Gallery</a>
+                <a href="certificates.html" class="nav-link">Certificates</a>
+            </div>
+
+            <!-- Right Controls -->
+            <div class="flex items-center gap-3 sm:gap-4">
+                <button type="button" onclick="window.DevengersTheme.toggleTheme()" class="theme-toggle-btn" title="Toggle Theme" aria-label="Toggle Theme">
+                    <div class="toggle-thumb">🌙</div>
+                </button>
+
+                <!-- Notifications Bell -->
+                <div class="relative">
+                    <button type="button" id="nav-notification-btn" onclick="window.DevengersNotifications.toggleDropdown(event)"
+                        class="nav-notification-btn flex items-center justify-center w-8 h-8 text-white/80 hover:text-white transition-colors relative cursor-pointer"
+                        title="Notifications" aria-label="Notifications">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 transition-transform hover:scale-110" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+                        </svg>
+                        <span id="nav-notification-dot" class="nav-notification-dot hidden"></span>
+                    </button>
+                </div>
+
+                <!-- Profile Button with Instagram Ring -->
+                <a href="profile.html" class="nav-profile-btn group" title="My Profile" aria-label="My Profile">
+                    <span class="nav-profile-inner">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-white transition-transform group-hover:scale-110" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                        </svg>
+                    </span>
+                </a>
+
+                <a href="login.html" class="hidden md:block text-[11px] font-bold uppercase tracking-widest text-white/80 hover:text-white transition-colors">LOGIN</a>
+                <a href="register.html" class="bg-white text-black px-5 py-2 rounded-full text-[11px] font-bold uppercase tracking-widest hover:bg-[#CDFF29] transition-colors flex items-center gap-1.5 shadow-sm">
+                    SIGN UP <span class="font-normal text-sm leading-none">&rarr;</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 404 HERO CONTENT -->
+    <main class="flex-grow flex flex-col items-center justify-center text-center px-6 pt-40 pb-20 relative overflow-hidden">
+        <!-- SVG Grid Background -->
+        <div class="absolute inset-0 bg-grid opacity-30 pointer-events-none"></div>
+        <div class="absolute w-[500px] h-[500px] bg-[#7B42F6]/20 rounded-full blur-[140px] pointer-events-none"></div>
+
+        <div class="relative z-10 max-w-xl flex flex-col items-center">
+            <!-- 404 Brutal Badge -->
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#CDFF29] text-black font-mono text-xs font-black uppercase tracking-wider border-2 border-black shadow-brutal mb-6">
+                <span>⚠️</span>
+                <span>ERROR 404 &bull; PAGE LOST</span>
+            </div>
+
+            <!-- Big 404 Headline -->
+            <h1 class="text-7xl sm:text-9xl font-black uppercase tracking-tighter text-white drop-shadow-2xl"
+                style="-webkit-text-stroke: 3px black; text-shadow: 6px 6px 0px #7B42F6; line-height: 0.9;">
+                404
+            </h1>
+
+            <h2 class="text-2xl sm:text-3xl font-black uppercase tracking-tight text-white mt-4 mb-3">
+                Lost In The Devengerverse
+            </h2>
+
+            <p class="text-gray-400 text-sm sm:text-base font-mono max-w-md mb-8 leading-relaxed">
+                The link you followed has moved, been renamed, or does not exist. Let's get you back on track.
+            </p>
+
+            <!-- Navigation Actions -->
+            <div class="flex flex-wrap items-center justify-center gap-3">
+                <a href="index.html" class="px-7 py-3.5 bg-[#CDFF29] hover:bg-white text-black font-black uppercase text-xs sm:text-sm tracking-wider rounded-full border-2 border-black shadow-brutal transition-all flex items-center gap-2">
+                    <span>🏠</span>
+                    <span>Return Home</span>
+                </a>
+                <a href="events.html" class="px-6 py-3.5 bg-[#18181b] hover:bg-[#27272a] text-white font-bold uppercase text-xs sm:text-sm tracking-wider rounded-full border border-gray-700 shadow-brutal transition-all flex items-center gap-2">
+                    <span>⚡</span>
+                    <span>Explore Events</span>
+                </a>
+                <a href="dsa.html" class="px-6 py-3.5 bg-[#7B42F6] hover:bg-[#6830df] text-white font-bold uppercase text-xs sm:text-sm tracking-wider rounded-full border-2 border-black shadow-brutal transition-all flex items-center gap-2">
+                    <span>🔥</span>
+                    <span>DSA Streak</span>
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <!-- CANONICAL 3D FOOTER -->
+    <footer class="relative bg-[#0b0b0b] w-full pt-20 pb-16 px-6 overflow-hidden text-center select-none border-t border-gray-900" id="site-footer">
+        <div class="relative z-10 max-w-[1000px] mx-auto flex flex-col items-center">
+            <p class="text-white text-sm font-semibold tracking-tight mb-4">
+                Devengers Developer Community
+            </p>
+            <div class="flex items-center justify-center gap-6 text-white text-xs font-mono text-gray-400 mb-6">
+                <a href="index.html" class="hover:text-white">Home</a>
+                <a href="events.html" class="hover:text-white">Events</a>
+                <a href="learn.html" class="hover:text-white">Learn</a>
+                <a href="campus.html" class="hover:text-white">Campus</a>
+                <a href="dsa.html" class="hover:text-white">DSA Streak</a>
+            </div>
+            <p class="text-[#888888] font-mono text-[11px] uppercase tracking-wider">&copy; 2026 DEVENGERS COMMUNITY &bull; ALL RIGHTS RESERVED</p>
+        </div>
+    </footer>
+
+</body>
+</html>

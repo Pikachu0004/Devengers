@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: devengers-platform
+    runtime: python
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "python serve.py"
+    plan: free
+    autoDeploy: true
+    envVars:
+      - key: PORT
+        value: 3000
+      - key: DEVENGERS_DEV_MODE
+        value: "false"
+

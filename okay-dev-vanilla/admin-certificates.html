@@ -1,0 +1,1572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Certificates Studio | Devengers</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico?v=2">
+    <link rel="icon" type="image/png" href="favicon.png?v=2">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cinzel:wght@500;700;900&family=Great+Vibes&family=Inter:wght@400;500;600;700&family=Montserrat:wght@400;600;700;900&family=Playfair+Display:ital,wght@0,600;0,800;1,600&family=Space+Grotesk:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css?v=3">
+    <!-- Cropper.js for template cropping -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.1/cropper.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.1/cropper.min.js"></script>
+    <!-- SheetJS for instant client-side Excel parsing preview -->
+    <script src="https://cdn.sheetjs.com/xlsx-0.20.1/package/dist/xlsx.full.min.js"></script>
+    <script src="auth.js"></script>
+    <style>
+        body { font-family: 'Space Grotesk', system-ui, -apple-system, sans-serif; }
+        .bg-grid {
+            background-color: #0d0d0d;
+            background-image: 
+                radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+                linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 24px 24px, 96px 96px, 96px 96px;
+        }
+        .shadow-brutal { box-shadow: 4px 4px 0px 0px rgba(0,0,0,1); }
+        .shadow-brutal-sm { box-shadow: 2px 2px 0px 0px rgba(0,0,0,1); }
+        .shadow-brutal-gold { box-shadow: 4px 4px 0px 0px #F7D070; }
+        
+        .form-input {
+            background-color: #161616;
+            border: 2px solid #2d2d2d;
+            color: white;
+            transition: all 0.2s;
+        }
+        .form-input:focus {
+            border-color: #CDFF29;
+            outline: none;
+            background-color: #1f1f1f;
+        }
+
+        /* Draggable Anchor Tag styles */
+        .cert-canvas-container {
+            position: relative;
+            user-select: none;
+            overflow: hidden;
+            background: #050505;
+            box-shadow: 0 20px 40px -15px rgba(0,0,0,0.8);
+            border: 2px solid #2a2a2a;
+        }
+
+        .cert-anchor-tag {
+            position: absolute;
+            transform: translate(-50%, -50%);
+            cursor: grab;
+            z-index: 30;
+            padding: 8px 16px;
+            border-radius: 8px;
+            border: 2px dashed #CDFF29;
+            background: rgba(0, 0, 0, 0.75);
+            backdrop-filter: blur(8px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.5), 0 0 15px rgba(205, 255, 41, 0.4);
+            white-space: nowrap;
+            transition: border-color 0.15s, background-color 0.15s;
+        }
+        .cert-anchor-tag:hover {
+            border-color: #F7D070;
+            background: rgba(0, 0, 0, 0.9);
+            box-shadow: 0 8px 30px rgba(247, 208, 112, 0.5);
+        }
+        .cert-anchor-tag:active {
+            cursor: grabbing;
+            border-color: #00ffaa;
+            transform: translate(-50%, -50%) scale(1.03);
+        }
+        .cert-anchor-tag .anchor-hud {
+            position: absolute;
+            bottom: calc(100% + 6px);
+            left: 50%;
+            transform: translateX(-50%);
+            background: #000;
+            color: #CDFF29;
+            font-size: 10px;
+            font-family: monospace;
+            padding: 2px 8px;
+            border-radius: 4px;
+            border: 1px solid #CDFF29;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.15s;
+            font-weight: bold;
+        }
+        .cert-anchor-tag:hover .anchor-hud {
+            opacity: 1;
+        }
+
+        /* Custom Scrollbars */
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: #111; }
+        ::-webkit-scrollbar-thumb { background: #333; border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: #555; }
+    </style>
+</head>
+<body class="bg-grid m-0 p-0 text-white min-h-screen antialiased flex flex-col">
+
+    <!-- TOP ADMIN NAVBAR -->
+    <header class="sticky top-0 z-40 w-full bg-[#141414]/90 backdrop-blur-md border-b-2 border-black/80 px-6 py-4">
+        <div class="max-w-[1400px] mx-auto flex items-center justify-between flex-wrap gap-4">
+            
+            <!-- Logo & Brand Title -->
+            <div class="flex items-center gap-4">
+                <a href="index.html" class="flex items-center group">
+                    <div class="font-black text-2xl tracking-tighter uppercase rounded-full transition-transform duration-300 group-hover:scale-105"
+                         style="-webkit-text-stroke: 1.5px black; color: #CDFF29; text-shadow: 2px 2px 0px black; line-height: 1;">
+                        DEVENGERS
+                    </div>
+                </a>
+                <!-- Admin Section Nav Switcher -->
+                <nav class="flex items-center gap-2 bg-black/60 p-1 rounded-xl border border-zinc-800">
+                    <a href="admin-events.html" class="px-3 py-1 rounded-lg text-xs font-mono font-bold uppercase tracking-wider text-gray-400 hover:text-white transition-colors">
+                        Events
+                    </a>
+                    <a href="admin-learn.html" class="px-3 py-1 rounded-lg text-xs font-mono font-bold uppercase tracking-wider text-gray-400 hover:text-white transition-colors">
+                        Learn & Courses
+                    </a>
+                    <a href="admin-campus.html" class="px-3 py-1 rounded-lg text-xs font-mono font-bold uppercase tracking-wider text-gray-400 hover:text-white transition-colors">
+                        Campus & Courses
+                    </a>
+                    <a href="admin-gallery.html" class="px-3 py-1 rounded-lg text-xs font-mono font-bold uppercase tracking-wider text-gray-400 hover:text-white transition-colors">
+                        Gallery &amp; Community
+                    </a>
+                    <a href="admin-certificates.html" class="px-3 py-1 rounded-lg text-xs font-mono font-bold uppercase tracking-wider bg-[#CDFF29] text-black shadow-brutal-sm">
+                        Certificates
+                    </a>
+                </nav>
+            </div>
+
+            <!-- Admin Meta & Actions -->
+            <div class="flex items-center gap-4">
+                <a href="certificates.html" target="_blank"
+                   class="inline-flex items-center gap-1.5 text-xs font-mono font-bold uppercase tracking-wider text-[#F7D070] hover:text-white px-3 py-1.5 rounded-lg border border-[#F7D070]/40 hover:border-[#F7D070] transition-colors">
+                    <span>Public Certificate Portal</span>
+                    <span class="text-sm">&#8599;</span>
+                </a>
+
+                <div class="flex items-center gap-3 bg-black/60 px-3 py-1.5 rounded-full border border-gray-800">
+                    <span class="w-2.5 h-2.5 rounded-full bg-green-400 animate-pulse"></span>
+                    <span id="admin-email-display" class="text-xs font-mono text-gray-300 font-bold">event@devengers.org</span>
+                </div>
+
+                <button id="logout-btn"
+                        class="bg-red-500/10 hover:bg-red-500 text-red-300 hover:text-white border border-red-500/40 px-3 py-1.5 rounded-full text-xs font-mono font-bold uppercase tracking-wider transition-colors cursor-pointer">
+                    Logout
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN DASHBOARD CONTENT -->
+    <main class="flex-1 w-full max-w-[1400px] mx-auto px-6 py-8 flex flex-col gap-8">
+
+        <!-- TITLE & PRIMARY CTA -->
+        <div class="flex items-center justify-between flex-wrap gap-4">
+            <div>
+                <div class="flex items-center gap-2 mb-1">
+                    <span class="px-2.5 py-0.5 rounded text-[10px] font-mono font-bold uppercase tracking-wider bg-[#F7D070] text-black shadow-brutal-sm">Official Credentials</span>
+                    <span class="text-xs font-mono text-gray-400">Excel Roster Parser &bull; Visual Name Anchor Tag &bull; Live Preview</span>
+                </div>
+                <h1 class="text-3xl md:text-4xl font-black uppercase tracking-tight text-white mb-1">
+                    Certificate Management Studio
+                </h1>
+                <p class="text-gray-400 text-sm max-w-2xl">
+                    Create competition certificates, upload Excel/CSV participant rosters, crop luxury templates, and drag & drop the visual name anchor tag to the exact position.
+                </p>
+            </div>
+
+            <div class="flex items-center gap-3">
+                <button id="view-issues-btn"
+                        class="bg-zinc-900 hover:bg-zinc-800 text-gray-200 border-2 border-zinc-700 px-4 py-2.5 rounded-xl font-bold text-xs uppercase tracking-wider flex items-center gap-2 transition-all">
+                    <span>⚠️ Reported Issues</span>
+                    <span id="issues-badge" class="bg-red-500 text-white px-2 py-0.5 rounded-full text-[10px] font-mono">0</span>
+                </button>
+
+                <button id="create-cert-btn"
+                        class="bg-[#CDFF29] hover:bg-[#b8e622] text-black border-2 border-black px-5 py-2.5 rounded-xl font-black text-sm uppercase tracking-wider shadow-brutal flex items-center gap-2 transition-transform hover:-translate-y-0.5 cursor-pointer">
+                    <span class="text-lg leading-none">+</span>
+                    <span>Create New Certificate</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- STATS BAR -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div class="bg-zinc-900/80 border-2 border-zinc-800 p-4 rounded-xl shadow-brutal-sm">
+                <div class="text-gray-400 text-xs font-mono uppercase tracking-wider mb-1">Total Competitions</div>
+                <div id="stat-competitions-count" class="text-3xl font-black text-white">2</div>
+            </div>
+            <div class="bg-zinc-900/80 border-2 border-zinc-800 p-4 rounded-xl shadow-brutal-sm">
+                <div class="text-gray-400 text-xs font-mono uppercase tracking-wider mb-1">Issued Participants</div>
+                <div id="stat-participants-count" class="text-3xl font-black text-[#CDFF29]">8</div>
+            </div>
+            <div class="bg-zinc-900/80 border-2 border-zinc-800 p-4 rounded-xl shadow-brutal-sm">
+                <div class="text-gray-400 text-xs font-mono uppercase tracking-wider mb-1">Active Status</div>
+                <div id="stat-published-count" class="text-3xl font-black text-green-400">Published</div>
+            </div>
+            <div class="bg-zinc-900/80 border-2 border-zinc-800 p-4 rounded-xl shadow-brutal-sm">
+                <div class="text-gray-400 text-xs font-mono uppercase tracking-wider mb-1">Discrepancy Tickets</div>
+                <div id="stat-issues-count" class="text-3xl font-black text-[#F7D070]">0 Open</div>
+            </div>
+        </div>
+
+        <!-- COMPETITION CERTIFICATES GRID -->
+        <div class="flex flex-col gap-4">
+            <div class="flex items-center justify-between">
+                <h2 class="text-xl font-bold uppercase tracking-wide text-white flex items-center gap-2">
+                    <span>Active Competitions &amp; Credentials</span>
+                </h2>
+                <div class="text-xs font-mono text-gray-400">
+                    Real-time participant lookup enabled for all published events
+                </div>
+            </div>
+
+            <div id="competitions-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Rendered dynamically -->
+                <div class="col-span-full py-16 text-center text-gray-500 font-mono">
+                    Loading competition certificates...
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- ============================================================= -->
+    <!-- MODAL 1: CREATE / EDIT COMPETITION CERTIFICATE STUDIO -->
+    <!-- ============================================================= -->
+    <div id="cert-editor-modal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-md hidden overflow-y-auto p-4 md:p-8 flex justify-center items-start">
+        <div class="bg-[#121212] border-4 border-black w-full max-w-6xl rounded-2xl shadow-brutal overflow-hidden flex flex-col my-auto">
+            
+            <!-- Modal Header -->
+            <div class="bg-zinc-900 border-b-2 border-zinc-800 px-6 py-4 flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                    <span class="w-3 h-3 rounded-full bg-[#CDFF29] shadow-brutal-sm"></span>
+                    <h3 id="modal-title" class="text-xl font-black uppercase tracking-tight text-white">
+                        Certificate Studio &amp; Visual Anchor Tag Editor
+                    </h3>
+                </div>
+                <button type="button" onclick="closeEditorModal()" class="text-gray-400 hover:text-white text-2xl font-bold p-1 leading-none">&times;</button>
+            </div>
+
+            <!-- Modal Body (Two-Column Layout) -->
+            <div class="p-6 grid grid-cols-1 lg:grid-cols-12 gap-8 max-h-[85vh] overflow-y-auto">
+                
+                <!-- LEFT COLUMN: Form Inputs & Controls (5 Cols) -->
+                <div class="lg:col-span-5 flex flex-col gap-6">
+                    
+                    <!-- Competition Details Card -->
+                    <div class="bg-zinc-900/90 border border-zinc-800 p-5 rounded-xl flex flex-col gap-4">
+                        <div class="flex items-center justify-between border-b border-zinc-800 pb-2">
+                            <span class="text-xs font-mono font-bold uppercase text-[#CDFF29]">Step 1: Competition Details</span>
+                            <span class="text-[10px] font-mono text-gray-400">Required</span>
+                        </div>
+
+                        <input type="hidden" id="edit-comp-id" value="">
+
+                        <div>
+                            <label class="block text-xs font-mono uppercase text-gray-300 font-bold mb-1">Competition Title *</label>
+                            <input type="text" id="comp-title" placeholder="e.g. Devengers National Hackathon 2026"
+                                   class="w-full form-input px-3 py-2 rounded-lg text-sm font-semibold" required>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-3">
+                            <div>
+                                <label class="block text-xs font-mono uppercase text-gray-300 font-bold mb-1">Certificate Type</label>
+                                <select id="comp-type" class="w-full form-input px-3 py-2 rounded-lg text-xs">
+                                    <option value="Certificate of Excellence">Certificate of Excellence</option>
+                                    <option value="Certificate of Participation" selected>Certificate of Participation</option>
+                                    <option value="Certificate of Achievement">Certificate of Achievement</option>
+                                    <option value="Winner - 1st Place">Winner - 1st Place</option>
+                                    <option value="Runner-Up - 2nd Place">Runner-Up - 2nd Place</option>
+                                    <option value="Special Merit Award">Special Merit Award</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-mono uppercase text-gray-300 font-bold mb-1">Issue Date</label>
+                                <input type="text" id="comp-date" placeholder="e.g. October 20, 2026"
+                                       class="w-full form-input px-3 py-2 rounded-lg text-xs">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-mono uppercase text-gray-300 font-bold mb-1">Description / Organization</label>
+                            <textarea id="comp-desc" rows="2" placeholder="e.g. Organized by DEVENGERS Tech Community for developers across India"
+                                      class="w-full form-input px-3 py-2 rounded-lg text-xs"></textarea>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-mono uppercase text-gray-300 font-bold mb-1">Status</label>
+                            <select id="comp-status" class="w-full form-input px-3 py-2 rounded-lg text-xs">
+                                <option value="Published" selected>Published (Live for Search & Download)</option>
+                                <option value="Draft">Draft (Hidden from Public)</option>
+                                <option value="Archived">Archived</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Excel / CSV Roster Upload Card -->
+                    <div class="bg-zinc-900/90 border border-zinc-800 p-5 rounded-xl flex flex-col gap-4">
+                        <div class="flex items-center justify-between border-b border-zinc-800 pb-2">
+                            <span class="text-xs font-mono font-bold uppercase text-[#CDFF29]">Step 2: Participant Excel/CSV Roster</span>
+                            <span id="roster-count-badge" class="text-[10px] font-mono bg-zinc-800 px-2 py-0.5 rounded text-gray-300">0 loaded</span>
+                        </div>
+
+                        <p class="text-[11px] text-gray-400">
+                            Upload an Excel (<code class="text-yellow-400">.xlsx</code>, <code class="text-yellow-400">.xls</code>) or <code class="text-yellow-400">.csv</code> sheet with participant names and/or emails.
+                        </p>
+
+                        <div class="border-2 border-dashed border-zinc-700 hover:border-[#CDFF29] rounded-xl p-4 text-center cursor-pointer bg-zinc-950 transition-colors"
+                             onclick="document.getElementById('roster-file-input').click()">
+                            <input type="file" id="roster-file-input" accept=".xlsx,.xls,.csv" class="hidden" onchange="handleRosterFileSelect(event)">
+                            <div class="text-2xl mb-1">📊</div>
+                            <div class="text-xs font-bold text-gray-200">Click to Select Excel / CSV Sheet</div>
+                            <div class="text-[10px] text-gray-500 font-mono mt-0.5">Supports Columns: Name, Email, Rank/Award</div>
+                        </div>
+
+                        <!-- Parsed Roster Preview Snippet -->
+                        <div id="roster-preview-box" class="hidden flex flex-col gap-2">
+                            <div class="text-[11px] font-mono font-bold text-[#F7D070] flex items-center justify-between">
+                                <span>Parsed Records Preview:</span>
+                                <span id="roster-filename" class="text-gray-400 font-normal">roster.xlsx</span>
+                            </div>
+                            <div class="max-h-36 overflow-y-auto bg-black border border-zinc-800 rounded-lg p-2 text-xs font-mono">
+                                <table class="w-full text-left border-collapse">
+                                    <thead>
+                                        <tr class="text-[10px] text-gray-400 border-b border-zinc-800">
+                                            <th class="p-1">Name</th>
+                                            <th class="p-1">Email</th>
+                                            <th class="p-1">Role/Award</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="roster-preview-rows" class="divide-y divide-zinc-800 text-[11px]">
+                                        <!-- Rows injected dynamically -->
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <input type="checkbox" id="roster-replace-check" class="rounded bg-zinc-800 border-zinc-700 text-[#CDFF29]">
+                                <label for="roster-replace-check" class="text-[11px] text-gray-300">Replace existing participants for this competition</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Typography & Anchor Style Controls -->
+                    <div class="bg-zinc-900/90 border border-zinc-800 p-5 rounded-xl flex flex-col gap-4">
+                        <div class="flex items-center justify-between border-b border-zinc-800 pb-2">
+                            <span class="text-xs font-mono font-bold uppercase text-[#CDFF29]">Step 3: Name Anchor Styling</span>
+                            <span class="text-[10px] font-mono text-gray-400">Applied on Canvas</span>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-3">
+                            <div>
+                                <label class="block text-[11px] font-mono uppercase text-gray-300 font-bold mb-1">Font Family</label>
+                                <select id="anchor-font" class="w-full form-input px-2.5 py-1.5 rounded-lg text-xs" onchange="updateAnchorPreview()">
+                                    <option value="Playfair Display" selected>Playfair Display (Luxury Serif)</option>
+                                    <option value="Cinzel">Cinzel (Regal Classical)</option>
+                                    <option value="Great Vibes">Great Vibes (Calligraphy Script)</option>
+                                    <option value="Alex Brush">Alex Brush (Classic Cursive)</option>
+                                    <option value="Montserrat">Montserrat (Modern Clean)</option>
+                                    <option value="Space Grotesk">Space Grotesk (Tech Neo-Grotesk)</option>
+                                    <option value="Inter">Inter (Ultra Legible)</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-[11px] font-mono uppercase text-gray-300 font-bold mb-1">Font Weight</label>
+                                <select id="anchor-weight" class="w-full form-input px-2.5 py-1.5 rounded-lg text-xs" onchange="updateAnchorPreview()">
+                                    <option value="bold" selected>Bold</option>
+                                    <option value="600">Semi-Bold</option>
+                                    <option value="normal">Normal</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-3">
+                            <div>
+                                <div class="flex items-center justify-between mb-1">
+                                    <label class="text-[11px] font-mono uppercase text-gray-300 font-bold">Font Size</label>
+                                    <span id="font-size-val" class="text-[10px] font-mono text-[#CDFF29]">56px</span>
+                                </div>
+                                <input type="range" id="anchor-size" min="28" max="110" value="56" class="w-full accent-[#CDFF29]" oninput="updateAnchorPreview()">
+                            </div>
+                            <div>
+                                <label class="block text-[11px] font-mono uppercase text-gray-300 font-bold mb-1">Text Color</label>
+                                <div class="flex items-center gap-2">
+                                    <input type="color" id="anchor-color" value="#F7D070" class="w-8 h-8 rounded border border-zinc-700 bg-transparent cursor-pointer" oninput="updateAnchorPreview()">
+                                    <input type="text" id="anchor-color-hex" value="#F7D070" class="w-full form-input px-2 py-1 rounded text-xs font-mono" onchange="syncColorInput(this.value)">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-3">
+                            <div>
+                                <label class="block text-[11px] font-mono uppercase text-gray-300 font-bold mb-1">Text Alignment</label>
+                                <select id="anchor-align" class="w-full form-input px-2.5 py-1.5 rounded-lg text-xs" onchange="updateAnchorPreview()">
+                                    <option value="center" selected>Center</option>
+                                    <option value="left">Left</option>
+                                    <option value="right">Right</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-[11px] font-mono uppercase text-gray-300 font-bold mb-1">Letter Casing</label>
+                                <select id="anchor-case" class="w-full form-input px-2.5 py-1.5 rounded-lg text-xs" onchange="updateAnchorPreview()">
+                                    <option value="capitalize" selected>Title Case (Capitalize)</option>
+                                    <option value="uppercase">ALL UPPERCASE</option>
+                                    <option value="none">As Typed (Exact)</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Manual Coordinate Inputs for Precision -->
+                        <div class="grid grid-cols-2 gap-3 pt-2 border-t border-zinc-800">
+                            <div>
+                                <div class="flex items-center justify-between mb-1">
+                                    <label class="text-[10px] font-mono uppercase text-gray-400">Anchor X (Left %)</label>
+                                    <span id="anchor-x-display" class="text-[10px] font-mono text-gray-300">50.0%</span>
+                                </div>
+                                <input type="number" id="anchor-x" min="5" max="95" step="0.5" value="50.0"
+                                       class="w-full form-input px-2 py-1 rounded text-xs font-mono" oninput="syncManualCoordinates()">
+                            </div>
+                            <div>
+                                <div class="flex items-center justify-between mb-1">
+                                    <label class="text-[10px] font-mono uppercase text-gray-400">Anchor Y (Top %)</label>
+                                    <span id="anchor-y-display" class="text-[10px] font-mono text-gray-300">50.0%</span>
+                                </div>
+                                <input type="number" id="anchor-y" min="5" max="95" step="0.5" value="50.0"
+                                       class="w-full form-input px-2 py-1 rounded text-xs font-mono" oninput="syncManualCoordinates()">
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- RIGHT COLUMN: Interactive Template Canvas & Draggable Anchor (7 Cols) -->
+                <div class="lg:col-span-7 flex flex-col gap-4">
+                    
+                    <!-- Template Chooser & Upload Controls -->
+                    <div class="bg-zinc-900 border border-zinc-800 p-4 rounded-xl flex items-center justify-between flex-wrap gap-3">
+                        <div class="flex items-center gap-2">
+                            <span class="text-xs font-mono font-bold uppercase text-[#CDFF29]">Certificate Template</span>
+                            <span class="text-[10px] text-gray-400 font-mono">16:9 Landscape High-Res</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <!-- Preset Selector -->
+                            <select id="template-preset" class="form-input px-2.5 py-1 rounded-lg text-xs font-mono" onchange="handleTemplatePresetChange(this.value)">
+                                <option value="Assest/uploads/cert_template_gold_luxury.jpg">Preset: Obsidian Gold Luxury</option>
+                                <option value="Assest/uploads/cert_template_achievement.jpg">Preset: Deep Navy Achievement</option>
+                                <option value="custom">Upload Custom Template...</option>
+                            </select>
+
+                            <button type="button" onclick="document.getElementById('template-upload-input').click()"
+                                    class="bg-zinc-800 hover:bg-zinc-700 text-white text-xs font-mono px-3 py-1.5 rounded-lg border border-zinc-600 transition-colors">
+                                📤 Upload Image
+                            </button>
+                            <input type="file" id="template-upload-input" accept="image/*" class="hidden" onchange="handleCustomTemplateUpload(event)">
+
+                            <button type="button" id="crop-toggle-btn" onclick="openCropToolModal()"
+                                    class="bg-zinc-800 hover:bg-zinc-700 text-[#F7D070] text-xs font-mono px-3 py-1.5 rounded-lg border border-zinc-600 transition-colors">
+                                ✂️ Crop / Zoom
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Interactive Canvas Container with Draggable Name Anchor Tag -->
+                    <div class="flex flex-col gap-2">
+                        <div class="flex items-center justify-between text-xs font-mono text-gray-400 px-1">
+                            <div class="flex items-center gap-2">
+                                <span class="w-2 h-2 rounded-full bg-yellow-400 animate-ping"></span>
+                                <span class="text-[#F7D070] font-bold">DRAG & DROP ANCHOR TAG BELOW</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <label class="flex items-center gap-1.5 cursor-pointer">
+                                    <input type="checkbox" id="sample-name-toggle" class="rounded bg-zinc-800 border-zinc-700 text-[#CDFF29]" onchange="toggleSamplePreview(this.checked)">
+                                    <span class="text-white text-[11px]">Preview Real Name</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Certificate Visual Workspace Container -->
+                        <div id="cert-canvas-stage" class="cert-canvas-container rounded-xl w-full aspect-[16/9] relative select-none">
+                            
+                            <!-- Template Background Image -->
+                            <img id="stage-template-img" src="Assest/uploads/cert_template_gold_luxury.jpg"
+                                 alt="Certificate Template"
+                                 class="w-full h-full object-contain pointer-events-none select-none"
+                                 onload="onTemplateLoaded()">
+
+                            <!-- THE DRAGGABLE NAME ANCHOR TAG -->
+                            <div id="cert-name-anchor" class="cert-anchor-tag" style="top: 50%; left: 50%;">
+                                <div class="anchor-hud">
+                                    ANCHOR: <span id="hud-coords">X:50% Y:50%</span>
+                                </div>
+                                <div id="anchor-label" class="text-center font-bold tracking-wide"
+                                     style="font-family: 'Playfair Display', serif; color: #F7D070; font-size: 20px;">
+                                    [ PARTICIPANT NAME ]
+                                </div>
+                            </div>
+
+                            <!-- Optional Badge for Date Placement -->
+                            <div id="cert-date-anchor" class="absolute pointer-events-none text-[10px] font-mono text-gray-400/80 px-2 py-0.5 rounded border border-gray-500/30 bg-black/60"
+                                 style="top: 77%; left: 35%; transform: translate(-50%, -50%);">
+                                📅 <span id="preview-date-label">October 20, 2026</span>
+                            </div>
+
+                            <!-- Optional Badge for Cert ID Placement -->
+                            <div id="cert-id-anchor" class="absolute pointer-events-none text-[10px] font-mono text-gray-400/80 px-2 py-0.5 rounded border border-gray-500/30 bg-black/60"
+                                 style="top: 86%; left: 80%; transform: translate(-50%, -50%);">
+                                🛡️ DEV-2026-CERT-XXXX
+                            </div>
+
+                        </div>
+
+                        <!-- Instructions & Placement Tip -->
+                        <div class="bg-black/40 border border-zinc-800/80 rounded-lg p-3 text-[11px] font-mono text-gray-400 flex items-start gap-2">
+                            <span class="text-base leading-none text-[#CDFF29]">💡</span>
+                            <span>
+                                <strong>Placement Tip:</strong> Click &amp; hold the <code class="text-white bg-zinc-800 px-1 py-0.5 rounded">[ PARTICIPANT NAME ]</code> tag and place it directly on the certificate's blank award line. The coordinates are automatically recorded in real time.
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- Hidden Template URL Holder -->
+                    <input type="hidden" id="current-template-url" value="Assest/uploads/cert_template_gold_luxury.jpg">
+
+                </div>
+
+            </div>
+
+            <!-- Modal Footer (Save / Cancel Actions) -->
+            <div class="bg-zinc-900 border-t-2 border-zinc-800 px-6 py-4 flex items-center justify-between flex-wrap gap-4">
+                <div class="flex items-center gap-2">
+                    <button type="button" onclick="testLiveCertificateModal()"
+                            class="bg-zinc-800 hover:bg-zinc-700 text-white border border-zinc-700 px-4 py-2 rounded-xl text-xs font-mono uppercase font-bold transition-colors">
+                        👁️ Fullscreen Test Render
+                    </button>
+                    <span id="save-status-msg" class="text-xs font-mono text-green-400 hidden"></span>
+                </div>
+
+                <div class="flex items-center gap-3">
+                    <button type="button" onclick="closeEditorModal()"
+                            class="px-5 py-2 text-xs font-mono font-bold uppercase text-gray-400 hover:text-white transition-colors">
+                        Cancel
+                    </button>
+
+                    <button type="button" id="save-competition-btn" onclick="saveCertificateCompetition()"
+                            class="bg-[#CDFF29] hover:bg-[#b8e622] text-black border-2 border-black px-6 py-2.5 rounded-xl font-black text-sm uppercase tracking-wider shadow-brutal flex items-center gap-2 cursor-pointer transition-transform hover:-translate-y-0.5">
+                        <span id="save-btn-spinner" class="hidden w-4 h-4 border-2 border-black border-t-transparent rounded-full animate-spin"></span>
+                        <span id="save-btn-text">Save Certificate Studio</span>
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- ============================================================= -->
+    <!-- MODAL 2: PARTICIPANT ROSTER EXPLORER -->
+    <!-- ============================================================= -->
+    <div id="roster-modal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-md hidden overflow-y-auto p-4 flex justify-center items-center">
+        <div class="bg-[#121212] border-4 border-black w-full max-w-4xl rounded-2xl shadow-brutal overflow-hidden flex flex-col">
+            <div class="bg-zinc-900 border-b-2 border-zinc-800 px-6 py-4 flex items-center justify-between">
+                <div>
+                    <h3 id="roster-modal-title" class="text-lg font-black uppercase text-white">Competition Participant Roster</h3>
+                    <p id="roster-modal-subtitle" class="text-xs font-mono text-gray-400">Viewing registered names and emails</p>
+                </div>
+                <button type="button" onclick="closeRosterModal()" class="text-gray-400 hover:text-white text-2xl font-bold">&times;</button>
+            </div>
+
+            <div class="p-6 flex flex-col gap-4">
+                <div class="flex items-center justify-between gap-4">
+                    <input type="text" id="roster-search-input" placeholder="Search participant name or email..."
+                           class="w-full max-w-md form-input px-3 py-2 rounded-lg text-xs font-mono" oninput="filterRosterTable()">
+                    <span id="roster-total-count" class="text-xs font-mono text-[#CDFF29] whitespace-nowrap">Total: 0</span>
+                </div>
+
+                <div class="max-h-96 overflow-y-auto border border-zinc-800 rounded-xl bg-black">
+                    <table class="w-full text-left border-collapse">
+                        <thead class="sticky top-0 bg-zinc-900 border-b border-zinc-800 text-[11px] font-mono text-gray-300">
+                            <tr>
+                                <th class="p-3">#</th>
+                                <th class="p-3">Participant Name</th>
+                                <th class="p-3">Email Address</th>
+                                <th class="p-3">Role / Award</th>
+                                <th class="p-3">Certificate Number</th>
+                            </tr>
+                        </thead>
+                        <tbody id="roster-table-body" class="divide-y divide-zinc-800 text-xs font-mono">
+                            <!-- Injected dynamically -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="bg-zinc-900 border-t border-zinc-800 px-6 py-3 flex justify-end">
+                <button type="button" onclick="closeRosterModal()" class="px-5 py-2 text-xs font-mono font-bold uppercase bg-zinc-800 hover:bg-zinc-700 text-white rounded-lg">
+                    Close
+                </button>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ============================================================= -->
+    <!-- MODAL 3: REPORTED ISSUES REVIEW -->
+    <!-- ============================================================= -->
+    <div id="issues-modal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-md hidden overflow-y-auto p-4 flex justify-center items-center">
+        <div class="bg-[#121212] border-4 border-black w-full max-w-4xl rounded-2xl shadow-brutal overflow-hidden flex flex-col">
+            <div class="bg-zinc-900 border-b-2 border-zinc-800 px-6 py-4 flex items-center justify-between">
+                <div>
+                    <h3 class="text-lg font-black uppercase text-white">Participant Discrepancy Reports</h3>
+                    <p class="text-xs font-mono text-gray-400">Issues submitted by students via the public certificate portal</p>
+                </div>
+                <button type="button" onclick="closeIssuesModal()" class="text-gray-400 hover:text-white text-2xl font-bold">&times;</button>
+            </div>
+
+            <div class="p-6">
+                <div id="issues-list" class="max-h-96 overflow-y-auto divide-y divide-zinc-800 flex flex-col gap-3">
+                    <!-- Populated dynamically -->
+                </div>
+            </div>
+
+            <div class="bg-zinc-900 border-t border-zinc-800 px-6 py-3 flex justify-between items-center">
+                <span class="text-xs font-mono text-gray-400">Support Email: <a href="mailto:support@devengers.org" class="text-[#F7D070] underline">support@devengers.org</a></span>
+                <button type="button" onclick="closeIssuesModal()" class="px-5 py-2 text-xs font-mono font-bold uppercase bg-zinc-800 hover:bg-zinc-700 text-white rounded-lg">
+                    Close
+                </button>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ============================================================= -->
+    <!-- MODAL 4: IMAGE CROPPER TOOL -->
+    <!-- ============================================================= -->
+    <div id="crop-modal" class="fixed inset-0 z-50 bg-black/90 backdrop-blur-md hidden overflow-y-auto p-4 flex justify-center items-center">
+        <div class="bg-[#121212] border-4 border-black w-full max-w-3xl rounded-2xl shadow-brutal overflow-hidden flex flex-col">
+            <div class="bg-zinc-900 border-b-2 border-zinc-800 px-6 py-4 flex items-center justify-between">
+                <h3 class="text-lg font-black uppercase text-white">✂️ Template Aspect Ratio &amp; Crop Tool</h3>
+                <button type="button" onclick="closeCropModal()" class="text-gray-400 hover:text-white text-2xl font-bold">&times;</button>
+            </div>
+
+            <div class="p-6 flex flex-col gap-4">
+                <div class="w-full max-h-[60vh] overflow-hidden bg-black flex items-center justify-center">
+                    <img id="cropper-target-img" src="" alt="Crop Target" class="max-w-full max-h-[55vh]">
+                </div>
+
+                <div class="flex items-center justify-between flex-wrap gap-3">
+                    <div class="flex items-center gap-2">
+                        <span class="text-xs font-mono text-gray-400">Aspect Ratio:</span>
+                        <button type="button" onclick="setCropperRatio(16/9)" class="px-2.5 py-1 rounded bg-zinc-800 hover:bg-zinc-700 text-xs font-mono text-white">16:9 Landscape</button>
+                        <button type="button" onclick="setCropperRatio(1.414)" class="px-2.5 py-1 rounded bg-zinc-800 hover:bg-zinc-700 text-xs font-mono text-white">A4 Landscape</button>
+                        <button type="button" onclick="setCropperRatio(4/3)" class="px-2.5 py-1 rounded bg-zinc-800 hover:bg-zinc-700 text-xs font-mono text-white">4:3</button>
+                        <button type="button" onclick="setCropperRatio(NaN)" class="px-2.5 py-1 rounded bg-zinc-800 hover:bg-zinc-700 text-xs font-mono text-white">Free</button>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <button type="button" onclick="cropperInstance && cropperInstance.rotate(90)" class="px-2.5 py-1 rounded bg-zinc-800 text-xs font-mono text-white">↻ Rotate</button>
+                        <button type="button" onclick="cropperInstance && cropperInstance.reset()" class="px-2.5 py-1 rounded bg-zinc-800 text-xs font-mono text-white">Reset</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-zinc-900 border-t border-zinc-800 px-6 py-4 flex justify-end gap-3">
+                <button type="button" onclick="closeCropModal()" class="px-4 py-2 text-xs font-mono uppercase font-bold text-gray-400 hover:text-white">
+                    Cancel
+                </button>
+                <button type="button" onclick="applyCroppedImage()" class="bg-[#CDFF29] hover:bg-[#b8e622] text-black font-black text-xs uppercase px-5 py-2 rounded-xl shadow-brutal">
+                    Apply &amp; Use Cropped Template
+                </button>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ============================================================= -->
+    <!-- MODAL 5: FULLSCREEN TEST RENDER MODAL -->
+    <!-- ============================================================= -->
+    <div id="test-render-modal" class="fixed inset-0 z-50 bg-black/95 backdrop-blur-md hidden overflow-y-auto p-4 md:p-8 flex justify-center items-center">
+        <div class="bg-[#121212] border-4 border-black w-full max-w-5xl rounded-2xl shadow-brutal overflow-hidden flex flex-col">
+            <div class="bg-zinc-900 border-b-2 border-zinc-800 px-6 py-4 flex items-center justify-between">
+                <div>
+                    <h3 class="text-lg font-black uppercase text-white">High-Resolution Canvas Render Output</h3>
+                    <p class="text-xs font-mono text-gray-400">Generated exactly as participants will receive</p>
+                </div>
+                <button type="button" onclick="document.getElementById('test-render-modal').classList.add('hidden')" class="text-gray-400 hover:text-white text-2xl font-bold">&times;</button>
+            </div>
+            <div class="p-6 flex flex-col items-center gap-4">
+                <canvas id="fullscreen-test-canvas" width="1920" height="1080" class="w-full max-h-[70vh] object-contain rounded-xl border-2 border-zinc-800 bg-black"></canvas>
+            </div>
+            <div class="bg-zinc-900 border-t border-zinc-800 px-6 py-3 flex justify-end">
+                <button type="button" onclick="document.getElementById('test-render-modal').classList.add('hidden')" class="px-5 py-2 text-xs font-mono font-bold uppercase bg-zinc-800 hover:bg-zinc-700 text-white rounded-lg">
+                    Done
+                </button>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        let allCompetitions = [];
+        let currentRosterRecords = [];
+        let activeCompForRoster = null;
+        let cropperInstance = null;
+
+        // Current Anchor State
+        let anchorXPercent = 50.0;
+        let anchorYPercent = 50.0;
+        let isDraggingAnchor = false;
+
+        document.addEventListener('DOMContentLoaded', async () => {
+            // Check admin authentication
+            try {
+                const user = await window.DevengersAuth.requireAdmin();
+                if (user && user.email) {
+                    const emailDisplay = document.getElementById('admin-email-display');
+                    if (emailDisplay) emailDisplay.textContent = user.email;
+                }
+            } catch (e) {
+                console.warn("Auth check warning:", e);
+            }
+
+            // Setup Draggable Anchor logic
+            initDraggableAnchor();
+
+            // Load initial competitions & stats
+            await loadCompetitions();
+            await loadReportedIssues();
+
+            // Wire buttons
+            document.getElementById('create-cert-btn').addEventListener('click', openCreateModal);
+            document.getElementById('view-issues-btn').addEventListener('click', openIssuesModal);
+            document.getElementById('logout-btn').addEventListener('click', () => {
+                window.DevengersAuth.logout();
+            });
+        });
+
+        // ==========================================
+        // 1. LOAD & RENDER COMPETITIONS
+        // ==========================================
+        async function loadCompetitions() {
+            try {
+                const res = await fetch('/api/admin/certificates');
+                const data = await res.json();
+                if (data.success) {
+                    allCompetitions = data.competitions || [];
+                    renderCompetitionsGrid();
+                    updateTopStats();
+                }
+            } catch (e) {
+                console.error("Failed to load certificates:", e);
+            }
+        }
+
+        function updateTopStats() {
+            document.getElementById('stat-competitions-count').textContent = allCompetitions.length;
+            const totalParts = allCompetitions.reduce((acc, c) => acc + (c.participant_count || 0), 0);
+            document.getElementById('stat-participants-count').textContent = totalParts;
+            const pubCount = allCompetitions.filter(c => c.status === 'Published').length;
+            document.getElementById('stat-published-count').textContent = `${pubCount} Live`;
+        }
+
+        function renderCompetitionsGrid() {
+            const grid = document.getElementById('competitions-grid');
+            if (!grid) return;
+
+            if (allCompetitions.length === 0) {
+                grid.innerHTML = `
+                    <div class="col-span-full py-16 text-center bg-zinc-900/50 border-2 border-dashed border-zinc-800 rounded-2xl p-8">
+                        <div class="text-4xl mb-3">🎓</div>
+                        <h4 class="text-lg font-bold text-white mb-1">No Competition Certificates Yet</h4>
+                        <p class="text-sm text-gray-400 mb-4">Create your first certificate competition and upload an Excel participant roster.</p>
+                        <button onclick="openCreateModal()" class="bg-[#CDFF29] text-black font-bold text-xs uppercase px-4 py-2 rounded-xl shadow-brutal">
+                            Create First Certificate
+                        </button>
+                    </div>
+                `;
+                return;
+            }
+
+            grid.innerHTML = allCompetitions.map(comp => `
+                <div class="bg-zinc-900/90 border-2 border-zinc-800 rounded-2xl overflow-hidden shadow-brutal flex flex-col group hover:border-[#CDFF29] transition-all">
+                    <!-- Template Preview Thumbnail with Status Badge -->
+                    <div class="relative w-full aspect-[16/9] bg-black overflow-hidden border-b border-zinc-800">
+                        <img src="${comp.template_url}" alt="${comp.title}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                        <div class="absolute top-3 left-3 flex items-center gap-1.5">
+                            <span class="px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider ${comp.status === 'Published' ? 'bg-green-500/90 text-black' : 'bg-yellow-500/90 text-black'}">
+                                ${comp.status}
+                            </span>
+                        </div>
+                        <div class="absolute top-3 right-3">
+                            <span class="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-black/80 text-[#F7D070] border border-[#F7D070]/40">
+                                ${comp.certificate_type || 'Certificate'}
+                            </span>
+                        </div>
+                        <div class="absolute bottom-2 right-2 bg-black/80 backdrop-blur-sm px-2.5 py-1 rounded-lg border border-zinc-700 text-[11px] font-mono text-[#CDFF29] font-bold">
+                            👥 ${comp.participant_count || 0} Participants
+                        </div>
+                    </div>
+
+                    <!-- Details Card -->
+                    <div class="p-5 flex-1 flex flex-col justify-between gap-4">
+                        <div>
+                            <div class="text-[10px] font-mono text-gray-400 uppercase tracking-wider mb-1">
+                                📅 ${comp.issue_date || 'Date Unspecified'}
+                            </div>
+                            <h3 class="text-lg font-black uppercase text-white leading-tight mb-2 group-hover:text-[#CDFF29] transition-colors">
+                                ${comp.title}
+                            </h3>
+                            <p class="text-xs text-gray-400 line-clamp-2">
+                                ${comp.description || 'No description provided.'}
+                            </p>
+                        </div>
+
+                        <!-- Action Toolbar -->
+                        <div class="pt-3 border-t border-zinc-800/80 flex items-center justify-between gap-2 flex-wrap">
+                            <div class="flex items-center gap-1.5">
+                                <button onclick="viewCompetitionRoster('${comp.id}', '${escapeQuotes(comp.title)}')"
+                                        class="bg-zinc-800 hover:bg-zinc-700 text-white text-[11px] font-mono px-3 py-1.5 rounded-lg border border-zinc-700 transition-colors"
+                                        title="View Participant Roster">
+                                    📋 Roster
+                                </button>
+                                <button onclick="openEditModal('${comp.id}')"
+                                        class="bg-zinc-800 hover:bg-zinc-700 text-[#CDFF29] text-[11px] font-mono font-bold px-3 py-1.5 rounded-lg border border-zinc-700 transition-colors"
+                                        title="Edit Design & Anchors">
+                                    ✏️ Edit Studio
+                                </button>
+                            </div>
+
+                            <div class="flex items-center gap-1.5">
+                                <a href="certificates.html?comp=${comp.id}" target="_blank"
+                                   class="text-gray-400 hover:text-white text-xs p-1.5 rounded bg-zinc-800/60" title="Test Public Search">
+                                    🔗
+                                </a>
+                                <button onclick="deleteCompetition('${comp.id}', '${escapeQuotes(comp.title)}')"
+                                        class="text-red-400 hover:text-red-200 hover:bg-red-500/20 text-xs p-1.5 rounded transition-colors"
+                                        title="Delete Competition">
+                                    🗑️
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function escapeQuotes(str) {
+            return (str || '').replace(/'/g, "\\'");
+        }
+
+        // ==========================================
+        // 2. DRAGGABLE NAME ANCHOR LOGIC
+        // ==========================================
+        function initDraggableAnchor() {
+            const anchor = document.getElementById('cert-name-anchor');
+            const stage = document.getElementById('cert-canvas-stage');
+            if (!anchor || !stage) return;
+
+            anchor.addEventListener('mousedown', startDrag);
+            anchor.addEventListener('touchstart', startDrag, { passive: false });
+
+            window.addEventListener('mousemove', onDrag);
+            window.addEventListener('touchmove', onDrag, { passive: false });
+
+            window.addEventListener('mouseup', stopDrag);
+            window.addEventListener('touchend', stopDrag);
+
+            function startDrag(e) {
+                e.preventDefault();
+                isDraggingAnchor = true;
+            }
+
+            function onDrag(e) {
+                if (!isDraggingAnchor) return;
+                const rect = stage.getBoundingClientRect();
+                const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+                const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+
+                let x = ((clientX - rect.left) / rect.width) * 100;
+                let y = ((clientY - rect.top) / rect.height) * 100;
+
+                // Clamp between 5% and 95%
+                x = Math.max(5, Math.min(95, x));
+                y = Math.max(5, Math.min(95, y));
+
+                anchorXPercent = parseFloat(x.toFixed(1));
+                anchorYPercent = parseFloat(y.toFixed(1));
+
+                updateAnchorPositionUI();
+            }
+
+            function stopDrag() {
+                isDraggingAnchor = false;
+            }
+        }
+
+        function updateAnchorPositionUI() {
+            const anchor = document.getElementById('cert-name-anchor');
+            if (!anchor) return;
+
+            anchor.style.left = `${anchorXPercent}%`;
+            anchor.style.top = `${anchorYPercent}%`;
+
+            document.getElementById('anchor-x').value = anchorXPercent;
+            document.getElementById('anchor-y').value = anchorYPercent;
+            document.getElementById('anchor-x-display').textContent = `${anchorXPercent}%`;
+            document.getElementById('anchor-y-display').textContent = `${anchorYPercent}%`;
+            document.getElementById('hud-coords').textContent = `X:${anchorXPercent}% Y:${anchorYPercent}%`;
+        }
+
+        function syncManualCoordinates() {
+            const x = parseFloat(document.getElementById('anchor-x').value) || 50;
+            const y = parseFloat(document.getElementById('anchor-y').value) || 50;
+            anchorXPercent = Math.max(5, Math.min(95, x));
+            anchorYPercent = Math.max(5, Math.min(95, y));
+            updateAnchorPositionUI();
+        }
+
+        function updateAnchorPreview() {
+            const font = document.getElementById('anchor-font').value;
+            const weight = document.getElementById('anchor-weight').value;
+            const size = document.getElementById('anchor-size').value;
+            const color = document.getElementById('anchor-color').value;
+            const align = document.getElementById('anchor-align').value;
+            const casing = document.getElementById('anchor-case').value;
+
+            document.getElementById('font-size-val').textContent = `${size}px`;
+
+            const label = document.getElementById('anchor-label');
+            if (!label) return;
+
+            label.style.fontFamily = `"${font}", serif, sans-serif`;
+            label.style.fontWeight = weight;
+            label.style.color = color;
+            label.style.textAlign = align;
+
+            let displayText = "[ PARTICIPANT NAME ]";
+            const sampleActive = document.getElementById('sample-name-toggle').checked;
+            if (sampleActive) {
+                displayText = "Kishan Kumar";
+            }
+
+            if (casing === 'uppercase') {
+                label.style.textTransform = 'uppercase';
+            } else if (casing === 'capitalize') {
+                label.style.textTransform = 'capitalize';
+            } else {
+                label.style.textTransform = 'none';
+            }
+
+            label.textContent = displayText;
+
+            // Scale font size proportionally for stage preview
+            const previewSize = Math.max(14, Math.round(parseInt(size) * 0.42));
+            label.style.fontSize = `${previewSize}px`;
+        }
+
+        function syncColorInput(val) {
+            document.getElementById('anchor-color').value = val;
+            updateAnchorPreview();
+        }
+
+        function toggleSamplePreview(checked) {
+            updateAnchorPreview();
+        }
+
+        function onTemplateLoaded() {
+            // Keep anchor positioned after image load
+            updateAnchorPositionUI();
+            updateAnchorPreview();
+        }
+
+        // ==========================================
+        // 3. EXCEL / CSV PARSER HANDLERS
+        // ==========================================
+        function handleRosterFileSelect(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            const isXlsx = file.name.endsWith('.xlsx') || file.name.endsWith('.xls');
+
+            reader.onload = (e) => {
+                try {
+                    let records = [];
+                    if (isXlsx && window.XLSX) {
+                        const data = new Uint8Array(e.target.result);
+                        const workbook = XLSX.read(data, { type: 'array' });
+                        const firstSheet = workbook.Sheets[workbook.SheetNames[0]];
+                        const jsonRows = XLSX.utils.sheet_to_json(firstSheet, { defval: "" });
+
+                        // Map columns
+                        records = jsonRows.map(row => {
+                            let name = "";
+                            let email = "";
+                            let role = "Participant";
+
+                            for (const [k, v] of Object.entries(row)) {
+                                const key = k.toLowerCase().replace(/[\s_-]/g, '');
+                                if (key.includes('name') || key.includes('player') || key.includes('student')) {
+                                    if (!name) name = String(v).trim();
+                                } else if (key.includes('email') || key.includes('mail')) {
+                                    if (!email) email = String(v).trim();
+                                } else if (key.includes('rank') || key.includes('role') || key.includes('award')) {
+                                    role = String(v).trim();
+                                }
+                            }
+
+                            // Fallback heuristic if headers were not named
+                            if (!email) {
+                                for (const v of Object.values(row)) {
+                                    if (typeof v === 'string' && v.includes('@') && v.includes('.')) {
+                                        email = v.trim();
+                                        break;
+                                    }
+                                }
+                            }
+
+                            return { name, email, role_or_rank: role };
+                        }).filter(r => r.name || r.email);
+
+                    } else {
+                        // CSV parsing
+                        const text = e.target.result;
+                        const lines = text.split(/\r?\n/).filter(l => l.trim().length > 0);
+                        if (lines.length > 0) {
+                            const delim = lines[0].includes('\t') ? '\t' : (lines[0].includes(';') ? ';' : ',');
+                            const headers = lines[0].split(delim).map(h => h.trim().toLowerCase());
+                            for (let i = 1; i < lines.length; i++) {
+                                const cols = lines[i].split(delim);
+                                if (cols.length >= 1) {
+                                    records.push({
+                                        name: cols[0] ? cols[0].trim() : "",
+                                        email: cols[1] ? cols[1].trim() : "",
+                                        role_or_rank: cols[2] ? cols[2].trim() : "Participant"
+                                    });
+                                }
+                            }
+                        }
+                    }
+
+                    currentRosterRecords = records;
+                    displayRosterPreview(file.name, records);
+
+                } catch (err) {
+                    console.error("Parse Error:", err);
+                    alert("Could not parse file. Please verify it is a valid Excel or CSV file.");
+                }
+            };
+
+            if (isXlsx) {
+                reader.readAsArrayBuffer(file);
+            } else {
+                reader.readAsText(file);
+            }
+        }
+
+        function displayRosterPreview(filename, records) {
+            const previewBox = document.getElementById('roster-preview-box');
+            const tbody = document.getElementById('roster-preview-rows');
+            const badge = document.getElementById('roster-count-badge');
+            document.getElementById('roster-filename').textContent = filename;
+
+            badge.textContent = `${records.length} participants parsed`;
+            badge.className = "text-[10px] font-mono bg-green-900/60 text-green-300 border border-green-700 px-2 py-0.5 rounded";
+
+            tbody.innerHTML = records.slice(0, 5).map(r => `
+                <tr class="hover:bg-zinc-900">
+                    <td class="p-1 text-white font-bold">${r.name || '<span class="text-gray-500">None</span>'}</td>
+                    <td class="p-1 text-gray-300">${r.email || '<span class="text-gray-500">None</span>'}</td>
+                    <td class="p-1 text-[#F7D070]">${r.role_or_rank || 'Participant'}</td>
+                </tr>
+            `).join('');
+
+            previewBox.classList.remove('hidden');
+        }
+
+        // ==========================================
+        // 4. TEMPLATE CHOOSER, UPLOADER & CROPPER
+        // ==========================================
+        function handleTemplatePresetChange(url) {
+            if (url === 'custom') {
+                document.getElementById('template-upload-input').click();
+                return;
+            }
+            setTemplateUrl(url);
+        }
+
+        function setTemplateUrl(url) {
+            document.getElementById('current-template-url').value = url;
+            document.getElementById('stage-template-img').src = url;
+        }
+
+        async function handleCustomTemplateUpload(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = async (e) => {
+                const b64 = e.target.result;
+                // Upload to server
+                try {
+                    const res = await fetch('/api/admin/certificates/upload-template', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ image_base64: b64 })
+                    });
+                    const data = await res.json();
+                    if (data.success && data.url) {
+                        setTemplateUrl(data.url);
+                        // Add to preset options
+                        const sel = document.getElementById('template-preset');
+                        const opt = document.createElement('option');
+                        opt.value = data.url;
+                        opt.textContent = `Uploaded: ${data.filename}`;
+                        opt.selected = true;
+                        sel.prepend(opt);
+                    } else {
+                        alert(data.error || "Failed to upload template image.");
+                    }
+                } catch (err) {
+                    alert("Upload error: " + err.message);
+                }
+            };
+            reader.readAsDataURL(file);
+        }
+
+        // Cropper Tool
+        function openCropToolModal() {
+            const currentUrl = document.getElementById('current-template-url').value;
+            const target = document.getElementById('cropper-target-img');
+            target.src = currentUrl;
+            document.getElementById('crop-modal').classList.remove('hidden');
+
+            if (cropperInstance) {
+                cropperInstance.destroy();
+            }
+
+            setTimeout(() => {
+                cropperInstance = new Cropper(target, {
+                    aspectRatio: 16 / 9,
+                    viewMode: 1,
+                    autoCropArea: 0.95,
+                    responsive: true
+                });
+            }, 100);
+        }
+
+        function closeCropModal() {
+            if (cropperInstance) {
+                cropperInstance.destroy();
+                cropperInstance = null;
+            }
+            document.getElementById('crop-modal').classList.add('hidden');
+        }
+
+        function setCropperRatio(ratio) {
+            if (cropperInstance) {
+                cropperInstance.setAspectRatio(ratio);
+            }
+        }
+
+        async function applyCroppedImage() {
+            if (!cropperInstance) return;
+            const canvas = cropperInstance.getCroppedCanvas({
+                width: 1920,
+                height: 1080
+            });
+            const b64 = canvas.toDataURL('image/jpeg', 0.92);
+
+            try {
+                const res = await fetch('/api/admin/certificates/upload-template', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ image_base64: b64 })
+                });
+                const data = await res.json();
+                if (data.success && data.url) {
+                    setTemplateUrl(data.url);
+                    closeCropModal();
+                } else {
+                    alert(data.error || "Failed to save cropped image.");
+                }
+            } catch (err) {
+                alert("Error applying crop: " + err.message);
+            }
+        }
+
+        // ==========================================
+        // 5. MODAL OPEN/CLOSE & CRUD
+        // ==========================================
+        function openCreateModal() {
+            document.getElementById('modal-title').textContent = "Create Competition Certificate Studio";
+            document.getElementById('edit-comp-id').value = "";
+            document.getElementById('comp-title').value = "";
+            document.getElementById('comp-type').value = "Certificate of Participation";
+            document.getElementById('comp-date').value = "October 20, 2026";
+            document.getElementById('comp-desc').value = "";
+            document.getElementById('comp-status').value = "Published";
+
+            // Reset Roster Preview
+            currentRosterRecords = [];
+            document.getElementById('roster-preview-box').classList.add('hidden');
+            document.getElementById('roster-count-badge').textContent = "0 loaded";
+            document.getElementById('roster-file-input').value = "";
+
+            // Reset Anchor defaults
+            anchorXPercent = 50.0;
+            anchorYPercent = 50.0;
+            document.getElementById('anchor-font').value = "Playfair Display";
+            document.getElementById('anchor-weight').value = "bold";
+            document.getElementById('anchor-size').value = 56;
+            document.getElementById('anchor-color').value = "#F7D070";
+            document.getElementById('anchor-color-hex').value = "#F7D070";
+            document.getElementById('anchor-align').value = "center";
+            document.getElementById('anchor-case').value = "capitalize";
+
+            setTemplateUrl("Assest/uploads/cert_template_gold_luxury.jpg");
+            updateAnchorPositionUI();
+            updateAnchorPreview();
+
+            document.getElementById('cert-editor-modal').classList.remove('hidden');
+        }
+
+        async function openEditModal(compId) {
+            const comp = allCompetitions.find(c => c.id === compId);
+            if (!comp) return;
+
+            document.getElementById('modal-title').textContent = "Edit Certificate Studio & Anchors";
+            document.getElementById('edit-comp-id').value = comp.id;
+            document.getElementById('comp-title').value = comp.title || "";
+            document.getElementById('comp-type').value = comp.certificate_type || "Certificate of Participation";
+            document.getElementById('comp-date').value = comp.issue_date || "";
+            document.getElementById('comp-desc').value = comp.description || "";
+            document.getElementById('comp-status').value = comp.status || "Published";
+
+            // Reset Roster
+            currentRosterRecords = [];
+            document.getElementById('roster-preview-box').classList.add('hidden');
+            document.getElementById('roster-count-badge').textContent = `${comp.participant_count || 0} existing`;
+            document.getElementById('roster-file-input').value = "";
+
+            // Restore Anchor
+            anchorXPercent = comp.name_x !== undefined ? comp.name_x : 50.0;
+            anchorYPercent = comp.name_y !== undefined ? comp.name_y : 50.0;
+            document.getElementById('anchor-font').value = comp.name_font || "Playfair Display";
+            document.getElementById('anchor-weight').value = comp.name_weight || "bold";
+            document.getElementById('anchor-size').value = comp.name_size || 56;
+            document.getElementById('anchor-color').value = comp.name_color || "#F7D070";
+            document.getElementById('anchor-color-hex').value = comp.name_color || "#F7D070";
+            document.getElementById('anchor-align').value = comp.name_align || "center";
+            document.getElementById('anchor-case').value = comp.name_case || "capitalize";
+
+            setTemplateUrl(comp.template_url || "Assest/uploads/cert_template_gold_luxury.jpg");
+            updateAnchorPositionUI();
+            updateAnchorPreview();
+
+            document.getElementById('cert-editor-modal').classList.remove('hidden');
+        }
+
+        function closeEditorModal() {
+            document.getElementById('cert-editor-modal').classList.add('hidden');
+        }
+
+        async function saveCertificateCompetition() {
+            const title = document.getElementById('comp-title').value.trim();
+            if (!title) {
+                alert("Please enter a Competition Title.");
+                return;
+            }
+
+            const compId = document.getElementById('edit-comp-id').value || null;
+            const certType = document.getElementById('comp-type').value;
+            const issueDate = document.getElementById('comp-date').value.trim();
+            const desc = document.getElementById('comp-desc').value.trim();
+            const status = document.getElementById('comp-status').value;
+            const templateUrl = document.getElementById('current-template-url').value;
+
+            // Anchor Coordinates & Styling
+            const nameFont = document.getElementById('anchor-font').value;
+            const nameWeight = document.getElementById('anchor-weight').value;
+            const nameSize = parseInt(document.getElementById('anchor-size').value);
+            const nameColor = document.getElementById('anchor-color').value;
+            const nameAlign = document.getElementById('anchor-align').value;
+            const nameCase = document.getElementById('anchor-case').value;
+
+            const payload = {
+                id: compId,
+                title,
+                certificate_type: certType,
+                issue_date: issueDate,
+                description: desc,
+                status,
+                template_url: templateUrl,
+                name_x: anchorXPercent,
+                name_y: anchorYPercent,
+                name_font: nameFont,
+                name_weight: nameWeight,
+                name_size: nameSize,
+                name_color: nameColor,
+                name_align: nameAlign,
+                name_case: nameCase,
+                show_cert_id: 1,
+                show_date: 1
+            };
+
+            const spinner = document.getElementById('save-btn-spinner');
+            const btnText = document.getElementById('save-btn-text');
+            spinner.classList.remove('hidden');
+            btnText.textContent = "Saving...";
+
+            try {
+                const method = compId ? 'PUT' : 'POST';
+                const url = compId ? `/api/admin/certificates/${compId}` : '/api/admin/certificates';
+
+                const res = await fetch(url, {
+                    method: method,
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                const result = await res.json();
+
+                if (!result.success) {
+                    alert(result.error || "Failed to save competition.");
+                    return;
+                }
+
+                const savedId = result.id || compId;
+
+                // If Excel/CSV records were uploaded, send them now
+                if (currentRosterRecords && currentRosterRecords.length > 0) {
+                    btnText.textContent = "Importing Roster...";
+                    const replaceExisting = document.getElementById('roster-replace-check').checked;
+                    await fetch(`/api/admin/certificates/${savedId}/upload-roster`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            replace_existing: replaceExisting,
+                            file_base64: btoa(unescape(encodeURIComponent(JSON.stringify(currentRosterRecords)))),
+                            records: currentRosterRecords
+                        })
+                    });
+                }
+
+                closeEditorModal();
+                await loadCompetitions();
+
+            } catch (err) {
+                alert("Error saving: " + err.message);
+            } finally {
+                spinner.classList.add('hidden');
+                btnText.textContent = "Save Certificate Studio";
+            }
+        }
+
+        async function deleteCompetition(compId, title) {
+            if (!confirm(`Are you sure you want to delete "${title}" and all its participant records? This cannot be undone.`)) {
+                return;
+            }
+            try {
+                const res = await fetch(`/api/admin/certificates/${compId}`, { method: 'DELETE' });
+                const data = await res.json();
+                if (data.success) {
+                    await loadCompetitions();
+                } else {
+                    alert(data.error || "Could not delete competition.");
+                }
+            } catch (e) {
+                alert("Delete error: " + e.message);
+            }
+        }
+
+        // ==========================================
+        // 6. VIEW PARTICIPANT ROSTER MODAL
+        // ==========================================
+        let currentModalParticipants = [];
+
+        async function viewCompetitionRoster(compId, title) {
+            activeCompForRoster = compId;
+            document.getElementById('roster-modal-title').textContent = `Participants: ${title}`;
+            document.getElementById('roster-table-body').innerHTML = `<tr><td colspan="5" class="p-6 text-center text-gray-500">Loading roster...</td></tr>`;
+            document.getElementById('roster-modal').classList.remove('hidden');
+
+            try {
+                const res = await fetch(`/api/admin/certificates/${compId}/participants`);
+                const data = await res.json();
+                if (data.success) {
+                    currentModalParticipants = data.participants || [];
+                    document.getElementById('roster-total-count').textContent = `Total: ${data.total || 0} participants`;
+                    renderRosterRows(currentModalParticipants);
+                }
+            } catch (e) {
+                console.error("Failed to fetch roster:", e);
+            }
+        }
+
+        function renderRosterRows(list) {
+            const tbody = document.getElementById('roster-table-body');
+            if (list.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="5" class="p-6 text-center text-gray-500">No participants found in roster.</td></tr>`;
+                return;
+            }
+
+            tbody.innerHTML = list.map((p, idx) => `
+                <tr class="hover:bg-zinc-900 transition-colors">
+                    <td class="p-3 text-gray-500">${idx + 1}</td>
+                    <td class="p-3 font-bold text-white">${p.name}</td>
+                    <td class="p-3 text-gray-300">${p.email || '<span class="text-gray-600">N/A</span>'}</td>
+                    <td class="p-3 text-[#F7D070]">${p.role_or_rank || 'Participant'}</td>
+                    <td class="p-3 font-mono text-[11px] text-[#CDFF29]">${p.certificate_number}</td>
+                </tr>
+            `).join('');
+        }
+
+        function filterRosterTable() {
+            const q = document.getElementById('roster-search-input').value.toLowerCase().trim();
+            if (!q) {
+                renderRosterRows(currentModalParticipants);
+                return;
+            }
+            const filtered = currentModalParticipants.filter(p => 
+                (p.name && p.name.toLowerCase().includes(q)) || 
+                (p.email && p.email.toLowerCase().includes(q)) ||
+                (p.certificate_number && p.certificate_number.toLowerCase().includes(q))
+            );
+            renderRosterRows(filtered);
+        }
+
+        function closeRosterModal() {
+            document.getElementById('roster-modal').classList.add('hidden');
+        }
+
+        // ==========================================
+        // 7. REPORTED ISSUES DRAWER / MODAL
+        // ==========================================
+        async function loadReportedIssues() {
+            try {
+                const res = await fetch('/api/admin/certificates-issues');
+                const data = await res.json();
+                if (data.success) {
+                    const issues = data.issues || [];
+                    document.getElementById('issues-badge').textContent = issues.length;
+                    document.getElementById('stat-issues-count').textContent = `${issues.length} Open`;
+                }
+            } catch (e) {
+                console.warn("Could not load issues:", e);
+            }
+        }
+
+        async function openIssuesModal() {
+            document.getElementById('issues-modal').classList.remove('hidden');
+            const listEl = document.getElementById('issues-list');
+            listEl.innerHTML = `<div class="p-6 text-center text-gray-500 font-mono">Loading reported discrepancy tickets...</div>`;
+
+            try {
+                const res = await fetch('/api/admin/certificates-issues');
+                const data = await res.json();
+                const issues = data.issues || [];
+
+                if (issues.length === 0) {
+                    listEl.innerHTML = `
+                        <div class="py-12 text-center text-gray-500 font-mono">
+                            <div class="text-3xl mb-2">🎉</div>
+                            <div>No issues reported! All participant certificates are verified.</div>
+                        </div>
+                    `;
+                    return;
+                }
+
+                listEl.innerHTML = issues.map(iss => `
+                    <div class="p-4 bg-zinc-950 rounded-xl border border-zinc-800 flex flex-col gap-2">
+                        <div class="flex items-center justify-between flex-wrap gap-2">
+                            <div class="flex items-center gap-2">
+                                <span class="px-2 py-0.5 rounded text-[10px] font-mono font-bold uppercase bg-red-900/60 text-red-300 border border-red-800">
+                                    ${iss.issue_type}
+                                </span>
+                                <span class="text-xs font-mono text-gray-400">${new Date(iss.created_at).toLocaleString()}</span>
+                            </div>
+                            <span class="text-xs font-mono font-bold text-[#CDFF29]">${iss.id}</span>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs font-mono">
+                            <div><strong class="text-gray-400">Student:</strong> <span class="text-white">${iss.participant_name || 'N/A'}</span></div>
+                            <div><strong class="text-gray-400">Email:</strong> <span class="text-yellow-300">${iss.participant_email || 'N/A'}</span></div>
+                        </div>
+
+                        <div class="text-xs text-gray-300 bg-zinc-900/80 p-2.5 rounded border border-zinc-800">
+                            <strong>Message:</strong> "${iss.message || 'No description'}"
+                        </div>
+
+                        <div class="flex justify-end gap-2 pt-2">
+                            <a href="mailto:${iss.participant_email}?subject=DEVENGERS Certificate Support [${iss.id}]&body=Hello ${iss.participant_name}, regarding your certificate issue..."
+                               class="bg-[#CDFF29] hover:bg-[#b8e622] text-black text-xs font-mono font-bold px-3 py-1 rounded transition-colors">
+                                ✉️ Reply to Student
+                            </a>
+                        </div>
+                    </div>
+                `).join('');
+
+            } catch (err) {
+                listEl.innerHTML = `<div class="p-4 text-red-400 text-xs">Error loading issues: ${err.message}</div>`;
+            }
+        }
+
+        function closeIssuesModal() {
+            document.getElementById('issues-modal').classList.add('hidden');
+        }
+
+        // ==========================================
+        // 8. FULLSCREEN TEST CANVAS RENDER
+        // ==========================================
+        function testLiveCertificateModal() {
+            const modal = document.getElementById('test-render-modal');
+            const canvas = document.getElementById('fullscreen-test-canvas');
+            const ctx = canvas.getContext('2d');
+
+            const templateImg = document.getElementById('stage-template-img');
+            const font = document.getElementById('anchor-font').value;
+            const weight = document.getElementById('anchor-weight').value;
+            const size = parseInt(document.getElementById('anchor-size').value);
+            const color = document.getElementById('anchor-color').value;
+            const align = document.getElementById('anchor-align').value;
+            const casing = document.getElementById('anchor-case').value;
+
+            // Clear and draw template
+            ctx.clearRect(0, 0, 1920, 1080);
+            ctx.drawImage(templateImg, 0, 0, 1920, 1080);
+
+            // Compute exact pixel coordinates from percentage
+            const posX = (anchorXPercent / 100) * 1920;
+            const posY = (anchorYPercent / 100) * 1080;
+
+            // Configure text
+            ctx.font = `${weight} ${size}px "${font}", serif, sans-serif`;
+            ctx.fillStyle = color;
+            ctx.textAlign = align;
+            ctx.textBaseline = 'middle';
+
+            // Add subtle luxury drop shadow
+            ctx.shadowColor = 'rgba(0,0,0,0.7)';
+            ctx.shadowBlur = 8;
+            ctx.shadowOffsetX = 2;
+            ctx.shadowOffsetY = 2;
+
+            let sampleName = "Kishan Kumar";
+            if (casing === 'uppercase') sampleName = sampleName.toUpperCase();
+
+            ctx.fillText(sampleName, posX, posY);
+
+            // Reset shadow
+            ctx.shadowColor = 'transparent';
+
+            modal.classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>

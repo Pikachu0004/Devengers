@@ -1,0 +1,101 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [3 0 R 5 0 R] /Count 2 >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842]
+   /Contents 4 0 R
+   /Resources << /Font << /F1 7 0 R /F2 8 0 R >> >> >>
+endobj
+4 0 obj
+<< /Length 4331 >>
+stream
+BT /F1 13 Tf 50 800 Td (VISVESVARAYA TECHNOLOGICAL UNIVERSITY) Tj ET
+BT /F2 9.5 Tf 50 786 Td (B.TECH. COMPUTER SCIENCE & ENGINEERING / ALLIED BRANCHES) Tj ET
+BT /F1 10.5 Tf 50 772 Td (END SEMESTER EXAMINATION \(2024-25\) -- SEMESTER 6) Tj ET
+BT /F1 11 Tf 50 756 Td (COURSE: COMPILER DESIGN \(21CS602\)) Tj ET
+BT /F2 9 Tf 50 742 Td (Time Allowed: 3 Hours                       Maximum Marks: 70 Marks                       Paper Code: 21CS602) Tj ET
+BT /F2 8.5 Tf 50 730 Td (Roll Number: [   ] [   ] [   ] [   ] [   ] [   ] [   ] [   ] [   ] [   ] [   ] [   ]   |   Total Printed Pages: 2) Tj ET
+BT /F2 8 Tf 50 718 Td (-----------------------------------------------------------------------------------------------------------------------------------------------------) Tj ET
+BT /F2 8.5 Tf 50 706 Td (NOTE: Attempt all Sections. Assume suitable missing data if any. Programmable calculators are NOT permitted.) Tj ET
+BT /F2 8 Tf 50 696 Td (=====================================================================================================================) Tj ET
+BT /F1 10.5 Tf 50 680 Td (SECTION A: Short Answer Type Questions \(Attempt ALL questions\) [10 x 2 = 20 Marks]) Tj ET
+BT /F2 9 Tf 55 664 Td (Q1. \(a\) List all 6 phases of a compiler and their input/output artifacts.) Tj ET
+BT /F2 9 Tf 55 649 Td (Q1. \(b\) What is difference between a token, a pattern, and a lexeme?) Tj ET
+BT /F2 9 Tf 55 634 Td (Q1. \(c\) What is left recursion in CFG? Write formula to eliminate immediate left recursion.) Tj ET
+BT /F2 9 Tf 55 619 Td (Q1. \(d\) What is left factoring in context-free grammars?) Tj ET
+BT /F2 9 Tf 55 604 Td (Q1. \(e\) Define handle pruning in shift-reduce bottom-up parsing.) Tj ET
+BT /F2 9 Tf 55 589 Td (Q1. \(f\) What is difference between S-attributed and L-attributed SDD definitions?) Tj ET
+BT /F2 9 Tf 55 574 Td (Q1. \(g\) What is Three-Address Code \(TAC\)? List quadruples, triples, and indirect triples.) Tj ET
+BT /F2 9 Tf 55 559 Td (Q1. \(h\) What is basic block and flow graph in code optimization?) Tj ET
+BT /F2 9 Tf 55 544 Td (Q1. \(i\) Explain loop optimization techniques: Code motion, Induction variable elimination, Loop unrolling.) Tj ET
+BT /F2 9 Tf 55 529 Td (Q1. \(j\) What is DAG \(Directed Acyclic Graph\) in compiler optimization?) Tj ET
+BT /F1 10.5 Tf 50 506 Td (SECTION B: Analytical & Computational Problems \(Attempt any THREE\) [3 x 10 = 30 Marks]) Tj ET
+BT /F2 9 Tf 55 490 Td (Q2. \(a\) For grammar E -> E + T | T, T -> T * F | F, F -> \(E\) | id, compute FIRST and FOLLOW sets and construct LL\(1\) parsing table.) Tj ET
+BT /F2 9 Tf 55 475 Td (Q2. \(b\) Construct Canonical LR\(0\) collection of items and parse table for grammar S -> C C, C -> c C | d.) Tj ET
+BT /F2 9 Tf 55 460 Td (Q2. \(c\) Construct LALR\(1\) parsing table for grammar S -> A a | b A c | B c | b B a, A -> d, B -> d.) Tj ET
+BT /F2 9 Tf 55 445 Td (Q2. \(d\) Generate Three-Address Code, Quadruple, and Triple representations for: x = \(-a * b\) + \(c - d\) / \(e + f\).) Tj ET
+BT /F2 9 Tf 55 430 Td (Q2. \(e\) Construct DAG for basic block: a = b + c; d = a - b; e = d + c; f = e + a; and perform common subexpression elimination.) Tj ET
+BT /F1 10.5 Tf 50 407 Td (SECTION C: Long Technical & Design Questions \(Attempt any ONE from each\) [5 x 10 = 50 Marks]) Tj ET
+BT /F1 9 Tf 55 391 Td (Q3. \(a\) Explain the role of Lex / Flex lexical analyzer generator with transition diagrams.  [10 Marks]) Tj ET
+BT /F2 8.5 Tf 90 378 Td (-- OR --) Tj ET
+BT /F2 9 Tf 75 365 Td (\(b\) Explain buffer pairs and sentinel techniques in lexical analysis scanning.  [10 Marks]) Tj ET
+BT /F1 9 Tf 55 349 Td (Q4. \(a\) Explain Operator Precedence Parsing with leading and trailing relations table.  [10 Marks]) Tj ET
+BT /F2 8.5 Tf 90 336 Td (-- OR --) Tj ET
+BT /F2 9 Tf 75 323 Td (\(b\) Compare LR\(0\), SLR\(1\), CLR\(1\), and LALR\(1\) parsers based on states, lookaheads, and power.  [10 Marks]) Tj ET
+BT /F1 9 Tf 55 307 Td (Q5. \(a\) Translate switch-case and while-loop control constructs into Three-Address Code with backpatching.  [10 Marks]) Tj ET
+BT /F2 8.5 Tf 90 294 Td (-- OR --) Tj ET
+BT /F2 9 Tf 75 281 Td (\(b\) Explain type expressions, type equivalence, and type checking system for programming languages.  [10 Marks]) Tj ET
+BT /F2 8 Tf 220 30 Td ([ DEVENGERS CAMPUS RESOURCE LIBRARY -- PAGE 1 OF 2 -- 21CS602 ]) Tj ET
+endstream
+endobj
+5 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842]
+   /Contents 6 0 R
+   /Resources << /Font << /F1 7 0 R /F2 8 0 R >> >> >>
+endobj
+6 0 obj
+<< /Length 1818 >>
+stream
+BT /F1 11 Tf 50 800 Td (COMPILER DESIGN \(21CS602\) -- CONTINUED \(PAGE 2\)) Tj ET
+BT /F2 8.5 Tf 50 786 Td (-----------------------------------------------------------------------------------------------------------------------------------------------------) Tj ET
+BT /F1 9.5 Tf 55 765 Td (Q6. \(a\) Explain Principal Sources of Code Optimization: Constant folding, dead code elimination, copy propagation.  [10 Marks]) Tj ET
+BT /F2 8.5 Tf 90 750 Td (-- OR --) Tj ET
+BT /F2 9 Tf 75 735 Td (\(b\) Explain Dataflow Analysis equations for reaching definitions, available expressions, and live variables.  [10 Marks]) Tj ET
+BT /F1 9.5 Tf 55 715 Td (Q7. \(a\) Explain register allocation and assignment using graph coloring algorithm.  [10 Marks]) Tj ET
+BT /F2 8.5 Tf 90 700 Td (-- OR --) Tj ET
+BT /F2 9 Tf 75 685 Td (\(b\) Explain peephole optimization techniques: Redundant load/store elimination, unreachable code, algebraic simplification.  [10 Marks]) Tj ET
+BT /F1 10.5 Tf 50 655 Td (EXAMINATION EVALUATION SCHEME & RUBRIC GUIDELINES:) Tj ET
+BT /F2 8.5 Tf 55 640 Td (1. Section A: Direct definition, time complexity analysis, formula derivation, or syntax verification.) Tj ET
+BT /F2 8.5 Tf 55 627 Td (2. Section B: Step-by-step mathematical proof, trace tables, algorithmic pseudocode, and state diagrams.) Tj ET
+BT /F2 8.5 Tf 55 614 Td (3. Section C: Architectural design, full code implementation, edge case handling, and space/time tradeoffs.) Tj ET
+BT /F2 8.5 Tf 50 595 Td (-----------------------------------------------------------------------------------------------------------------------------------------------------) Tj ET
+BT /F1 9 Tf 160 580 Td (*** END OF QUESTION PAPER -- DEVENGERS ACADEMIC VAULT ***) Tj ET
+BT /F2 8 Tf 220 30 Td ([ DEVENGERS CAMPUS RESOURCE LIBRARY -- PAGE 2 OF 2 -- 21CS602 ]) Tj ET
+endstream
+endobj
+7 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold >>
+endobj
+8 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+xref
+0 9
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000121 00000 n 
+0000000263 00000 n 
+0000004646 00000 n 
+0000004788 00000 n 
+0000006658 00000 n 
+0000006733 00000 n 
+trailer
+<< /Size 9 /Root 1 0 R >>
+startxref
+6803
+%%EOF

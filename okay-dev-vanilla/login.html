@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Member Login &amp; Student Portal | Devengers</title>
+    <meta name="description" content="Sign in to your Devengers account to track DSA coding streaks, access university PYQs, showcase projects, and manage verified certificates.">
+    <meta name="keywords" content="Devengers Login, Sign In, Member Portal, Student Developer Login, Engineering Account">
+    <meta name="author" content="Devengers Community">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <meta name="theme-color" content="#7B42F6">
+    <meta name="msapplication-TileColor" content="#7B42F6">
+    <link rel="canonical" href="https://devengers.org/login">
+
+    <!-- Open Graph / Meta -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://devengers.org/login">
+    <meta property="og:site_name" content="Devengers">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:title" content="Member Login &amp; Student Portal | Devengers">
+    <meta property="og:description" content="Sign in to your Devengers account to track your DSA streak, view campus notes, access project showcases, and download verified certificates.">
+    <meta property="og:image" content="https://devengers.org/og-image.jpg">
+    <meta property="og:image:secure_url" content="https://devengers.org/og-image.jpg">
+    <meta property="og:image:type" content="image/jpeg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="675">
+    <meta property="og:image:alt" content="Devengers Member Login Portal">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@devengers">
+    <meta name="twitter:creator" content="@devengers">
+    <meta name="twitter:url" content="https://devengers.org/login">
+    <meta name="twitter:title" content="Member Login &amp; Student Portal | Devengers">
+    <meta name="twitter:description" content="Sign in to your Devengers account to track your DSA streak and certificates.">
+    <meta name="twitter:image" content="https://devengers.org/og-image.jpg">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico?v=3">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon.png?v=3">
+    <link rel="icon" type="image/png" sizes="192x192" href="favicon.png?v=3">
+    <link rel="apple-touch-icon" href="favicon.png?v=3">
+
+    <!-- Structured Data (JSON-LD) for Google Sitelinks & Breadcrumbs -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Devengers Home",
+              "item": "https://devengers.org/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Member Login",
+              "item": "https://devengers.org/login"
+            }
+          ]
+        },
+        {
+          "@type": "WebPage",
+          "@id": "https://devengers.org/login#webpage",
+          "name": "Member Login & Student Portal | Devengers",
+          "url": "https://devengers.org/login",
+          "description": "Devengers member login gateway for engineering students and developers.",
+          "isPartOf": {
+            "@type": "WebSite",
+            "name": "Devengers",
+            "url": "https://devengers.org/"
+          },
+          "potentialAction": {
+            "@type": "Action",
+            "name": "Login",
+            "target": "https://devengers.org/login"
+          }
+        }
+      ]
+    }
+    </script>
+    <!-- Tailwind CSS (via CDN for local dev) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Custom CSS & Auth Helper -->
+    <link rel="stylesheet" href="style.css?v=4">
+    <script src="theme.js"></script>
+    <script src="auth.js"></script>
+    <style>
+        .bg-grid {
+            background-color: #1a1a1a;
+            background-image: 
+                linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+            background-size: 80px 80px;
+            background-position: center center;
+        }
+        .form-input {
+            background-color: #1a1a1a;
+            border: 1px solid #333;
+            color: white;
+            transition: border-color 0.2s;
+        }
+        .form-input:focus {
+            border-color: #7B42F6;
+            outline: none;
+        }
+        .shadow-brutal {
+            box-shadow: 4px 4px 0px 0px rgba(0,0,0,1);
+        }
+    </style>
+</head>
+<body class="bg-grid m-0 p-0 overflow-x-hidden antialiased text-white min-h-screen flex flex-col justify-center relative">
+    
+    <!-- NAVIGATION (Fixed) -->
+    <nav class="devengers-navbar-fixed fixed top-6 left-0 w-full z-50 flex justify-center px-4">
+        <!-- Purple Navbar Background (#7B42F6) -->
+        <div class="devengers-navbar-notch bg-[#7B42F6] shadow-brutal border-4 border-black rounded-full px-6 md:px-8 py-3 w-full max-w-[1400px] flex items-center justify-between">
+            <!-- Avengers Animated Logo -->
+            <a href="index.html" class="flex items-center group select-none" title="Devengers Home">
+                <div class="devengers-nav-logo font-black text-2xl md:text-[30px] tracking-tighter uppercase rounded-full transition-transform duration-300"
+                    style="-webkit-text-stroke: 2px black; color: #CDFF29; text-shadow: 3px 3px 0px black; line-height: 1;">
+                    <span class="devengers-badge-icon">
+                        <svg class="w-3.5 h-3.5 text-[#CDFF29]" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
+                        </svg>
+                    </span>
+                    <span class="logo-char">D</span><span class="logo-char">E</span><span class="logo-char">V</span><span class="logo-char">E</span><span class="logo-char">N</span><span class="logo-char">G</span><span class="logo-char">E</span><span class="logo-char">R</span><span class="logo-char">S</span>
+                </div>
+            </a>
+
+            <!-- Center Links -->
+            <div class="hidden md:flex gap-6 lg:gap-8 text-[11px] font-bold uppercase tracking-widest text-white/80">
+                <a href="events.html" class="nav-link">Events</a>
+                <a href="learn.html" class="nav-link">Learn</a>
+                <a href="campus.html" class="nav-link">Campus Resource</a>
+                <a href="dsa.html" class="nav-link">DSA Streak</a>
+                <a href="gallery.html" class="nav-link">Gallery</a>
+                <a href="certificates.html" class="nav-link">Certificates</a>
+            </div>
+
+            <!-- Right Links & Action Buttons -->
+            <div class="flex items-center gap-3 sm:gap-4">
+                <!-- Theme Toggle Button -->
+                <button type="button" onclick="window.DevengersTheme.toggleTheme()" class="theme-toggle-btn" title="Toggle Eye-Comfort Peach Theme" aria-label="Toggle Theme">
+                    <div class="toggle-thumb">🌙</div>
+                </button>
+
+                <!-- Notifications Bell with Dynamic Red Dot -->
+                <div class="relative">
+                    <button type="button" id="nav-notification-btn" onclick="window.DevengersNotifications.toggleDropdown(event)"
+                        class="nav-notification-btn flex items-center justify-center w-8 h-8 text-white/80 hover:text-white transition-colors relative cursor-pointer"
+                        title="Notifications" aria-label="Notifications">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 transition-transform hover:scale-110" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+                        </svg>
+                        <span id="nav-notification-dot" class="nav-notification-dot hidden"></span>
+                    </button>
+                </div>
+
+                <!-- Profile Symbol Button with Instagram Ring -->
+                <a href="profile.html" class="nav-profile-btn group" title="My Profile" aria-label="My Profile">
+                    <span class="nav-profile-inner">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-white transition-transform group-hover:scale-110" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                        </svg>
+                    </span>
+                </a>
+
+                <a href="login.html" class="hidden md:block text-[11px] font-bold uppercase tracking-widest text-white hover:text-gray-200 transition-colors">LOGIN</a>
+                <a href="register.html" class="bg-white text-black px-5 py-2 rounded-full text-[11px] font-bold uppercase tracking-widest hover:bg-[#CDFF29] transition-colors flex items-center gap-1.5 shadow-sm">
+                    SIGN UP <span class="font-normal text-sm leading-none">&rarr;</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- MAIN LOGIN CONTENT -->
+    <main class="w-full max-w-md mx-auto px-4 sm:px-6 pt-24 sm:pt-32 pb-16 flex flex-col items-center">
+        
+        <!-- Heading -->
+        <h1 class="font-black text-4xl sm:text-5xl md:text-[70px] text-white uppercase tracking-tighter leading-none drop-shadow-lg mb-3">LOGIN</h1>
+        <p class="text-gray-400 text-xs font-mono mb-6 sm:mb-8 text-center">Access your developer profile, streak &amp; community events</p>
+        
+        <!-- Error Banner -->
+        <div id="login-error" class="hidden w-full mb-6 p-4 rounded-xl bg-red-950/70 border border-red-500/60 text-red-200 text-xs font-mono flex items-center gap-2">
+        </div>
+
+        <!-- Success / Info Banner -->
+        <div id="login-info" class="hidden w-full mb-6 p-4 rounded-xl bg-[#7B42F6]/20 border border-[#7B42F6]/60 text-white text-xs font-mono flex items-start gap-2">
+            <span class="text-base text-[#CDFF29]">ℹ</span>
+            <span id="login-info-text"></span>
+        </div>
+
+        <!-- Form -->
+        <form id="login-form" class="w-full flex flex-col gap-5">
+            
+            <!-- Email -->
+            <div class="flex flex-col gap-1.5">
+                <label class="text-[10px] font-mono tracking-widest text-gray-400 uppercase">
+                    EMAIL ADDRESS <span class="text-red-500">*</span>
+                </label>
+                <input type="email" id="login-email" class="form-input rounded-xl px-4 py-3 w-full text-sm" placeholder="student@devengers.org" required autofocus>
+            </div>
+
+            <!-- Password -->
+            <div class="flex flex-col gap-1.5">
+                <div class="flex justify-between items-center">
+                    <label class="text-[10px] font-mono tracking-widest text-gray-400 uppercase">
+                        PASSWORD <span class="text-red-500">*</span>
+                    </label>
+                    <button type="button" id="btn-forgot-password" onclick="openForgotPasswordModal()" class="text-[10px] font-mono tracking-widest text-gray-400 hover:text-[#CDFF29] uppercase transition-colors cursor-pointer">
+                        FORGOT?
+                    </button>
+                </div>
+                <div class="relative">
+                    <input type="password" id="login-password" class="form-input rounded-xl px-4 py-3 w-full pr-12 text-sm" placeholder="••••••••" required>
+                    <!-- Eye Icon -->
+                    <button type="button" id="toggle-pwd-btn" class="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-white transition-colors" title="Toggle visibility">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Admin 2FA OTP Prompt (Appears dynamically when admin login is detected) -->
+            <div id="login-otp-section" class="hidden p-4 rounded-2xl bg-black/60 border-2 border-dashed border-[#CDFF29] flex flex-col gap-2">
+                <div class="flex items-center justify-between">
+                    <label class="text-[10px] font-mono tracking-widest text-[#CDFF29] uppercase font-bold flex items-center gap-1.5">
+                        <span>🛡️</span> ADMIN 2FA OTP (DISPATCHED TO EMAIL) <span class="text-red-500">*</span>
+                    </label>
+                    <button type="button" id="btn-login-resend-otp" onclick="resendAdminOtp()" class="text-[10px] font-mono text-gray-400 hover:text-white uppercase underline">
+                        Resend Code
+                    </button>
+                </div>
+                <input type="text" id="login-otp" maxlength="6" pattern="\d{6}" placeholder="Enter 6-digit 2FA OTP" class="form-input rounded-xl px-4 py-3 w-full text-center tracking-[0.4em] font-mono text-lg font-bold border-[#CDFF29]/70 focus:border-[#CDFF29]">
+                <p class="text-[10px] font-mono text-gray-400">Security check: Enter the 6-digit passcode sent to <span class="text-white font-mono">event@devengers.org</span>. Check Spam or Promotions if not seen immediately.</p>
+            </div>
+
+            <!-- Remember Me -->
+            <div class="flex items-center gap-2 mt-1">
+                <input type="checkbox" id="remember" class="w-4 h-4 rounded border-gray-600 bg-transparent text-[#7B42F6] focus:ring-[#7B42F6] focus:ring-offset-gray-900 cursor-pointer">
+                <label for="remember" class="text-[10px] font-mono tracking-widest text-gray-400 uppercase cursor-pointer">
+                    REMEMBER ME
+                </label>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" id="login-btn" class="bg-white text-black font-bold uppercase tracking-widest text-sm px-8 py-4 rounded-full w-full mt-2 hover:bg-[#CDFF29] transition-all shadow-xl shadow-black/50 cursor-pointer">
+                LOG IN &rarr;
+            </button>
+        </form>
+
+        <!-- Switch to Register -->
+        <p class="mt-8 text-sm text-gray-400">
+            Not a member yet? <a href="register.html" class="text-white font-bold hover:underline">Sign up</a>
+        </p>
+
+    </main>
+
+    <!-- ========================================================= -->
+    <!-- FORGOT PASSWORD MODAL (INTERACTIVE RECOVERY) -->
+    <!-- ========================================================= -->
+    <div id="forgot-password-modal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-sm hidden flex items-center justify-center p-4 overflow-y-auto">
+        <div class="bg-[#18181c] border-2 border-[#7B42F6] rounded-3xl p-6 sm:p-8 max-w-md w-full shadow-2xl text-white relative my-8 shadow-brutal">
+            
+            <!-- Close Button -->
+            <button type="button" onclick="closeForgotPasswordModal()" class="absolute top-5 right-5 w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 text-gray-300 hover:text-white flex items-center justify-center transition-colors cursor-pointer" aria-label="Close modal">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+
+            <!-- Modal Header -->
+            <div class="mb-5 border-b border-gray-800 pb-4">
+                <div class="inline-block bg-[#7B42F6]/20 border border-[#7B42F6]/50 text-[#CDFF29] text-[10px] font-mono font-bold uppercase tracking-widest px-2.5 py-1 rounded-full mb-2">
+                    🔑 Account Recovery
+                </div>
+                <h3 class="text-2xl font-black uppercase tracking-tight text-white">Reset Password</h3>
+                <p class="text-xs text-gray-400 font-mono mt-1">We'll send a 6-digit verification code to your registered email to reset your password.</p>
+            </div>
+
+            <!-- Error Banner -->
+            <div id="forgot-error" class="hidden mb-4 p-3.5 rounded-xl bg-red-950/70 border border-red-500/60 text-red-200 text-xs font-mono flex items-center gap-2"></div>
+
+            <!-- Success Banner -->
+            <div id="forgot-success" class="hidden mb-4 p-3.5 rounded-xl bg-green-950/70 border border-green-500/60 text-green-200 text-xs font-mono flex items-center gap-2"></div>
+
+            <!-- Form -->
+            <form id="forgot-form" onsubmit="handleResetPasswordSubmit(event)" class="flex flex-col gap-4">
+                <!-- Step 1: Email Address -->
+                <div class="flex flex-col gap-1.5">
+                    <div class="flex justify-between items-center">
+                        <label class="text-[10px] font-mono tracking-widest text-gray-400 uppercase">
+                            REGISTERED EMAIL <span class="text-red-500">*</span>
+                        </label>
+                        <span id="forgot-timer-label" class="hidden text-[10px] font-mono text-[#CDFF29]">Code Sent</span>
+                    </div>
+                    <div class="flex gap-2">
+                        <input type="email" id="forgot-email" class="form-input rounded-xl px-4 py-2.5 flex-1 text-sm" placeholder="student@devengers.org" required>
+                        <button type="button" id="btn-forgot-send-otp" onclick="handleSendForgotOtp()" class="bg-[#7B42F6] hover:bg-[#6c35e4] text-white px-4 py-2.5 rounded-xl text-xs font-mono font-bold uppercase tracking-wider transition-all cursor-pointer whitespace-nowrap shadow-sm border border-purple-400/40">
+                            Send Code
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Step 2: 6-Digit OTP -->
+                <div class="flex flex-col gap-1.5">
+                    <div class="flex justify-between items-center">
+                        <label class="text-[10px] font-mono tracking-widest text-[#CDFF29] uppercase font-bold flex items-center gap-1.5">
+                            <span>⚡</span> 6-DIGIT VERIFICATION CODE <span class="text-red-500">*</span>
+                        </label>
+                        <button type="button" id="btn-forgot-resend" onclick="handleSendForgotOtp()" class="hidden text-[10px] font-mono text-gray-400 hover:text-white uppercase underline cursor-pointer">
+                            Resend
+                        </button>
+                    </div>
+                    <input type="text" id="forgot-otp" maxlength="6" pattern="\d{6}" placeholder="Enter 6-digit code" class="form-input rounded-xl px-4 py-2.5 w-full text-center tracking-[0.4em] font-mono text-base font-bold border-[#CDFF29]/70 focus:border-[#CDFF29]" required>
+                </div>
+
+                <!-- Step 3: New Password -->
+                <div class="flex flex-col gap-1.5">
+                    <label class="text-[10px] font-mono tracking-widest text-gray-400 uppercase">
+                        NEW PASSWORD (MIN 6 CHARS) <span class="text-red-500">*</span>
+                    </label>
+                    <div class="relative">
+                        <input type="password" id="forgot-new-password" minlength="6" class="form-input rounded-xl px-4 py-2.5 w-full pr-12 text-sm" placeholder="••••••••" required>
+                        <button type="button" id="toggle-new-pwd-btn" onclick="togglePasswordVisibility('forgot-new-password', this)" class="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-white transition-colors cursor-pointer" aria-label="Toggle password visibility">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Step 4: Confirm New Password -->
+                <div class="flex flex-col gap-1.5">
+                    <label class="text-[10px] font-mono tracking-widest text-gray-400 uppercase">
+                        CONFIRM NEW PASSWORD <span class="text-red-500">*</span>
+                    </label>
+                    <input type="password" id="forgot-confirm-password" minlength="6" class="form-input rounded-xl px-4 py-2.5 w-full text-sm" placeholder="••••••••" required>
+                </div>
+
+                <!-- Action Button -->
+                <button type="submit" id="btn-forgot-submit" class="bg-[#CDFF29] hover:bg-white text-black font-bold uppercase tracking-widest text-xs px-6 py-3.5 rounded-full w-full mt-2 transition-all shadow-md cursor-pointer">
+                    RESET PASSWORD &rarr;
+                </button>
+            </form>
+
+            <div class="mt-4 pt-3 border-t border-gray-800 text-center">
+                <span class="text-xs text-gray-400 font-mono">Remembered your password? </span>
+                <button type="button" onclick="closeForgotPasswordModal()" class="text-xs font-mono text-[#CDFF29] hover:underline font-bold uppercase cursor-pointer">Back to Login</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Password Visibility Toggle
+        const pwdInput = document.getElementById('login-password');
+        const toggleBtn = document.getElementById('toggle-pwd-btn');
+        toggleBtn.addEventListener('click', () => {
+            const isPwd = pwdInput.type === 'password';
+            pwdInput.type = isPwd ? 'text' : 'password';
+        });
+
+        // Form Submit Handler
+        const form = document.getElementById('login-form');
+        const errorBox = document.getElementById('login-error');
+        const infoBox = document.getElementById('login-info');
+        const infoText = document.getElementById('login-info-text');
+        const loginBtn = document.getElementById('login-btn');
+        const otpSection = document.getElementById('login-otp-section');
+        const otpInput = document.getElementById('login-otp');
+
+        let pendingAdminOtp = false;
+
+        async function resendAdminOtp() {
+            const email = document.getElementById('login-email').value.trim();
+            if (!email) return;
+            try {
+                const res = await fetch('/api/auth/send-otp', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email: email, purpose: 'admin_login' })
+                });
+                const data = await res.json();
+                infoText.textContent = data.message || 'New OTP sent to email!';
+                infoBox.classList.remove('hidden');
+            } catch (e) {
+                console.error(e);
+            }
+        }
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            errorBox.classList.add('hidden');
+            errorBox.textContent = '';
+            
+            const email = document.getElementById('login-email').value.trim();
+            const password = document.getElementById('login-password').value;
+            const otp = pendingAdminOtp ? otpInput.value.trim() : null;
+
+            if (pendingAdminOtp && (!otp || otp.length !== 6)) {
+                errorBox.textContent = 'Please enter the 6-digit 2FA passcode sent to your email.';
+                errorBox.classList.remove('hidden');
+                otpInput.focus();
+                return;
+            }
+
+            loginBtn.disabled = true;
+            loginBtn.textContent = pendingAdminOtp ? 'VERIFYING 2FA OTP...' : 'AUTHENTICATING...';
+
+            const res = await window.DevengersAuth.login(email, password, otp);
+
+            if (res.requires_otp) {
+                // Admin requires 2FA OTP
+                pendingAdminOtp = true;
+                otpSection.classList.remove('hidden');
+                infoText.textContent = res.message || 'Admin 2FA Security: A 6-digit passcode has been sent to event@devengers.org';
+                infoBox.classList.remove('hidden');
+
+                loginBtn.disabled = false;
+                loginBtn.textContent = 'VERIFY & LOG IN TO ADMIN STUDIO';
+                loginBtn.className = 'bg-[#CDFF29] text-black font-bold uppercase tracking-widest text-sm px-8 py-4 rounded-full w-full mt-2 cursor-pointer hover:bg-white shadow-xl';
+                otpInput.focus();
+                return;
+            }
+
+            if (res.success) {
+                loginBtn.textContent = 'SUCCESS! REDIRECTING...';
+                loginBtn.className = 'bg-[#CDFF29] text-black font-bold uppercase tracking-widest text-sm px-8 py-4 rounded-full w-full mt-2';
+                
+                const urlParams = new URLSearchParams(window.location.search);
+                const redirectParam = urlParams.get('redirect');
+                let dest = redirectParam;
+                if (!dest) {
+                    // Regular members go straight to their profile.
+                    // Only admins go to admin dashboard!
+                    dest = (res.user && res.user.role === 'admin') ? 'admin-events.html' : 'profile.html';
+                }
+                setTimeout(() => {
+                    window.location.href = dest;
+                }, 400);
+            } else {
+                errorBox.textContent = res.error || 'Invalid email or password.';
+                errorBox.classList.remove('hidden');
+                loginBtn.disabled = false;
+                loginBtn.textContent = pendingAdminOtp ? 'VERIFY & LOG IN TO ADMIN STUDIO' : 'LOG IN →';
+            }
+        });
+
+        // -------------------------------------------------------------
+        // Forgot Password Modal Controller
+        // -------------------------------------------------------------
+        let forgotCountdownTimer = null;
+
+        function openForgotPasswordModal() {
+            const loginEmail = document.getElementById('login-email').value.trim();
+            if (loginEmail && !document.getElementById('forgot-email').value) {
+                document.getElementById('forgot-email').value = loginEmail;
+            }
+            const modal = document.getElementById('forgot-password-modal');
+            modal.classList.remove('hidden');
+            document.getElementById('forgot-error').classList.add('hidden');
+            document.getElementById('forgot-success').classList.add('hidden');
+            if (!loginEmail) {
+                document.getElementById('forgot-email').focus();
+            } else {
+                document.getElementById('btn-forgot-send-otp').focus();
+            }
+        }
+
+        function closeForgotPasswordModal() {
+            document.getElementById('forgot-password-modal').classList.add('hidden');
+        }
+
+        // Close on backdrop click
+        const forgotModal = document.getElementById('forgot-password-modal');
+        if (forgotModal) {
+            forgotModal.addEventListener('click', (e) => {
+                if (e.target.id === 'forgot-password-modal') {
+                    closeForgotPasswordModal();
+                }
+            });
+        }
+
+        // Close on Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && forgotModal && !forgotModal.classList.contains('hidden')) {
+                closeForgotPasswordModal();
+            }
+        });
+
+        function togglePasswordVisibility(inputId, btn) {
+            const input = document.getElementById(inputId);
+            if (!input) return;
+            const isPwd = input.type === 'password';
+            input.type = isPwd ? 'text' : 'password';
+        }
+
+        async function handleSendForgotOtp() {
+            const email = document.getElementById('forgot-email').value.trim();
+            const errBox = document.getElementById('forgot-error');
+            const succBox = document.getElementById('forgot-success');
+            const sendBtn = document.getElementById('btn-forgot-send-otp');
+            const resendBtn = document.getElementById('btn-forgot-resend');
+            const timerLabel = document.getElementById('forgot-timer-label');
+
+            errBox.classList.add('hidden');
+            succBox.classList.add('hidden');
+
+            if (!email || !email.includes('@')) {
+                errBox.textContent = 'Please enter a valid registered email address.';
+                errBox.classList.remove('hidden');
+                document.getElementById('forgot-email').focus();
+                return;
+            }
+
+            sendBtn.disabled = true;
+            sendBtn.textContent = 'Sending...';
+
+            const res = await window.DevengersAuth.sendPasswordResetOtp(email);
+
+            if (res.success) {
+                succBox.textContent = res.message || `✓ 6-digit reset code sent to ${email}`;
+                succBox.classList.remove('hidden');
+                document.getElementById('forgot-otp').focus();
+                resendBtn.classList.remove('hidden');
+
+                // Start countdown
+                let remaining = 60;
+                sendBtn.disabled = true;
+                resendBtn.disabled = true;
+                timerLabel.classList.remove('hidden');
+                sendBtn.textContent = `Sent (${remaining}s)`;
+
+                clearInterval(forgotCountdownTimer);
+                forgotCountdownTimer = setInterval(() => {
+                    remaining--;
+                    if (remaining <= 0) {
+                        clearInterval(forgotCountdownTimer);
+                        sendBtn.disabled = false;
+                        sendBtn.textContent = 'Send Code';
+                        resendBtn.disabled = false;
+                        resendBtn.textContent = 'Resend Code';
+                        timerLabel.classList.add('hidden');
+                    } else {
+                        sendBtn.textContent = `Sent (${remaining}s)`;
+                        resendBtn.textContent = `Resend (${remaining}s)`;
+                    }
+                }, 1000);
+            } else {
+                errBox.textContent = res.error || 'Failed to send reset code. Please check your email.';
+                errBox.classList.remove('hidden');
+                sendBtn.disabled = false;
+                sendBtn.textContent = 'Send Code';
+            }
+        }
+
+        async function handleResetPasswordSubmit(e) {
+            e.preventDefault();
+            const email = document.getElementById('forgot-email').value.trim();
+            const otp = document.getElementById('forgot-otp').value.trim();
+            const newPwd = document.getElementById('forgot-new-password').value;
+            const confirmPwd = document.getElementById('forgot-confirm-password').value;
+            const errBox = document.getElementById('forgot-error');
+            const succBox = document.getElementById('forgot-success');
+            const submitBtn = document.getElementById('btn-forgot-submit');
+
+            errBox.classList.add('hidden');
+            succBox.classList.add('hidden');
+
+            if (!email || !email.includes('@')) {
+                errBox.textContent = 'Please enter your email address.';
+                errBox.classList.remove('hidden');
+                return;
+            }
+
+            if (!otp || otp.length !== 6) {
+                errBox.textContent = 'Please enter the 6-digit verification code sent to your email.';
+                errBox.classList.remove('hidden');
+                document.getElementById('forgot-otp').focus();
+                return;
+            }
+
+            if (!newPwd || newPwd.length < 6) {
+                errBox.textContent = 'New password must be at least 6 characters.';
+                errBox.classList.remove('hidden');
+                document.getElementById('forgot-new-password').focus();
+                return;
+            }
+
+            if (newPwd !== confirmPwd) {
+                errBox.textContent = 'Passwords do not match.';
+                errBox.classList.remove('hidden');
+                document.getElementById('forgot-confirm-password').focus();
+                return;
+            }
+
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'RESETTING PASSWORD...';
+
+            const res = await window.DevengersAuth.resetPassword(email, otp, newPwd, confirmPwd);
+
+            if (res.success) {
+                succBox.textContent = '✓ Password reset successfully! Redirecting to login...';
+                succBox.classList.remove('hidden');
+
+                // Pre-fill email in login form
+                document.getElementById('login-email').value = email;
+                document.getElementById('login-password').value = '';
+
+                // Show banner in main login page
+                infoText.textContent = '✓ Password reset successful. Please sign in with your new password.';
+                infoBox.classList.remove('hidden');
+
+                setTimeout(() => {
+                    closeForgotPasswordModal();
+                    document.getElementById('login-password').focus();
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'RESET PASSWORD →';
+                }, 1200);
+            } else {
+                errBox.textContent = res.error || 'Failed to reset password. Please check your verification code.';
+                errBox.classList.remove('hidden');
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'RESET PASSWORD →';
+            }
+        }
+
+        // Auto open modal if URL has ?action=forgot or hash #forgot
+        if (window.location.search.includes('action=forgot') || window.location.hash === '#forgot') {
+            setTimeout(openForgotPasswordModal, 150);
+        }
+
+        // Handle successful reset redirection
+        const loginUrlParams = new URLSearchParams(window.location.search);
+        if (loginUrlParams.get('email')) {
+            document.getElementById('login-email').value = loginUrlParams.get('email');
+        }
+        if (loginUrlParams.get('reset') === 'success') {
+            infoText.textContent = '✓ Password reset successful. Please sign in with your new password.';
+            infoBox.classList.remove('hidden');
+            setTimeout(() => {
+                const pwd = document.getElementById('login-password');
+                if (pwd) pwd.focus();
+            }, 200);
+        }
+    </script>
+</body>
+</html>

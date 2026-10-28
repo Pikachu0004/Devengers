@@ -1,0 +1,1075 @@
+/* style.css */
+
+/* Global View Transitions for zero-flicker MPA page changes */
+@media (prefers-reduced-motion: no-preference) {
+    @view-transition {
+        navigation: auto;
+    }
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+html, body {
+    overflow-x: hidden !important;
+    width: 100% !important;
+    max-width: 100vw !important;
+    -webkit-font-smoothing: antialiased;
+}
+
+.hero-bg-grid {
+    background-color: #FCE205;
+    /* Black dots pattern and White solid lines pattern */
+    background-image: 
+        radial-gradient(rgba(0, 0, 0, 0.15) 1.5px, transparent 1.5px),
+        linear-gradient(to right, rgba(255, 255, 255, 0.25) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.25) 1px, transparent 1px);
+    background-size: 16px 16px, 8vw 8vw, 8vw 8vw;
+    background-position: 0 0, 0 0, 0 0;
+}
+
+.shadow-brutal {
+    box-shadow: 4px 4px 0px 0px rgba(0,0,0,1);
+    transition: transform 0.18s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.shadow-brutal:hover {
+    transform: translate(-1.5px, -1.5px);
+    box-shadow: 6px 6px 0px 0px rgba(0,0,0,1);
+}
+
+.shadow-brutal:active {
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0px 0px rgba(0,0,0,1);
+}
+
+.shadow-brutal-sm {
+    box-shadow: 2px 2px 0px 0px rgba(0,0,0,1);
+    transition: transform 0.18s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.shadow-brutal-sm:hover {
+    transform: translate(-1px, -1px);
+    box-shadow: 3px 3px 0px 0px rgba(0,0,0,1);
+}
+
+.shadow-brutal-sm:active {
+    transform: translate(1px, 1px);
+    box-shadow: 1px 1px 0px 0px rgba(0,0,0,1);
+}
+
+/* Hardware accelerated Marquee Animation */
+.marquee-content {
+    animation: marquee 25s linear infinite;
+    will-change: transform;
+    transform: translateZ(0);
+}
+
+@keyframes marquee {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+/* Vertical Marquee Animations */
+@keyframes marqueeUp {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(calc(-50% - 12px)); } /* -50% minus half the gap */
+}
+
+@keyframes marqueeDown {
+    0% { transform: translateY(calc(-50% - 12px)); }
+    100% { transform: translateY(0); }
+}
+
+.animate-marquee-up {
+    animation: marqueeUp 20s linear infinite;
+    will-change: transform;
+    transform: translateZ(0);
+}
+
+.animate-marquee-down {
+    animation: marqueeDown 20s linear infinite;
+    will-change: transform;
+    transform: translateZ(0);
+}
+
+.floating-image {
+    will-change: transform, opacity;
+    transform: translateZ(0);
+}
+
+/* Pause animation on hover if desired */
+.studio-logos:hover .animate-marquee-up,
+.studio-logos:hover .animate-marquee-down {
+    animation-play-state: paused;
+}
+
+/* Vertical Fade Mask for Marquee */
+.mask-vertical-fade {
+    -webkit-mask-image: linear-gradient(to bottom, transparent, black 15%, black 85%, transparent);
+    mask-image: linear-gradient(to bottom, transparent, black 15%, black 85%, transparent);
+}
+
+/* Ensure social cards always stay 100% visible */
+.social-preview-card,
+.social-card {
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+/* Feature Navigation Cards (Section 4) */
+.nav-feature-card {
+    transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.28s cubic-bezier(0.16, 1, 0.3, 1), filter 0.28s ease;
+    will-change: transform, box-shadow;
+    opacity: 1;
+    visibility: visible;
+}
+
+.nav-feature-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 7px 7px 0px 0px rgba(0, 0, 0, 1);
+}
+
+/* Footer Dark Grid Background */
+.footer-dark-grid {
+    background-color: #0b0b0b;
+    position: relative;
+}
+
+/* ==========================================================================
+   THEME TOGGLE BUTTON COMPONENT
+   ========================================================================== */
+.theme-toggle-btn {
+    position: relative;
+    width: 58px;
+    height: 30px;
+    border-radius: 9999px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    padding: 3px;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    background: rgba(0, 0, 0, 0.45);
+    transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    user-select: none;
+    flex-shrink: 0;
+}
+.theme-toggle-btn:hover {
+    border-color: #CDFF29;
+    box-shadow: 0 0 10px rgba(205, 255, 41, 0.3);
+}
+.theme-toggle-btn .toggle-thumb {
+    width: 22px;
+    height: 22px;
+    border-radius: 9999px;
+    background: #111;
+    border: 1.5px solid rgba(255, 255, 255, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    line-height: 1;
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.25s ease;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+/* ==========================================================================
+   PEACH CREAM LIGHT THEME (Eye-Comfort Soft Cream Palette)
+   ========================================================================== */
+[data-theme="peach"], body.theme-peach {
+    background-color: #FFF6EE !important;
+    color: #24160F !important;
+}
+
+/* Dotted / Subtle Grids in Peach Theme */
+[data-theme="peach"] .bg-grid,
+[data-theme="peach"] .bg-grid-subtle,
+body.theme-peach .bg-grid,
+body.theme-peach .bg-grid-subtle {
+    background-color: #FFF6EE !important;
+    background-image: 
+        radial-gradient(rgba(180, 110, 80, 0.12) 1.5px, transparent 1.5px),
+        linear-gradient(rgba(180, 110, 80, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(180, 110, 80, 0.05) 1px, transparent 1px) !important;
+}
+
+/* Surface, Cards & Elevated Containers */
+[data-theme="peach"] .bg-\[\#0b0b0b\],
+[data-theme="peach"] .bg-\[\#111111\],
+[data-theme="peach"] .bg-\[\#0d0d0d\],
+[data-theme="peach"] .bg-\[\#161616\],
+[data-theme="peach"] .bg-\[\#181818\],
+[data-theme="peach"] .bg-\[\#1c1c1c\],
+[data-theme="peach"] .bg-\[\#141414\],
+[data-theme="peach"] .bg-\[\#1a1a1a\],
+[data-theme="peach"] .bg-\[\#1e1e1e\],
+[data-theme="peach"] .bg-\[\#202020\],
+[data-theme="peach"] .bg-\[\#222\],
+[data-theme="peach"] .bg-\[\#2a2a2a\],
+[data-theme="peach"] .bg-zinc-900,
+[data-theme="peach"] .bg-zinc-950,
+body.theme-peach .bg-\[\#0b0b0b\],
+body.theme-peach .bg-\[\#111111\],
+body.theme-peach .bg-\[\#0d0d0d\],
+body.theme-peach .bg-\[\#161616\],
+body.theme-peach .bg-\[\#181818\],
+body.theme-peach .bg-\[\#1c1c1c\],
+body.theme-peach .bg-\[\#141414\],
+body.theme-peach .bg-\[\#1a1a1a\],
+body.theme-peach .bg-\[\#1e1e1e\],
+body.theme-peach .bg-\[\#202020\],
+body.theme-peach .bg-\[\#222\],
+body.theme-peach .bg-\[\#2a2a2a\],
+body.theme-peach .bg-zinc-900,
+body.theme-peach .bg-zinc-950 {
+    background-color: #FFFBF7 !important;
+    border-color: #E8D2C0 !important;
+    color: #24160F !important;
+}
+
+/* Text Overrides */
+[data-theme="peach"] .text-white,
+body.theme-peach .text-white {
+    color: #24160F !important;
+}
+
+[data-theme="peach"] .text-gray-300,
+[data-theme="peach"] .text-gray-400,
+body.theme-peach .text-gray-300,
+body.theme-peach .text-gray-400 {
+    color: #6B5140 !important;
+}
+
+[data-theme="peach"] .text-gray-500,
+body.theme-peach .text-gray-500 {
+    color: #8C705E !important;
+}
+
+/* Border Overrides */
+[data-theme="peach"] .border-gray-800,
+[data-theme="peach"] .border-gray-700,
+[data-theme="peach"] .border-zinc-800,
+[data-theme="peach"] .border-zinc-700,
+body.theme-peach .border-gray-800,
+body.theme-peach .border-gray-700,
+body.theme-peach .border-zinc-800,
+body.theme-peach .border-zinc-700 {
+    border-color: #E8D2C0 !important;
+}
+
+/* Sub-nav in events.html */
+[data-theme="peach"] .bg-\[\#111\]\/90,
+body.theme-peach .bg-\[\#111\]\/90 {
+    background-color: rgba(255, 246, 238, 0.95) !important;
+    border-bottom-color: #E8D2C0 !important;
+}
+
+/* Footer in Peach Theme */
+[data-theme="peach"] footer,
+[data-theme="peach"] #site-footer,
+body.theme-peach footer,
+body.theme-peach #site-footer {
+    background-color: #F8ECE1 !important;
+    border-top: 1px solid #E8D2C0 !important;
+    color: #24160F !important;
+}
+
+[data-theme="peach"] footer .text-white,
+[data-theme="peach"] #site-footer .text-white,
+body.theme-peach footer .text-white,
+body.theme-peach #site-footer .text-white {
+    color: #24160F !important;
+}
+
+/* Form Inputs */
+[data-theme="peach"] input,
+[data-theme="peach"] textarea,
+[data-theme="peach"] select,
+body.theme-peach input,
+body.theme-peach textarea,
+body.theme-peach select {
+    background-color: #FFF2E8 !important;
+    border-color: #E0C7B2 !important;
+    color: #24160F !important;
+}
+
+/* Interactive Pill and Button Accents */
+[data-theme="peach"] .theme-toggle-btn {
+    border-color: #FF8C42;
+    background: #FFD9C0;
+}
+[data-theme="peach"] .theme-toggle-btn .toggle-thumb {
+    background: #FFFBF7;
+    border-color: #FF8C42;
+}
+
+/* Modals & Popups in Peach Theme */
+[data-theme="peach"] #edit-profile-modal > div,
+[data-theme="peach"] #log-practice-modal > div,
+body.theme-peach #edit-profile-modal > div,
+body.theme-peach #log-practice-modal > div {
+    background-color: #FFFBF7 !important;
+    border-color: #24160F !important;
+    color: #24160F !important;
+}
+
+/* Translucent Containers & Pills in Peach Theme */
+[data-theme="peach"] .bg-black\/60,
+[data-theme="peach"] .bg-black\/70,
+[data-theme="peach"] .bg-black\/80,
+[data-theme="peach"] .bg-black\/95,
+body.theme-peach .bg-black\/60,
+body.theme-peach .bg-black\/70,
+body.theme-peach .bg-black\/80,
+body.theme-peach .bg-black\/95 {
+    background-color: #FFF2E8 !important;
+    border-color: #E8D2C0 !important;
+    color: #24160F !important;
+}
+
+/* Logo Styling in Peach Theme */
+[data-theme="peach"] nav a.group > div[style*="#CDFF29"],
+body.theme-peach nav a.group > div[style*="#CDFF29"] {
+    color: #FF5722 !important;
+}
+[data-theme="peach"] footer .font-black.uppercase[style*="#CDFF29"],
+body.theme-peach footer .font-black.uppercase[style*="#CDFF29"] {
+    color: #FF5722 !important;
+}
+[data-theme="peach"] .svg-devengers-text[fill="#ffffff"],
+body.theme-peach .svg-devengers-text[fill="#ffffff"] {
+    fill: #FFE0CC !important;
+    stroke: #FFE0CC !important;
+}
+[data-theme="peach"] .svg-devengers-text[fill="#e2e2e2"],
+body.theme-peach .svg-devengers-text[fill="#e2e2e2"] {
+    fill: #F4D3BC !important;
+    stroke: #F4D3BC !important;
+}
+[data-theme="peach"] .svg-devengers-text[fill="#000000"],
+body.theme-peach .svg-devengers-text[fill="#000000"] {
+    fill: #24160F !important;
+}
+
+/* Homepage Hero in Peach Theme */
+[data-theme="peach"] .hero-bg-grid,
+body.theme-peach .hero-bg-grid {
+    background-color: #FFE6D5 !important;
+    background-image: 
+        radial-gradient(rgba(180, 110, 80, 0.16) 1.5px, transparent 1.5px),
+        linear-gradient(to right, rgba(255, 255, 255, 0.4) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.4) 1px, transparent 1px) !important;
+}
+[data-theme="peach"] nav.bg-white,
+body.theme-peach nav.bg-white {
+    background-color: #FFFBF7 !important;
+    border-color: #24160F !important;
+}
+[data-theme="peach"] .course-card,
+body.theme-peach .course-card {
+    background-color: #FFFBF7 !important;
+    border-color: #E8D2C0 !important;
+    color: #24160F !important;
+}
+[data-theme="peach"] .coming-soon-glow,
+body.theme-peach .coming-soon-glow {
+    background: radial-gradient(circle at 50% 0%, rgba(255, 107, 53, 0.12), transparent 70%), #FFFBF7 !important;
+    border-color: #E8D2C0 !important;
+}
+
+/* ========================================================= */
+/* AVENGERS HERO ANIMATED LOGO                               */
+/* ========================================================= */
+.devengers-nav-logo {
+    display: inline-flex;
+    align-items: center;
+    position: relative;
+    user-select: none;
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), text-shadow 0.3s ease;
+}
+
+/* ========================================================= */
+/* AVENGERS KINETIC LOGO ANIMATIONS & HEROIC SHINE */
+/* ========================================================= */
+@keyframes avengersAura {
+    0%, 100% {
+        filter: drop-shadow(0 0 2px rgba(205, 255, 41, 0.4));
+    }
+    50% {
+        filter: drop-shadow(0 0 10px rgba(205, 255, 41, 0.9)) drop-shadow(0 0 18px rgba(123, 66, 246, 0.7));
+    }
+}
+
+@keyframes avengersBadgeSpin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes avengersShine {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+}
+
+.devengers-nav-logo {
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.3s ease;
+    will-change: transform, filter;
+}
+
+.group:hover .devengers-nav-logo {
+    transform: scale(1.05) rotate(-0.5deg);
+    animation: avengersAura 2s ease-in-out infinite;
+}
+
+.devengers-badge-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 9999px;
+    background: #000000;
+    border: 2px solid #CDFF29;
+    box-shadow: 2px 2px 0px 0px #000000;
+    margin-right: 8px;
+    flex-shrink: 0;
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), border-color 0.3s ease;
+}
+
+.group:hover .devengers-badge-icon {
+    transform: rotate(360deg) scale(1.12);
+    border-color: #FFFFFF;
+}
+
+.devengers-nav-logo .logo-char {
+    display: inline-block;
+    transition: transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1), color 0.2s ease, text-shadow 0.2s ease;
+    will-change: transform;
+}
+
+.group:hover .devengers-nav-logo .logo-char:nth-child(1) { transform: translateY(-4px) scale(1.12); color: #FFFFFF !important; text-shadow: 3px 3px 0px #000, 0 0 10px #CDFF29; }
+.group:hover .devengers-nav-logo .logo-char:nth-child(2) { transform: translateY(3px) scale(1.06); color: #CDFF29; }
+.group:hover .devengers-nav-logo .logo-char:nth-child(3) { transform: translateY(-3px) scale(1.08); color: #FFFFFF !important; text-shadow: 3px 3px 0px #000, 0 0 10px #7B42F6; }
+.group:hover .devengers-nav-logo .logo-char:nth-child(4) { transform: translateY(4px) scale(1.12); color: #FFFFFF !important; text-shadow: 3px 3px 0px #000, 0 0 10px #CDFF29; }
+.group:hover .devengers-nav-logo .logo-char:nth-child(5) { transform: translateY(-3px) scale(1.06); color: #CDFF29; }
+.group:hover .devengers-nav-logo .logo-char:nth-child(6) { transform: translateY(3px) scale(1.08); color: #FFFFFF !important; text-shadow: 3px 3px 0px #000, 0 0 10px #7B42F6; }
+.group:hover .devengers-nav-logo .logo-char:nth-child(7) { transform: translateY(-4px) scale(1.12); color: #FFFFFF !important; text-shadow: 3px 3px 0px #000, 0 0 10px #CDFF29; }
+.group:hover .devengers-nav-logo .logo-char:nth-child(8) { transform: translateY(3px) scale(1.06); color: #CDFF29; }
+.group:hover .devengers-nav-logo .logo-char:nth-child(9) { transform: translateY(-3px) scale(1.08); color: #FFFFFF !important; text-shadow: 3px 3px 0px #000, 0 0 10px #7B42F6; }
+
+/* ========================================================= */
+/* FLICKER-FREE UNIFIED DEVENGERS NAVBAR NOTCH */
+/* ========================================================= */
+.devengers-navbar-fixed {
+    position: fixed !important;
+    top: 1.5rem !important; /* top-6 */
+    left: 0 !important;
+    width: 100% !important;
+    z-index: 50 !important;
+    display: flex !important;
+    justify-content: center !important;
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+    pointer-events: none !important;
+    view-transition-name: devengers-navbar;
+}
+
+.devengers-navbar-notch {
+    background-color: #7B42F6 !important;
+    box-shadow: 4px 4px 0px 0px rgba(0, 0, 0, 1) !important;
+    border: 4px solid #000000 !important;
+    border-radius: 9999px !important;
+    padding-left: 1.75rem !important;
+    padding-right: 1.75rem !important;
+    width: 100% !important;
+    max-width: 1400px !important;
+    height: 64px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    pointer-events: auto !important;
+    box-sizing: border-box !important;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* ========================================================= */
+/* CENTER NAVIGATION LINKS (FORWARD, CRISP, NO LAYOUT SHIFT) */
+/* ========================================================= */
+.nav-link {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    color: rgba(255, 255, 255, 0.8) !important;
+    padding: 6px 2px;
+    text-decoration: none !important;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition: color 0.2s ease, transform 0.15s ease, text-shadow 0.2s ease;
+    white-space: nowrap;
+}
+
+.nav-link:hover {
+    color: #FFFFFF !important;
+    transform: translateY(-1px);
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+}
+
+.nav-link:active {
+    transform: translateY(1px) scale(0.97);
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0%;
+    height: 3px;
+    background: linear-gradient(90deg, #CDFF29, #FFFFFF, #CDFF29);
+    box-shadow: 0 0 10px rgba(205, 255, 41, 0.9);
+    border-radius: 9999px;
+    transition: width 0.26s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+    width: 100%;
+}
+
+.nav-link.active {
+    color: #FFFFFF !important;
+    font-weight: 900 !important;
+    text-shadow: 0 0 12px rgba(255, 255, 255, 0.9), 0 0 22px rgba(205, 255, 41, 0.6) !important;
+}
+
+/* Dynamic Notification Red Dot */
+.nav-notification-dot {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    width: 9px;
+    height: 9px;
+    background-color: #EF4444;
+    border: 2px solid #7B42F6;
+    border-radius: 9999px;
+    box-shadow: 0 0 8px rgba(239, 68, 68, 0.9);
+}
+
+/* ========================================================= */
+/* INSTAGRAM STORY RING ANIMATION FOR NAVBAR PROFILE PHOTO   */
+/* ========================================================= */
+.nav-profile-btn {
+    position: relative !important;
+    width: 38px !important;
+    height: 38px !important;
+    border-radius: 9999px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    flex-shrink: 0 !important;
+    padding: 2.5px !important;
+    border: none !important;
+    background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888, #7B42F6, #CDFF29) !important;
+    background-size: 300% 300% !important;
+    animation: igStoryGradient 4s ease infinite !important;
+    box-shadow: 0 0 10px rgba(220, 39, 67, 0.35), 0 0 18px rgba(123, 66, 246, 0.25) !important;
+    transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease !important;
+    text-decoration: none !important;
+    box-sizing: border-box !important;
+    cursor: pointer !important;
+    overflow: visible !important;
+}
+
+@keyframes igStoryGradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.nav-profile-btn:hover {
+    transform: scale(1.12) !important;
+    box-shadow: 0 0 16px rgba(205, 255, 41, 0.7), 0 0 24px rgba(220, 39, 67, 0.6) !important;
+}
+
+.nav-profile-btn:active {
+    transform: scale(0.95) !important;
+}
+
+.nav-profile-inner {
+    width: 100% !important;
+    height: 100% !important;
+    border-radius: 9999px !important;
+    background: #000000 !important;
+    border: 2px solid #000000 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    overflow: hidden !important;
+    box-sizing: border-box !important;
+}
+
+.nav-profile-inner img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    border-radius: 9999px !important;
+    display: block !important;
+}
+
+.nav-profile-inner .nav-avatar-initials {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace !important;
+    font-size: 11px !important;
+    font-weight: 800 !important;
+    line-height: 1 !important;
+    color: #CDFF29 !important;
+    user-select: none !important;
+    text-transform: uppercase !important;
+}
+
+.nav-profile-inner svg {
+    width: 15px !important;
+    height: 15px !important;
+    color: #FFFFFF !important;
+}
+
+/* ========================================================= */
+/* UNIVERSAL MOBILE APP RESPONSIVENESS & TOUCH OPTIMIZATION   */
+/* ========================================================= */
+@media (max-width: 768px) {
+    /* 1. Global Viewport Lock & Anti-Overflow */
+    html, body {
+        overflow-x: hidden !important;
+        max-width: 100vw !important;
+        position: relative;
+    }
+
+    /* All sections and mains constrained to screen width */
+    section, main, header, footer, .devengers-navbar-notch {
+        max-width: 100vw !important;
+        box-sizing: border-box !important;
+    }
+
+    /* Prevent iOS Safari auto-zoom on input focus */
+    input, select, textarea {
+        font-size: 16px !important;
+    }
+
+    /* 2. Enforce 100% Visibility for all cards on mobile (Prevents animations hiding content) */
+    .nav-feature-card,
+    .pricing-card,
+    #gallery-section,
+    .bento-card,
+    .member-card,
+    .job-row,
+    .card,
+    .floating-image,
+    .glass-panel,
+    .dsa-card,
+    .topic-section,
+    [data-aos],
+    .reveal-on-scroll {
+        opacity: 1 !important;
+        transform: none !important;
+        visibility: visible !important;
+    }
+
+    /* 3. PhonePe-Inspired Native Mobile App Typography Scale */
+    /* Main headings: 22–28px */
+    h1 {
+        font-size: clamp(1.375rem, 6.2vw, 1.75rem) !important;
+        line-height: 1.18 !important;
+        letter-spacing: -0.025em !important;
+    }
+    /* Section headings: 17–21px */
+    h2 {
+        font-size: clamp(1.0625rem, 4.8vw, 1.3125rem) !important;
+        line-height: 1.25 !important;
+        letter-spacing: -0.015em !important;
+    }
+    /* Subheadings: 15–17px */
+    h3 {
+        font-size: clamp(0.9375rem, 4vw, 1.0625rem) !important;
+        line-height: 1.3 !important;
+    }
+
+    /* Eyebrow & Kicker subtitles retain compact uppercase hierarchy without overflow */
+    h2.tracking-widest,
+    h2.hide-on-scroll,
+    h2[class*="text-[11px]"],
+    h2[class*="text-[12px]"],
+    h2[class*="text-xs"],
+    .eyebrow,
+    .kicker {
+        font-size: clamp(0.6875rem, 3.2vw, 0.8125rem) !important;
+        letter-spacing: 0.12em !important;
+        line-height: 1.4 !important;
+        max-width: 100% !important;
+    }
+
+    /* 4. PhonePe-Inspired Mobile Spacing & Compact Card Architecture */
+    section:not(.hero-bg-grid):not(#studio-section) {
+        padding-top: 3rem !important;
+        padding-bottom: 3rem !important;
+    }
+    section.hero-bg-grid {
+        padding-top: 5.25rem !important;
+        padding-bottom: 2.25rem !important;
+        min-height: auto !important;
+    }
+
+    /* Compact card padding & rounded corners */
+    .bento-card,
+    .glass-panel,
+    .pricing-card,
+    .dsa-card,
+    .topic-section {
+        padding: 0.875rem 1rem !important;
+        border-radius: 1rem !important;
+    }
+
+    /* 5. PhonePe-Inspired Mobile App Swipeable Chips & Quick Actions */
+    .mobile-chips-scroll {
+        display: flex !important;
+        flex-wrap: nowrap !important;
+        overflow-x: auto !important;
+        -webkit-overflow-scrolling: touch !important;
+        scrollbar-width: none !important;
+        padding-bottom: 4px !important;
+        gap: 0.5rem !important;
+    }
+    .mobile-chips-scroll::-webkit-scrollbar {
+        display: none !important;
+    }
+    .mobile-chips-scroll > * {
+        flex-shrink: 0 !important;
+    }
+
+    /* 6. PhonePe-Style 44px–48px Accessible Touch Targets & Tap Feedback */
+    button,
+    .btn,
+    .cat-pill,
+    .tab-btn-active,
+    .tab-btn-inactive {
+        -webkit-tap-highlight-color: transparent;
+    }
+    button:active,
+    a.bg-black:active,
+    a.bg-white:active,
+    a.bg-acid:active,
+    .cat-pill:active {
+        transform: scale(0.98);
+        transition: transform 0.1s ease;
+    }
+
+    /* 7. Navigation Bar on Mobile (Compact App Header) */
+    .devengers-navbar-fixed {
+        top: 0.5rem !important;
+        padding-left: 0.5rem !important;
+        padding-right: 0.5rem !important;
+    }
+    .devengers-navbar-notch {
+        height: 48px !important;
+        padding-left: 0.75rem !important;
+        padding-right: 0.75rem !important;
+        border-width: 2.5px !important;
+    }
+    .devengers-nav-logo {
+        font-size: 1.05rem !important;
+    }
+    .devengers-nav-logo .devengers-badge-icon {
+        width: 18px !important;
+        height: 18px !important;
+        margin-right: 3px !important;
+    }
+    /* Compact right cluster gap */
+    .devengers-navbar-notch .flex.items-center:last-child {
+        gap: 0.35rem !important;
+    }
+    /* Compact Theme Toggle Button on mobile (circular icon button) */
+    .theme-toggle-btn {
+        width: 30px !important;
+        height: 30px !important;
+        min-width: 30px !important;
+        border-radius: 9999px !important;
+        padding: 0 !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        border: 1.5px solid rgba(255, 255, 255, 0.3) !important;
+    }
+    .theme-toggle-btn .toggle-thumb {
+        width: 100% !important;
+        height: 100% !important;
+        border: none !important;
+        background: transparent !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        font-size: 13px !important;
+        transform: none !important;
+    }
+    .nav-notification-btn {
+        width: 30px !important;
+        height: 30px !important;
+    }
+    .nav-profile-btn {
+        width: 30px !important;
+        height: 30px !important;
+    }
+    #devengers-mobile-menu-btn {
+        width: 32px !important;
+        height: 32px !important;
+        margin-left: 0 !important;
+    }
+    /* Hide top text buttons and extra notch buttons on mobile to avoid squeezing notch */
+    .devengers-navbar-notch a[href="register.html"],
+    .devengers-navbar-notch a[href="login.html"],
+    #auth-nav-slot {
+        display: none !important;
+    }
+
+    /* 8. Marquee banner: sleek on small screens */
+    .marquee-content {
+        font-size: 1.35rem !important;
+        padding-top: 0.5rem !important;
+        padding-bottom: 0.5rem !important;
+    }
+    .marquee-content img {
+        width: 1.35rem !important;
+        height: 1.35rem !important;
+    }
+
+    /* 9. Gallery Section on Mobile */
+    #gallery-section {
+        padding-top: 3.5rem !important;
+        padding-bottom: 3.5rem !important;
+        min-height: auto !important;
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+    }
+    #gallery-section h2 {
+        font-size: clamp(1.1rem, 4.8vw, 1.35rem) !important;
+        line-height: 1.25 !important;
+        max-width: 100% !important;
+        word-break: break-word !important;
+        overflow-wrap: break-word !important;
+        padding-left: 0.5rem !important;
+        padding-right: 0.5rem !important;
+    }
+    #gallery-section .mb-20 {
+        margin-bottom: 2rem !important;
+    }
+    #gallery-section .grid > div {
+        margin-top: 0 !important;
+    }
+    #gallery-section .rounded-2xl {
+        height: auto !important;
+        min-height: 140px !important;
+        padding: 1.25rem 1rem !important;
+    }
+    #gallery-section .rounded-2xl span {
+        font-size: 1.15rem !important;
+        line-height: 1.3 !important;
+    }
+
+    /* 10. Social Section on Mobile */
+    #social-section {
+        min-height: auto !important;
+        padding-top: 3.5rem !important;
+        padding-bottom: 3.5rem !important;
+    }
+
+    /* 11. Directory member cards: hide secondary thumbnail on small phones */
+    .member-card .w-24.h-16 {
+        display: none !important;
+    }
+}
+
+/* Extra-small phones (320px–360px viewport optimization) */
+@media (max-width: 360px) {
+    .devengers-nav-logo {
+        font-size: 1rem !important;
+    }
+    .devengers-navbar-notch {
+        padding-left: 0.65rem !important;
+        padding-right: 0.65rem !important;
+    }
+    h1 {
+        font-size: 1.35rem !important;
+    }
+    h2 {
+        font-size: 1.05rem !important;
+    }
+    .mobile-chips-scroll {
+        gap: 0.35rem !important;
+    }
+}
+
+/* Mobile Navigation Drawer */
+#devengers-mobile-drawer {
+    position: absolute;
+    top: calc(100% + 10px);
+    left: 0.75rem;
+    right: 0.75rem;
+    max-width: 480px;
+    margin-left: auto;
+    margin-right: auto;
+    background: rgba(12, 12, 12, 0.96);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 3px solid #000000;
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.8), 4px 4px 0px 0px #CDFF29;
+    border-radius: 1.5rem;
+    padding: 1.25rem;
+    z-index: 60;
+    pointer-events: auto;
+    transition: opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1), transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+#devengers-mobile-drawer.drawer-closed {
+    opacity: 0;
+    transform: translateY(-12px) scale(0.96);
+    pointer-events: none;
+    display: none;
+}
+
+#devengers-mobile-drawer.drawer-open {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    display: block;
+}
+
+.mobile-drawer-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.65rem 0.85rem;
+    border-radius: 0.75rem;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.mobile-drawer-link:hover,
+.mobile-drawer-link.active {
+    background: rgba(205, 255, 41, 0.15);
+    color: #CDFF29;
+    border-left: 3px solid #CDFF29;
+    padding-left: 1rem;
+}
+
+
+/* ========================================================= */
+/* LEETCODE & GITHUB DSA HEATMAP ACTIVITY GRID */
+/* ========================================================= */
+.heatmap-cell {
+    width: 10px;
+    height: 10px;
+    border-radius: 2px;
+    transition: transform 0.15s ease, outline 0.15s ease;
+    cursor: pointer;
+}
+.heatmap-cell:hover {
+    transform: scale(1.35);
+    outline: 2px solid #CDFF29;
+    z-index: 10;
+}
+.heat-lvl-0 { background-color: #222222; }
+.heat-lvl-1 { background-color: #0e4429; }
+.heat-lvl-2 { background-color: #00845a; }
+.heat-lvl-3 { background-color: #00B8A3; }
+.heat-lvl-4 { background-color: #CDFF29; }
+.heat-future { background-color: #171717; opacity: 0.35; cursor: default; }
+.heat-today { outline: 1.5px solid rgba(205, 255, 41, 0.7); }
+
+[data-theme="peach"] .heat-lvl-0, body.theme-peach .heat-lvl-0 { background-color: #E6D2C4; }
+[data-theme="peach"] .heat-lvl-1, body.theme-peach .heat-lvl-1 { background-color: #B4DFC4; }
+[data-theme="peach"] .heat-lvl-2, body.theme-peach .heat-lvl-2 { background-color: #63C195; }
+[data-theme="peach"] .heat-lvl-3, body.theme-peach .heat-lvl-3 { background-color: #1D9D66; }
+[data-theme="peach"] .heat-lvl-4, body.theme-peach .heat-lvl-4 { background-color: #0C6B41; }
+[data-theme="peach"] .heat-future, body.theme-peach .heat-future { background-color: #F0E3D8; opacity: 0.5; }
+[data-theme="peach"] .heat-today, body.theme-peach .heat-today { outline: 2px solid #FF6B35; }
+
+/* ========================================================= */
+/* STRICT ROLE SECURITY: ADMIN CONTROLS & DELETE ACTIONS */
+/* ========================================================= */
+/* By default, all admin items and delete controls are completely hidden */
+.admin-only,
+[data-admin-only],
+#admin-nav-item,
+#admin-studio-link,
+a[href^="admin-"],
+a[href*="/admin-"],
+[data-admin-delete],
+.admin-delete-btn,
+.btn-admin-delete,
+#pv-delete-btn,
+#modal-delete-proj-btn,
+button[data-action="delete"] {
+    display: none !important;
+}
+
+/* Only when document body is verified as admin (.is-admin) are they revealed */
+body.is-admin .admin-only,
+body.is-admin [data-admin-only],
+body.is-admin #admin-nav-item,
+body.is-admin #admin-studio-link,
+body.is-admin a[href^="admin-"],
+body.is-admin a[href*="/admin-"],
+body.is-admin [data-admin-delete],
+body.is-admin .admin-delete-btn,
+body.is-admin .btn-admin-delete,
+body.is-admin #pv-delete-btn,
+body.is-admin #modal-delete-proj-btn,
+body.is-admin button[data-action="delete"] {
+    display: inline-flex !important;
+}
+
+/* ========================================================= */
+/* ANIMATED MOBILE HAMBURGER ICON (MORPHS INTO 'X')          */
+/* ========================================================= */
+.hamburger-box {
+    position: relative;
+    width: 16px;
+    height: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    pointer-events: none;
+}
+
+.hamburger-bar {
+    width: 100%;
+    height: 2px;
+    background-color: #CDFF29;
+    border-radius: 9999px;
+    transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.2s ease, background-color 0.2s ease;
+    transform-origin: center;
+}
+
+#devengers-mobile-menu-btn.menu-open .bar-top {
+    transform: translateY(5px) rotate(45deg);
+}
+
+#devengers-mobile-menu-btn.menu-open .bar-mid {
+    opacity: 0;
+    transform: scaleX(0);
+}
+
+#devengers-mobile-menu-btn.menu-open .bar-bot {
+    transform: translateY(-5px) rotate(-45deg);
+}

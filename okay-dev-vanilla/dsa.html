@@ -1,0 +1,1584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DSA Streak &amp; 0-to-Hero Coding Roadmap | Devengers</title>
+    <meta name="description" content="Master Data Structures & Algorithms with Devengers 0-to-Hero roadmap. Solve daily POTD coding challenges, maintain your streak, and ace technical interviews.">
+    <meta name="keywords" content="DSA, Data Structures, Algorithms, LeetCode, Coding Streak, Problem of the Day, POTD, Tech Interviews, Coding Roadmap, Engineering Students">
+    <meta name="author" content="Devengers Community">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <meta name="theme-color" content="#7B42F6">
+    <meta name="msapplication-TileColor" content="#7B42F6">
+    <link rel="canonical" href="https://devengers.org/dsa">
+
+    <!-- Open Graph / Meta -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://devengers.org/dsa">
+    <meta property="og:site_name" content="Devengers">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:title" content="DSA Streak &amp; 0-to-Hero Coding Roadmap | Devengers">
+    <meta property="og:description" content="Daily coding challenges and curated 500+ question DSA roadmap for engineering students. Solve POTD and build your developer profile.">
+    <meta property="og:image" content="https://devengers.org/og-image.jpg">
+    <meta property="og:image:secure_url" content="https://devengers.org/og-image.jpg">
+    <meta property="og:image:type" content="image/jpeg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="675">
+    <meta property="og:image:alt" content="Devengers DSA Streak and Coding Roadmap">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@devengers">
+    <meta name="twitter:creator" content="@devengers">
+    <meta name="twitter:url" content="https://devengers.org/dsa">
+    <meta name="twitter:title" content="DSA Streak &amp; 0-to-Hero Coding Roadmap | Devengers">
+    <meta name="twitter:description" content="Daily coding challenges and curated 500+ question DSA roadmap for engineering students.">
+    <meta name="twitter:image" content="https://devengers.org/og-image.jpg">
+    <meta name="twitter:image:alt" content="Devengers DSA Coding Roadmap">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico?v=3">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon.png?v=3">
+    <link rel="icon" type="image/png" sizes="192x192" href="favicon.png?v=3">
+    <link rel="apple-touch-icon" href="favicon.png?v=3">
+
+    <!-- Structured Data (JSON-LD) for Google Rich Results & Breadcrumbs -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Devengers Home",
+              "item": "https://devengers.org/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "DSA Roadmap & Streak",
+              "item": "https://devengers.org/dsa"
+            }
+          ]
+        },
+        {
+          "@type": "Course",
+          "name": "Devengers DSA 0-to-Hero Roadmap",
+          "description": "Comprehensive Data Structures & Algorithms interactive roadmap featuring 500+ curated problems, daily Problem of the Day challenges, and streak tracking.",
+          "provider": {
+            "@type": "EducationalOrganization",
+            "name": "Devengers",
+            "sameAs": "https://devengers.org/"
+          },
+          "isAccessibleForFree": true,
+          "hasCourseInstance": {
+            "@type": "CourseInstance",
+            "courseMode": "Online",
+            "inLanguage": "en"
+          }
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "What is the Devengers DSA 0-to-Hero Roadmap?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "The Devengers DSA 0-to-Hero Roadmap is a comprehensive learning curriculum covering Arrays, Strings, Linked Lists, Trees, Graphs, Dynamic Programming, and System Design with structured practice problems and daily coding challenges."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How does the Devengers Daily Coding Streak work?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Every day at midnight UTC, a new Problem of the Day (POTD) is released. Solving challenges daily builds your continuous streak, unlocks achievement badges, and elevates your ranking on the public community leaderboard."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Is the Devengers DSA Roadmap free?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes, Devengers is completely free for students and developers worldwide. You can practice all 500+ problems, track streaks, and participate in contests without any fees."
+              }
+            }
+          ]
+        }
+      ]
+    }
+    </script>
+    <!-- Tailwind CSS (via CDN) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css?v=5">
+    <script src="theme.js"></script>
+    <script src="auth.js"></script>
+
+    <style>
+        .shadow-brutal-sm { box-shadow: 2px 2px 0px #000; }
+        .shadow-brutal-md { box-shadow: 4px 4px 0px #000; }
+        .shadow-brutal-lg { box-shadow: 6px 6px 0px #000; }
+        .shadow-brutal-lime { box-shadow: 4px 4px 0px #CDFF29; }
+        .shadow-brutal-purple { box-shadow: 4px 4px 0px #7B42F6; }
+        .bg-grid-subtle {
+            background-color: #0b0b0b;
+            background-image: 
+                radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+                linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+            background-size: 24px 24px, 24px 24px, 24px 24px;
+        }
+        /* Peach theme overrides */
+        [data-theme="peach"] .dsa-card,
+        body.theme-peach .dsa-card {
+            background-color: #FFFBF7 !important;
+            border-color: #24160F !important;
+            box-shadow: 4px 4px 0px #24160F !important;
+        }
+        [data-theme="peach"] .potd-banner,
+        body.theme-peach .potd-banner {
+            background-color: #FFF2E8 !important;
+            border-color: #24160F !important;
+        }
+        [data-theme="peach"] .topic-pill-inactive,
+        body.theme-peach .topic-pill-inactive {
+            background-color: #F8ECE1 !important;
+            color: #4A3525 !important;
+            border-color: #D6BCAB !important;
+        }
+    </style>
+</head>
+<body class="bg-[#0b0b0b] m-0 p-0 overflow-x-hidden antialiased text-white min-h-screen flex flex-col bg-grid-subtle">
+    
+    <!-- Toast Notification -->
+    <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-24 opacity-0 pointer-events-none transition-all duration-300 bg-black/95 border-2 border-[#CDFF29] text-white px-5 py-3 rounded-2xl shadow-brutal-lime font-mono text-xs flex items-center gap-3">
+        <span id="toast-icon" class="text-base">🔥</span>
+        <span id="toast-message">DSA Streak updated!</span>
+    </div>
+
+    <!-- LeetCode Heatmap Floating Tooltip -->
+    <div id="dsa-heatmap-tooltip" class="fixed z-50 opacity-0 bg-black/95 border border-[#CDFF29] text-white text-[11px] font-mono px-3 py-1.5 rounded-lg shadow-brutal pointer-events-none transition-opacity duration-150"></div>
+
+    <!-- NAVIGATION (Fixed) -->
+    <nav class="devengers-navbar-fixed fixed top-6 left-0 w-full z-50 flex justify-center px-4">
+        <!-- Purple Navbar Background (#7B42F6) -->
+        <div class="devengers-navbar-notch bg-[#7B42F6] shadow-brutal border-4 border-black rounded-full px-6 md:px-8 py-3 w-full max-w-[1400px] flex items-center justify-between">
+            <!-- Avengers Animated Logo -->
+            <a href="index.html" class="flex items-center group select-none" title="Devengers Home">
+                <div class="devengers-nav-logo font-black text-2xl md:text-[30px] tracking-tighter uppercase rounded-full transition-transform duration-300"
+                    style="-webkit-text-stroke: 2px black; color: #CDFF29; text-shadow: 3px 3px 0px black; line-height: 1;">
+                    <span class="devengers-badge-icon">
+                        <svg class="w-3.5 h-3.5 text-[#CDFF29]" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
+                        </svg>
+                    </span>
+                    <span class="logo-char">D</span><span class="logo-char">E</span><span class="logo-char">V</span><span class="logo-char">E</span><span class="logo-char">N</span><span class="logo-char">G</span><span class="logo-char">E</span><span class="logo-char">R</span><span class="logo-char">S</span>
+                </div>
+            </a>
+
+            <!-- Center Links -->
+            <div class="hidden md:flex gap-6 lg:gap-8 text-[11px] font-bold uppercase tracking-widest text-white/80">
+                <a href="events.html" class="nav-link">Events</a>
+                <a href="learn.html" class="nav-link">Learn</a>
+                <a href="campus.html" class="nav-link">Campus Resource</a>
+                <a href="dsa.html" class="nav-link">DSA Streak</a>
+                <a href="gallery.html" class="nav-link">Gallery</a>
+                <a href="certificates.html" class="nav-link">Certificates</a>
+            </div>
+
+            <!-- Right Links & Action Buttons -->
+            <div class="flex items-center gap-3 sm:gap-4">
+                <!-- Theme Toggle Button -->
+                <button type="button" onclick="window.DevengersTheme.toggleTheme()" class="theme-toggle-btn" title="Toggle Eye-Comfort Peach Theme" aria-label="Toggle Theme">
+                    <div class="toggle-thumb">🌙</div>
+                </button>
+
+                <!-- Notifications Bell with Dynamic Red Dot -->
+                <div class="relative">
+                    <button type="button" id="nav-notification-btn" onclick="window.DevengersNotifications.toggleDropdown(event)"
+                        class="nav-notification-btn flex items-center justify-center w-8 h-8 text-white/80 hover:text-white transition-colors relative cursor-pointer"
+                        title="Notifications" aria-label="Notifications">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 transition-transform hover:scale-110" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+                        </svg>
+                        <span id="nav-notification-dot" class="nav-notification-dot hidden"></span>
+                    </button>
+                </div>
+
+                <!-- Profile Symbol Button with Instagram Ring -->
+                <a href="profile.html" class="nav-profile-btn group" title="My Profile" aria-label="My Profile">
+                    <span class="nav-profile-inner">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-white transition-transform group-hover:scale-110" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                        </svg>
+                    </span>
+                </a>
+
+                <a href="login.html" class="hidden md:block text-[11px] font-bold uppercase tracking-widest text-white/80 hover:text-white transition-colors">LOGIN</a>
+                <a href="register.html" class="bg-white text-black px-5 py-2 rounded-full text-[11px] font-bold uppercase tracking-widest hover:bg-[#CDFF29] transition-colors flex items-center gap-1.5 shadow-sm">
+                    SIGN UP <span class="font-normal text-sm leading-none">&rarr;</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- MAIN CONTENT -->
+    <main class="flex-grow w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-12 pt-36 md:pt-40 pb-24">
+        
+        <!-- HERO / HEADER -->
+        <div class="mb-8 text-center md:text-left">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#CDFF29] text-black font-mono text-xs font-black uppercase tracking-wider shadow-brutal-sm border-2 border-black mb-3">
+                <span>🔥</span>
+                <span>DAILY POTD &bull; 0-TO-HERO ROADMAP</span>
+            </div>
+            <h1 class="font-black text-3xl sm:text-5xl lg:text-6xl uppercase tracking-tighter leading-none mb-3 text-white drop-shadow-md">
+                DSA STREAK &amp; <span class="text-[#CDFF29] underline decoration-[#7B42F6] decoration-4 underline-offset-4">ROADMAP</span>
+            </h1>
+            <p class="text-gray-400 text-xs sm:text-sm max-w-2xl leading-relaxed">
+                Daily algorithmic challenges and a curated 500+ question roadmap across all core interview patterns.
+            </p>
+
+            <!-- ========================================================= -->
+            <!-- LEETCODE-INSPIRED DSA ANALYTICS & STREAK GRAPH DASHBOARD -->
+            <!-- ========================================================= -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-5 mt-8">
+                
+                <!-- CARD 1 (Left 5 cols): LEETCODE CIRCLE PROGRESS CARD -->
+                <div class="lg:col-span-5 bg-[#141414] border-3 border-black rounded-3xl p-5 sm:p-6 shadow-brutal flex flex-col justify-between">
+                    
+                    <!-- Card Top Header -->
+                    <div class="flex items-center justify-between pb-3 mb-4 border-b border-zinc-800">
+                        <div class="flex items-center gap-2">
+                            <span class="w-2.5 h-2.5 rounded-full bg-[#00B8A3] animate-pulse"></span>
+                            <span class="text-xs font-mono font-black uppercase tracking-wider text-gray-300">DSA Solved Breakdown</span>
+                        </div>
+                        <span class="px-2.5 py-0.5 rounded-full bg-black/60 border border-zinc-800 text-[10px] font-mono text-[#CDFF29] font-bold">
+                            <span id="stat-solved-count">0 / 510</span>
+                        </span>
+                    </div>
+
+                    <!-- Circle & Breakdown Row -->
+                    <div class="flex flex-col sm:flex-row items-center justify-center gap-6 py-2">
+                        <!-- SVG Donut Chart with segmented multi-color arcs -->
+                        <div class="relative w-36 h-36 flex items-center justify-center flex-shrink-0">
+                            <svg class="w-full h-full transform -rotate-90" viewBox="0 0 120 120">
+                                <!-- Background Track -->
+                                <circle cx="60" cy="60" r="48" stroke="#222222" stroke-width="8" fill="transparent" />
+                                <!-- Hard Arc (Red/Coral) -->
+                                <circle id="arc-hard" cx="60" cy="60" r="48" stroke="#FF375F" stroke-width="8" fill="transparent"
+                                    stroke-dasharray="0 301.59" stroke-dashoffset="0" stroke-linecap="round" class="transition-all duration-700 ease-out" />
+                                <!-- Med Arc (Amber/Yellow) -->
+                                <circle id="arc-med" cx="60" cy="60" r="48" stroke="#FFA116" stroke-width="8" fill="transparent"
+                                    stroke-dasharray="0 301.59" stroke-dashoffset="0" stroke-linecap="round" class="transition-all duration-700 ease-out" />
+                                <!-- Easy Arc (Teal/Cyan) -->
+                                <circle id="arc-easy" cx="60" cy="60" r="48" stroke="#00B8A3" stroke-width="8" fill="transparent"
+                                    stroke-dasharray="0 301.59" stroke-dashoffset="0" stroke-linecap="round" class="transition-all duration-700 ease-out" />
+                            </svg>
+                            <!-- Center Content (matching LeetCode screenshot) -->
+                            <div class="absolute inset-0 flex flex-col items-center justify-center text-center select-none pointer-events-none">
+                                <div class="flex items-baseline justify-center gap-0.5 leading-none">
+                                    <span id="circle-solved-count" class="text-3xl font-black text-white font-mono">0</span>
+                                    <span class="text-xs text-gray-500 font-mono font-bold">/<span id="circle-total-count">510</span></span>
+                                </div>
+                                <div class="text-[11px] font-mono font-bold text-gray-300 mt-1 flex items-center gap-1">
+                                    <span class="text-emerald-400">✓</span> Solved
+                                </div>
+                                <div id="circle-pct-text" class="text-[10px] font-mono text-[#CDFF29] font-bold mt-0.5">0% Complete</div>
+                            </div>
+                        </div>
+
+                        <!-- 3 Difficulty Metric Pills (matching LeetCode Easy, Med, Hard) -->
+                        <div class="flex flex-col gap-2.5 flex-1 w-full sm:w-auto min-w-[140px]">
+                            <!-- Easy Box -->
+                            <div class="bg-[#181818] border border-gray-800 rounded-xl p-2.5 hover:border-teal-500/40 transition-colors">
+                                <div class="flex items-center justify-between text-xs font-mono font-bold">
+                                    <span class="text-[#00B8A3]">Easy</span>
+                                    <span class="text-white"><strong id="card-easy-solved">0</strong> <span class="text-gray-500 text-[11px]">/ <span id="card-easy-total">126</span></span></span>
+                                </div>
+                                <div class="w-full h-1.5 bg-black/60 rounded-full mt-1.5 overflow-hidden">
+                                    <div id="bar-easy" class="h-full bg-[#00B8A3] rounded-full transition-all duration-500" style="width: 0%"></div>
+                                </div>
+                            </div>
+                            <!-- Medium Box -->
+                            <div class="bg-[#181818] border border-gray-800 rounded-xl p-2.5 hover:border-amber-500/40 transition-colors">
+                                <div class="flex items-center justify-between text-xs font-mono font-bold">
+                                    <span class="text-[#FFA116]">Med.</span>
+                                    <span class="text-white"><strong id="card-med-solved">0</strong> <span class="text-gray-500 text-[11px]">/ <span id="card-med-total">270</span></span></span>
+                                </div>
+                                <div class="w-full h-1.5 bg-black/60 rounded-full mt-1.5 overflow-hidden">
+                                    <div id="bar-med" class="h-full bg-[#FFA116] rounded-full transition-all duration-500" style="width: 0%"></div>
+                                </div>
+                            </div>
+                            <!-- Hard Box -->
+                            <div class="bg-[#181818] border border-gray-800 rounded-xl p-2.5 hover:border-red-500/40 transition-colors">
+                                <div class="flex items-center justify-between text-xs font-mono font-bold">
+                                    <span class="text-[#FF375F]">Hard</span>
+                                    <span class="text-white"><strong id="card-hard-solved">0</strong> <span class="text-gray-500 text-[11px]">/ <span id="card-hard-total">114</span></span></span>
+                                </div>
+                                <div class="w-full h-1.5 bg-black/60 rounded-full mt-1.5 overflow-hidden">
+                                    <div id="bar-hard" class="h-full bg-[#FF375F] rounded-full transition-all duration-500" style="width: 0%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Quick Revision & Status Footer -->
+                    <div class="flex items-center justify-between pt-3 mt-3 border-t border-zinc-800 text-[11px] font-mono text-gray-400">
+                        <span>Bookmarked: <strong id="stat-revision-count" class="text-amber-400 font-bold">0</strong></span>
+                        <span class="text-gray-600">•</span>
+                        <span>Level: <strong class="text-purple-400 font-bold">Knight</strong></span>
+                        <span class="text-gray-600">•</span>
+                        <span>Status: <strong id="stat-solved-pct" class="text-[#CDFF29] font-bold">0% Complete</strong></span>
+                    </div>
+
+                </div>
+
+                <!-- CARD 2 (Right 7 cols): LEETCODE ANNUAL SUBMISSION ACTIVITY HEATMAP GRAPH -->
+                <div class="lg:col-span-7 bg-[#141414] border-3 border-black rounded-3xl p-5 sm:p-6 shadow-brutal flex flex-col justify-between">
+                    
+                    <!-- Graph Header (matching LeetCode screenshot) -->
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 mb-3 border-b border-zinc-800">
+                        <div class="flex items-center gap-2">
+                            <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                            <h3 id="dsa-active-submissions" class="text-sm sm:text-base font-black font-mono text-white tracking-tight">
+                                0 submissions in the past one year
+                            </h3>
+                        </div>
+                        <div class="flex items-center gap-2.5 text-xs font-mono text-gray-400 flex-wrap">
+                            <span>Total active days: <strong id="dsa-active-days" class="text-[#CDFF29]">1</strong></span>
+                            <span>•</span>
+                            <span>Max streak: <strong id="dsa-max-streak" class="text-orange-400">1</strong></span>
+                            <span>•</span>
+                            <span class="px-2.5 py-0.5 rounded-full bg-orange-500/20 text-orange-400 font-bold border border-orange-500/40">
+                                🔥 <span id="stat-streak">1 Day</span>
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- 52-Week LeetCode Heatmap Grid -->
+                    <div class="w-full overflow-x-auto pb-2 pt-1 scrollbar-none">
+                        <div class="min-w-[560px]">
+                            <!-- Month Names Header -->
+                            <div id="dsa-heatmap-months" class="relative h-4 ml-6 mb-1 text-[9px] font-mono text-gray-400 select-none">
+                                <!-- Populated dynamically -->
+                            </div>
+
+                            <div class="flex items-start gap-1">
+                                <!-- Day Labels -->
+                                <div class="flex flex-col gap-1 text-[8px] font-mono text-gray-500 justify-between select-none pt-0.5 w-5 text-right shrink-0">
+                                    <span class="h-[10px] leading-[10px]"></span>
+                                    <span class="h-[10px] leading-[10px] text-gray-400 font-bold">Mon</span>
+                                    <span class="h-[10px] leading-[10px]"></span>
+                                    <span class="h-[10px] leading-[10px] text-gray-400 font-bold">Wed</span>
+                                    <span class="h-[10px] leading-[10px]"></span>
+                                    <span class="h-[10px] leading-[10px] text-gray-400 font-bold">Fri</span>
+                                    <span class="h-[10px] leading-[10px]"></span>
+                                </div>
+
+                                <!-- 52 Columns of 7 Days -->
+                                <div id="dsa-heatmap-grid" class="flex gap-1 flex-1">
+                                    <!-- Populated dynamically -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Graph Footer: Legend & Live POTD Timer -->
+                    <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 pt-3 mt-2 border-t border-zinc-800 text-[11px] font-mono text-gray-400">
+                        <div class="flex items-center gap-1.5 select-none">
+                            <span class="text-gray-500 text-[10px]">Less</span>
+                            <span class="w-2.5 h-2.5 rounded-sm bg-[#222]"></span>
+                            <span class="w-2.5 h-2.5 rounded-sm bg-[#0e4429]"></span>
+                            <span class="w-2.5 h-2.5 rounded-sm bg-[#00845a]"></span>
+                            <span class="w-2.5 h-2.5 rounded-sm bg-[#00B8A3]"></span>
+                            <span class="w-2.5 h-2.5 rounded-sm bg-[#CDFF29]"></span>
+                            <span class="text-gray-500 text-[10px]">More</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="text-gray-400">POTD Reset In:</span>
+                            <span id="stat-potd-timer" class="font-bold text-cyan-400 font-mono tracking-wider bg-black/60 px-2 py-0.5 rounded-md border border-zinc-800">--:--:--</span>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+        <!-- SECTION 1: PROBLEM OF THE DAY (POTD) -->
+        <section id="potd-section" class="mb-14">
+            <div class="potd-banner bg-gradient-to-r from-[#7B42F6]/25 via-[#181818] to-[#CDFF29]/15 border-4 border-black rounded-3xl p-6 sm:p-8 shadow-brutal-md relative overflow-hidden">
+                
+                <!-- Glow Accent -->
+                <div class="absolute -right-20 -top-20 w-60 h-60 bg-[#CDFF29]/10 rounded-full blur-3xl pointer-events-none"></div>
+
+                <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6 relative z-10">
+                    <div class="max-w-3xl">
+                        <!-- Header badges -->
+                        <div class="flex flex-wrap items-center gap-2 mb-3">
+                            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#CDFF29] text-black font-mono text-xs font-black uppercase tracking-wider shadow-brutal-sm border border-black">
+                                <span>⚡</span>
+                                <span>PROBLEM OF THE DAY</span>
+                            </span>
+                            <span id="potd-date-badge" class="px-3 py-1 rounded-full bg-black/60 border border-gray-700 text-gray-300 font-mono text-xs font-bold">
+                                Loading...
+                            </span>
+                            <span id="potd-countdown-badge" class="px-2.5 py-0.5 rounded-full bg-red-500/20 text-red-400 border border-red-500/40 font-mono text-[11px] font-bold">
+                                ⏳ --:--:--
+                            </span>
+                        </div>
+
+                        <!-- POTD Title -->
+                        <h2 id="potd-title" class="font-black text-2xl sm:text-3xl text-white uppercase tracking-tight mb-2 leading-tight">
+                            Loading today's problem...
+                        </h2>
+
+                        <!-- POTD Meta -->
+                        <div class="flex flex-wrap items-center gap-x-3 gap-y-1.5 text-xs font-mono text-gray-300 mb-2.5">
+                            <span id="potd-topic-tag" class="px-2.5 py-0.5 rounded-lg bg-[#7B42F6]/30 text-[#CDFF29] font-bold border border-[#7B42F6]/50">Topic</span>
+                            <span id="potd-difficulty-badge" class="px-2.5 py-0.5 rounded-lg font-bold">Medium</span>
+                            <span id="potd-complexity" class="text-gray-400 font-mono">Time: O(N)</span>
+                            <span id="potd-companies" class="text-gray-400">FAANG Target</span>
+                        </div>
+
+                        <!-- POTD Takeaway -->
+                        <p id="potd-summary" class="text-xs text-gray-300 font-mono leading-relaxed mb-3">
+                            Solve today's featured challenge to advance your daily coding streak.
+                        </p>
+
+                        <!-- Quote / Streak Motivation -->
+                        <div class="text-[11px] font-mono text-gray-400 italic flex items-center gap-2">
+                            <span>💡</span>
+                            <span id="potd-quote">"Consistent code over chaotic cramming."</span>
+                        </div>
+                    </div>
+
+                    <!-- POTD Action Buttons -->
+                    <div class="flex flex-col sm:flex-row lg:flex-col gap-3 flex-shrink-0 w-full sm:w-auto">
+                        <!-- Mark as Solved Button -->
+                        <button type="button" id="potd-toggle-btn" onclick="togglePotdSolved()" class="group relative px-6 py-3.5 bg-[#CDFF29] hover:bg-white text-black font-mono text-xs sm:text-[13px] font-black uppercase tracking-widest rounded-2xl border-3 border-black shadow-brutal hover:shadow-brutal-lime hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 flex items-center justify-center gap-2.5 cursor-pointer select-none">
+                            <span id="potd-btn-icon" class="w-5 h-5 rounded-lg bg-black text-[#CDFF29] flex items-center justify-center transition-transform group-hover:scale-110 shadow-sm shrink-0">
+                                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
+                            </span>
+                            <span id="potd-toggle-label" class="font-black tracking-widest">MARK AS SOLVED</span>
+                            <span id="potd-streak-pill" class="ml-1 px-2 py-0.5 rounded-md bg-black text-[#CDFF29] text-[10px] font-mono font-black tracking-normal shadow-sm border border-black/20">+1 STREAK</span>
+                        </button>
+
+                        <div class="flex items-center gap-2 w-full">
+                            <!-- Direct LeetCode Link -->
+                            <a id="potd-leetcode-link" href="#" target="_blank" rel="noopener noreferrer" class="flex-1 px-4 py-2.5 bg-[#FFA116] hover:bg-[#ffb038] text-black font-mono text-xs font-black uppercase tracking-wider rounded-xl border-2 border-black shadow-brutal-sm transition-all flex items-center justify-center gap-2 text-center" title="Solve on LeetCode">
+                                <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="currentColor">
+                                    <path fill="#000000" d="M16.102 17.93l-2.697 2.607c-.466.467-1.111.662-1.823.662s-1.357-.195-1.824-.662l-4.332-4.363c-.467-.467-.702-1.15-.702-1.863s.235-1.357.702-1.824l4.319-4.38c.467-.467 1.125-.645 1.837-.645s1.357.195 1.823.662l2.697 2.606c.514.515 1.365.497 1.9-.038.535-.536.553-1.387.039-1.901l-2.609-2.636a5.216 5.216 0 0 0-3.69-1.547 5.176 5.176 0 0 0-3.676 1.547L3.75 11.2c-1.015 1.014-1.574 2.37-1.574 3.806s.559 2.792 1.574 3.806l4.333 4.363c1.014 1.014 2.37 1.574 3.806 1.574s2.792-.56 3.806-1.574l2.697-2.607c.514-.514.496-1.365-.039-1.9-.535-.536-1.386-.554-1.9-.038z"/>
+                                    <path fill="#000000" d="M10.428 15.658h9.856c.725 0 1.314-.589 1.314-1.314 0-.726-.589-1.315-1.314-1.315h-9.856c-.726 0-1.315.589-1.315 1.315 0 .725.589 1.314 1.315 1.314z"/>
+                                </svg>
+                                <span>Solve &rarr;</span>
+                            </a>
+
+                            <!-- Solution Editorial Link -->
+                            <a id="potd-solution-link" href="#" target="_blank" rel="noopener noreferrer" class="flex-1 px-4 py-2.5 bg-[#2FD2A3] hover:bg-[#25b58c] text-black font-mono text-xs font-black uppercase tracking-wider rounded-xl border-2 border-black shadow-brutal-sm transition-all flex items-center justify-center gap-1.5 text-center" title="Universal Solution">
+                                <span>📖 Sol</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SECTION 2: CURATED DSA ROADMAP -->
+        <section id="roadmap-section" class="mb-14">
+            
+            <!-- Controls Bar: Search & Topic Filter -->
+            <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-6">
+                <div>
+                    <div class="inline-flex items-center gap-1.5 text-xs font-mono font-bold uppercase tracking-wider text-[#7B42F6] bg-[#7B42F6]/15 px-3 py-1 rounded-full border border-[#7B42F6]/40 mb-2">
+                        <span>📚</span>
+                        <span>CURATED SHEET</span>
+                    </div>
+                    <h2 class="font-black text-2xl sm:text-3xl uppercase tracking-tight text-white flex items-center gap-3">
+                        PRACTICE ROADMAP
+                        <span id="filtered-count-badge" class="text-xs font-mono font-bold bg-[#CDFF29] text-black px-2.5 py-0.5 rounded-full border border-black shadow-brutal-sm">
+                            500+ Problems
+                        </span>
+                    </h2>
+                    <p class="text-xs text-gray-400 font-mono mt-1">
+                        13 core topic tracks organized from foundational patterns to advanced optimizations.
+                    </p>
+                </div>
+
+                <!-- Search Input & Quick Filters -->
+                <div class="flex flex-wrap items-center gap-3">
+                    <!-- Difficulty Dropdown -->
+                    <div class="flex items-center gap-1.5 bg-[#181818] border-2 border-black rounded-xl px-3 py-1.5 shadow-brutal-sm">
+                        <span class="text-xs font-mono text-gray-400 font-bold">Diff:</span>
+                        <select id="filter-difficulty" onchange="renderProblemSheet()" class="bg-transparent text-white text-xs font-mono font-bold outline-none cursor-pointer">
+                            <option value="all" class="bg-[#181818] text-white">All Difficulties</option>
+                            <option value="Easy" class="bg-[#181818] text-white">Easy Only</option>
+                            <option value="Medium" class="bg-[#181818] text-white">Medium Only</option>
+                            <option value="Hard" class="bg-[#181818] text-white">Hard Only</option>
+                        </select>
+                    </div>
+
+                    <!-- Status Filter Dropdown -->
+                    <div class="flex items-center gap-1.5 bg-[#181818] border-2 border-black rounded-xl px-3 py-1.5 shadow-brutal-sm">
+                        <span class="text-xs font-mono text-gray-400 font-bold">Status:</span>
+                        <select id="filter-status" onchange="renderProblemSheet()" class="bg-transparent text-white text-xs font-mono font-bold outline-none cursor-pointer">
+                            <option value="all" class="bg-[#181818] text-white">All Statuses</option>
+                            <option value="solved" class="bg-[#181818] text-white">✅ Solved Only</option>
+                            <option value="unsolved" class="bg-[#181818] text-white">⏳ Unsolved Only</option>
+                            <option value="revision" class="bg-[#181818] text-white">🔖 Marked for Revision</option>
+                        </select>
+                    </div>
+
+                    <!-- Search Input -->
+                    <div class="relative min-w-[220px]">
+                        <input type="text" id="dsa-search-input" oninput="renderProblemSheet()" placeholder="Search problem or company..." class="w-full bg-[#181818] border-2 border-black text-white text-xs font-mono rounded-xl pl-8 pr-3 py-2 outline-none focus:border-[#CDFF29] shadow-brutal-sm transition-colors">
+                        <svg class="w-4 h-4 text-gray-400 absolute left-2.5 top-2.5 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Topic Pills Bar (Horizontal Scrollable) -->
+            <div id="topic-pills-bar" class="flex items-center gap-2 overflow-x-auto pb-3 mb-6 scrollbar-none mobile-chips-scroll">
+                <!-- Dynamically populated -->
+            </div>
+
+            <!-- Problems Container -->
+            <div id="problems-container" class="space-y-8">
+                <!-- Populated by dynamic topic clusters or table rows -->
+            </div>
+
+            <!-- Empty State -->
+            <div id="dsa-empty-state" class="hidden text-center py-16 bg-[#141414] border-2 border-dashed border-gray-800 rounded-3xl p-8">
+                <div class="text-4xl mb-3">🔍</div>
+                <h3 class="font-bold text-lg text-white mb-1">No DSA Problems Match Your Criteria</h3>
+                <p class="text-gray-400 text-xs font-mono max-w-md mx-auto mb-4">Try clearing the search term, resetting the difficulty filter, or switching topic tab.</p>
+                <button type="button" onclick="resetFilters()" class="px-4 py-2 bg-[#CDFF29] text-black font-mono text-xs font-bold rounded-xl border-2 border-black shadow-brutal-sm hover:bg-[#b8e822] transition-colors">
+                    Reset All Filters
+                </button>
+            </div>
+        </section>
+
+        <!-- FOOTER MOTIVATIONAL BANNER -->
+        <div class="bg-gradient-to-r from-[#7B42F6]/20 via-black to-[#CDFF29]/10 border-3 border-black rounded-3xl p-6 sm:p-10 shadow-brutal-md flex flex-col md:flex-row items-center justify-between gap-6">
+            <div class="max-w-2xl">
+                <div class="inline-flex items-center gap-2 text-xs font-mono font-bold text-[#CDFF29] uppercase tracking-wider mb-2">
+                    <span>⚡</span>
+                    <span>DEVENGERS START TO END ALL DSA VAULT</span>
+                </div>
+                <h3 class="text-2xl sm:text-3xl font-black uppercase text-white tracking-tight mb-2">
+                    Build a Streak That Gets You Hired.
+                </h3>
+                <p class="text-gray-300 text-xs sm:text-sm leading-relaxed">
+                    Every problem solved on this sheet directly links to its corresponding LeetCode submission page and multi-platform solution guides. Keep solving daily to level up your GitHub and Devengers profile badges.
+                </p>
+            </div>
+            <div class="flex flex-col sm:flex-row gap-3 w-full md:w-auto">
+                <a href="profile.html" class="px-6 py-3 bg-[#CDFF29] text-black font-mono text-xs font-black uppercase tracking-wider rounded-2xl border-2 border-black shadow-brutal-sm hover:bg-[#b8e822] transition-all flex items-center justify-center gap-2">
+                    <span>📊</span>
+                    <span>View My Profile Streak &rarr;</span>
+                </a>
+                <a href="campus.html" class="px-6 py-3 bg-white text-black font-mono text-xs font-black uppercase tracking-wider rounded-2xl border-2 border-black shadow-brutal-sm hover:bg-gray-100 transition-all flex items-center justify-center gap-2">
+                    <span>🏛️</span>
+                    <span>Campus Resource PYQs &rarr;</span>
+                </a>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- SECTION: Site Footer (Matching index.html) -->
+    <footer class="relative bg-[#0b0b0b] w-full pt-28 pb-16 px-6 overflow-hidden text-center select-none" id="site-footer">
+        <!-- SVG Grid Lines Background -->
+        <svg class="absolute inset-0 w-full h-full pointer-events-none opacity-20" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <pattern id="footer-grid-pattern" width="24" height="24" patternUnits="userSpaceOnUse">
+                    <line x1="0" y1="24" x2="24" y2="24" stroke="#ffffff" stroke-width="1" stroke-dasharray="3,3" />
+                    <line x1="24" y1="0" x2="24" y2="24" stroke="#ffffff" stroke-width="1" stroke-dasharray="3,3" />
+                </pattern>
+                <pattern id="footer-major-grid" width="120" height="120" patternUnits="userSpaceOnUse">
+                    <line x1="0" y1="120" x2="120" y2="120" stroke="#ffffff" stroke-width="1" stroke-opacity="0.35" />
+                    <line x1="120" y1="0" x2="120" y2="120" stroke="#ffffff" stroke-width="1" stroke-opacity="0.35" />
+                </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#footer-grid-pattern)" />
+            <rect width="100%" height="100%" fill="url(#footer-major-grid)" />
+        </svg>
+
+        <div class="relative z-10 max-w-[1000px] mx-auto flex flex-col items-center">
+
+            <!-- Eyebrow -->
+            <p class="text-white text-[15px] md:text-[18px] font-semibold tracking-tight mb-7">
+                A Technology &amp; Developer Community
+            </p>
+
+            <!-- 3D Extruded Logo (DEVENGERS) -->
+            <div class="w-full max-w-[620px] flex justify-center mb-8 px-4">
+                <svg class="w-full h-auto overflow-visible select-none drop-shadow-lg transition-transform hover:scale-[1.02] duration-300" viewBox="0 0 850 140" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <style>
+                            .svg-devengers-text {
+                                font-family: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+                                font-weight: 900;
+                                font-size: 88px;
+                                letter-spacing: -2px;
+                                text-anchor: middle;
+                                dominant-baseline: central;
+                            }
+                        </style>
+                    </defs>
+                    <g transform="translate(425, 65) skewX(-5)">
+                        <!-- Bottom Black Shadow -->
+                        <text class="svg-devengers-text" x="-18" y="18" fill="#000000" stroke="#000000" stroke-width="8" stroke-linejoin="round">DEVENGERS</text>
+                        <text class="svg-devengers-text" x="-17" y="17" fill="#000000" stroke="#000000" stroke-width="8" stroke-linejoin="round">DEVENGERS</text>
+                        
+                        <!-- 3D White/Gray Extrusion Layers -->
+                        <text class="svg-devengers-text" x="-16" y="16" fill="#e2e2e2" stroke="#e2e2e2" stroke-width="8" stroke-linejoin="round">DEVENGERS</text>
+                        <text class="svg-devengers-text" x="-15" y="15" fill="#e2e2e2" stroke="#e2e2e2" stroke-width="8" stroke-linejoin="round">DEVENGERS</text>
+                        <text class="svg-devengers-text" x="-14" y="14" fill="#e2e2e2" stroke="#e2e2e2" stroke-width="8" stroke-linejoin="round">DEVENGERS</text>
+                        <text class="svg-devengers-text" x="-13" y="13" fill="#e2e2e2" stroke="#e2e2e2" stroke-width="8" stroke-linejoin="round">DEVENGERS</text>
+                        <text class="svg-devengers-text" x="-12" y="12" fill="#e2e2e2" stroke="#e2e2e2" stroke-width="8" stroke-linejoin="round">DEVENGERS</text>
+                        <text class="svg-devengers-text" x="-11" y="11" fill="#e2e2e2" stroke="#e2e2e2" stroke-width="8" stroke-linejoin="round">DEVENGERS</text>
+                        <text class="svg-devengers-text" x="-10" y="10" fill="#e2e2e2" stroke="#e2e2e2" stroke-width="8" stroke-linejoin="round">DEVENGERS</text>
+                        <text class="svg-devengers-text" x="-9" y="9" fill="#e2e2e2" stroke="#e2e2e2" stroke-width="8" stroke-linejoin="round">DEVENGERS</text>
+                        <text class="svg-devengers-text" x="-8" y="8" fill="#e2e2e2" stroke="#e2e2e2" stroke-width="8" stroke-linejoin="round">DEVENGERS</text>
+                        <text class="svg-devengers-text" x="-7" y="7" fill="#e2e2e2" stroke="#e2e2e2" stroke-width="8" stroke-linejoin="round">DEVENGERS</text>
+                        <text class="svg-devengers-text" x="-6" y="6" fill="#e2e2e2" stroke="#e2e2e2" stroke-width="8" stroke-linejoin="round">DEVENGERS</text>
+                        <text class="svg-devengers-text" x="-5" y="5" fill="#e2e2e2" stroke="#e2e2e2" stroke-width="8" stroke-linejoin="round">DEVENGERS</text>
+                        <text class="svg-devengers-text" x="-4" y="4" fill="#e2e2e2" stroke="#e2e2e2" stroke-width="8" stroke-linejoin="round">DEVENGERS</text>
+                        <text class="svg-devengers-text" x="-3" y="3" fill="#ffffff" stroke="#ffffff" stroke-width="8" stroke-linejoin="round">DEVENGERS</text>
+                        <text class="svg-devengers-text" x="-2" y="2" fill="#ffffff" stroke="#ffffff" stroke-width="8" stroke-linejoin="round">DEVENGERS</text>
+                        <text class="svg-devengers-text" x="-1" y="1" fill="#ffffff" stroke="#ffffff" stroke-width="8" stroke-linejoin="round">DEVENGERS</text>
+
+                        <!-- Top Front White Outline -->
+                        <text class="svg-devengers-text" x="0" y="0" fill="#ffffff" stroke="#ffffff" stroke-width="8" stroke-linejoin="round">DEVENGERS</text>
+                        <!-- Top Front Solid Black Face -->
+                        <text class="svg-devengers-text" x="0" y="0" fill="#000000">DEVENGERS</text>
+                    </g>
+                </svg>
+            </div>
+
+            <!-- Subtitle -->
+            <h3 class="text-white text-[22px] sm:text-[26px] md:text-[30px] font-semibold tracking-tight leading-[1.3] max-w-[620px] mb-8">
+                Join for free and build with<br class="hidden sm:inline"> creative developers on the internet.
+            </h3>
+
+            <!-- Pill CTA Button -->
+            <a href="https://whatsapp.com/channel/0029VbCVGAd8KMql7Ie3ew43" target="_blank" rel="noopener noreferrer"
+                class="inline-flex items-center gap-2 bg-white text-black font-semibold text-[13px] md:text-[14px] px-7 py-3 rounded-full hover:bg-gray-200 transition-all shadow-md group mb-16">
+                <span>Join Devengers</span>
+                <span class="text-base font-normal leading-none group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform">&#8599;</span>
+            </a>
+
+            <!-- Navigation Links Row 1 -->
+            <div class="flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-white font-medium text-[15px] md:text-[16px] tracking-normal mb-4">
+                <a href="index.html" class="hover:text-gray-300 transition-colors">Home</a>
+                <a href="events.html" class="hover:text-gray-300 transition-colors">Events</a>
+                <a href="learn.html" class="hover:text-gray-300 transition-colors">Learn</a>
+                <a href="campus.html" class="hover:text-gray-300 transition-colors">Campus Resource</a>
+                <a href="gallery.html" class="hover:text-gray-300 transition-colors">Gallery</a>
+                <a href="dsa.html" class="hover:text-gray-300 transition-colors">DSA Streak</a>
+                <a href="directory.html" class="hover:text-gray-300 transition-colors">Directory</a>
+            </div>
+
+            <!-- Navigation Links Row 2 -->
+            <div class="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-gray-400 font-normal text-[13px] md:text-[14px] tracking-normal mb-8">
+                <a href="index.html#social-section" class="hover:text-white transition-colors">About</a>
+                <a href="index.html#faq-section" class="hover:text-white transition-colors">FAQs</a>
+                <a href="mailto:event@devengers.org?subject=Campus%20Event%20or%20Hackathon%20Inquiry" class="hover:text-white transition-colors">Partnerships</a>
+                <a href="mailto:support@devengers.org?subject=General%20Inquiry%20-%20Devengers" class="hover:text-white transition-colors">Contact</a>
+                <a href="login.html" class="hover:text-white transition-colors">Login</a>
+                <a href="register.html" class="hover:text-white transition-colors">Sign up</a>
+                <a href="index.html#footer-cta-section" class="hover:text-white transition-colors">Campus Chapter</a>
+            </div>
+
+            <!-- Social Media Icons Row -->
+            <div class="flex items-center justify-center gap-6 text-white mb-8">
+                <!-- WhatsApp Channel -->
+                <a href="https://whatsapp.com/channel/0029VbCVGAd8KMql7Ie3ew43" target="_blank" rel="noopener noreferrer"
+                    class="hover:text-[#25D366] transition-colors" title="WhatsApp Channel" aria-label="WhatsApp Channel">
+                    <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                        <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2ZM12.05 20.16C10.57 20.16 9.12 19.76 7.85 19.01L7.55 18.83L4.44 19.65L5.27 16.61L5.07 16.3C4.24 14.98 3.81 13.47 3.81 11.91C3.81 7.37 7.5 3.68 12.05 3.68C14.25 3.68 16.31 4.54 17.87 6.1C19.42 7.66 20.28 9.72 20.28 11.92C20.28 16.46 16.59 20.16 12.05 20.16ZM16.57 14.33C16.32 14.21 15.1 13.61 14.87 13.53C14.64 13.44 14.48 13.4 14.31 13.65C14.15 13.89 13.68 14.45 13.53 14.62C13.39 14.78 13.25 14.8 13 14.68C12.75 14.55 11.95 14.29 11 13.45C10.26 12.79 9.76 11.98 9.62 11.73C9.47 11.49 9.6 11.35 9.73 11.23C9.84 11.12 9.98 10.94 10.1 10.8C10.23 10.66 10.27 10.55 10.35 10.39C10.43 10.22 10.39 10.08 10.33 9.96C10.27 9.84 9.78 8.63 9.57 8.14C9.37 7.66 9.17 7.72 9.02 7.71C8.88 7.71 8.71 7.71 8.55 7.71C8.38 7.71 8.12 7.77 7.89 8.02C7.67 8.26 7.03 8.86 7.03 10.08C7.03 11.3 7.92 12.48 8.04 12.65C8.16 12.81 9.78 15.31 12.26 16.38C12.85 16.64 13.31 16.79 13.67 16.91C14.26 17.09 14.8 17.07 15.22 17C15.7 16.93 16.69 16.4 16.9 15.81C17.11 15.22 17.11 14.71 17.05 14.6C16.98 14.5 16.82 14.45 16.57 14.33Z" />
+                    </svg>
+                </a>
+                <!-- Instagram -->
+                <a href="https://www.instagram.com/officialdevengers" target="_blank" rel="noopener noreferrer"
+                    class="hover:text-[#E1306C] transition-colors" title="Instagram" aria-label="Instagram">
+                    <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                        <rect x="2.5" y="2.5" width="19" height="19" rx="5" />
+                        <circle cx="12" cy="12" r="4.2" />
+                        <circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" />
+                    </svg>
+                </a>
+                <!-- LinkedIn -->
+                <a href="https://www.linkedin.com/company/officialdevengers" target="_blank" rel="noopener noreferrer"
+                    class="hover:text-[#0077B5] transition-colors" title="LinkedIn" aria-label="LinkedIn">
+                    <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                        <rect x="2.5" y="2.5" width="19" height="19" rx="4" />
+                        <circle cx="7.5" cy="8" r="1.3" fill="currentColor" />
+                        <path d="M6.3 11.2h2.4v6.5H6.3z" fill="currentColor" />
+                        <path d="M11 11.2h2.2v1c.4-.7 1.3-1.2 2.4-1.2 2.1 0 3.1 1.3 3.1 3.5v4.2h-2.3v-3.7c0-1-.4-1.7-1.4-1.7-1 0-1.5.7-1.5 1.7v3.7H11z" fill="currentColor" />
+                    </svg>
+                </a>
+                <!-- YouTube -->
+                <a href="https://www.youtube.com/@officialdevengers" target="_blank" rel="noopener noreferrer"
+                    class="hover:text-[#FF0000] transition-colors" title="YouTube" aria-label="YouTube">
+                    <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                        <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+                    </svg>
+                </a>
+                <!-- Devengers Community Smiley -->
+                <a href="index.html" class="hover:text-[#FCE205] transition-colors" title="Devengers Community" aria-label="Devengers Community">
+                    <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                        <circle cx="12" cy="12" r="9" />
+                        <circle cx="9" cy="9.5" r="1" fill="currentColor" />
+                        <circle cx="15" cy="9.5" r="1" fill="currentColor" />
+                        <path d="M8.5 14c.8 1.5 2 2.2 3.5 2.2s2.7-.7 3.5-2.2" stroke-linecap="round" />
+                    </svg>
+                </a>
+                <!-- Admin Login Icon -->
+                <a href="admin-events.html" class="admin-only hidden hover:text-[#CDFF29] transition-colors p-1.5 rounded-lg border border-gray-800 hover:border-[#CDFF29]/40 bg-black/40 hover:bg-[#CDFF29]/10 items-center justify-center text-gray-500" title="Admin Portal" aria-label="Admin Portal">
+                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                        <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                    </svg>
+                </a>
+            </div>
+
+            <!-- Copyright and Legal -->
+            <p class="text-[#888888] font-mono text-[11px] uppercase tracking-wider mb-2">
+                DEVENGERS COMMUNITY &copy; 2026 ALL RIGHTS RESERVED
+            </p>
+            <div class="flex flex-wrap items-center justify-center gap-x-2 gap-y-1 text-[#888888] font-mono text-[10px] uppercase tracking-wider">
+                <a href="campus.html" class="hover:text-white transition-colors">Terms</a>
+                <span>|</span>
+                <a href="campus.html" class="hover:text-white transition-colors">Privacy</a>
+                <span>|</span>
+                <a href="campus.html" class="hover:text-white transition-colors">Acceptable Use</a>
+                <span>|</span>
+                <a href="mailto:support@devengers.org" class="hover:text-white transition-colors">Campus Support</a>
+                <span>|</span>
+                <a href="mailto:event@devengers.org" class="hover:text-white transition-colors">Partnerships</a>
+                <span>|</span>
+                <a href="campus.html" class="hover:text-white transition-colors">Cookie Policy</a>
+                <span>|</span>
+                <a href="campus.html" class="hover:text-white transition-colors">Community Guidelines</a>
+                <span class="admin-only hidden">|</span>
+                <a href="admin-events.html" class="admin-only hidden hover:text-[#CDFF29] text-gray-400 transition-colors items-center gap-1 font-bold">
+                    <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                        <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                    </svg>
+                    <span>Admin</span>
+                </a>
+            </div>
+
+        </div>
+    </footer>
+
+    <!-- CLIENT LOGIC -->
+    <script>
+        // State
+        let DSA_DATA = null;
+        let CURRENT_POTD = null;
+        let activeTopic = 'all';
+        let userSolved = new Set();
+        let userRevision = new Set();
+        let currentStreak = 1;
+        let maxStreak = 1;
+        let userHeatmap = {};
+
+        // Local Storage Keys for offline / guest backup
+        const LS_SOLVED_KEY = 'devengers_dsa_solved';
+        const LS_REVISION_KEY = 'devengers_dsa_revision';
+        const LS_STREAK_KEY = 'devengers_dsa_streak';
+
+        document.addEventListener('DOMContentLoaded', async () => {
+            loadLocalProgress();
+            await fetchUserProgress();
+            await loadPotd();
+            await loadDsaSheet();
+        });
+
+        // 1. Fetch POTD & Live Auto-Updating Timer
+        let potdTimerInterval = null;
+        let currentPotdDate = null;
+
+        function startPotdLiveCountdown(resetTimestampMs, secondsRemaining) {
+            if (potdTimerInterval) clearInterval(potdTimerInterval);
+
+            // Compute target UTC millisecond epoch for midnight IST
+            const targetTime = resetTimestampMs || (Date.now() + ((secondsRemaining || 3600) * 1000));
+
+            function tick() {
+                const now = Date.now();
+                const diffMs = targetTime - now;
+
+                if (diffMs <= 0) {
+                    const statTimer = document.getElementById('stat-potd-timer');
+                    const potdBadge = document.getElementById('potd-countdown-badge');
+                    if (statTimer) statTimer.textContent = "00:00:00";
+                    if (potdBadge) potdBadge.textContent = "🔄 Updating today's POTD...";
+                    
+                    clearInterval(potdTimerInterval);
+                    // Automatically auto-update POTD for the new day!
+                    setTimeout(() => {
+                        loadPotd();
+                    }, 1500);
+                    return;
+                }
+
+                const totalSecs = Math.floor(diffMs / 1000);
+                const hours = Math.floor(totalSecs / 3600);
+                const mins = Math.floor((totalSecs % 3600) / 60);
+                const secs = totalSecs % 60;
+
+                const hStr = String(hours).padStart(2, '0');
+                const mStr = String(mins).padStart(2, '0');
+                const sStr = String(secs).padStart(2, '0');
+                const timeString = `${hStr}:${mStr}:${sStr}`;
+
+                const statTimer = document.getElementById('stat-potd-timer');
+                if (statTimer) statTimer.textContent = timeString;
+
+                const potdBadge = document.getElementById('potd-countdown-badge');
+                if (potdBadge) potdBadge.textContent = `⏳ Reset in ${timeString}`;
+            }
+
+            tick();
+            potdTimerInterval = setInterval(tick, 1000);
+        }
+
+        // Auto-refresh on tab visibility if day rolled over
+        document.addEventListener('visibilitychange', () => {
+            if (!document.hidden && currentPotdDate) {
+                loadPotd();
+            }
+        });
+
+        async function loadPotd() {
+            try {
+                const res = await fetch('/api/dsa/potd');
+                const data = await res.json();
+                if (data.success && data.potd) {
+                    CURRENT_POTD = data.potd;
+                    renderPotd(CURRENT_POTD);
+                }
+            } catch (err) {
+                console.error("Failed to load POTD:", err);
+            }
+        }
+
+        function renderPotd(potd) {
+            const p = potd.problem;
+            if (!p) return;
+
+            currentPotdDate = potd.date;
+
+            document.getElementById('potd-date-badge').textContent = potd.formatted_date || 'Today';
+            document.getElementById('potd-title').textContent = p.title;
+            document.getElementById('potd-topic-tag').textContent = p.topic_name || 'DSA Core';
+            document.getElementById('potd-complexity').textContent = `Time: ${p.tc} • Space: ${p.sc}`;
+            document.getElementById('potd-companies').textContent = `Target: ${(p.companies || []).join(', ')}`;
+            document.getElementById('potd-summary').textContent = p.summary || 'Analyze invariant properties and implement optimal space-time tradeoffs.';
+            document.getElementById('potd-quote').textContent = `"${potd.quote || 'Consistent code over chaotic cramming.'}"`;
+
+            // Start live ticking countdown
+            startPotdLiveCountdown(potd.reset_timestamp_ms, potd.seconds_remaining);
+
+            // Diff Badge
+            const diffEl = document.getElementById('potd-difficulty-badge');
+            diffEl.textContent = p.difficulty;
+            diffEl.className = `px-2.5 py-0.5 rounded-lg font-mono font-bold text-xs ${getDifficultyBadgeClass(p.difficulty)}`;
+
+            // Links
+            document.getElementById('potd-leetcode-link').href = p.leetcode_url;
+            document.getElementById('potd-solution-link').href = p.solution_url;
+
+            updatePotdButtonState(p.id);
+        }
+
+        function updatePotdButtonState(probId) {
+            const btn = document.getElementById('potd-toggle-btn');
+            const label = document.getElementById('potd-toggle-label');
+            const iconContainer = document.getElementById('potd-btn-icon');
+            const pill = document.getElementById('potd-streak-pill');
+            if (!btn || !label) return;
+
+            const isSolved = userSolved.has(probId);
+            if (isSolved) {
+                btn.className = "group relative px-6 py-3.5 bg-[#00B8A3] hover:bg-[#00d4bc] text-black font-mono text-xs sm:text-[13px] font-black uppercase tracking-widest rounded-2xl border-3 border-black shadow-brutal transition-all duration-200 flex items-center justify-center gap-2.5 cursor-pointer select-none";
+                label.textContent = "COMPLETED TODAY • STREAK ACTIVE";
+                if (iconContainer) {
+                    iconContainer.className = "w-5 h-5 rounded-lg bg-black text-[#00B8A3] flex items-center justify-center transition-transform group-hover:scale-110 shadow-sm shrink-0";
+                    iconContainer.innerHTML = '<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>';
+                }
+                if (pill) {
+                    pill.className = "ml-1 px-2 py-0.5 rounded-md bg-black text-[#00B8A3] text-[10px] font-mono font-black tracking-normal shadow-sm border border-black/20";
+                    pill.textContent = "STREAK SAFE";
+                }
+            } else {
+                btn.className = "group relative px-6 py-3.5 bg-[#CDFF29] hover:bg-white text-black font-mono text-xs sm:text-[13px] font-black uppercase tracking-widest rounded-2xl border-3 border-black shadow-brutal hover:shadow-brutal-lime hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 flex items-center justify-center gap-2.5 cursor-pointer select-none";
+                label.textContent = "MARK AS COMPLETED TODAY";
+                if (iconContainer) {
+                    iconContainer.className = "w-5 h-5 rounded-lg bg-black text-[#CDFF29] flex items-center justify-center transition-transform group-hover:scale-110 shadow-sm shrink-0";
+                    iconContainer.innerHTML = '<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>';
+                }
+                if (pill) {
+                    pill.className = "ml-1 px-2 py-0.5 rounded-md bg-black text-[#CDFF29] text-[10px] font-mono font-black tracking-normal shadow-sm border border-black/20";
+                    pill.textContent = "+1 STREAK";
+                }
+            }
+        }
+
+        async function togglePotdSolved() {
+            if (!CURRENT_POTD || !CURRENT_POTD.problem) return;
+            const p = CURRENT_POTD.problem;
+            await toggleProblemStatus(p.id, 'solved', p.topic_name, p.title);
+            updatePotdButtonState(p.id);
+        }
+
+        // 2. Fetch DSA Sheet
+        async function loadDsaSheet() {
+            try {
+                const res = await fetch('/api/dsa/sheet');
+                const data = await res.json();
+                if (data.success && data.data) {
+                    DSA_DATA = data.data;
+                    renderTopicPills(DSA_DATA.topics);
+                    renderProblemSheet();
+                    updateCounters();
+                }
+            } catch (err) {
+                console.error("Failed to load DSA sheet:", err);
+            }
+        }
+
+        function renderTopicPills(topics) {
+            const bar = document.getElementById('topic-pills-bar');
+            if (!bar || !topics) return;
+
+            let html = `
+                <button type="button" onclick="setTopicFilter('all')" class="topic-pill px-3.5 py-1.5 rounded-xl border-2 border-black font-mono text-xs font-bold transition-all flex-shrink-0 ${activeTopic === 'all' ? 'bg-[#CDFF29] text-black shadow-brutal-sm font-black' : 'bg-[#181818] text-gray-300 hover:bg-[#222]'}">
+                    All Topics (${DSA_DATA.total_problems || 510})
+                </button>
+            `;
+
+            topics.forEach(t => {
+                const isActive = activeTopic === t.id;
+                html += `
+                    <button type="button" onclick="setTopicFilter('${escapeJs(t.id)}')" class="topic-pill px-3 py-1.5 rounded-xl border-2 border-black font-mono text-xs font-bold transition-all flex-shrink-0 flex items-center gap-1.5 ${isActive ? 'bg-[#7B42F6] text-white shadow-brutal-sm font-black' : 'bg-[#181818] text-gray-300 hover:bg-[#222]'}">
+                        <span>${t.icon || '📌'}</span>
+                        <span>${escapeHtml(t.name)}</span>
+                        <span class="text-[10px] px-1.5 py-0.2 rounded bg-black/40 text-gray-400">${(t.problems || []).length}</span>
+                    </button>
+                `;
+            });
+
+            bar.innerHTML = html;
+        }
+
+        function setTopicFilter(topicId) {
+            activeTopic = topicId;
+            renderTopicPills(DSA_DATA.topics);
+            renderProblemSheet();
+        }
+
+        // 3. Render Problem Sheet
+        function renderProblemSheet() {
+            if (!DSA_DATA || !DSA_DATA.topics) return;
+
+            const searchVal = document.getElementById('dsa-search-input') ? document.getElementById('dsa-search-input').value.trim().toLowerCase() : '';
+            const diffFilter = document.getElementById('filter-difficulty') ? document.getElementById('filter-difficulty').value : 'all';
+            const statusFilter = document.getElementById('filter-status') ? document.getElementById('filter-status').value : 'all';
+
+            const container = document.getElementById('problems-container');
+            const emptyEl = document.getElementById('dsa-empty-state');
+            const countBadge = document.getElementById('filtered-count-badge');
+
+            let totalDisplayed = 0;
+            let topicsToRender = DSA_DATA.topics;
+            if (activeTopic !== 'all') {
+                topicsToRender = topicsToRender.filter(t => t.id === activeTopic);
+            }
+
+            let containerHtml = '';
+
+            topicsToRender.forEach((topic, topicIdx) => {
+                let filteredProblems = (topic.problems || []).filter(p => {
+                    if (diffFilter !== 'all' && p.difficulty !== diffFilter) return false;
+                    
+                    const isSolved = userSolved.has(p.id);
+                    const isRevision = userRevision.has(p.id);
+
+                    if (statusFilter === 'solved' && !isSolved) return false;
+                    if (statusFilter === 'unsolved' && isSolved) return false;
+                    if (statusFilter === 'revision' && !isRevision) return false;
+
+                    if (searchVal) {
+                        const match = p.title.toLowerCase().includes(searchVal) ||
+                                      (p.summary || '').toLowerCase().includes(searchVal) ||
+                                      (p.companies || []).some(c => c.toLowerCase().includes(searchVal));
+                        if (!match) return false;
+                    }
+                    return true;
+                });
+
+                if (filteredProblems.length === 0) return;
+                totalDisplayed += filteredProblems.length;
+
+                // Difficulty breakdown
+                const easyProbs = filteredProblems.filter(p => p.difficulty === 'Easy');
+                const medProbs = filteredProblems.filter(p => p.difficulty === 'Medium');
+                const hardProbs = filteredProblems.filter(p => p.difficulty === 'Hard');
+
+                const topicSolvedCount = filteredProblems.filter(p => userSolved.has(p.id)).length;
+                const topicTotal = filteredProblems.length;
+                const topicPct = Math.round((topicSolvedCount / topicTotal) * 100);
+
+                // Build sub-sections (Easy -> Medium -> Hard)
+                let tiersHtml = '';
+
+                const renderTier = (tierName, tierIcon, tierBadgeClass, probs) => {
+                    if (probs.length === 0) return '';
+                    const tierSolved = probs.filter(p => userSolved.has(p.id)).length;
+                    return `
+                        <div class="tier-group mb-6 last:mb-0">
+                            <div class="flex items-center justify-between pb-2 mb-3 border-b border-zinc-800">
+                                <div class="flex items-center gap-2">
+                                    <span class="text-sm">${tierIcon}</span>
+                                    <span class="font-mono text-xs font-black uppercase tracking-wider ${tierBadgeClass}">
+                                        ${tierName}
+                                    </span>
+                                    <span class="text-[10px] font-mono px-2 py-0.5 rounded-full bg-black/40 text-gray-400 border border-zinc-800">
+                                        ${probs.length} Question${probs.length > 1 ? 's' : ''}
+                                    </span>
+                                </div>
+                                <span class="text-[11px] font-mono text-gray-400 font-bold">
+                                    ${tierSolved} / ${probs.length} Solved
+                                </span>
+                            </div>
+                            <div class="space-y-3">
+                                ${probs.map(prob => renderProblemCard(prob, topic.name)).join('')}
+                            </div>
+                        </div>
+                    `;
+                };
+
+                tiersHtml += renderTier('Easy / Fundamentals', '🟢', 'text-emerald-400', easyProbs);
+                tiersHtml += renderTier('Medium / Core Interview Patterns', '🟡', 'text-amber-400', medProbs);
+                tiersHtml += renderTier('Hard / Advanced Optimization Challenges', '🔴', 'text-red-400', hardProbs);
+
+                containerHtml += `
+                    <div class="topic-section bg-[#141414] border-3 border-black rounded-3xl p-6 sm:p-8 shadow-brutal-md">
+                        
+                        <!-- Topic Title & Progress Bar -->
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-5 border-b border-zinc-800 mb-6">
+                            <div>
+                                <div class="flex flex-wrap items-center gap-2 mb-1.5">
+                                    <span class="px-2.5 py-0.5 rounded-md bg-[#7B42F6]/20 text-[#CDFF29] font-mono text-[10px] font-bold border border-[#7B42F6]/40 uppercase tracking-wider">
+                                        Topic ${(topicIdx + 1).toString().padStart(2, '0')}
+                                    </span>
+                                    <span class="text-2xl">${topic.icon || '📌'}</span>
+                                    <h3 class="text-xl sm:text-2xl font-black uppercase text-white tracking-tight">
+                                        ${escapeHtml(topic.name)}
+                                    </h3>
+                                </div>
+                                <p class="text-xs font-mono text-gray-400 max-w-2xl leading-relaxed">${escapeHtml(topic.description || '')}</p>
+                                
+                                <!-- Tier pills counter -->
+                                <div class="flex flex-wrap items-center gap-2 mt-3">
+                                    <span class="px-2 py-0.5 rounded bg-emerald-500/15 text-emerald-400 font-mono text-[10px] font-bold border border-emerald-500/30">🟢 ${easyProbs.length} Easy</span>
+                                    <span class="px-2 py-0.5 rounded bg-amber-500/15 text-amber-400 font-mono text-[10px] font-bold border border-amber-500/30">🟡 ${medProbs.length} Medium</span>
+                                    <span class="px-2 py-0.5 rounded bg-red-500/15 text-red-400 font-mono text-[10px] font-bold border border-red-500/30">🔴 ${hardProbs.length} Hard</span>
+                                </div>
+                            </div>
+
+                            <div class="flex items-center gap-3 flex-shrink-0">
+                                <div class="text-right">
+                                    <div class="text-xs font-mono font-bold text-white">${topicSolvedCount} / ${topicTotal} Solved</div>
+                                    <div class="text-[10px] font-mono text-gray-400">${topicPct}% Completed</div>
+                                </div>
+                                <div class="w-24 sm:w-32 h-2.5 bg-black/60 rounded-full border border-zinc-800 overflow-hidden">
+                                    <div class="h-full bg-[#CDFF29] transition-all duration-500" style="width: ${topicPct}%"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Tier-separated Problems (Small to Hard) -->
+                        <div>
+                            ${tiersHtml}
+                        </div>
+
+                    </div>
+                `;
+            });
+
+            if (countBadge) {
+                countBadge.textContent = `${totalDisplayed} Questions`;
+            }
+
+            if (totalDisplayed === 0) {
+                container.innerHTML = '';
+                if (emptyEl) emptyEl.classList.remove('hidden');
+            } else {
+                container.innerHTML = containerHtml;
+                if (emptyEl) emptyEl.classList.add('hidden');
+            }
+        }
+
+        function renderProblemCard(p, topicName) {
+            const isSolved = userSolved.has(p.id);
+            const isRevision = userRevision.has(p.id);
+            const diffClass = getDifficultyBadgeClass(p.difficulty);
+
+            return `
+                <div class="dsa-card bg-[#181818] border-2 border-black rounded-2xl p-4 sm:p-5 shadow-brutal-sm flex flex-col md:flex-row md:items-center justify-between gap-4 transition-all hover:border-gray-600 ${isSolved ? 'border-emerald-500/40 bg-[#161c16]/50' : ''}">
+                    
+                    <!-- Left: Checkbox + Title + Meta -->
+                    <div class="flex items-start gap-3.5">
+                        
+                        <!-- Mark Solved Checkbox Button -->
+                        <button type="button" onclick="toggleProblemStatus('${escapeJs(p.id)}', 'solved', '${escapeJs(topicName)}', '${escapeJs(p.title)}')" class="mt-0.5 w-6 h-6 rounded-lg border-2 border-black flex items-center justify-center font-bold text-xs transition-all cursor-pointer ${isSolved ? 'bg-emerald-400 text-black shadow-brutal-sm' : 'bg-[#222] text-transparent hover:border-[#CDFF29]'}" title="${isSolved ? 'Mark as Unsolved' : 'Mark as Complete'}">
+                            ✓
+                        </button>
+
+                        <div>
+                            <div class="flex flex-wrap items-center gap-2 mb-1">
+                                <a href="${escapeHtml(p.leetcode_url)}" target="_blank" rel="noopener noreferrer" class="font-bold text-base sm:text-lg text-white hover:text-[#CDFF29] transition-colors leading-snug flex items-center gap-1.5 ${isSolved ? 'line-through text-gray-400' : ''}">
+                                    <span>${escapeHtml(p.title)}</span>
+                                    <span class="text-xs text-gray-500">↗</span>
+                                </a>
+                                <span class="px-2 py-0.5 rounded text-[10px] font-mono font-bold ${diffClass}">
+                                    ${p.difficulty}
+                                </span>
+                            </div>
+
+                            <p class="text-xs text-gray-400 font-mono leading-relaxed line-clamp-1 mb-1.5">
+                                ${escapeHtml(p.summary || '')}
+                            </p>
+
+                            <div class="flex flex-wrap items-center gap-x-3 gap-y-1 text-[11px] font-mono text-gray-500">
+                                <span>${p.tc} / ${p.sc}</span>
+                                <span>•</span>
+                                <span>${(p.companies || []).slice(0, 3).join(', ')}</span>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Right: Action Buttons (LeetCode Logo + Solution + Revision) -->
+                    <div class="flex flex-wrap items-center gap-2 md:justify-end flex-shrink-0 pt-2 md:pt-0 border-t md:border-t-0 border-zinc-800">
+                        
+                        <!-- Solve on LeetCode (Official Logo Icon) -->
+                        <a href="${escapeHtml(p.leetcode_url)}" target="_blank" rel="noopener noreferrer" class="px-2.5 py-1.5 bg-[#FFA116] hover:bg-[#ffb038] text-black rounded-xl border-2 border-black shadow-brutal-sm transition-all flex items-center justify-center gap-1" title="Solve on LeetCode">
+                            <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                <path fill="#000000" d="M16.102 17.93l-2.697 2.607c-.466.467-1.111.662-1.823.662s-1.357-.195-1.824-.662l-4.332-4.363c-.467-.467-.702-1.15-.702-1.863s.235-1.357.702-1.824l4.319-4.38c.467-.467 1.125-.645 1.837-.645s1.357.195 1.823.662l2.697 2.606c.514.515 1.365.497 1.9-.038.535-.536.553-1.387.039-1.901l-2.609-2.636a5.216 5.216 0 0 0-3.69-1.547 5.176 5.176 0 0 0-3.676 1.547L3.75 11.2c-1.015 1.014-1.574 2.37-1.574 3.806s.559 2.792 1.574 3.806l4.333 4.363c1.014 1.014 2.37 1.574 3.806 1.574s2.792-.56 3.806-1.574l2.697-2.607c.514-.514.496-1.365-.039-1.9-.535-.536-1.386-.554-1.9-.038z"/>
+                                <path fill="#000000" d="M10.428 15.658h9.856c.725 0 1.314-.589 1.314-1.314 0-.726-.589-1.315-1.314-1.315h-9.856c-.726 0-1.315.589-1.315 1.315 0 .725.589 1.314 1.315 1.314z"/>
+                            </svg>
+                            <span class="text-[10px] font-bold">↗</span>
+                        </a>
+
+                        <!-- Solution Link (Universal Multi-Platform) -->
+                        <a href="${escapeHtml(p.solution_url)}" target="_blank" rel="noopener noreferrer" class="px-2.5 py-1.5 bg-[#222] hover:bg-[#2a2a2a] text-gray-200 hover:text-white font-mono text-xs font-bold rounded-xl border-2 border-black shadow-brutal-sm transition-all flex items-center gap-1" title="View Solution (Multi-Platform / Editorial)">
+                            <span>📖 Sol</span>
+                        </a>
+
+                        <!-- Revision Bookmark Button -->
+                        <button type="button" onclick="toggleProblemStatus('${escapeJs(p.id)}', 'revision', '${escapeJs(topicName)}', '${escapeJs(p.title)}')" class="px-2.5 py-1.5 rounded-xl border-2 border-black text-xs font-mono font-bold transition-all shadow-brutal-sm cursor-pointer ${isRevision ? 'bg-amber-400 text-black' : 'bg-[#1e1e1e] text-gray-400 hover:text-white'}" title="${isRevision ? 'Remove from Revision' : 'Mark for Revision'}">
+                            ${isRevision ? '🔖 Marked' : '🔖 Revision'}
+                        </button>
+
+                    </div>
+
+                </div>
+            `;
+        }
+
+        function getDifficultyBadgeClass(diff) {
+            if (diff === 'Easy') return 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/40';
+            if (diff === 'Medium') return 'bg-amber-500/20 text-amber-400 border border-amber-500/40';
+            if (diff === 'Hard') return 'bg-red-500/20 text-red-400 border border-red-500/40';
+            return 'bg-gray-800 text-gray-400 border border-gray-700';
+        }
+
+        // 4. Toggle Problem Status (Solved / Revision)
+        async function toggleProblemStatus(probId, statusType = 'solved', topic = '', title = '') {
+            let active = false;
+            if (statusType === 'solved') {
+                if (userSolved.has(probId)) {
+                    userSolved.delete(probId);
+                    active = false;
+                } else {
+                    userSolved.add(probId);
+                    active = true;
+                    showToast(`✓ Marked "${title || probId}" as Solved!`);
+                }
+            } else if (statusType === 'revision') {
+                if (userRevision.has(probId)) {
+                    userRevision.delete(probId);
+                    active = false;
+                } else {
+                    userRevision.add(probId);
+                    active = true;
+                    showToast(`🔖 Marked "${title || probId}" for Revision!`);
+                }
+            }
+
+            saveLocalProgress();
+            renderProblemSheet();
+            updateCounters();
+
+            // Sync with backend API
+            try {
+                const res = await fetch('/api/user/dsa-progress', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({
+                        problem_id: probId,
+                        status: statusType,
+                        topic: topic
+                    })
+                });
+                const data = await res.json();
+                if (data.success && !data.guest) {
+                    if (data.solved) userSolved = new Set(data.solved);
+                    if (data.revision) userRevision = new Set(data.revision);
+                    if (data.streak) currentStreak = data.streak;
+                    if (data.max_streak) maxStreak = data.max_streak;
+                    if (data.heatmap) userHeatmap = data.heatmap;
+                    saveLocalProgress();
+                    updateCounters();
+                }
+            } catch (err) {
+                console.warn("Backend sync failed, state preserved locally:", err);
+            }
+        }
+
+        // 5. Backend & Local Progress Synchronization
+        async function fetchUserProgress() {
+            try {
+                const res = await fetch('/api/user/dsa-progress');
+                const data = await res.json();
+                if (data.success && data.authenticated) {
+                    userSolved = new Set(data.solved || []);
+                    userRevision = new Set(data.revision || []);
+                    currentStreak = data.streak || 1;
+                    maxStreak = data.max_streak || Math.max(currentStreak, 1);
+                    userHeatmap = data.heatmap || {};
+                    saveLocalProgress();
+                    updateCounters();
+                }
+            } catch (err) {
+                console.warn("Could not fetch remote progress:", err);
+            }
+        }
+
+        function loadLocalProgress() {
+            try {
+                const s = localStorage.getItem(LS_SOLVED_KEY);
+                const r = localStorage.getItem(LS_REVISION_KEY);
+                const st = localStorage.getItem(LS_STREAK_KEY);
+                if (s) userSolved = new Set(JSON.parse(s));
+                if (r) userRevision = new Set(JSON.parse(r));
+                if (st) currentStreak = parseInt(st) || 1;
+            } catch (e) {}
+            updateCounters();
+        }
+
+        function saveLocalProgress() {
+            try {
+                localStorage.setItem(LS_SOLVED_KEY, JSON.stringify(Array.from(userSolved)));
+                localStorage.setItem(LS_REVISION_KEY, JSON.stringify(Array.from(userRevision)));
+                localStorage.setItem(LS_STREAK_KEY, String(currentStreak));
+            } catch (e) {}
+        }
+
+        function updateCounters() {
+            const streakEl = document.getElementById('stat-streak');
+            const solvedCountEl = document.getElementById('stat-solved-count');
+            const solvedPctEl = document.getElementById('stat-solved-pct');
+            const revEl = document.getElementById('stat-revision-count');
+
+            const total = (DSA_DATA && DSA_DATA.total_problems) ? DSA_DATA.total_problems : 510;
+            const solved = userSolved.size;
+            const pct = Math.round((solved / total) * 100);
+
+            if (streakEl) streakEl.textContent = `${currentStreak} Day${currentStreak > 1 ? 's' : ''}`;
+            if (solvedCountEl) solvedCountEl.textContent = `${solved} / ${total}`;
+            if (solvedPctEl) solvedPctEl.textContent = `${pct}% Complete`;
+            if (revEl) revEl.textContent = userRevision.size;
+
+            renderDsaCircle();
+            renderDsaHeatmap();
+        }
+
+        // 6. LeetCode-Inspired Donut Circle Widget & Breakdown
+        function renderDsaCircle() {
+            let easyTotal = 126, medTotal = 270, hardTotal = 114;
+            let easySolved = 0, medSolved = 0, hardSolved = 0;
+
+            if (DSA_DATA && DSA_DATA.topics) {
+                let eT = 0, mT = 0, hT = 0;
+                DSA_DATA.topics.forEach(t => {
+                    (t.problems || []).forEach(p => {
+                        if (p.difficulty === 'Easy') {
+                            eT++;
+                            if (userSolved.has(p.id)) easySolved++;
+                        } else if (p.difficulty === 'Medium') {
+                            mT++;
+                            if (userSolved.has(p.id)) medSolved++;
+                        } else if (p.difficulty === 'Hard') {
+                            hT++;
+                            if (userSolved.has(p.id)) hardSolved++;
+                        }
+                    });
+                });
+                if (eT > 0) {
+                    easyTotal = eT;
+                    medTotal = mT;
+                    hardTotal = hT;
+                }
+            }
+
+            const totalSolved = userSolved.size;
+            const totalProblems = (DSA_DATA && DSA_DATA.total_problems) ? DSA_DATA.total_problems : (easyTotal + medTotal + hardTotal);
+            const totalPct = totalProblems > 0 ? Math.round((totalSolved / totalProblems) * 100) : 0;
+
+            // Center counter updates
+            const circleSolvedEl = document.getElementById('circle-solved-count');
+            const circleTotalEl = document.getElementById('circle-total-count');
+            const circlePctEl = document.getElementById('circle-pct-text');
+            if (circleSolvedEl) circleSolvedEl.textContent = totalSolved;
+            if (circleTotalEl) circleTotalEl.textContent = totalProblems;
+            if (circlePctEl) circlePctEl.textContent = `${totalPct}% Complete`;
+
+            // Breakdown card updates
+            const cardEasySolved = document.getElementById('card-easy-solved');
+            const cardEasyTotal = document.getElementById('card-easy-total');
+            const barEasy = document.getElementById('bar-easy');
+            if (cardEasySolved) cardEasySolved.textContent = easySolved;
+            if (cardEasyTotal) cardEasyTotal.textContent = easyTotal;
+            if (barEasy) barEasy.style.width = `${easyTotal > 0 ? Math.min(100, Math.round((easySolved / easyTotal) * 100)) : 0}%`;
+
+            const cardMedSolved = document.getElementById('card-med-solved');
+            const cardMedTotal = document.getElementById('card-med-total');
+            const barMed = document.getElementById('bar-med');
+            if (cardMedSolved) cardMedSolved.textContent = medSolved;
+            if (cardMedTotal) cardMedTotal.textContent = medTotal;
+            if (barMed) barMed.style.width = `${medTotal > 0 ? Math.min(100, Math.round((medSolved / medTotal) * 100)) : 0}%`;
+
+            const cardHardSolved = document.getElementById('card-hard-solved');
+            const cardHardTotal = document.getElementById('card-hard-total');
+            const barHard = document.getElementById('bar-hard');
+            if (cardHardSolved) cardHardSolved.textContent = hardSolved;
+            if (cardHardTotal) cardHardTotal.textContent = hardTotal;
+            if (barHard) barHard.style.width = `${hardTotal > 0 ? Math.min(100, Math.round((hardSolved / hardTotal) * 100)) : 0}%`;
+
+            // SVG Donut segmented arc calculation
+            // Circumference C = 2 * PI * 48 ≈ 301.59
+            const C = 301.59;
+            const easyArc = document.getElementById('arc-easy');
+            const medArc = document.getElementById('arc-med');
+            const hardArc = document.getElementById('arc-hard');
+
+            if (totalProblems > 0 && easyArc && medArc && hardArc) {
+                const lenEasy = (easySolved / totalProblems) * C;
+                const lenMed = ((easySolved + medSolved) / totalProblems) * C;
+                const lenHard = ((easySolved + medSolved + hardSolved) / totalProblems) * C;
+
+                easyArc.setAttribute('stroke-dasharray', `${lenEasy.toFixed(2)} ${C}`);
+                medArc.setAttribute('stroke-dasharray', `${lenMed.toFixed(2)} ${C}`);
+                hardArc.setAttribute('stroke-dasharray', `${lenHard.toFixed(2)} ${C}`);
+            }
+        }
+
+        // 7. LeetCode-Inspired 52-Week Submission Activity Heatmap
+        function renderDsaHeatmap() {
+            const gridEl = document.getElementById('dsa-heatmap-grid');
+            const monthsEl = document.getElementById('dsa-heatmap-months');
+            if (!gridEl || !monthsEl) return;
+
+            // Generate trailing 52 weeks (364 days + current partial week up to Saturday)
+            const today = new Date();
+            const todayStr = today.toISOString().split('T')[0];
+
+            // Align start date to Sunday 52 weeks ago
+            const currentDayOfWeek = today.getDay(); // 0 is Sun, 6 is Sat
+            const endDate = new Date(today);
+            endDate.setDate(today.getDate() + (6 - currentDayOfWeek)); // this week's Saturday
+
+            const startDate = new Date(endDate);
+            startDate.setDate(endDate.getDate() - (52 * 7) + 1);
+            startDate.setDate(startDate.getDate() - startDate.getDay()); // ensure Sunday start
+
+            let gridHtml = '';
+            let monthsHtml = '';
+            let lastMonthRendered = -1;
+            let lastMonthCol = -10;
+
+            const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+            let totalSubmissions = 0;
+            let activeDaysCount = 0;
+
+            // Iterate 52 columns (weeks)
+            for (let c = 0; c < 52; c++) {
+                let colCellsHtml = '';
+                const sundayDate = new Date(startDate);
+                sundayDate.setDate(startDate.getDate() + (c * 7));
+
+                // Check month change for header label
+                const midWeekDate = new Date(sundayDate);
+                midWeekDate.setDate(sundayDate.getDate() + 3);
+                const colMonth = midWeekDate.getMonth();
+
+                if (colMonth !== lastMonthRendered && (c - lastMonthCol) >= 3) {
+                    monthsHtml += `<span class="absolute whitespace-nowrap text-gray-400 font-bold" style="left: ${c * 14}px">${monthNames[colMonth]}</span>`;
+                    lastMonthRendered = colMonth;
+                    lastMonthCol = c;
+                }
+
+                // 7 days in column (Sun=0 to Sat=6)
+                for (let r = 0; r < 7; r++) {
+                    const cellDate = new Date(sundayDate);
+                    cellDate.setDate(sundayDate.getDate() + r);
+                    const dateStr = cellDate.toISOString().split('T')[0];
+
+                    const isToday = dateStr === todayStr;
+                    const isFuture = cellDate > today;
+
+                    let count = userHeatmap[dateStr] || 0;
+                    if (isToday && count === 0 && userSolved.size > 0) {
+                        count = 1;
+                    }
+
+                    if (count > 0 && !isFuture) {
+                        totalSubmissions += count;
+                        activeDaysCount++;
+                    }
+
+                    let lvlClass = 'heat-lvl-0';
+                    if (isFuture) {
+                        lvlClass = 'heat-future';
+                    } else if (count >= 7) {
+                        lvlClass = 'heat-lvl-4';
+                    } else if (count >= 4) {
+                        lvlClass = 'heat-lvl-3';
+                    } else if (count >= 2) {
+                        lvlClass = 'heat-lvl-2';
+                    } else if (count >= 1) {
+                        lvlClass = 'heat-lvl-1';
+                    }
+
+                    const todayClass = isToday ? ' heat-today' : '';
+
+                    colCellsHtml += `
+                        <div class="heatmap-cell ${lvlClass}${todayClass}"
+                             data-date="${dateStr}"
+                             data-count="${count}"
+                             data-future="${isFuture ? 'true' : 'false'}">
+                        </div>
+                    `;
+                }
+
+                gridHtml += `<div class="flex flex-col gap-1">${colCellsHtml}</div>`;
+            }
+
+            monthsEl.innerHTML = monthsHtml;
+            gridEl.innerHTML = gridHtml;
+
+            // Heatmap Header Stats updates
+            const subCountEl = document.getElementById('dsa-active-submissions');
+            const actDaysEl = document.getElementById('dsa-active-days');
+            const maxStreakEl = document.getElementById('dsa-max-streak');
+
+            const displayedSubmissions = Math.max(totalSubmissions, userSolved.size);
+            const displayedActiveDays = Math.max(activeDaysCount, userSolved.size > 0 ? 1 : 0);
+            const displayedMaxStreak = Math.max(maxStreak, currentStreak);
+
+            if (subCountEl) subCountEl.textContent = `${displayedSubmissions} submissions in the past one year`;
+            if (actDaysEl) actDaysEl.textContent = displayedActiveDays;
+            if (maxStreakEl) maxStreakEl.textContent = displayedMaxStreak;
+
+            // Attach interactive tooltip listeners to every cell
+            const tooltip = document.getElementById('dsa-heatmap-tooltip');
+            if (tooltip) {
+                gridEl.querySelectorAll('.heatmap-cell').forEach(cell => {
+                    cell.addEventListener('mouseenter', (e) => {
+                        const count = parseInt(cell.getAttribute('data-count') || '0');
+                        const dateStr = cell.getAttribute('data-date');
+                        const isFut = cell.getAttribute('data-future') === 'true';
+                        if (!dateStr || isFut) return;
+
+                        const dateObj = new Date(dateStr + 'T00:00:00');
+                        const formatted = dateObj.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+                        tooltip.innerHTML = `<strong>${count} submission${count === 1 ? '' : 's'}</strong> on ${formatted}`;
+                        
+                        const rect = cell.getBoundingClientRect();
+                        tooltip.style.left = `${Math.max(8, rect.left - 50)}px`;
+                        tooltip.style.top = `${Math.max(8, rect.top - 36)}px`;
+                        tooltip.classList.remove('opacity-0');
+                        tooltip.classList.add('opacity-100');
+                    });
+                    cell.addEventListener('mouseleave', () => {
+                        tooltip.classList.remove('opacity-100');
+                        tooltip.classList.add('opacity-0');
+                    });
+                });
+            }
+        }
+
+        function resetFilters() {
+            activeTopic = 'all';
+            const s = document.getElementById('dsa-search-input');
+            const d = document.getElementById('filter-difficulty');
+            const st = document.getElementById('filter-status');
+            if (s) s.value = '';
+            if (d) d.value = 'all';
+            if (st) st.value = 'all';
+            if (DSA_DATA) renderTopicPills(DSA_DATA.topics);
+            renderProblemSheet();
+        }
+
+
+        // Toast feedback
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            const msgEl = document.getElementById('toast-message');
+            if (!toast || !msgEl) return;
+            msgEl.textContent = msg;
+            toast.classList.remove('translate-y-24', 'opacity-0');
+            toast.classList.add('translate-y-0', 'opacity-100');
+            setTimeout(() => {
+                toast.classList.remove('translate-y-0', 'opacity-100');
+                toast.classList.add('translate-y-24', 'opacity-0');
+            }, 3500);
+        }
+
+        function escapeHtml(str) {
+            if (!str) return '';
+            return String(str)
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#039;');
+        }
+
+        function escapeJs(str) {
+            if (!str) return '';
+            return String(str)
+                .replace(/\\/g, '\\\\')
+                .replace(/'/g, "\\'")
+                .replace(/"/g, '\\"')
+                .replace(/\n/g, '\\n')
+                .replace(/\r/g, '\\r');
+        }
+    </script>
+</body>
+</html>

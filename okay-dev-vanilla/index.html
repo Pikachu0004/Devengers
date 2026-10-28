@@ -1,0 +1,1938 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Devengers | Learn. Build. Lead. - Engineering Community Platform</title>
+    <meta name="description" content="Devengers is the premier engineering student community platform for mastering Data Structures & Algorithms, daily POTD streaks, live hackathons, university PYQs, interactive CS roadmaps, and verified certificates.">
+    <meta name="keywords" content="Devengers, DSA Roadmap, Problem of the Day, Coding Streak, Engineering Community, Hackathons, Computer Science Roadmaps, University PYQs, Free Certificates, Tech Internships">
+    <meta name="author" content="Devengers Community">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <meta name="theme-color" content="#7B42F6">
+    <meta name="msapplication-TileColor" content="#7B42F6">
+    <link rel="canonical" href="https://devengers.org/">
+
+    <!-- Open Graph / Facebook / WhatsApp / LinkedIn / Meta -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://devengers.org/">
+    <meta property="og:site_name" content="Devengers">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:title" content="Devengers | Learn. Build. Lead. - Engineering Community Platform">
+    <meta property="og:description" content="Master Data Structures & Algorithms, solve daily POTD streaks, build high-impact projects, win hackathons, and verify your engineering credentials.">
+    <meta property="og:image" content="https://devengers.org/og-image.jpg">
+    <meta property="og:image:secure_url" content="https://devengers.org/og-image.jpg">
+    <meta property="og:image:type" content="image/jpeg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="675">
+    <meta property="og:image:alt" content="Devengers - Learn. Build. Lead. Engineering Community Platform">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@devengers">
+    <meta name="twitter:creator" content="@devengers">
+    <meta name="twitter:url" content="https://devengers.org/">
+    <meta name="twitter:title" content="Devengers | Learn. Build. Lead. - Engineering Community Platform">
+    <meta name="twitter:description" content="Master Data Structures & Algorithms, solve daily POTD streaks, build high-impact projects, win hackathons, and verify your engineering credentials.">
+    <meta name="twitter:image" content="https://devengers.org/og-image.jpg">
+    <meta name="twitter:image:alt" content="Devengers Engineering Community Platform">
+
+    <!-- Favicon & Icons -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico?v=3">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon.png?v=3">
+    <link rel="icon" type="image/png" sizes="192x192" href="favicon.png?v=3">
+    <link rel="apple-touch-icon" href="favicon.png?v=3">
+
+    <!-- Structured Data (JSON-LD) for Google Sitelinks, Search Box & Knowledge Graph -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebSite",
+          "@id": "https://devengers.org/#website",
+          "url": "https://devengers.org/",
+          "name": "Devengers",
+          "alternateName": ["Devengers Community", "Devengers.org", "Devengers Engineering Platform"],
+          "description": "Devengers is the ultimate engineering student platform for mastering Data Structures & Algorithms, solving daily coding streaks, joining hackathons, downloading university PYQs, and earning verified certificates.",
+          "publisher": {
+            "@id": "https://devengers.org/#organization"
+          },
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": {
+              "@type": "EntryPoint",
+              "urlTemplate": "https://devengers.org/dsa?search={search_term_string}"
+            },
+            "query-input": "required name=search_term_string"
+          }
+        },
+        {
+          "@type": "EducationalOrganization",
+          "@id": "https://devengers.org/#organization",
+          "name": "Devengers",
+          "alternateName": "Devengers Student Community",
+          "url": "https://devengers.org/",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://devengers.org/og-image.jpg",
+            "width": 1200,
+            "height": 675
+          },
+          "image": "https://devengers.org/og-image.jpg",
+          "description": "Global engineering student community dedicated to tech learning, open-source innovation, competitive programming, and career readiness.",
+          "sameAs": [
+            "https://www.linkedin.com/company/devengers",
+            "https://www.instagram.com/devengers_community",
+            "https://github.com/DevengersCommunity",
+            "https://discord.gg/devengers"
+          ],
+          "founder": {
+            "@type": "Person",
+            "name": "Kishan",
+            "jobTitle": "Founder & Lead Developer"
+          }
+        },
+        {
+          "@type": "ItemList",
+          "@id": "https://devengers.org/#sitelinks",
+          "name": "Devengers Key Navigation Links",
+          "itemListElement": [
+            {
+              "@type": "SiteNavigationElement",
+              "position": 1,
+              "name": "DSA Streak & Roadmap",
+              "description": "500+ curated Data Structures & Algorithms practice questions and daily Problem of the Day.",
+              "url": "https://devengers.org/dsa"
+            },
+            {
+              "@type": "SiteNavigationElement",
+              "position": 2,
+              "name": "Member Login",
+              "description": "Sign in to track your coding streak, download certificates, and access member perks.",
+              "url": "https://devengers.org/login"
+            },
+            {
+              "@type": "SiteNavigationElement",
+              "position": 3,
+              "name": "Hackathons & Events",
+              "description": "Join live tech hackathons, workshops, and coding challenges with top prizes.",
+              "url": "https://devengers.org/events"
+            },
+            {
+              "@type": "SiteNavigationElement",
+              "position": 4,
+              "name": "Campus PYQs & Notes",
+              "description": "Download engineering semester previous year question papers, notes, and syllabus.",
+              "url": "https://devengers.org/campus"
+            },
+            {
+              "@type": "SiteNavigationElement",
+              "position": 5,
+              "name": "Certificate Verification",
+              "description": "Instantly verify and validate Devengers hackathon, workshop, and course certificates.",
+              "url": "https://devengers.org/certificates"
+            },
+            {
+              "@type": "SiteNavigationElement",
+              "position": 6,
+              "name": "Interactive Roadmaps & Courses",
+              "description": "Free beginner to advanced developer roadmaps for Full-Stack, AI/ML, and DevOps.",
+              "url": "https://devengers.org/learn"
+            },
+            {
+              "@type": "SiteNavigationElement",
+              "position": 7,
+              "name": "Jobs & Internships",
+              "description": "Curated fresher jobs, tech opportunities, and engineering internships.",
+              "url": "https://devengers.org/jobs"
+            },
+            {
+              "@type": "SiteNavigationElement",
+              "position": 8,
+              "name": "Project Gallery",
+              "description": "Showcase of innovative student developer projects, open source tools, and awards.",
+              "url": "https://devengers.org/gallery"
+            },
+            {
+              "@type": "SiteNavigationElement",
+              "position": 9,
+              "name": "Member Directory",
+              "description": "Connect with fellow student developers, mentors, and alumni across universities.",
+              "url": "https://devengers.org/directory"
+            },
+            {
+              "@type": "SiteNavigationElement",
+              "position": 10,
+              "name": "Create Account",
+              "description": "Join 10,000+ engineers building the future of software.",
+              "url": "https://devengers.org/register"
+            }
+          ]
+        }
+      ]
+    }
+    </script>
+
+    <!-- Google Fonts for Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700;900&display=swap"
+        rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'acid': '#FCE205',
+                    },
+                    fontFamily: {
+                        'sans': ['"Space Grotesk"', 'sans-serif'],
+                        'display': ['"Space Grotesk"', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'brutal': '4px 4px 0px 0px rgba(0,0,0,1)',
+                        'soft': '0 15px 40px -10px rgba(0,0,0,0.4)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css?v=20261019">
+    <script src="theme.js"></script>
+    <!-- Auth Helper -->
+    <script src="auth.js"></script>
+</head>
+
+<body class="bg-[#1a1a1a] text-black font-sans antialiased overflow-x-hidden min-h-screen">
+
+    <!-- NAVIGATION (Fixed) -->
+    <nav class="devengers-navbar-fixed fixed top-6 left-0 w-full z-50 flex justify-center px-4">
+        <!-- Purple Navbar Background (#7B42F6) -->
+        <div class="devengers-navbar-notch bg-[#7B42F6] shadow-brutal border-4 border-black rounded-full px-6 md:px-8 py-3 w-full max-w-[1400px] flex items-center justify-between">
+            <!-- Avengers Animated Logo -->
+            <a href="index.html" class="flex items-center group select-none" title="Devengers Home">
+                <div class="devengers-nav-logo font-black text-2xl md:text-[30px] tracking-tighter uppercase rounded-full transition-transform duration-300"
+                    style="-webkit-text-stroke: 2px black; color: #CDFF29; text-shadow: 3px 3px 0px black; line-height: 1;">
+                    <span class="devengers-badge-icon">
+                        <svg class="w-3.5 h-3.5 text-[#CDFF29]" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
+                        </svg>
+                    </span>
+                    <span class="logo-char">D</span><span class="logo-char">E</span><span class="logo-char">V</span><span class="logo-char">E</span><span class="logo-char">N</span><span class="logo-char">G</span><span class="logo-char">E</span><span class="logo-char">R</span><span class="logo-char">S</span>
+                </div>
+            </a>
+
+            <!-- Center Links -->
+            <div class="hidden md:flex gap-6 lg:gap-8 text-[11px] font-bold uppercase tracking-widest text-white/80">
+                <a href="events.html" class="nav-link">Events</a>
+                <a href="learn.html" class="nav-link">Learn</a>
+                <a href="campus.html" class="nav-link">Campus Resource</a>
+                <a href="dsa.html" class="nav-link">DSA Streak</a>
+                <a href="gallery.html" class="nav-link">Gallery</a>
+                <a href="certificates.html" class="nav-link">Certificates</a>
+            </div>
+
+            <!-- Right Links & Action Buttons -->
+            <div class="flex items-center gap-3 sm:gap-4">
+                <!-- Theme Toggle Button -->
+                <button type="button" onclick="window.DevengersTheme.toggleTheme()" class="theme-toggle-btn" title="Toggle Eye-Comfort Peach Theme" aria-label="Toggle Theme">
+                    <div class="toggle-thumb">🌙</div>
+                </button>
+
+                <!-- Notifications Bell with Dynamic Red Dot -->
+                <div class="relative">
+                    <button type="button" id="nav-notification-btn" onclick="window.DevengersNotifications.toggleDropdown(event)"
+                        class="nav-notification-btn flex items-center justify-center w-8 h-8 text-white/80 hover:text-white transition-colors relative cursor-pointer"
+                        title="Notifications" aria-label="Notifications">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 transition-transform hover:scale-110" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+                        </svg>
+                        <span id="nav-notification-dot" class="nav-notification-dot hidden"></span>
+                    </button>
+                </div>
+
+                <!-- Profile Symbol Button with Instagram Ring -->
+                <a href="profile.html" class="nav-profile-btn group" title="My Profile" aria-label="My Profile">
+                    <span class="nav-profile-inner">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-white transition-transform group-hover:scale-110" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                        </svg>
+                    </span>
+                </a>
+
+                <a href="login.html" class="hidden md:block text-[11px] font-bold uppercase tracking-widest text-white/80 hover:text-white transition-colors">LOGIN</a>
+                <a href="register.html" class="bg-white text-black px-5 py-2 rounded-full text-[11px] font-bold uppercase tracking-widest hover:bg-[#CDFF29] transition-colors flex items-center gap-1.5 shadow-sm">
+                    SIGN UP <span class="font-normal text-sm leading-none">&rarr;</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section
+        class="relative min-h-[100vh] bg-acid w-full flex flex-col justify-center items-center overflow-hidden hero-bg-grid pt-32 pb-24">
+
+        <!-- Floating Images Container (Desktop & Tablet only for 60fps mobile speed) -->
+        <div class="hidden md:block absolute inset-0 w-full h-full pointer-events-none z-10 overflow-hidden"
+            id="floating-images-container">
+            <!-- Left Side Images -->
+            <!-- 1. Top-Left: Large Landscape Card (Pink Hair reference) -->
+            <div
+                class="floating-image absolute top-[17%] left-[4%] lg:left-[6%] w-[170px] md:w-[200px] lg:w-[220px] rounded-xl shadow-soft overflow-hidden">
+                <img src="Assest/Images%20Homepage%202/_ (13).jpeg" class="w-full aspect-[4/3] object-cover">
+                <div class="bg-black/85 px-3 py-1.5 text-center">
+                    <p class="text-[10px] font-bold text-[#FCE205] uppercase tracking-widest leading-tight">no bugs,
+                        just features 🔥</p>
+                </div>
+            </div>
+
+            <!-- 2. Mid-Left: Square Card (Glasses Guy reference) -->
+            <div
+                class="floating-image absolute top-[44%] left-[5%] lg:left-[7%] w-[100px] md:w-[120px] lg:w-[130px] rounded-xl shadow-soft overflow-hidden">
+                <img src="Assest/Images%20Homepage%202/_ (14).jpeg" class="w-full aspect-square object-cover">
+                <div class="bg-black/85 px-2 py-1 text-center">
+                    <p class="text-[9px] font-bold text-white uppercase tracking-widest leading-tight">git push --force
+                        💀</p>
+                </div>
+            </div>
+
+            <!-- 3. Lower-Left: Small Accent Card (Girl/Hoodie reference) -->
+            <div
+                class="floating-image absolute top-[56%] left-[17%] lg:left-[19%] w-[70px] md:w-[80px] lg:w-[88px] rounded-xl shadow-soft overflow-hidden">
+                <img src="Assest/Images%20Homepage%202/_ (16).jpeg" class="w-full aspect-square object-cover">
+                <div class="bg-[#7B42F6]/90 px-1.5 py-1 text-center">
+                    <p class="text-[8px] font-bold text-white uppercase tracking-widest leading-tight">ship it 🚀</p>
+                </div>
+            </div>
+
+            <!-- 4. Bottom-Left: Landscape Card (CLAY reference) -->
+            <div
+                class="floating-image absolute bottom-[6%] left-[4%] lg:left-[6%] w-[160px] md:w-[190px] lg:w-[210px] rounded-xl shadow-soft overflow-hidden">
+                <img src="Assest/Images%20Homepage%202/4_30%20Am%20with%20coding.jpeg"
+                    class="w-full aspect-[4/3] object-cover">
+                <div class="bg-black/85 px-3 py-1.5 text-center">
+                    <p class="text-[10px] font-bold text-[#FCE205] uppercase tracking-widest leading-tight">4:30 AM.
+                        still coding. ☕</p>
+                </div>
+            </div>
+
+            <!-- Right Side Images -->
+            <!-- 5. Top-Right: High Small Card (Red/Blue Rim-lit reference) -->
+            <div
+                class="floating-image absolute top-[15%] right-[16%] lg:right-[19%] w-[70px] md:w-[80px] lg:w-[88px] rounded-xl shadow-soft overflow-hidden">
+                <img src="Assest/Images%20Homepage%202/monkey%20D%20Luffy.jpeg"
+                    class="w-full aspect-square object-cover">
+                <div class="bg-black/85 px-1.5 py-1 text-center">
+                    <p class="text-[8px] font-bold text-white uppercase tracking-widest leading-tight">be the goat 🐐
+                    </p>
+                </div>
+            </div>
+
+            <!-- 6. Upper-Right Outer: Landscape Card (Igloo reference) -->
+            <div
+                class="floating-image absolute top-[30%] right-[4%] lg:right-[6%] w-[150px] md:w-[175px] lg:w-[195px] rounded-xl shadow-soft overflow-hidden">
+                <img src="Assest/Images%20Homepage%202/Waiting%20Jesus%27s%20return.jpeg"
+                    class="w-full aspect-[4/3] object-cover">
+                <div class="bg-black/85 px-3 py-1.5 text-center">
+                    <p class="text-[10px] font-bold text-[#FCE205] uppercase tracking-widest leading-tight">waiting for
+                        review… 🙏</p>
+                </div>
+            </div>
+
+            <!-- 7. Center-Right: Square/Spread Card (COLÔNOS reference) -->
+            <div
+                class="floating-image absolute top-[50%] right-[10%] lg:right-[13%] w-[110px] md:w-[130px] lg:w-[145px] rounded-xl shadow-soft overflow-hidden">
+                <img src="Assest/Images%20Homepage%202/_ (15).jpeg" class="w-full aspect-square object-cover">
+                <div class="bg-[#FCE205]/95 px-2 py-1 text-center">
+                    <p class="text-[9px] font-bold text-black uppercase tracking-widest leading-tight">build diff 🧠</p>
+                </div>
+            </div>
+
+            <!-- 8. Bottom-Right: Large Landscape Card (VISUAL BUSINESS reference) -->
+            <div
+                class="floating-image absolute bottom-[6%] right-[4%] lg:right-[6%] w-[170px] md:w-[205px] lg:w-[230px] rounded-xl shadow-soft overflow-hidden">
+                <img src="Assest/Images%20Homepage%202/2_2.jpeg" class="w-full aspect-[4/3] object-cover">
+                <div class="bg-black/85 px-3 py-1.5 text-center">
+                    <p class="text-[10px] font-bold text-white uppercase tracking-widest leading-tight">console.log("i
+                        give up") 😂</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Center Text Content -->
+        <div class="relative z-20 flex flex-col items-center text-center mt-2 sm:mt-6">
+            <h2
+                class="hide-on-scroll text-[11px] sm:text-[12px] md:text-[14px] font-bold uppercase tracking-widest mb-3 sm:mb-4 text-black/90">
+                A TECHNOLOGY &amp; DEVELOPER COMMUNITY FOR
+            </h2>
+
+            <div
+                class="flex flex-col items-center leading-[0.92] text-[1.85rem] sm:text-[3.4rem] md:text-[5.5rem] lg:text-[6.8rem] font-black tracking-tighter mb-5 sm:mb-8 w-full max-w-[850px] px-2">
+                <span class="hide-on-scroll text-black">Students</span>
+                <span class="hide-on-scroll text-black">Developers</span>
+                <span id="builders-text"
+                    class="bg-black text-white px-4 sm:px-8 py-1.5 sm:py-2 md:py-3.5 rounded-xl sm:rounded-2xl md:rounded-[2rem] inline-block mt-2 sm:mt-4 shadow-brutal text-[1.65rem] sm:text-[3.2rem] md:text-[5.5rem] lg:text-[6.8rem]">Devengers</span>
+            </div>
+
+            <p
+                class="hide-on-scroll text-[13px] sm:text-[16px] md:text-[19px] font-medium max-w-[32rem] mx-auto mb-6 sm:mb-10 px-4 leading-snug text-black/90">
+                Learn, Build, Lead, and Impact.<br class="hidden sm:inline" /><br class="hidden sm:inline" />Bridging the gap between traditional education and real-world technology.
+            </p>
+
+            <a href="https://whatsapp.com/channel/0029VbCVGAd8KMql7Ie3ew43" target="_blank"
+                class="bg-black text-white rounded-full px-6 sm:px-8 py-3 sm:py-3.5 min-h-[44px] text-xs sm:text-[12px] font-bold uppercase tracking-widest flex items-center justify-center gap-2 sm:gap-3 hover:-translate-y-1 transition-transform shadow-brutal border-2 border-black active:scale-[0.98]">
+                JOIN DEVENGERS <span class="font-normal text-sm sm:text-base">&rarr;</span>
+            </a>
+        </div>
+
+    </section>
+
+    <!-- MARQUEE (overlaps the bottom of hero) -->
+    <div class="w-full bg-[#E5E5E5] border-y-[4px] border-black overflow-hidden relative z-30 -mt-[3px]">
+        <div
+            class="marquee-content flex whitespace-nowrap items-center font-black text-2xl sm:text-4xl md:text-7xl uppercase tracking-tighter py-2 md:py-3">
+            <!-- Will be populated by JS for continuous loop -->
+            <div class="inline-flex items-center pr-8 marquee-part">
+                <span class="mx-6 text-black">HACKATHONS</span>
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23888' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='4'/%3E%3Cpath d='M12 2v4M12 18v4M2 12h4M18 12h4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83'/%3E%3C/svg%3E"
+                    class="w-10 h-10 mx-2" />
+                <span class="mx-6 text-black">DEVELOPERS</span>
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23888' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='4'/%3E%3Cpath d='M12 2v4M12 18v4M2 12h4M18 12h4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83'/%3E%3C/svg%3E"
+                    class="w-10 h-10 mx-2" />
+                <span class="mx-6 text-black">OPEN SOURCE</span>
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23888' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='4'/%3E%3Cpath d='M12 2v4M12 18v4M2 12h4M18 12h4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83'/%3E%3C/svg%3E"
+                    class="w-10 h-10 mx-2" />
+                <span class="mx-6 text-black">OPPORTUNITIES</span>
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23888' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='4'/%3E%3Cpath d='M12 2v4M12 18v4M2 12h4M18 12h4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83'/%3E%3C/svg%3E"
+                    class="w-10 h-10 mx-2" />
+            </div>
+            <!-- Duplicated for seamless loop -->
+            <div class="inline-flex items-center pr-8 marquee-part">
+                <span class="mx-6 text-black">HACKATHONS</span>
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23888' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='4'/%3E%3Cpath d='M12 2v4M12 18v4M2 12h4M18 12h4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83'/%3E%3C/svg%3E"
+                    class="w-10 h-10 mx-2" />
+                <span class="mx-6 text-black">DEVELOPERS</span>
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23888' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='4'/%3E%3Cpath d='M12 2v4M12 18v4M2 12h4M18 12h4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83'/%3E%3C/svg%3E"
+                    class="w-10 h-10 mx-2" />
+                <span class="mx-6 text-black">OPEN SOURCE</span>
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23888' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='4'/%3E%3Cpath d='M12 2v4M12 18v4M2 12h4M18 12h4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83'/%3E%3C/svg%3E"
+                    class="w-10 h-10 mx-2" />
+                <span class="mx-6 text-black">OPPORTUNITIES</span>
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23888' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='4'/%3E%3Cpath d='M12 2v4M12 18v4M2 12h4M18 12h4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83'/%3E%3C/svg%3E"
+                    class="w-10 h-10 mx-2" />
+            </div>
+        </div>
+    </div>
+
+    <!-- GALLERY SECTION -->
+    <section class="relative min-h-[120vh] bg-[#1a1a1a] w-full flex flex-col items-center pt-32 pb-40 overflow-hidden"
+        id="gallery-section">
+        <h2 class="text-white text-[28px] md:text-[42px] font-bold tracking-tight mb-2 leading-none text-center">⚡ The
+            Dev Mindset • Real Insights</h2>
+        <h2 class="text-[#FFEB3B] text-[28px] md:text-[42px] font-bold tracking-tight mb-10 leading-none text-center">
+            Unfiltered thoughts from the code trenches.</h2>
+
+        <a href="https://whatsapp.com/channel/0029Vb8m2ZzHAdNWqpVR9A25" target="_blank"
+            class="bg-acid text-black rounded-full px-8 py-3 font-bold uppercase tracking-widest flex items-center gap-2 hover:bg-white transition-colors mb-20 text-[13px]">
+            Daily Jobs & Hackathons <span class="font-normal text-lg">&rarr;</span>
+        </a>
+
+        <!-- Structured Gallery Grid (4 Columns) -->
+        <div
+            class="relative w-full max-w-[1300px] mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 items-start">
+
+            <!-- Column 1 -->
+            <div class="flex flex-col gap-10">
+                <!-- Item 1 (Purple Quote - Dark) -->
+                <div class="w-full group cursor-pointer hover:-translate-y-2 transition-transform duration-300">
+                    <div
+                        class="bg-[#7B42F6] rounded-2xl w-full h-[220px] flex flex-col items-center justify-center p-6 text-center shadow-2xl overflow-hidden hover:scale-[1.02] transition-transform duration-300">
+                        <span class="text-white font-extrabold text-2xl leading-tight tracking-tight">“It works on my
+                            machine.<br><span class="font-bold text-xl text-white/80 mt-1 block">Ship the
+                                laptop.”</span></span>
+                    </div>
+                    <div class="flex items-center gap-2 mt-4 justify-center">
+                        <img src="https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?q=80&w=100&auto=format&fit=crop"
+                            class="w-5 h-5 rounded-full object-cover grayscale">
+                        <span class="text-gray-400 text-xs font-mono">Corentin Bernadou</span>
+                    </div>
+                </div>
+                <!-- Item 2 (Yellow Quote - Light) -->
+                <div class="w-full group cursor-pointer hover:-translate-y-2 transition-transform duration-300">
+                    <div
+                        class="bg-[#FFEB3B] rounded-2xl w-full h-[280px] flex flex-col items-center justify-center p-6 text-center shadow-2xl overflow-hidden hover:scale-[1.02] transition-transform duration-300">
+                        <span class="text-black font-extrabold text-2xl leading-snug tracking-tight">“Debugging is like
+                            being the detective in a crime movie where you are also the murderer 🕵️‍♂️”</span>
+                    </div>
+                    <div class="flex items-center gap-2 mt-4 justify-center">
+                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=100&auto=format&fit=crop"
+                            class="w-5 h-5 rounded-full object-cover grayscale">
+                        <span class="text-gray-400 text-xs font-mono">Aria Vance</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Column 2 (Pushed down slightly) -->
+            <div class="flex flex-col gap-10 mt-16">
+                <!-- Item 3 (Lavender Quote - Light) -->
+                <div class="w-full group cursor-pointer hover:-translate-y-2 transition-transform duration-300">
+                    <div
+                        class="bg-[#E9D5FF] rounded-2xl w-full h-[180px] flex flex-col items-center justify-center p-6 text-center shadow-2xl overflow-hidden hover:scale-[1.02] transition-transform duration-300">
+                        <span class="text-black font-extrabold text-2xl leading-tight tracking-tight">“Real
+                            human<br>insights 🧠”</span>
+                    </div>
+                    <div class="flex items-center gap-2 mt-4 justify-center">
+                        <img src="https://images.unsplash.com/photo-1527980965255-d3b416303d12?q=80&w=100&auto=format&fit=crop"
+                            class="w-5 h-5 rounded-full object-cover grayscale">
+                        <span class="text-gray-400 text-xs font-mono">Tobias Moccagatta</span>
+                    </div>
+                </div>
+                <!-- Item 4 (Dark Charcoal Quote - Dark) -->
+                <div class="w-full group cursor-pointer hover:-translate-y-2 transition-transform duration-300">
+                    <div
+                        class="bg-[#222226] border border-white/10 rounded-2xl w-full h-[200px] flex flex-col items-center justify-center p-6 text-center shadow-2xl overflow-hidden hover:scale-[1.02] transition-transform duration-300">
+                        <span class="text-white font-extrabold text-2xl leading-tight tracking-tight">“There’s no place
+                            like<br><span
+                                class="font-mono text-xl bg-[#7B42F6] text-white px-3 py-1 rounded-md inline-block mt-2">127.0.0.1</span>”</span>
+                    </div>
+                    <div class="flex items-center gap-2 mt-4 justify-center">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=100&auto=format&fit=crop"
+                            class="w-5 h-5 rounded-full object-cover grayscale">
+                        <span class="text-gray-400 text-xs font-mono">Lucas Wright</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Column 3 -->
+            <div class="flex flex-col gap-10">
+                <!-- Item 5 (Mint Quote - Light) -->
+                <div class="w-full group cursor-pointer hover:-translate-y-2 transition-transform duration-300">
+                    <div
+                        class="bg-[#2DD4BF] rounded-2xl w-full h-[240px] flex flex-col items-center justify-center p-6 text-center shadow-2xl overflow-hidden hover:scale-[1.02] transition-transform duration-300">
+                        <span class="text-black font-extrabold text-2xl leading-snug tracking-tight">“Stack Overflow
+                            taught me more than 4 years of college ever could.”</span>
+                    </div>
+                    <div class="flex items-center gap-2 mt-4 justify-center">
+                        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=100&auto=format&fit=crop"
+                            class="w-5 h-5 rounded-full object-cover grayscale">
+                        <span class="text-gray-400 text-xs font-mono">Deven Caron</span>
+                    </div>
+                </div>
+                <!-- Item 6 (Coral Red Quote - Dark) -->
+                <div class="w-full group cursor-pointer hover:-translate-y-2 transition-transform duration-300">
+                    <div
+                        class="bg-[#FF4B72] rounded-2xl w-full h-[180px] flex flex-col items-center justify-center p-6 text-center shadow-2xl overflow-hidden hover:scale-[1.02] transition-transform duration-300">
+                        <span class="text-white font-extrabold text-2xl leading-tight tracking-tight">“git push
+                            --force<br><span class="font-bold text-xl text-white/90 mt-1 block">and pray
+                                🙏”</span></span>
+                    </div>
+                    <div class="flex items-center gap-2 mt-4 justify-center">
+                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=100&auto=format&fit=crop"
+                            class="w-5 h-5 rounded-full object-cover grayscale">
+                        <span class="text-gray-400 text-xs font-mono">Elena Rostova</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Column 4 (Pushed up slightly) -->
+            <div class="flex flex-col gap-10 -mt-12">
+                <!-- Item 7 (Blue Quote - Dark) -->
+                <div class="w-full group cursor-pointer hover:-translate-y-2 transition-transform duration-300">
+                    <div
+                        class="bg-[#2563EB] rounded-2xl w-full h-[220px] flex flex-col items-center justify-center p-6 text-center shadow-2xl overflow-hidden hover:scale-[1.02] transition-transform duration-300">
+                        <span class="text-white font-extrabold text-2xl leading-tight tracking-tight">“Talk is
+                            cheap.<br><span class="text-xl font-bold text-white/90 mt-1 block">Show me the code & star
+                                the repo ⭐”</span></span>
+                    </div>
+                    <div class="flex items-center gap-2 mt-4 justify-center">
+                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=100&auto=format&fit=crop"
+                            class="w-5 h-5 rounded-full object-cover grayscale">
+                        <span class="text-gray-400 text-xs font-mono">Ben McCormick</span>
+                    </div>
+                </div>
+                <!-- Item 8 (Peach Quote - Light) -->
+                <div class="w-full group cursor-pointer hover:-translate-y-2 transition-transform duration-300">
+                    <div
+                        class="bg-[#FED7AA] rounded-2xl w-full h-[240px] flex flex-col items-center justify-center p-6 text-center shadow-2xl overflow-hidden hover:scale-[1.02] transition-transform duration-300">
+                        <span class="text-black font-extrabold text-2xl leading-snug tracking-tight">“404: Social life
+                            not found.<br><span class="font-bold text-xl opacity-80 mt-1 block">Deploying to prod
+                                🚀</span>”</span>
+                    </div>
+                    <div class="flex items-center gap-2 mt-4 justify-center">
+                        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=100&auto=format&fit=crop"
+                            class="w-5 h-5 rounded-full object-cover grayscale">
+                        <span class="text-gray-400 text-xs font-mono">Kishan Dev</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SOCIAL SECTION -->
+    <!-- The purple section will slide up smoothly -->
+    <section
+        class="relative min-h-[100vh] bg-[#7B42F6] w-full flex justify-center items-center py-10 md:py-14 overflow-hidden"
+        id="social-section">
+        <!-- Massive Faint Background Text -->
+        <div
+            class="absolute bottom-[-5%] left-0 w-full flex items-end justify-center pointer-events-none overflow-hidden opacity-[0.08]">
+            <span id="bg-text-okaydev"
+                class="text-[45vw] font-black text-white tracking-tighter uppercase whitespace-nowrap select-none"
+                style="line-height: 0.75;">DEVENGERS</span>
+        </div>
+
+        <div
+            class="relative z-10 w-full max-w-[1440px] px-6 sm:px-8 xl:px-12 grid grid-cols-1 lg:grid-cols-2 gap-8 xl:gap-12 items-center">
+
+            <!-- Left Column: Copy -->
+            <div class="flex flex-col text-white">
+                <h2 class="text-4xl md:text-6xl font-bold tracking-tight mb-6 leading-[1.1]">
+                    🗿 DEVENGERS<br><span class="text-[#FFEB3B]">Learn. Build. Lead.</span>
+                </h2>
+
+                <p class="text-base md:text-lg font-medium max-w-lg mb-6 leading-relaxed text-white/90">
+                    Devengers is a fast-growing technology and developer community built to empower students,
+                    developers, creators, and tech enthusiasts.
+                </p>
+
+                <p class="text-lg md:text-xl font-bold mb-6">
+                    ⚡ Stay curious. Stay dangerous. Build what's next.
+                </p>
+
+                <ul class="font-mono text-xs md:text-sm space-y-3 mb-8 text-white/80">
+                    <li>💻 Hackathons • Events • Projects</li>
+                    <li>🤖 AI • Development • Emerging Tech</li>
+                    <li>💼 Jobs • Internships • Opportunities</li>
+                </ul>
+
+                <!-- Social Action Buttons -->
+                <div class="flex flex-wrap gap-3 items-center">
+                    <!-- LinkedIn Button -->
+                    <a href="https://www.linkedin.com/company/officialdevengers" target="_blank"
+                        class="inline-flex bg-[#0A66C2] text-white hover:bg-white hover:text-[#0A66C2] rounded-full px-4 py-2.5 font-bold uppercase tracking-wider items-center gap-2 transition-all text-[11px] shadow-lg hover:-translate-y-0.5">
+                        <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+                            <path
+                                d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                        </svg>
+                        LinkedIn <span class="font-normal text-xs">&rarr;</span>
+                    </a>
+
+                    <!-- Instagram Button -->
+                    <a href="https://www.instagram.com/officialdevengers" target="_blank"
+                        class="inline-flex bg-gradient-to-r from-[#F58529] via-[#DD2A7B] to-[#8134AF] text-white hover:opacity-90 rounded-full px-4 py-2.5 font-bold uppercase tracking-wider items-center gap-2 transition-all text-[11px] shadow-lg hover:-translate-y-0.5">
+                        <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+                            <path
+                                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                        </svg>
+                        Instagram <span class="font-normal text-xs">&rarr;</span>
+                    </a>
+
+                    <!-- WhatsApp Channel Button -->
+                    <a href="https://whatsapp.com/channel/0029VbCVGAd8KMql7Ie3ew43" target="_blank"
+                        class="inline-flex bg-[#25D366] text-white hover:bg-white hover:text-[#25D366] rounded-full px-4 py-2.5 font-bold uppercase tracking-wider items-center gap-2 transition-all text-[11px] shadow-lg hover:-translate-y-0.5">
+                        <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+                            <path
+                                d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z" />
+                        </svg>
+                        Channel <span class="font-normal text-xs">&rarr;</span>
+                    </a>
+
+                    <!-- YouTube Button -->
+                    <a href="https://www.youtube.com/@officialdevengers" target="_blank"
+                        class="inline-flex bg-[#FF0000] text-white hover:bg-white hover:text-[#FF0000] rounded-full px-4 py-2.5 font-bold uppercase tracking-wider items-center gap-2 transition-all text-[11px] shadow-lg hover:-translate-y-0.5">
+                        <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+                            <path
+                                d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+                        </svg>
+                        YouTube <span class="font-normal text-xs">&rarr;</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Right Column: UI Mockups -->
+            <div class="relative w-full flex flex-col gap-3 py-2">
+
+                <!-- Horizontal YouTube Showcase Card (Replaces the generic text box) -->
+                <a href="https://www.youtube.com/@officialdevengers" target="_blank"
+                    class="block w-full max-w-2xl ml-auto bg-[#0F0F0F] text-white rounded-[1.5rem] p-3.5 md:p-4 shadow-2xl z-20 border border-white/10 hover:border-red-500/60 hover:shadow-[0_12px_40px_rgba(255,0,0,0.3)] transition-all duration-300 group">
+                    <div class="flex items-center justify-between mb-2.5 px-0.5">
+                        <div class="flex items-center gap-2.5">
+                            <div
+                                class="w-8 h-8 rounded-full bg-[#FF0000] flex items-center justify-center text-white shadow-md shrink-0">
+                                <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                                    <path
+                                        d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+                                </svg>
+                            </div>
+                            <div>
+                                <h4
+                                    class="text-white font-bold text-xs md:text-sm leading-tight flex items-center gap-1.5">
+                                    Devengers <span
+                                        class="text-[11px] text-gray-400 font-normal">@officialdevengers</span></h4>
+                                <p class="text-[11px] text-red-400 font-mono">3.7K subscribers • Build. Learn. Lead.</p>
+                            </div>
+                        </div>
+                        <span
+                            class="bg-[#FF0000] text-white text-[10px] md:text-[11px] font-bold uppercase tracking-wider px-3 py-1 rounded-full flex items-center gap-1 group-hover:bg-red-500 transition-colors shadow">
+                            Subscribe 🔔
+                        </span>
+                    </div>
+                    <!-- Horizontal YouTube Screenshot Banner / Preview -->
+                    <div
+                        class="w-full h-[135px] md:h-[160px] rounded-xl overflow-hidden relative shadow-inner bg-black">
+                        <img src="Assest/youtube-page.jpg" alt="Devengers YouTube"
+                            class="w-full h-full object-cover object-top group-hover:scale-[1.03] transition-transform duration-500">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-black/85 via-transparent to-transparent flex items-end justify-between p-3">
+                            <span
+                                class="text-white text-[11px] md:text-xs font-semibold flex items-center gap-1.5 drop-shadow">
+                                <span class="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span> PromptWars 2026
+                                Guide • Watch Latest Video
+                            </span>
+                            <span
+                                class="text-white/80 text-[10px] font-mono bg-black/60 px-1.5 py-0.5 rounded backdrop-blur-sm">5:28</span>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- 3 Social Mockup Cards (WhatsApp Channel, LinkedIn, Instagram) -->
+                <div class="w-full max-w-2xl ml-auto grid grid-cols-3 gap-2.5 sm:gap-3.5 mt-3 z-30">
+
+                    <!-- Card 1: WhatsApp Channel -->
+                    <a href="https://whatsapp.com/channel/0029VbCVGAd8KMql7Ie3ew43" target="_blank"
+                        style="opacity: 1 !important; visibility: visible !important;"
+                        class="social-preview-card bg-[#0b141a] text-white rounded-xl p-2.5 shadow-2xl flex flex-col border border-emerald-500/30 hover:border-emerald-400 hover:shadow-[0_12px_35px_rgba(37,211,102,0.3)] hover:-translate-y-1.5 transition-all duration-300 group">
+                        <div class="flex items-center gap-1.5 mb-1.5 px-0.5">
+                            <div
+                                class="w-5 h-5 rounded-full bg-[#25D366] flex items-center justify-center text-white shrink-0 shadow">
+                                <svg class="w-3 h-3 fill-current" viewBox="0 0 24 24">
+                                    <path
+                                        d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z" />
+                                </svg>
+                            </div>
+                            <div class="overflow-hidden">
+                                <p class="text-[11px] font-bold leading-none truncate">WhatsApp</p>
+                                <p class="text-[9px] text-emerald-400 font-mono">5K Followers</p>
+                            </div>
+                        </div>
+                        <div class="rounded-lg overflow-hidden w-full h-[175px] md:h-[200px] bg-black/40">
+                            <img src="Assest/whatsapp-channel.jpg" alt="Devengers WhatsApp Channel"
+                                class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-300">
+                        </div>
+                        <div
+                            class="flex items-center justify-between text-[10px] text-emerald-400 font-bold mt-1.5 px-0.5">
+                            <span>Join</span> <span>&rarr;</span>
+                        </div>
+                    </a>
+
+                    <!-- Card 2: LinkedIn Page (Pushed up slightly for staggered look) -->
+                    <a href="https://www.linkedin.com/company/officialdevengers" target="_blank"
+                        style="opacity: 1 !important; visibility: visible !important;"
+                        class="social-preview-card bg-[#1b1f23] text-white rounded-xl p-2.5 shadow-2xl flex flex-col -mt-3 md:-mt-4 border border-blue-500/30 hover:border-blue-400 hover:shadow-[0_12px_35px_rgba(10,102,194,0.35)] hover:-translate-y-1.5 transition-all duration-300 group">
+                        <div class="flex items-center gap-1.5 mb-1.5 px-0.5">
+                            <div
+                                class="w-5 h-5 rounded-full bg-[#0A66C2] flex items-center justify-center text-white shrink-0 shadow">
+                                <svg class="w-3 h-3 fill-current" viewBox="0 0 24 24">
+                                    <path
+                                        d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                                </svg>
+                            </div>
+                            <div class="overflow-hidden">
+                                <p class="text-[11px] font-bold leading-none truncate">LinkedIn</p>
+                                <p class="text-[9px] text-blue-400 font-mono">5K Followers</p>
+                            </div>
+                        </div>
+                        <div class="rounded-lg overflow-hidden w-full h-[185px] md:h-[210px] bg-black/40">
+                            <img src="Assest/linkedin-page.jpg" alt="Devengers LinkedIn"
+                                class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-300">
+                        </div>
+                        <div
+                            class="flex items-center justify-between text-[10px] text-blue-400 font-bold mt-1.5 px-0.5">
+                            <span>Connect</span> <span>&rarr;</span>
+                        </div>
+                    </a>
+
+                    <!-- Card 3: Instagram Page -->
+                    <a href="https://www.instagram.com/officialdevengers" target="_blank"
+                        style="opacity: 1 !important; visibility: visible !important;"
+                        class="social-preview-card bg-[#1a0f1d] text-white rounded-xl p-2.5 shadow-2xl flex flex-col border border-pink-500/30 hover:border-pink-400 hover:shadow-[0_12px_35px_rgba(221,42,123,0.35)] hover:-translate-y-1.5 transition-all duration-300 group">
+                        <div class="flex items-center gap-1.5 mb-1.5 px-0.5">
+                            <div
+                                class="w-5 h-5 rounded-full bg-gradient-to-tr from-[#F58529] via-[#DD2A7B] to-[#8134AF] flex items-center justify-center text-white shrink-0 shadow">
+                                <svg class="w-3 h-3 fill-current" viewBox="0 0 24 24">
+                                    <path
+                                        d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.449-1.44z" />
+                                </svg>
+                            </div>
+                            <div class="overflow-hidden">
+                                <p class="text-[11px] font-bold leading-none truncate">Instagram</p>
+                                <p class="text-[9px] text-pink-400 font-mono">3K Followers</p>
+                            </div>
+                        </div>
+                        <div class="rounded-lg overflow-hidden w-full h-[175px] md:h-[200px] bg-black/40">
+                            <img src="Assest/instagram-page.jpg" alt="Devengers Instagram"
+                                class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-300">
+                        </div>
+                        <div
+                            class="flex items-center justify-between text-[10px] text-pink-400 font-bold mt-1.5 px-0.5">
+                            <span>Follow</span> <span>&rarr;</span>
+                        </div>
+                    </a>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 4: Projects (Black) -->
+    <section
+        class="relative min-h-[100vh] bg-[#111111] w-full flex justify-center items-center py-28 lg:py-32 overflow-hidden border-t border-[#222]"
+        id="projects-section">
+        <div
+            class="w-full max-w-[1400px] px-6 sm:px-8 lg:px-16 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+
+            <!-- Left: Five Compact Feature Cards (Written cards style) -->
+            <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4">
+
+                <!-- Card 1: Events -->
+                <a href="events.html"
+                    class="nav-feature-card group relative block bg-[#FF5722] rounded-2xl p-5 shadow-brutal border-2 border-black hover:-translate-y-1.5 transition-all duration-300">
+                    <div class="flex items-center justify-between mb-3">
+                        <span
+                            class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-black/20 text-white font-mono text-[10px] font-bold tracking-wider uppercase">
+                            <span class="w-1.5 h-1.5 rounded-full bg-white animate-pulse"></span>
+                            01 // EVENTS
+                        </span>
+                        <div
+                            class="w-7 h-7 rounded-full bg-black/20 text-white flex items-center justify-center group-hover:bg-black group-hover:text-white transition-colors">
+                            <svg xmlns="http://www.w3.org/2000/svg"
+                                class="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"
+                                fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="space-y-1">
+                        <div class="flex items-baseline gap-2 flex-wrap">
+                            <h3 class="text-white font-black text-2xl tracking-tight leading-none">Events</h3>
+                            <span class="text-white/80 font-bold text-xs uppercase tracking-wider font-mono">—
+                                Opportunities to Participate</span>
+                        </div>
+                        <p class="text-white/90 text-xs sm:text-[13px] leading-relaxed pt-1.5 font-normal">
+                            Discover hackathons, technical events, internships, and jobs in one place.
+                        </p>
+                    </div>
+                </a>
+
+                <!-- Card 2: Learn -->
+                <a href="learn.html"
+                    class="nav-feature-card group relative block bg-[#00D2FF] rounded-2xl p-5 shadow-brutal border-2 border-black hover:-translate-y-1.5 transition-all duration-300">
+                    <div class="flex items-center justify-between mb-3">
+                        <span
+                            class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-black/10 text-black font-mono text-[10px] font-bold tracking-wider uppercase">
+                            <span class="w-1.5 h-1.5 rounded-full bg-black animate-pulse"></span>
+                            02 // LEARN
+                        </span>
+                        <div
+                            class="w-7 h-7 rounded-full bg-black/10 text-black flex items-center justify-center group-hover:bg-black group-hover:text-[#00D2FF] transition-colors">
+                            <svg xmlns="http://www.w3.org/2000/svg"
+                                class="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"
+                                fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="space-y-1">
+                        <div class="flex items-baseline gap-2 flex-wrap">
+                            <h3 class="text-black font-black text-2xl tracking-tight leading-none">Learn</h3>
+                            <span class="text-black/70 font-bold text-xs uppercase tracking-wider font-mono">— Free CS Tracks & Docs</span>
+                        </div>
+                        <p class="text-black/90 text-xs sm:text-[13px] leading-relaxed pt-1.5 font-normal">
+                            Explore curated free B.Tech courses, GeeksforGeeks documentation, and downloadable PDF cheat sheets.
+                        </p>
+                    </div>
+                </a>
+
+                <!-- Card 3: Campus Resource -->
+                <a href="campus.html"
+                    class="nav-feature-card group relative block bg-[#FCE205] rounded-2xl p-5 shadow-brutal border-2 border-black hover:-translate-y-1.5 transition-all duration-300">
+                    <div class="flex items-center justify-between mb-3">
+                        <span
+                            class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-black/10 text-black font-mono text-[10px] font-bold tracking-wider uppercase">
+                            <span class="w-1.5 h-1.5 rounded-full bg-black animate-pulse"></span>
+                            03 // CAMPUS RESOURCE
+                        </span>
+                        <div
+                            class="w-7 h-7 rounded-full bg-black/10 text-black flex items-center justify-center group-hover:bg-black group-hover:text-[#FCE205] transition-colors">
+                            <svg xmlns="http://www.w3.org/2000/svg"
+                                class="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"
+                                fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="space-y-1">
+                        <div class="flex items-baseline gap-2 flex-wrap">
+                            <h3 class="text-black font-black text-2xl tracking-tight leading-none">Campus Resource</h3>
+                            <span class="text-black/70 font-bold text-xs uppercase tracking-wider font-mono">— Academic
+                                Preparation</span>
+                        </div>
+                        <p class="text-black/90 text-xs sm:text-[13px] leading-relaxed pt-1.5 font-normal">
+                            Find college and university exam papers to support your exam preparation.
+                        </p>
+                    </div>
+                </a>
+
+                <!-- Card 4: Gallery -->
+                <a href="gallery.html"
+                    class="nav-feature-card group relative block bg-[#7C3AED] rounded-2xl p-5 shadow-brutal border-2 border-black hover:-translate-y-1.5 transition-all duration-300">
+                    <div class="flex items-center justify-between mb-3">
+                        <span
+                            class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-black/20 text-white font-mono text-[10px] font-bold tracking-wider uppercase">
+                            <span class="w-1.5 h-1.5 rounded-full bg-white animate-pulse"></span>
+                            04 // GALLERY
+                        </span>
+                        <div
+                            class="w-7 h-7 rounded-full bg-black/20 text-white flex items-center justify-center group-hover:bg-black group-hover:text-white transition-colors">
+                            <svg xmlns="http://www.w3.org/2000/svg"
+                                class="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"
+                                fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="space-y-1">
+                        <div class="flex items-baseline gap-2 flex-wrap">
+                            <h3 class="text-white font-black text-2xl tracking-tight leading-none">Gallery</h3>
+                            <span class="text-white/80 font-bold text-xs uppercase tracking-wider font-mono">—
+                                Recognition That Matters</span>
+                        </div>
+                        <p class="text-white/90 text-xs sm:text-[13px] leading-relaxed pt-1.5 font-normal">
+                            Explore important notices, celebrate winners, and discover student rankings and
+                            achievements.
+                        </p>
+                    </div>
+                </a>
+
+                <!-- Card 5: DSA Streak (Spans 2 columns) -->
+                <a href="dsa.html"
+                    class="nav-feature-card col-span-1 sm:col-span-2 group relative block bg-[#10B981] rounded-2xl p-5 sm:p-6 shadow-brutal border-2 border-black hover:-translate-y-1.5 transition-all duration-300">
+                    <div class="flex items-center justify-between mb-3">
+                        <div class="flex items-center gap-2">
+                            <span
+                                class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-black/15 text-black font-mono text-[10px] font-bold tracking-wider uppercase">
+                                <span class="w-1.5 h-1.5 rounded-full bg-black animate-pulse"></span>
+                                05 // DSA STREAK
+                            </span>
+                            <span
+                                class="hidden sm:inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-black text-[#10B981] font-mono text-[10px] font-bold uppercase">
+                                🔥 DAILY QUESTION ACTIVE
+                            </span>
+                        </div>
+                        <div
+                            class="w-7 h-7 rounded-full bg-black/10 text-black flex items-center justify-center group-hover:bg-black group-hover:text-[#10B981] transition-colors">
+                            <svg xmlns="http://www.w3.org/2000/svg"
+                                class="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"
+                                fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                        <div class="space-y-1">
+                            <div class="flex items-baseline gap-2 flex-wrap">
+                                <h3 class="text-black font-black text-2xl tracking-tight leading-none">DSA Streak</h3>
+                                <span class="text-black/80 font-bold text-xs uppercase tracking-wider font-mono">—
+                                    Consistency Builds Skill</span>
+                            </div>
+                            <p class="text-black/90 text-xs sm:text-[13px] leading-relaxed pt-1 max-w-xl font-normal">
+                                Solve a daily data structures and algorithms question, maintain your streak, and improve
+                                through consistent practice.
+                            </p>
+                        </div>
+                        <div
+                            class="hidden md:flex items-center gap-2 shrink-0 bg-black/10 px-3 py-2 rounded-xl border border-black/15">
+                            <div class="text-right">
+                                <div class="text-[10px] font-mono font-bold uppercase text-black/70">Solve Today</div>
+                                <div class="text-xs font-bold text-black font-mono">Day Streak 🔥</div>
+                            </div>
+                            <span class="text-xl">⚡</span>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Card 6: Certificates (Spans 2 columns) -->
+                <a href="certificates.html"
+                    class="nav-feature-card col-span-1 sm:col-span-2 group relative block bg-gradient-to-r from-[#F7D070] to-[#E5B842] rounded-2xl p-5 sm:p-6 shadow-brutal border-2 border-black hover:-translate-y-1.5 transition-all duration-300">
+                    <div class="flex items-center justify-between mb-3">
+                        <div class="flex items-center gap-2">
+                            <span
+                                class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-black/15 text-black font-mono text-[10px] font-bold tracking-wider uppercase">
+                                <span class="w-1.5 h-1.5 rounded-full bg-black animate-pulse"></span>
+                                06 // CERTIFICATES
+                            </span>
+                            <span
+                                class="hidden sm:inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-black text-[#F7D070] font-mono text-[10px] font-bold uppercase">
+                                🎓 INSTANT VERIFICATION &amp; DOWNLOAD
+                            </span>
+                        </div>
+                        <div
+                            class="w-7 h-7 rounded-full bg-black/10 text-black flex items-center justify-center group-hover:bg-black group-hover:text-[#F7D070] transition-colors">
+                            <svg xmlns="http://www.w3.org/2000/svg"
+                                class="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"
+                                fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                        <div class="space-y-1">
+                            <div class="flex items-baseline gap-2 flex-wrap">
+                                <h3 class="text-black font-black text-2xl tracking-tight leading-none">Official Certificates</h3>
+                                <span class="text-black/80 font-bold text-xs uppercase tracking-wider font-mono">— Verify &amp; Claim Credentials</span>
+                            </div>
+                            <p class="text-black/90 text-xs sm:text-[13px] leading-relaxed pt-1 max-w-xl font-normal">
+                                Search by your registered email or name to verify your participation, generate high-resolution certificate renders, and download in JPG, PDF, or complete ZIP bundles.
+                            </p>
+                        </div>
+                        <div
+                            class="hidden md:flex items-center gap-2 shrink-0 bg-black/10 px-3 py-2 rounded-xl border border-black/15">
+                            <div class="text-right">
+                                <div class="text-[10px] font-mono font-bold uppercase text-black/70">Authentic</div>
+                                <div class="text-xs font-bold text-black font-mono">100% Verified 🏆</div>
+                            </div>
+                            <span class="text-xl">📜</span>
+                        </div>
+                    </div>
+                </a>
+
+            </div>
+
+            <!-- Right: Text Description & Navbar Connection -->
+            <div class="lg:col-span-5 flex flex-col text-white max-w-md mx-auto lg:ml-auto lg:mr-0">
+                <div
+                    class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-acid text-xs font-mono uppercase tracking-wider mb-5 w-fit">
+                    <span class="w-1.5 h-1.5 rounded-full bg-acid animate-ping"></span>
+                    Direct Platform Links
+                </div>
+                <h2 class="text-[38px] md:text-[48px] font-medium tracking-tight mb-5 leading-[1.1]">An ecosystem
+                    for<br>opportunities. 🌍</h2>
+                <p class="text-gray-400 text-[16px] md:text-[17px] leading-[1.6] mb-8">
+                    Devengers bridges the gap between traditional college education and real-world technology by
+                    organizing hackathons, coding competitions, technical quizzes, workshops, open-source initiatives,
+                    AI and emerging-technology programs, and career-focused opportunities.
+                </p>
+
+                <!-- Interactive helper showing connection to navbar -->
+                <div class="pt-6 border-t border-white/10 flex flex-col gap-2">
+                    <span class="text-[11px] font-mono uppercase tracking-widest text-gray-500">Connected to your top
+                        navigation bar:</span>
+                    <div class="flex flex-wrap gap-2 text-xs font-mono">
+                        <a href="events.html"
+                            class="text-white hover:text-[#FF5722] transition-colors underline decoration-[#FF5722]">Events</a>
+                        <span class="text-gray-600">·</span>
+                        <a href="learn.html"
+                            class="text-white hover:text-[#00D2FF] transition-colors underline decoration-[#00D2FF]">Learn</a>
+                        <span class="text-gray-600">·</span>
+                        <a href="campus.html"
+                            class="text-white hover:text-[#FCE205] transition-colors underline decoration-[#FCE205]">Campus
+                            Resource</a>
+                        <span class="text-gray-600">·</span>
+                        <a href="gallery.html"
+                            class="text-white hover:text-[#7C3AED] transition-colors underline decoration-[#7C3AED]">Hall
+                            of Fame</a>
+                        <span class="text-gray-600">·</span>
+                        <a href="dsa.html"
+                            class="text-white hover:text-[#10B981] transition-colors underline decoration-[#10B981]">DSA
+                            Streak</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+
+
+
+    <!-- SECTION 7: Studio / Previous Sponsors (White) -->
+    <section class="relative min-h-[80vh] lg:min-h-[120vh] bg-white w-full flex justify-center pt-0 pb-16 sm:pb-32 overflow-hidden"
+        id="studio-section">
+        <div class="w-full max-w-[1400px] px-4 sm:px-8 lg:px-16 grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-start">
+            <!-- Left: Text (Sticky on desktop, static on mobile) -->
+            <div class="flex flex-col text-black static lg:sticky lg:top-40 z-10 pt-12 lg:pt-32">
+                <div
+                    class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-black/5 border border-black/10 text-black text-xs font-mono uppercase tracking-wider mb-5 w-fit">
+                    <span class="w-1.5 h-1.5 rounded-full bg-green-500 animate-ping"></span>
+                    Backed By Global Tech Leaders
+                </div>
+                <h2 class="text-3xl sm:text-5xl md:text-[60px] font-black tracking-tight mb-4 sm:mb-6 leading-[1.05]">Our
+                    Previous<br>Sponsors. 🤝</h2>
+                <p class="text-gray-700 text-sm sm:text-[17px] max-w-md leading-[1.6] mb-4 font-normal">
+                    Devengers has proudly collaborated with the world's leading technology platforms, hackathon
+                    ecosystems, and elite university entrepreneurship cells.
+                </p>
+                <p class="text-gray-600 text-xs sm:text-sm max-w-md leading-[1.6] mb-6 sm:mb-8 font-normal">
+                    Together, we have organized national hackathons, technical workshops, and career opportunities for
+                    thousands of student developers.
+                </p>
+
+                <!-- Sponsor pill tags -->
+                <div class="flex flex-wrap gap-1.5 max-w-md mb-8">
+                    <span
+                        class="px-2.5 py-1 rounded-md bg-gray-100 border border-gray-200 text-xs font-mono font-medium text-gray-800">GitHub</span>
+                    <span
+                        class="px-2.5 py-1 rounded-md bg-gray-100 border border-gray-200 text-xs font-mono font-medium text-gray-800">Google
+                        Cloud</span>
+                    <span
+                        class="px-2.5 py-1 rounded-md bg-gray-100 border border-gray-200 text-xs font-mono font-medium text-gray-800">AWS</span>
+                    <span
+                        class="px-2.5 py-1 rounded-md bg-gray-100 border border-gray-200 text-xs font-mono font-medium text-gray-800">Vercel</span>
+                    <span
+                        class="px-2.5 py-1 rounded-md bg-gray-100 border border-gray-200 text-xs font-mono font-medium text-gray-800">Devfolio</span>
+                    <span
+                        class="px-2.5 py-1 rounded-md bg-gray-100 border border-gray-200 text-xs font-mono font-medium text-gray-800">MLH</span>
+                    <span
+                        class="px-2.5 py-1 rounded-md bg-gray-100 border border-gray-200 text-xs font-mono font-medium text-gray-800">Unstop</span>
+                    <span
+                        class="px-2.5 py-1 rounded-md bg-gray-100 border border-gray-200 text-xs font-mono font-medium text-gray-800">E-Cell
+                        IIT Bombay</span>
+                    <span
+                        class="px-2.5 py-1 rounded-md bg-gray-100 border border-gray-200 text-xs font-mono font-medium text-gray-800">Red
+                        Bull</span>
+                </div>
+
+                <div>
+                    <a href="mailto:event@devengers.org?subject=Partnership%20Inquiry%20-%20Devengers"
+                        class="inline-flex bg-black text-white rounded-full px-6 sm:px-8 py-3.5 sm:py-4 font-bold uppercase tracking-widest items-center gap-2 sm:gap-3 hover:bg-gray-800 transition-colors text-xs sm:text-[13px] shadow-brutal border-2 border-black">
+                        PARTNER WITH DEVENGERS <span class="font-normal text-base sm:text-lg">&rarr;</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Right: Logo Grid (3 Running Marquee Columns) -->
+            <div
+                class="grid grid-cols-3 gap-3 sm:gap-6 studio-logos pb-12 sm:pb-20 h-[480px] sm:h-[650px] lg:h-[1000px] overflow-hidden relative mask-vertical-fade">
+
+                <!-- Col 1 (Moves UP infinitely) -->
+                <div class="flex flex-col gap-3 sm:gap-6 mt-6 sm:mt-12 studio-col animate-marquee-up">
+                    <!-- 1. GitHub -->
+                    <div
+                        class="w-full aspect-square bg-[#0d1117] rounded-[26px] shadow-2xl border border-gray-800 flex items-center justify-center p-6 shrink-0 group hover:scale-105 transition-all duration-300">
+                        <img src="https://cdn.simpleicons.org/github/white"
+                            class="w-20 h-20 sm:w-24 sm:h-24 object-contain" alt="GitHub">
+                    </div>
+                    <!-- 2. Google for Developers -->
+                    <div
+                        class="w-full aspect-square bg-white rounded-[26px] shadow-2xl border border-gray-200 flex items-center justify-center p-6 shrink-0 group hover:scale-105 transition-all duration-300">
+                        <img src="https://www.vectorlogo.zone/logos/google/google-ar21.svg"
+                            class="max-w-[85%] max-h-16 object-contain scale-110" alt="Google for Developers">
+                    </div>
+                    <!-- 3. Devfolio (Official Asset) -->
+                    <div
+                        class="w-full aspect-square bg-white rounded-[26px] shadow-2xl border border-gray-200 flex items-center justify-center p-6 shrink-0 group hover:scale-105 transition-all duration-300">
+                        <img src="Assest/devfolio-logo.png" class="max-w-[90%] max-h-18 object-contain scale-120"
+                            alt="Devfolio">
+                    </div>
+                    <!-- 4. Red Bull (Official Asset) -->
+                    <div
+                        class="w-full aspect-square bg-white rounded-[26px] shadow-2xl border border-gray-200 flex items-center justify-center p-6 shrink-0 group hover:scale-105 transition-all duration-300">
+                        <img src="Assest/redbull-logo.png" class="max-w-[90%] max-h-24 object-contain" alt="Red Bull">
+                    </div>
+                    <!-- 5. .xyz Domains (Official Asset - Transparent Background) -->
+                    <div
+                        class="w-full aspect-square bg-white rounded-[26px] shadow-2xl border border-gray-200 flex items-center justify-center p-6 shrink-0 group hover:scale-105 transition-all duration-300">
+                        <img src="Assest/xyz-logo.png" class="max-w-[85%] max-h-20 object-contain" alt=".xyz Domains">
+                    </div>
+                    <!-- 6. H2S Skills -->
+                    <div
+                        class="w-full aspect-square bg-white rounded-[26px] shadow-2xl border border-gray-200 flex items-center justify-center p-6 shrink-0 group hover:scale-105 transition-all duration-300">
+                        <img src="https://hacktoskill.com/homePageH2s/assets/h2slogo.png"
+                            class="max-w-[88%] max-h-20 object-contain" alt="H2S Skills">
+                    </div>
+
+                    <!-- Duplicate for infinite seamless loop -->
+                    <div
+                        class="w-full aspect-square bg-[#0d1117] rounded-[26px] shadow-2xl border border-gray-800 flex items-center justify-center p-6 shrink-0 group hover:scale-105 transition-all duration-300">
+                        <img src="https://cdn.simpleicons.org/github/white"
+                            class="w-20 h-20 sm:w-24 sm:h-24 object-contain" alt="GitHub">
+                    </div>
+                    <div
+                        class="w-full aspect-square bg-white rounded-[26px] shadow-2xl border border-gray-200 flex items-center justify-center p-6 shrink-0 group hover:scale-105 transition-all duration-300">
+                        <img src="https://www.vectorlogo.zone/logos/google/google-ar21.svg"
+                            class="max-w-[85%] max-h-16 object-contain scale-110" alt="Google for Developers">
+                    </div>
+                    <div
+                        class="w-full aspect-square bg-white rounded-[26px] shadow-2xl border border-gray-200 flex items-center justify-center p-6 shrink-0 group hover:scale-105 transition-all duration-300">
+                        <img src="Assest/devfolio-logo.png" class="max-w-[90%] max-h-18 object-contain scale-120"
+                            alt="Devfolio">
+                    </div>
+                    <div
+                        class="w-full aspect-square bg-white rounded-[26px] shadow-2xl border border-gray-200 flex items-center justify-center p-6 shrink-0 group hover:scale-105 transition-all duration-300">
+                        <img src="Assest/redbull-logo.png" class="max-w-[90%] max-h-24 object-contain" alt="Red Bull">
+                    </div>
+                    <div
+                        class="w-full aspect-square bg-white rounded-[26px] shadow-2xl border border-gray-200 flex items-center justify-center p-6 shrink-0 group hover:scale-105 transition-all duration-300">
+                        <img src="Assest/xyz-logo.png" class="max-w-[85%] max-h-20 object-contain" alt=".xyz Domains">
+                    </div>
+                    <div
+                        class="w-full aspect-square bg-white rounded-[26px] shadow-2xl border border-gray-200 flex items-center justify-center p-6 shrink-0 group hover:scale-105 transition-all duration-300">
+                        <img src="https://hacktoskill.com/homePageH2s/assets/h2slogo.png"
+                            class="max-w-[88%] max-h-20 object-contain" alt="H2S Skills">
+                    </div>
+                </div>
+
+                <!-- Col 2 (Moves DOWN infinitely) -->
+                <div class="flex flex-col gap-6 -mt-24 studio-col animate-marquee-down">
+                    <!-- 7. AWS (Official Asset) -->
+                    <div
+                        class="w-full aspect-square bg-white rounded-[26px] shadow-2xl border border-gray-200 flex items-center justify-center p-6 shrink-0 group hover:scale-105 transition-all duration-300">
+                        <img src="Assest/aws-logo.png" class="max-w-[88%] max-h-20 object-contain" alt="AWS">
+                    </div>
+                    <!-- 8. Unstop (Official Asset) -->
+                    <div
+                        class="w-full aspect-square bg-[#1C4980] rounded-[26px] shadow-2xl border border-blue-400/20 flex items-center justify-center p-5 shrink-0 group hover:scale-105 transition-all duration-300">
+                        <img src="Assest/unstop-logo.png"
+                            class="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl object-contain shadow-lg" alt="Unstop">
+                    </div>
+                    <!-- 9. Lovable -->
+                    <div
+                        class="w-full aspect-square bg-gradient-to-br from-[#1E1B4B] to-[#0F172A] rounded-[26px] shadow-2xl border border-indigo-500/30 flex items-center justify-center p-6 shrink-0 group hover:scale-105 transition-all duration-300">
+                        <img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/lovable.svg"
+                            class="w-20 h-20 sm:w-24 sm:h-24 object-contain" alt="Lovable">
+                    </div>
+                    <!-- 10. E-Cell IIT Bombay -->
+                    <div
+                        class="w-full aspect-square bg-[#0b0f19] rounded-[26px] shadow-2xl border border-gray-800 flex items-center justify-center p-6 shrink-0 group hover:scale-105 transition-all duration-300">
+                        <img src="https://www.ecell.in/certificate/assets/img/E-Cell%20Logo-White.png"
+                            class="max-w-[88%] max-h-20 object-contain scale-115" alt="E-Cell IIT Bombay">
+                    </div>
+                    <!-- 11. Devnovate (Official Asset) -->
+                    <div
+                        class="w-full aspect-square bg-black rounded-[26px] shadow-2xl border border-gray-800 flex items-center justify-center p-6 shrink-0 group hover:scale-105 transition-all duration-300">
+                        <img src="Assest/devnovate-logo.png" class="max-w-[95%] max-h-20 object-contain scale-135"
+                            alt="Devnovate">
+                    </div>
+                    <!-- 12. Arduino (Official Asset) -->
+                    <div
+                        class="w-full aspect-square bg-white rounded-[26px] shadow-2xl border border-gray-200 flex items-center justify-center p-6 shrink-0 group hover:scale-105 transition-all duration-300">
+                        <img src="Assest/arduino-logo.png" class="max-w-[88%] max-h-22 object-contain" alt="Arduino">
+                    </div>
+
+                    <!-- Duplicate for infinite seamless loop -->
+                    <div
+                        class="w-full aspect-square bg-white rounded-[26px] shadow-2xl border border-gray-200 flex items-center justify-center p-6 shrink-0 group hover:scale-105 transition-all duration-300">
+                        <img src="Assest/aws-logo.png" class="max-w-[88%] max-h-20 object-contain" alt="AWS">
+                    </div>
+                    <div
+                        class="w-full aspect-square bg-[#1C4980] rounded-[26px] shadow-2xl border border-blue-400/20 flex items-center justify-center p-5 shrink-0 group hover:scale-105 transition-all duration-300">
+                        <img src="Assest/unstop-logo.png"
+                            class="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl object-contain shadow-lg" alt="Unstop">
+                    </div>
+                    <div
+                        class="w-full aspect-square bg-gradient-to-br from-[#1E1B4B] to-[#0F172A] rounded-[26px] shadow-2xl border border-indigo-500/30 flex items-center justify-center p-6 shrink-0 group hover:scale-105 transition-all duration-300">
+                        <img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/lovable.svg"
+                            class="w-20 h-20 sm:w-24 sm:h-24 object-contain" alt="Lovable">
+                    </div>
+                    <div
+                        class="w-full aspect-square bg-[#0b0f19] rounded-[26px] shadow-2xl border border-gray-800 flex items-center justify-center p-6 shrink-0 group hover:scale-105 transition-all duration-300">
+                        <img src="https://www.ecell.in/certificate/assets/img/E-Cell%20Logo-White.png"
+                            class="max-w-[88%] max-h-20 object-contain scale-115" alt="E-Cell IIT Bombay">
+                    </div>
+                    <div
+                        class="w-full aspect-square bg-black rounded-[26px] shadow-2xl border border-gray-800 flex items-center justify-center p-6 shrink-0 group hover:scale-105 transition-all duration-300">
+                        <img src="Assest/devnovate-logo.png" class="max-w-[95%] max-h-20 object-contain scale-135"
+                            alt="Devnovate">
+                    </div>
+                    <div
+                        class="w-full aspect-square bg-white rounded-[26px] shadow-2xl border border-gray-200 flex items-center justify-center p-6 shrink-0 group hover:scale-105 transition-all duration-300">
+                        <img src="Assest/arduino-logo.png" class="max-w-[88%] max-h-22 object-contain" alt="Arduino">
+                    </div>
+                </div>
+
+                <!-- Col 3 (Moves UP infinitely) -->
+                <div class="flex flex-col gap-6 mt-4 studio-col animate-marquee-up">
+                    <!-- 13. Vercel -->
+                    <div
+                        class="w-full aspect-square bg-black rounded-[26px] shadow-2xl border border-gray-800 flex items-center justify-center p-6 shrink-0 group hover:scale-105 transition-all duration-300">
+                        <img src="https://cdn.simpleicons.org/vercel/white"
+                            class="w-20 h-20 sm:w-24 sm:h-24 object-contain" alt="Vercel">
+                    </div>
+                    <!-- 14. Google Cloud (Official Asset) -->
+                    <div
+                        class="w-full aspect-square bg-white rounded-[26px] shadow-2xl border border-gray-200 flex items-center justify-center p-6 shrink-0 group hover:scale-105 transition-all duration-300">
+                        <img src="Assest/googlecloud-logo.png" class="max-w-[88%] max-h-24 object-contain"
+                            alt="Google Cloud">
+                    </div>
+                    <!-- 15. MLH (Official Asset) -->
+                    <div
+                        class="w-full aspect-square bg-white rounded-[26px] shadow-2xl border border-gray-200 flex items-center justify-center p-6 shrink-0 group hover:scale-105 transition-all duration-300">
+                        <img src="Assest/mlh-logo.png" class="max-w-[88%] max-h-24 object-contain"
+                            alt="Major League Hacking">
+                    </div>
+                    <!-- 16. Snowflake -->
+                    <div
+                        class="w-full aspect-square bg-[#0F172A] rounded-[26px] shadow-2xl border border-cyan-500/30 flex items-center justify-center p-6 shrink-0 group hover:scale-105 transition-all duration-300">
+                        <img src="https://cdn.simpleicons.org/snowflake"
+                            class="w-20 h-20 sm:w-24 sm:h-24 object-contain" alt="Snowflake">
+                    </div>
+                    <!-- 17. Hack with India (Official Asset) -->
+                    <div
+                        class="w-full aspect-square bg-[#0b0e14] rounded-[26px] shadow-2xl border border-gray-800 flex items-center justify-center p-5 shrink-0 group hover:scale-105 transition-all duration-300">
+                        <img src="Assest/hackwithindia-logo.png"
+                            class="w-24 h-24 sm:w-28 sm:h-28 rounded-full object-contain shadow-xl"
+                            alt="Hack With India">
+                    </div>
+                    <!-- 18. Webhurry (Official Asset) -->
+                    <div
+                        class="w-full aspect-square bg-[#081b4e] rounded-[26px] shadow-2xl border border-blue-500/25 flex items-center justify-center p-5 shrink-0 group hover:scale-105 transition-all duration-300">
+                        <img src="Assest/webhurry-logo.png"
+                            class="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl object-contain shadow-xl" alt="Webhurry">
+                    </div>
+
+                    <!-- Duplicate for infinite seamless loop -->
+                    <div
+                        class="w-full aspect-square bg-black rounded-[26px] shadow-2xl border border-gray-800 flex items-center justify-center p-6 shrink-0 group hover:scale-105 transition-all duration-300">
+                        <img src="https://cdn.simpleicons.org/vercel/white"
+                            class="w-20 h-20 sm:w-24 sm:h-24 object-contain" alt="Vercel">
+                    </div>
+                    <div
+                        class="w-full aspect-square bg-white rounded-[26px] shadow-2xl border border-gray-200 flex items-center justify-center p-6 shrink-0 group hover:scale-105 transition-all duration-300">
+                        <img src="Assest/googlecloud-logo.png" class="max-w-[88%] max-h-24 object-contain"
+                            alt="Google Cloud">
+                    </div>
+                    <div
+                        class="w-full aspect-square bg-white rounded-[26px] shadow-2xl border border-gray-200 flex items-center justify-center p-6 shrink-0 group hover:scale-105 transition-all duration-300">
+                        <img src="Assest/mlh-logo.png" class="max-w-[88%] max-h-24 object-contain"
+                            alt="Major League Hacking">
+                    </div>
+                    <div
+                        class="w-full aspect-square bg-[#0F172A] rounded-[26px] shadow-2xl border border-cyan-500/30 flex items-center justify-center p-6 shrink-0 group hover:scale-105 transition-all duration-300">
+                        <img src="https://cdn.simpleicons.org/snowflake"
+                            class="w-20 h-20 sm:w-24 sm:h-24 object-contain" alt="Snowflake">
+                    </div>
+                    <div
+                        class="w-full aspect-square bg-[#0b0e14] rounded-[26px] shadow-2xl border border-gray-800 flex items-center justify-center p-5 shrink-0 group hover:scale-105 transition-all duration-300">
+                        <img src="Assest/hackwithindia-logo.png"
+                            class="w-24 h-24 sm:w-28 sm:h-28 rounded-full object-contain shadow-xl"
+                            alt="Hack With India">
+                    </div>
+                    <div
+                        class="w-full aspect-square bg-[#081b4e] rounded-[26px] shadow-2xl border border-blue-500/25 flex items-center justify-center p-5 shrink-0 group hover:scale-105 transition-all duration-300">
+                        <img src="Assest/webhurry-logo.png"
+                            class="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl object-contain shadow-xl" alt="Webhurry">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 8: Testimonials (Yellow) -->
+    <section class="relative min-h-[90vh] bg-[#FCE205] w-full flex justify-center items-center py-32 overflow-hidden"
+        id="testimonials-section">
+        <!-- Giant Background Typography -->
+        <div
+            class="absolute inset-0 flex pointer-events-none opacity-[0.06] overflow-hidden justify-center items-center gap-12">
+            <!-- Repeating vertical DEVENGERS text -->
+            <div
+                class="flex flex-col transform -rotate-90 text-[18vw] font-black uppercase tracking-tighter whitespace-nowrap">
+                DEVENGERS DEVENGERS</div>
+            <div
+                class="flex flex-col transform -rotate-90 text-[18vw] font-black uppercase tracking-tighter whitespace-nowrap">
+                DEVENGERS DEVENGERS</div>
+            <div
+                class="flex flex-col transform -rotate-90 text-[18vw] font-black uppercase tracking-tighter whitespace-nowrap">
+                DEVENGERS DEVENGERS</div>
+            <div
+                class="flex flex-col transform -rotate-90 text-[18vw] font-black uppercase tracking-tighter whitespace-nowrap">
+                DEVENGERS DEVENGERS</div>
+        </div>
+
+        <div class="relative z-10 w-full max-w-[840px] px-8 flex flex-col items-center text-center text-black">
+            <h2 class="text-[38px] md:text-[50px] font-black tracking-tight mb-8 leading-[1.15]">
+                A fast-growing technology and developer community.
+            </h2>
+
+            <!-- Founders Profile Photos (Founder + Co-Founder in their back) -->
+            <div class="mb-8 flex justify-center items-center">
+                <div class="relative flex items-center justify-center">
+                    <!-- Founder: Kishan Nishad (Foreground / Left) -->
+                    <div class="relative z-20 group">
+                        <img src="Assest/founder-kishan.png"
+                            class="w-28 h-28 md:w-32 md:h-32 rounded-full border-4 border-black object-cover shadow-brutal transition-transform duration-300 group-hover:scale-105"
+                            alt="Kishan Nishad - Founder of Devengers">
+                        <div
+                            class="absolute -bottom-1 -left-1 bg-black text-[#FCE205] text-[10px] md:text-[11px] font-black uppercase px-2.5 py-0.5 rounded-full border-2 border-[#FCE205] tracking-wider shadow-md">
+                            FOUNDER
+                        </div>
+                    </div>
+
+                    <!-- Co-Founder (Layered in their back / slightly offset right) -->
+                    <div class="relative z-10 -ml-6 md:-ml-8 group">
+                        <img src="Assest/co-founder.jpg"
+                            class="w-24 h-24 md:w-28 md:h-28 rounded-full border-4 border-black object-cover shadow-brutal transition-transform duration-300 group-hover:scale-105 group-hover:z-30"
+                            alt="Co-Founder of Devengers">
+                        <div
+                            class="absolute -bottom-1 -right-1 bg-black text-white text-[10px] md:text-[11px] font-black uppercase px-2.5 py-0.5 rounded-full border-2 border-white tracking-wider shadow-md">
+                            CO-FOUNDER
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quote Aligned with Current Website Parts -->
+            <p class="text-[20px] md:text-[24px] font-medium mb-10 max-w-[680px] leading-[1.5] text-black/90">
+                "Devengers helps students and developers discover hackathons, master skills in <span
+                    class="font-bold underline decoration-black decoration-2">Learn</span>, access semester-tested
+                <span class="font-bold underline decoration-black decoration-2">Campus Resources</span>, celebrate
+                milestones in <span class="font-bold underline decoration-black decoration-2">Gallery</span>, and
+                build daily consistency with <span class="font-bold underline decoration-black decoration-2">DSA
+                    Streaks</span>."
+            </p>
+
+            <!-- Founders Attribution -->
+            <div class="mb-10 flex flex-col items-center">
+                <h3 class="font-black text-2xl tracking-tight text-black mb-1">Kishan Nishad &amp; Lav Soni</h3>
+                <p class="text-sm font-bold uppercase tracking-wider text-black/80">Founder & Co-Founder Devengers</p>
+                <p class="text-xs font-mono uppercase tracking-widest text-black/60 mt-1">DEVENGERS • Learn. Build.
+                    Lead. Impact.</p>
+            </div>
+
+            <!-- Button to Founder LinkedIn -->
+            <a href="https://www.linkedin.com/in/kishannishad/" target="_blank"
+                class="inline-flex bg-black text-white rounded-full px-8 py-4 font-bold uppercase tracking-widest items-center gap-3 hover:bg-gray-800 transition-all text-[13px] shadow-brutal border-2 border-black group">
+                <span>CONNECT WITH FOUNDERS</span>
+                <span class="font-normal text-lg group-hover:translate-x-1 transition-transform">&rarr;</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- SECTION 9: Pricing (Black) -->
+    <section class="relative bg-[#111111] w-full flex flex-col items-center pt-32 pb-16 px-8 lg:px-16"
+        id="pricing-section">
+        <div class="w-full max-w-[1200px] flex flex-col items-center text-center">
+            <h2 class="text-white text-[45px] md:text-[55px] font-medium tracking-tight mb-4 leading-[1.1]">
+                Join Devengers today.<br>It's completely free.
+            </h2>
+            <p class="text-gray-400 text-[17px] leading-[1.6] max-w-[600px] mx-auto mb-16">
+                Whether you're a beginner, developer, creator, or tech enthusiast — there's a place for you here.
+                Connect across our platforms and never miss an opportunity.
+            </p>
+
+            <!-- Pricing Cards Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 w-full mb-16">
+                <!-- WhatsApp Card -->
+                <div
+                    class="pricing-card bg-[#222222] rounded-[24px] p-8 text-left flex flex-col border border-gray-800">
+                    <p class="text-gray-400 text-xs font-bold tracking-widest mb-4">COMMUNITY</p>
+                    <div class="flex items-center gap-3 mb-6">
+                        <span class="text-4xl">📱</span>
+                        <h3 class="text-white text-[40px] font-bold tracking-tight">WhatsApp</h3>
+                    </div>
+                    <p class="text-gray-400 text-sm mb-8 leading-relaxed">
+                        Get daily updates on jobs, hackathons, and connect with fellow developers instantly.
+                    </p>
+                    <p class="text-white font-bold text-sm mb-4">What you get:</p>
+                    <ul class="flex flex-col gap-3 mb-10">
+                        <li class="flex items-start gap-3 text-white text-sm">
+                            <svg class="w-4 h-4 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            Daily Jobs & Hackathons
+                        </li>
+                        <li class="flex items-start gap-3 text-white text-sm">
+                            <svg class="w-4 h-4 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            Instant Event Updates
+                        </li>
+                        <li class="flex items-start gap-3 text-white text-sm">
+                            <svg class="w-4 h-4 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            Community Discussions
+                        </li>
+                    </ul>
+                    <a href="https://whatsapp.com/channel/0029VbCVGAd8KMql7Ie3ew43" target="_blank"
+                        class="mt-auto w-full inline-flex bg-white text-black justify-center rounded-full px-8 py-3.5 font-bold uppercase tracking-widest hover:bg-gray-200 transition-colors text-[12px]">JOIN
+                        MAIN CHANNEL</a>
+                </div>
+
+                <!-- LinkedIn Card -->
+                <div class="pricing-card bg-[#7B42F6] rounded-[24px] p-8 text-left flex flex-col">
+                    <p class="text-white/70 text-xs font-bold tracking-widest mb-4 uppercase">PROFESSIONAL</p>
+                    <div class="flex items-center gap-3 mb-6">
+                        <span class="text-4xl">💼</span>
+                        <h3 class="text-white text-[40px] font-bold tracking-tight">LinkedIn</h3>
+                    </div>
+                    <p class="text-white/80 text-sm mb-8 leading-relaxed">
+                        Build your professional network, find career opportunities, and share your achievements.
+                    </p>
+                    <p class="text-white font-bold text-sm mb-4">What you get:</p>
+                    <ul class="flex flex-col gap-3 mb-10">
+                        <li class="flex items-start gap-3 text-white text-sm">
+                            <svg class="w-4 h-4 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            Career Opportunities
+                        </li>
+                        <li class="flex items-start gap-3 text-white text-sm">
+                            <svg class="w-4 h-4 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            Professional Networking
+                        </li>
+                        <li class="flex items-start gap-3 text-white text-sm">
+                            <svg class="w-4 h-4 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            Industry Insights
+                        </li>
+                    </ul>
+                    <a href="https://www.linkedin.com/company/devengers1/" target="_blank"
+                        class="mt-auto w-full inline-flex bg-white text-black justify-center rounded-full px-8 py-3.5 font-bold uppercase tracking-widest hover:bg-gray-200 transition-colors text-[12px]">FOLLOW
+                        ON LINKEDIN</a>
+                </div>
+
+                <!-- Instagram & YouTube Card -->
+                <div class="pricing-card bg-[#FCE205] rounded-[24px] p-8 text-left flex flex-col">
+                    <p class="text-black/60 text-xs font-bold tracking-widest mb-4 uppercase">CONTENT</p>
+                    <div class="flex items-center gap-3 mb-6">
+                        <span class="text-4xl">📸</span>
+                        <h3 class="text-black text-[40px] font-bold tracking-tight">Socials</h3>
+                    </div>
+                    <p class="text-black/80 text-sm mb-8 leading-relaxed">
+                        Stay inspired with our visual content, tutorials, and behind-the-scenes community moments.
+                    </p>
+                    <p class="text-black font-bold text-sm mb-4">What you get:</p>
+                    <ul class="flex flex-col gap-3 mb-10">
+                        <li class="flex items-start gap-3 text-black text-sm">
+                            <svg class="w-4 h-4 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            Event Highlights
+                        </li>
+                        <li class="flex items-start gap-3 text-black text-sm">
+                            <svg class="w-4 h-4 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            Video Tutorials & Content
+                        </li>
+                        <li class="flex items-start gap-3 text-black text-sm">
+                            <svg class="w-4 h-4 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            Community Spotlights
+                        </li>
+                    </ul>
+                    <a href="https://www.instagram.com/devengers.club" target="_blank"
+                        class="mt-auto w-full inline-flex bg-black text-white justify-center rounded-full px-8 py-3.5 font-bold uppercase tracking-widest hover:bg-gray-800 transition-colors text-[12px]">FOLLOW
+                        ON INSTAGRAM</a>
+                </div>
+            </div>
+
+            <p class="text-gray-400 text-sm mt-4">
+                Looking for daily jobs? <a href="https://whatsapp.com/channel/0029Vb8m2ZzHAdNWqpVR9A25" target="_blank"
+                    class="text-white underline underline-offset-4">Join our Daily Jobs WhatsApp Channel</a>
+            </p>
+        </div>
+    </section>
+
+    <!-- SECTION 10: FAQ (Black) -->
+    <section class="relative bg-[#111111] w-full flex flex-col items-center py-28 px-8" id="faq-section">
+        <div class="w-full max-w-[840px] flex flex-col items-center">
+            <span class="text-xs font-mono font-bold uppercase tracking-widest text-[#FCE205] mb-3">COMMON
+                QUESTIONS</span>
+            <h2 class="text-white text-[38px] md:text-[50px] font-black tracking-tight mb-4 text-center">Frequently
+                Asked Questions</h2>
+            <p class="text-gray-400 text-sm md:text-base max-w-[600px] text-center mb-14">
+                Everything you need to know about Devengers, our community, events, learning resources, and campus
+                initiatives.
+            </p>
+
+            <div class="w-full flex flex-col mb-16 divide-y divide-gray-800/80">
+                <!-- FAQ 1: Free Community -->
+                <div class="faq-item transition-colors">
+                    <button
+                        class="faq-trigger w-full flex justify-between items-center py-6 text-left cursor-pointer group hover:bg-[#181818] px-4 rounded-xl transition-all"
+                        aria-expanded="false">
+                        <span
+                            class="text-gray-200 font-bold text-lg md:text-xl group-hover:text-white transition-colors">Is
+                            Devengers completely free to join?</span>
+                        <span
+                            class="faq-icon text-[#FCE205] text-2xl font-mono shrink-0 ml-4 transition-transform duration-300 font-light inline-block origin-center">+</span>
+                    </button>
+                    <div class="faq-content hidden px-4 pb-6 pt-1 text-gray-400 text-base leading-relaxed">
+                        Yes, 100% free! Devengers is a student and developer community built on open collaboration.
+                        There are no subscriptions, paywalls, or hidden costs to join our Discord/WhatsApp channels,
+                        participate in hackathons, access learning roadmaps, or collaborate with fellow builders.
+                    </div>
+                </div>
+
+                <!-- FAQ 2: Events & Hackathons -->
+                <div class="faq-item transition-colors">
+                    <button
+                        class="faq-trigger w-full flex justify-between items-center py-6 text-left cursor-pointer group hover:bg-[#181818] px-4 rounded-xl transition-all"
+                        aria-expanded="false">
+                        <span
+                            class="text-gray-200 font-bold text-lg md:text-xl group-hover:text-white transition-colors">What
+                            kind of events and hackathons does Devengers organize?</span>
+                        <span
+                            class="faq-icon text-[#FCE205] text-2xl font-mono shrink-0 ml-4 transition-transform duration-300 font-light inline-block origin-center">+</span>
+                    </button>
+                    <div class="faq-content hidden px-4 pb-6 pt-1 text-gray-400 text-base leading-relaxed">
+                        We organize and partner on national college hackathons, technical workshops, coding bootcamps,
+                        open-source sprints, and placement prep webinars in collaboration with industry platforms like
+                        GitHub, Google, Unstop, Devfolio, MLH, and premier universities across India.
+                    </div>
+                </div>
+
+                <!-- FAQ 3: Learn -->
+                <div class="faq-item transition-colors">
+                    <button
+                        class="faq-trigger w-full flex justify-between items-center py-6 text-left cursor-pointer group hover:bg-[#181818] px-4 rounded-xl transition-all"
+                        aria-expanded="false">
+                        <span
+                            class="text-gray-200 font-bold text-lg md:text-xl group-hover:text-white transition-colors">What
+                            is Learn and what courses or docs are available?</span>
+                        <span
+                            class="faq-icon text-[#FCE205] text-2xl font-mono shrink-0 ml-4 transition-transform duration-300 font-light inline-block origin-center">+</span>
+                    </button>
+                    <div class="faq-content hidden px-4 pb-6 pt-1 text-gray-400 text-base leading-relaxed">
+                        Learn is our curated computer science hub for B.Tech students. It includes verified free tracks in Full-Stack Web Development, Data Structures & Algorithms, AI/ML, and Core CS Systems, alongside GeeksforGeeks documentation roadmaps and downloadable PDF cheat sheets.
+                    </div>
+                </div>
+
+                <!-- FAQ 4: Campus Resources -->
+                <div class="faq-item transition-colors">
+                    <button
+                        class="faq-trigger w-full flex justify-between items-center py-6 text-left cursor-pointer group hover:bg-[#181818] px-4 rounded-xl transition-all"
+                        aria-expanded="false">
+                        <span
+                            class="text-gray-200 font-bold text-lg md:text-xl group-hover:text-white transition-colors">How
+                            do I access Campus Resources and university exam papers?</span>
+                        <span
+                            class="faq-icon text-[#FCE205] text-2xl font-mono shrink-0 ml-4 transition-transform duration-300 font-light inline-block origin-center">+</span>
+                    </button>
+                    <div class="faq-content hidden px-4 pb-6 pt-1 text-gray-400 text-base leading-relaxed">
+                        Campus Resources is our academic archive offering free, verified previous year question papers
+                        (PYQs), revision notes, lab manuals, and syllabus roadmaps across engineering universities
+                        (including AKTU, Mumbai University, GTU, VTU, and more) to boost your semester prep.
+                    </div>
+                </div>
+
+                <!-- FAQ 5: DSA Streak -->
+                <div class="faq-item transition-colors">
+                    <button
+                        class="faq-trigger w-full flex justify-between items-center py-6 text-left cursor-pointer group hover:bg-[#181818] px-4 rounded-xl transition-all"
+                        aria-expanded="false">
+                        <span
+                            class="text-gray-200 font-bold text-lg md:text-xl group-hover:text-white transition-colors">How
+                            does the daily DSA Streak challenge work?</span>
+                        <span
+                            class="faq-icon text-[#FCE205] text-2xl font-mono shrink-0 ml-4 transition-transform duration-300 font-light inline-block origin-center">+</span>
+                    </button>
+                    <div class="faq-content hidden px-4 pb-6 pt-1 text-gray-400 text-base leading-relaxed">
+                        Every day, our team curates a handpicked algorithmic problem (from Arrays to Dynamic Programming
+                        and Graphs). You solve it, maintain your daily consistency streak, share your approach in the
+                        community discussion, and level up your problem-solving skills for technical interviews.
+                    </div>
+                </div>
+
+                <!-- FAQ 6: Gallery -->
+                <div class="faq-item transition-colors">
+                    <button
+                        class="faq-trigger w-full flex justify-between items-center py-6 text-left cursor-pointer group hover:bg-[#181818] px-4 rounded-xl transition-all"
+                        aria-expanded="false">
+                        <span
+                            class="text-gray-200 font-bold text-lg md:text-xl group-hover:text-white transition-colors">What
+                            is the Gallery?</span>
+                        <span
+                            class="faq-icon text-[#FCE205] text-2xl font-mono shrink-0 ml-4 transition-transform duration-300 font-light inline-block origin-center">+</span>
+                    </button>
+                    <div class="faq-content hidden px-4 pb-6 pt-1 text-gray-400 text-base leading-relaxed">
+                        The Gallery showcases excellence across our ecosystem. We feature community projects, developer
+                        portfolios, national hackathon winners, and community leader spotlights with digital badges and priority referrals.
+                    </div>
+                </div>
+
+                <!-- FAQ 7: Campus Chapters -->
+                <div class="faq-item transition-colors">
+                    <button
+                        class="faq-trigger w-full flex justify-between items-center py-6 text-left cursor-pointer group hover:bg-[#181818] px-4 rounded-xl transition-all"
+                        aria-expanded="false">
+                        <span
+                            class="text-gray-200 font-bold text-lg md:text-xl group-hover:text-white transition-colors">How
+                            can I start a Devengers Chapter or organize an event at my college?</span>
+                        <span
+                            class="faq-icon text-[#FCE205] text-2xl font-mono shrink-0 ml-4 transition-transform duration-300 font-light inline-block origin-center">+</span>
+                    </button>
+                    <div class="faq-content hidden px-4 pb-6 pt-1 text-gray-400 text-base leading-relaxed">
+                        If you are a passionate student builder or tech club lead, you can start an official Devengers
+                        Chapter at your campus! We provide event sponsorship, mentor guidance, industry speakers, and
+                        promotion across our network. Contact us at <a href="mailto:support@devengers.org"
+                            class="text-[#FCE205] underline font-bold">support@devengers.org</a> to get started.
+                    </div>
+                </div>
+            </div>
+
+            <a href="mailto:support@devengers.org?subject=Question%20about%20Devengers"
+                class="inline-flex bg-white text-black rounded-full px-8 py-3.5 font-bold uppercase tracking-widest items-center gap-3 hover:bg-gray-200 transition-colors text-[12px] shadow-brutal">
+                HAVE MORE QUESTIONS? CONTACT SUPPORT <span class="font-normal text-lg">&rarr;</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- SECTION 11: Footer CTA (Yellow) -->
+    <section class="relative bg-[#FCE205] w-full flex justify-center py-32 overflow-hidden" id="footer-cta-section">
+        <div class="w-full max-w-[860px] px-8 flex flex-col items-center text-center text-black">
+            <p
+                class="text-xs font-bold uppercase tracking-widest mb-4 bg-black text-[#FCE205] px-4 py-1 rounded-full border-2 border-black">
+                CAMPUS INITIATIVES & HACKATHONS
+            </p>
+            <h2 class="text-[34px] md:text-[48px] font-black tracking-tight mb-6 leading-[1.15]">
+                Want to start a Devengers Chapter or organize an event / hackathon on your campus?
+            </h2>
+            <p class="text-[18px] md:text-[22px] font-medium mb-10 max-w-[720px] leading-[1.5] text-black/85">
+                "Bring the Devengers developer ecosystem to your university. Get mentorship, access national sponsor
+                networks, workshops, and full support to empower the next generation of builders."
+            </p>
+            <a href="mailto:support@devengers.org?subject=Campus%20Chapter%20%2F%20Hackathon%20Inquiry%20-%20Devengers"
+                class="inline-flex bg-black text-white rounded-full px-9 py-4 font-bold uppercase tracking-widest items-center gap-3 hover:bg-gray-800 transition-all text-[13px] shadow-brutal border-2 border-black group">
+                <span>CONTACT US &bull; START A CHAPTER</span>
+                <span class="font-normal text-lg group-hover:translate-x-1 transition-transform">&rarr;</span>
+            </a>
+            <p class="text-xs font-mono font-medium text-black/70 mt-4 tracking-wider">
+                Direct Email: <a href="mailto:support@devengers.org"
+                    class="underline hover:text-black font-bold">support@devengers.org</a>
+            </p>
+        </div>
+    </section>
+
+    <!-- SECTION 12: Site Footer (Black with Grid) -->
+    <footer class="relative bg-[#0b0b0b] w-full pt-28 pb-16 px-6 overflow-hidden text-center select-none"
+        id="site-footer">
+        <!-- SVG Grid Lines Background matching reference image -->
+        <svg class="absolute inset-0 w-full h-full pointer-events-none opacity-20" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <pattern id="footer-grid-pattern" width="24" height="24" patternUnits="userSpaceOnUse">
+                    <line x1="0" y1="24" x2="24" y2="24" stroke="#ffffff" stroke-width="1" stroke-dasharray="3,3" />
+                    <line x1="24" y1="0" x2="24" y2="24" stroke="#ffffff" stroke-width="1" stroke-dasharray="3,3" />
+                </pattern>
+                <pattern id="footer-major-grid" width="120" height="120" patternUnits="userSpaceOnUse">
+                    <line x1="0" y1="120" x2="120" y2="120" stroke="#ffffff" stroke-width="1" stroke-opacity="0.35" />
+                    <line x1="120" y1="0" x2="120" y2="120" stroke="#ffffff" stroke-width="1" stroke-opacity="0.35" />
+                </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#footer-grid-pattern)" />
+            <rect width="100%" height="100%" fill="url(#footer-major-grid)" />
+        </svg>
+
+        <div class="relative z-10 max-w-[1000px] mx-auto flex flex-col items-center">
+
+            <!-- Eyebrow -->
+            <p class="text-white text-[15px] md:text-[18px] font-semibold tracking-tight mb-7">
+                A Technology &amp; Developer Community
+            </p>
+
+            <!-- 3D Extruded Logo (DEVENGERS) -->
+            <div class="w-full max-w-[620px] flex justify-center mb-8 px-4">
+                <svg class="w-full h-auto overflow-visible select-none drop-shadow-lg transition-transform hover:scale-[1.02] duration-300" viewBox="0 0 850 140" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <style>
+                            .svg-devengers-text {
+                                font-family: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+                                font-weight: 900;
+                                font-size: 88px;
+                                letter-spacing: -2px;
+                                text-anchor: middle;
+                                dominant-baseline: central;
+                            }
+                        </style>
+                    </defs>
+                    <g transform="translate(425, 65) skewX(-5)">
+                        <!-- Bottom Black Shadow -->
+                        <text class="svg-devengers-text" x="-18" y="18" fill="#000000" stroke="#000000" stroke-width="8" stroke-linejoin="round">DEVENGERS</text>
+                        <text class="svg-devengers-text" x="-17" y="17" fill="#000000" stroke="#000000" stroke-width="8" stroke-linejoin="round">DEVENGERS</text>
+                        
+                        <!-- 3D White/Gray Extrusion Layers -->
+                        <text class="svg-devengers-text" x="-16" y="16" fill="#e2e2e2" stroke="#e2e2e2" stroke-width="8" stroke-linejoin="round">DEVENGERS</text>
+                        <text class="svg-devengers-text" x="-15" y="15" fill="#e2e2e2" stroke="#e2e2e2" stroke-width="8" stroke-linejoin="round">DEVENGERS</text>
+                        <text class="svg-devengers-text" x="-14" y="14" fill="#e2e2e2" stroke="#e2e2e2" stroke-width="8" stroke-linejoin="round">DEVENGERS</text>
+                        <text class="svg-devengers-text" x="-13" y="13" fill="#e2e2e2" stroke="#e2e2e2" stroke-width="8" stroke-linejoin="round">DEVENGERS</text>
+                        <text class="svg-devengers-text" x="-12" y="12" fill="#e2e2e2" stroke="#e2e2e2" stroke-width="8" stroke-linejoin="round">DEVENGERS</text>
+                        <text class="svg-devengers-text" x="-11" y="11" fill="#e2e2e2" stroke="#e2e2e2" stroke-width="8" stroke-linejoin="round">DEVENGERS</text>
+                        <text class="svg-devengers-text" x="-10" y="10" fill="#e2e2e2" stroke="#e2e2e2" stroke-width="8" stroke-linejoin="round">DEVENGERS</text>
+                        <text class="svg-devengers-text" x="-9" y="9" fill="#e2e2e2" stroke="#e2e2e2" stroke-width="8" stroke-linejoin="round">DEVENGERS</text>
+                        <text class="svg-devengers-text" x="-8" y="8" fill="#e2e2e2" stroke="#e2e2e2" stroke-width="8" stroke-linejoin="round">DEVENGERS</text>
+                        <text class="svg-devengers-text" x="-7" y="7" fill="#e2e2e2" stroke="#e2e2e2" stroke-width="8" stroke-linejoin="round">DEVENGERS</text>
+                        <text class="svg-devengers-text" x="-6" y="6" fill="#e2e2e2" stroke="#e2e2e2" stroke-width="8" stroke-linejoin="round">DEVENGERS</text>
+                        <text class="svg-devengers-text" x="-5" y="5" fill="#e2e2e2" stroke="#e2e2e2" stroke-width="8" stroke-linejoin="round">DEVENGERS</text>
+                        <text class="svg-devengers-text" x="-4" y="4" fill="#e2e2e2" stroke="#e2e2e2" stroke-width="8" stroke-linejoin="round">DEVENGERS</text>
+                        <text class="svg-devengers-text" x="-3" y="3" fill="#ffffff" stroke="#ffffff" stroke-width="8" stroke-linejoin="round">DEVENGERS</text>
+                        <text class="svg-devengers-text" x="-2" y="2" fill="#ffffff" stroke="#ffffff" stroke-width="8" stroke-linejoin="round">DEVENGERS</text>
+                        <text class="svg-devengers-text" x="-1" y="1" fill="#ffffff" stroke="#ffffff" stroke-width="8" stroke-linejoin="round">DEVENGERS</text>
+
+                        <!-- Top Front White Outline -->
+                        <text class="svg-devengers-text" x="0" y="0" fill="#ffffff" stroke="#ffffff" stroke-width="8" stroke-linejoin="round">DEVENGERS</text>
+                        <!-- Top Front Solid Black Face -->
+                        <text class="svg-devengers-text" x="0" y="0" fill="#000000">DEVENGERS</text>
+                    </g>
+                </svg>
+            </div>
+
+            <!-- Subtitle -->
+            <h3
+                class="text-white text-[22px] sm:text-[26px] md:text-[30px] font-semibold tracking-tight leading-[1.3] max-w-[620px] mb-8">
+                Join for free and build with<br class="hidden sm:inline"> creative developers on the internet.
+            </h3>
+
+            <!-- Pill CTA Button -->
+            <a href="https://whatsapp.com/channel/0029VbCVGAd8KMql7Ie3ew43" target="_blank" rel="noopener noreferrer"
+                class="inline-flex items-center gap-2 bg-white text-black font-semibold text-[13px] md:text-[14px] px-7 py-3 rounded-full hover:bg-gray-200 transition-all shadow-md group mb-16">
+                <span>Join Devengers</span>
+                <span
+                    class="text-base font-normal leading-none group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform">&#8599;</span>
+            </a>
+
+            <!-- Navigation Links Row 1 -->
+            <div
+                class="flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-white font-medium text-[15px] md:text-[16px] tracking-normal mb-4">
+                <a href="index.html" class="hover:text-gray-300 transition-colors">Home</a>
+                <a href="events.html" class="hover:text-gray-300 transition-colors">Events</a>
+                <a href="learn.html" class="hover:text-gray-300 transition-colors">Learn</a>
+                <a href="campus.html" class="hover:text-gray-300 transition-colors">Campus Resource</a>
+                <a href="gallery.html" class="hover:text-gray-300 transition-colors">Gallery</a>
+                <a href="dsa.html" class="hover:text-gray-300 transition-colors">DSA Streak</a>
+                <a href="directory.html" class="hover:text-gray-300 transition-colors">Directory</a>
+            </div>
+
+            <!-- Navigation Links Row 2 -->
+            <div
+                class="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-gray-400 font-normal text-[13px] md:text-[14px] tracking-normal mb-8">
+                <a href="index.html#social-section" class="hover:text-white transition-colors">About</a>
+                <a href="index.html#faq-section" class="hover:text-white transition-colors">FAQs</a>
+                <a href="mailto:event@devengers.org?subject=Campus%20Event%20or%20Hackathon%20Inquiry" class="hover:text-white transition-colors">Partnerships</a>
+                <a href="mailto:support@devengers.org?subject=General%20Inquiry%20-%20Devengers" class="hover:text-white transition-colors">Contact</a>
+                <a href="login.html" class="hover:text-white transition-colors">Login</a>
+                <a href="register.html" class="hover:text-white transition-colors">Sign up</a>
+                <a href="index.html#footer-cta-section" class="hover:text-white transition-colors">Campus Chapter</a>
+            </div>
+
+            <!-- Social Media Icons Row (Devengers Active Socials - No Twitter, No GitHub) -->
+            <div class="flex items-center justify-center gap-6 text-white mb-8">
+                <!-- WhatsApp Channel -->
+                <a href="https://whatsapp.com/channel/0029VbCVGAd8KMql7Ie3ew43" target="_blank" rel="noopener noreferrer"
+                    class="hover:text-[#25D366] transition-colors" title="WhatsApp Channel" aria-label="WhatsApp Channel">
+                    <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                        <path
+                            d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2ZM12.05 20.16C10.57 20.16 9.12 19.76 7.85 19.01L7.55 18.83L4.44 19.65L5.27 16.61L5.07 16.3C4.24 14.98 3.81 13.47 3.81 11.91C3.81 7.37 7.5 3.68 12.05 3.68C14.25 3.68 16.31 4.54 17.87 6.1C19.42 7.66 20.28 9.72 20.28 11.92C20.28 16.46 16.59 20.16 12.05 20.16ZM16.57 14.33C16.32 14.21 15.1 13.61 14.87 13.53C14.64 13.44 14.48 13.4 14.31 13.65C14.15 13.89 13.68 14.45 13.53 14.62C13.39 14.78 13.25 14.8 13 14.68C12.75 14.55 11.95 14.29 11 13.45C10.26 12.79 9.76 11.98 9.62 11.73C9.47 11.49 9.6 11.35 9.73 11.23C9.84 11.12 9.98 10.94 10.1 10.8C10.23 10.66 10.27 10.55 10.35 10.39C10.43 10.22 10.39 10.08 10.33 9.96C10.27 9.84 9.78 8.63 9.57 8.14C9.37 7.66 9.17 7.72 9.02 7.71C8.88 7.71 8.71 7.71 8.55 7.71C8.38 7.71 8.12 7.77 7.89 8.02C7.67 8.26 7.03 8.86 7.03 10.08C7.03 11.3 7.92 12.48 8.04 12.65C8.16 12.81 9.78 15.31 12.26 16.38C12.85 16.64 13.31 16.79 13.67 16.91C14.26 17.09 14.8 17.07 15.22 17C15.7 16.93 16.69 16.4 16.9 15.81C17.11 15.22 17.11 14.71 17.05 14.6C16.98 14.5 16.82 14.45 16.57 14.33Z" />
+                    </svg>
+                </a>
+                <!-- Instagram -->
+                <a href="https://www.instagram.com/officialdevengers" target="_blank" rel="noopener noreferrer"
+                    class="hover:text-[#E1306C] transition-colors" title="Instagram" aria-label="Instagram">
+                    <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                        <rect x="2.5" y="2.5" width="19" height="19" rx="5" />
+                        <circle cx="12" cy="12" r="4.2" />
+                        <circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" />
+                    </svg>
+                </a>
+                <!-- LinkedIn -->
+                <a href="https://www.linkedin.com/company/officialdevengers" target="_blank" rel="noopener noreferrer"
+                    class="hover:text-[#0077B5] transition-colors" title="LinkedIn" aria-label="LinkedIn">
+                    <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                        <rect x="2.5" y="2.5" width="19" height="19" rx="4" />
+                        <circle cx="7.5" cy="8" r="1.3" fill="currentColor" />
+                        <path d="M6.3 11.2h2.4v6.5H6.3z" fill="currentColor" />
+                        <path
+                            d="M11 11.2h2.2v1c.4-.7 1.3-1.2 2.4-1.2 2.1 0 3.1 1.3 3.1 3.5v4.2h-2.3v-3.7c0-1-.4-1.7-1.4-1.7-1 0-1.5.7-1.5 1.7v3.7H11z"
+                            fill="currentColor" />
+                    </svg>
+                </a>
+                <!-- YouTube -->
+                <a href="https://www.youtube.com/@officialdevengers" target="_blank" rel="noopener noreferrer"
+                    class="hover:text-[#FF0000] transition-colors" title="YouTube" aria-label="YouTube">
+                    <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                        <path
+                            d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+                    </svg>
+                </a>
+                <!-- Devengers Community Smiley -->
+                <a href="index.html" class="hover:text-[#FCE205] transition-colors" title="Devengers Community"
+                    aria-label="Devengers Community">
+                    <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                        <circle cx="12" cy="12" r="9" />
+                        <circle cx="9" cy="9.5" r="1" fill="currentColor" />
+                        <circle cx="15" cy="9.5" r="1" fill="currentColor" />
+                        <path d="M8.5 14c.8 1.5 2 2.2 3.5 2.2s2.7-.7 3.5-2.2" stroke-linecap="round" />
+                    </svg>
+                </a>
+                <!-- Admin Login Icon -->
+                <a href="admin-events.html" class="admin-only hidden hover:text-[#CDFF29] transition-colors p-1.5 rounded-lg border border-gray-800 hover:border-[#CDFF29]/40 bg-black/40 hover:bg-[#CDFF29]/10 items-center justify-center text-gray-500" title="Admin Portal" aria-label="Admin Portal">
+                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                        <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                    </svg>
+                </a>
+            </div>
+
+            <!-- Copyright and Legal -->
+            <p class="text-[#888888] font-mono text-[11px] uppercase tracking-wider mb-2">
+                DEVENGERS COMMUNITY &copy; 2026 ALL RIGHTS RESERVED
+            </p>
+            <div
+                class="flex flex-wrap items-center justify-center gap-x-2 gap-y-1 text-[#888888] font-mono text-[10px] uppercase tracking-wider">
+                <a href="campus.html" class="hover:text-white transition-colors">Terms</a>
+                <span>|</span>
+                <a href="campus.html" class="hover:text-white transition-colors">Privacy</a>
+                <span>|</span>
+                <a href="campus.html" class="hover:text-white transition-colors">Acceptable Use</a>
+                <span>|</span>
+                <a href="mailto:support@devengers.org" class="hover:text-white transition-colors">Campus Support</a>
+                <span>|</span>
+                <a href="mailto:event@devengers.org" class="hover:text-white transition-colors">Partnerships</a>
+                <span>|</span>
+                <a href="campus.html" class="hover:text-white transition-colors">Cookie Policy</a>
+                <span>|</span>
+                <a href="campus.html" class="hover:text-white transition-colors">Community Guidelines</a>
+                <span class="admin-only hidden">|</span>
+                <a href="admin-events.html" class="admin-only hidden hover:text-[#CDFF29] text-gray-400 transition-colors items-center gap-1 font-bold">
+                    <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                        <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                    </svg>
+                    <span>Admin</span>
+                </a>
+            </div>
+
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="script.js?v=20261018_inward_fixed"></script>
+</body>
+
+</html>

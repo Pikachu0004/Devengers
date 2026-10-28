@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>500 - Multiverse Core Overload | Devengers</title>
+    <meta name="description" content="Devengers internal server error. Our superhero engineering squadron is actively re-aligning the multiverse core.">
+    <meta name="robots" content="noindex, follow">
+    <meta name="theme-color" content="#FF3366">
+    <link rel="icon" type="image/x-icon" href="favicon.ico?v=2">
+    <link rel="icon" type="image/png" href="favicon.png?v=2">
+    <link rel="apple-touch-icon" href="favicon.png?v=2">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700;900&family=JetBrains+Mono:wght@400;600;800&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css?v=20261021">
+    <script src="theme.js"></script>
+    <script src="auth.js"></script>
+    <style>
+        @keyframes pulse-ring {
+            0% { transform: scale(0.95); opacity: 0.8; }
+            50% { transform: scale(1.05); opacity: 0.3; }
+            100% { transform: scale(0.95); opacity: 0.8; }
+        }
+        @keyframes rotate-slow {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        @keyframes rotate-reverse {
+            0% { transform: rotate(360deg); }
+            100% { transform: rotate(0deg); }
+        }
+        @keyframes spark-jitter {
+            0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.9; }
+            25% { transform: translate(-3px, 2px) scale(1.1); opacity: 1; }
+            50% { transform: translate(3px, -2px) scale(0.95); opacity: 0.7; }
+            75% { transform: translate(-2px, -3px) scale(1.05); opacity: 1; }
+        }
+        .anim-rotate-slow {
+            animation: rotate-slow 22s linear infinite;
+        }
+        .anim-rotate-reverse {
+            animation: rotate-reverse 16s linear infinite;
+        }
+        .anim-pulse-ring {
+            animation: pulse-ring 3.5s ease-in-out infinite;
+        }
+        .anim-spark {
+            animation: spark-jitter 1.8s steps(4) infinite;
+        }
+        .glitch-text {
+            position: relative;
+        }
+        .glitch-text::before,
+        .glitch-text::after {
+            content: '500';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+        .glitch-text::before {
+            left: 2px;
+            text-shadow: -2px 0 #CDFF29;
+            clip-path: inset(20% 0 50% 0);
+            animation: glitch-anim-1 2.5s infinite linear alternate-reverse;
+        }
+        .glitch-text::after {
+            left: -2px;
+            text-shadow: 2px 0 #7B42F6;
+            clip-path: inset(60% 0 10% 0);
+            animation: glitch-anim-2 3.2s infinite linear alternate-reverse;
+        }
+        @keyframes glitch-anim-1 {
+            0% { clip-path: inset(10% 0 80% 0); transform: translate(-2px, 1px); }
+            50% { clip-path: inset(50% 0 30% 0); transform: translate(1px, -1px); }
+            100% { clip-path: inset(25% 0 65% 0); transform: translate(-1px, 2px); }
+        }
+        @keyframes glitch-anim-2 {
+            0% { clip-path: inset(70% 0 15% 0); transform: translate(2px, -1px); }
+            50% { clip-path: inset(30% 0 55% 0); transform: translate(-2px, 1px); }
+            100% { clip-path: inset(80% 0 5% 0); transform: translate(1px, -2px); }
+        }
+        /* Peach Theme Overrides for 500 Diagnostics */
+        body.theme-peach .terminal-card {
+            background-color: #FFF2E8 !important;
+            border-color: #000000 !important;
+            color: #2D1A12 !important;
+        }
+        body.theme-peach .terminal-card pre,
+        body.theme-peach .terminal-card span.term-code {
+            color: #7A2500 !important;
+        }
+    </style>
+</head>
+<body class="bg-[#0b0b0b] text-white font-sans antialiased min-h-screen flex flex-col justify-between select-none overflow-x-hidden">
+
+    <!-- NAVIGATION (Fixed Canonical Notch) -->
+    <nav class="devengers-navbar-fixed fixed top-6 left-0 w-full z-50 flex justify-center px-4">
+        <div class="devengers-navbar-notch bg-[#7B42F6] shadow-brutal border-4 border-black rounded-full px-6 md:px-8 py-3 w-full max-w-[1400px] flex items-center justify-between">
+            <!-- Avengers Animated Logo -->
+            <a href="index.html" class="flex items-center group select-none" title="Devengers Home">
+                <div class="devengers-nav-logo font-black text-2xl md:text-[30px] tracking-tighter uppercase rounded-full transition-transform duration-300"
+                    style="-webkit-text-stroke: 2px black; color: #CDFF29; text-shadow: 3px 3px 0px black; line-height: 1;">
+                    <span class="devengers-badge-icon">
+                        <svg class="w-3.5 h-3.5 text-[#CDFF29]" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
+                        </svg>
+                    </span>
+                    <span class="logo-char">D</span><span class="logo-char">E</span><span class="logo-char">V</span><span class="logo-char">E</span><span class="logo-char">N</span><span class="logo-char">G</span><span class="logo-char">E</span><span class="logo-char">R</span><span class="logo-char">S</span>
+                </div>
+            </a>
+
+            <!-- Center Links -->
+            <div class="hidden md:flex gap-6 lg:gap-8 text-[11px] font-bold uppercase tracking-widest text-white/80">
+                <a href="events.html" class="nav-link">Events</a>
+                <a href="learn.html" class="nav-link">Learn</a>
+                <a href="campus.html" class="nav-link">Campus Resource</a>
+                <a href="dsa.html" class="nav-link">DSA Streak</a>
+                <a href="gallery.html" class="nav-link">Gallery</a>
+                <a href="certificates.html" class="nav-link">Certificates</a>
+            </div>
+
+            <!-- Right Controls -->
+            <div class="flex items-center gap-3 sm:gap-4">
+                <button type="button" onclick="window.DevengersTheme.toggleTheme()" class="theme-toggle-btn" title="Toggle Theme" aria-label="Toggle Theme">
+                    <div class="toggle-thumb">🌙</div>
+                </button>
+
+                <!-- Notifications Bell -->
+                <div class="relative">
+                    <button type="button" id="nav-notification-btn" onclick="window.DevengersNotifications.toggleDropdown(event)"
+                        class="nav-notification-btn flex items-center justify-center w-8 h-8 text-white/80 hover:text-white transition-colors relative cursor-pointer"
+                        title="Notifications" aria-label="Notifications">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 transition-transform hover:scale-110" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+                        </svg>
+                        <span id="nav-notification-dot" class="nav-notification-dot hidden"></span>
+                    </button>
+                </div>
+
+                <!-- Profile Button with Instagram Ring -->
+                <a href="profile.html" class="nav-profile-btn group" title="My Profile" aria-label="My Profile">
+                    <span class="nav-profile-inner">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-white transition-transform group-hover:scale-110" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                        </svg>
+                    </span>
+                </a>
+
+                <a href="login.html" class="hidden md:block text-[11px] font-bold uppercase tracking-widest text-white/80 hover:text-white transition-colors">LOGIN</a>
+                <a href="register.html" class="bg-white text-black px-5 py-2 rounded-full text-[11px] font-bold uppercase tracking-widest hover:bg-[#CDFF29] transition-colors flex items-center gap-1.5 shadow-sm">
+                    SIGN UP <span class="font-normal text-sm leading-none">&rarr;</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 500 HERO CONTENT -->
+    <main class="flex-grow flex flex-col items-center justify-center text-center px-4 sm:px-6 pt-36 pb-20 relative overflow-hidden">
+        <!-- Ambient High-Energy Backdrop -->
+        <div class="absolute inset-0 bg-grid opacity-35 pointer-events-none"></div>
+        <div class="absolute w-[520px] h-[520px] bg-[#FF3366]/20 rounded-full blur-[150px] pointer-events-none -top-10 -left-20 anim-pulse-ring"></div>
+        <div class="absolute w-[500px] h-[500px] bg-[#7B42F6]/20 rounded-full blur-[140px] pointer-events-none -bottom-10 -right-20"></div>
+
+        <div class="relative z-10 max-w-2xl w-full flex flex-col items-center">
+
+            <!-- Brutal Alert Badge -->
+            <div class="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-[#FF3366] text-white font-mono text-xs font-black uppercase tracking-wider border-2 border-black shadow-brutal mb-6 transition-transform hover:scale-105">
+                <span class="relative flex h-3 w-3">
+                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-85"></span>
+                    <span class="relative inline-flex rounded-full h-3 w-3 bg-black"></span>
+                </span>
+                <span>CRITICAL ANOMALY &bull; HTTP 500</span>
+                <span class="hidden sm:inline bg-black/30 text-white/90 text-[10px] px-2 py-0.5 rounded-full font-mono">CODE: CORE_OVERHEAT</span>
+            </div>
+
+            <!-- Animated Reactor Core Graphic -->
+            <div class="relative w-44 h-44 sm:w-52 sm:h-52 mb-6 flex items-center justify-center select-none">
+                <!-- Outer dashed spinning orbital -->
+                <svg class="absolute inset-0 w-full h-full anim-rotate-slow text-[#FF3366]/60" viewBox="0 0 100 100">
+                    <circle cx="50" cy="50" r="46" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="6 8" stroke-linecap="round"/>
+                </svg>
+                <!-- Inner counter-rotating ring -->
+                <svg class="absolute inset-2 w-[calc(100%-16px)] h-[calc(100%-16px)] anim-rotate-reverse text-[#CDFF29]/70" viewBox="0 0 100 100">
+                    <circle cx="50" cy="50" r="42" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="4 6 12 6" stroke-linecap="round"/>
+                </svg>
+                <!-- Central Core Container -->
+                <div class="relative w-28 h-28 sm:w-32 sm:h-32 bg-[#121215] border-4 border-black rounded-3xl shadow-brutal flex flex-col items-center justify-center overflow-hidden">
+                    <div class="absolute inset-0 bg-gradient-to-br from-[#FF3366]/30 via-transparent to-[#7B42F6]/30"></div>
+                    <!-- Hazard Stripes Header -->
+                    <div class="w-full h-2.5 bg-[#FF3366] border-b-2 border-black flex items-center justify-center overflow-hidden">
+                        <div class="w-full h-full bg-[repeating-linear-gradient(45deg,#000,#000_6px,#FF3366_6px,#FF3366_12px)] opacity-60"></div>
+                    </div>
+                    <!-- Glowing Power Cell SVG -->
+                    <div class="flex-grow flex items-center justify-center relative z-10 anim-spark">
+                        <svg class="w-14 h-14 text-[#FF3366] drop-shadow-[0_0_15px_rgba(255,51,102,0.8)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" fill="#CDFF29" stroke="#000000" stroke-width="1.8"/>
+                        </svg>
+                    </div>
+                    <!-- Status LED Bar -->
+                    <div class="w-full py-1 bg-black flex items-center justify-center gap-1.5 border-t-2 border-black">
+                        <span class="w-2 h-2 rounded-full bg-[#FF3366] animate-pulse"></span>
+                        <span class="w-2 h-2 rounded-full bg-[#FF9900]"></span>
+                        <span class="w-2 h-2 rounded-full bg-[#22C55E]"></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Big 500 Headline -->
+            <h1 class="glitch-text text-7xl sm:text-9xl font-black uppercase tracking-tighter text-white drop-shadow-2xl select-none"
+                style="-webkit-text-stroke: 3px black; text-shadow: 6px 6px 0px #FF3366; line-height: 0.9;">
+                500
+            </h1>
+
+            <h2 class="text-2xl sm:text-3xl font-black uppercase tracking-tight text-white mt-4 mb-2">
+                Multiverse Core Overload
+            </h2>
+
+            <p class="text-gray-400 text-sm sm:text-base font-mono max-w-lg mb-8 leading-relaxed">
+                The Devengers quantum engine suffered an unexpected anomaly while executing your request. Our superhero engineering squad has already intercepted the telemetry.
+            </p>
+
+            <!-- Primary Action Controls -->
+            <div class="flex flex-wrap items-center justify-center gap-3 sm:gap-4 mb-8">
+                <!-- Re-Ignite / Reload -->
+                <button type="button" id="btn-reignite" onclick="handleReigniteCore()"
+                    class="px-7 py-3.5 bg-[#CDFF29] hover:bg-white text-black font-black uppercase text-xs sm:text-sm tracking-wider rounded-full border-2 border-black shadow-brutal transition-all flex items-center gap-2 cursor-pointer active:translate-x-0.5 active:translate-y-0.5">
+                    <span id="reignite-icon" class="text-base transition-transform">🔄</span>
+                    <span id="reignite-text">Re-Ignite Core</span>
+                </button>
+
+                <!-- Return Home -->
+                <a href="index.html" class="px-7 py-3.5 bg-[#7B42F6] hover:bg-[#6830df] text-white font-bold uppercase text-xs sm:text-sm tracking-wider rounded-full border-2 border-black shadow-brutal transition-all flex items-center gap-2">
+                    <span>🏠</span>
+                    <span>Return to Safety</span>
+                </a>
+
+                <!-- Check Server Health (Live Ping) -->
+                <button type="button" id="btn-ping-core" onclick="pingServerCore()"
+                    class="px-6 py-3.5 bg-[#18181b] hover:bg-[#27272a] text-white font-bold uppercase text-xs sm:text-sm tracking-wider rounded-full border border-gray-700 shadow-brutal transition-all flex items-center gap-2 cursor-pointer">
+                    <span id="ping-indicator">⚡</span>
+                    <span id="ping-text">Test Server Ping</span>
+                </button>
+            </div>
+
+            <!-- Server Ping Real-Time Badge (Hidden by default, shown on ping) -->
+            <div id="ping-result-box" class="hidden mb-6 px-4 py-2 rounded-full border-2 border-black shadow-brutal text-xs font-mono font-bold flex items-center gap-2 animate-bounce">
+                <!-- dynamic status -->
+            </div>
+
+            <!-- Diagnostics HUD / Technical Telemetry Card -->
+            <div class="w-full max-w-lg terminal-card bg-[#121215] border-2 border-black shadow-brutal rounded-2xl p-5 text-left transition-all">
+                <div class="flex items-center justify-between border-b border-white/10 pb-3 mb-3">
+                    <div class="flex items-center gap-2">
+                        <span class="w-3 h-3 rounded-full bg-[#FF3366] border border-black"></span>
+                        <span class="w-3 h-3 rounded-full bg-[#CDFF29] border border-black"></span>
+                        <span class="w-3 h-3 rounded-full bg-[#7B42F6] border border-black"></span>
+                        <span class="text-[11px] font-mono text-gray-400 font-bold uppercase tracking-wider ml-1">Incident Telemetry</span>
+                    </div>
+                    <button type="button" onclick="copyTelemetryTrace()"
+                        class="text-[11px] font-mono font-bold text-[#CDFF29] hover:text-white uppercase tracking-wider flex items-center gap-1.5 transition-colors cursor-pointer bg-white/5 hover:bg-white/10 px-2.5 py-1 rounded-md border border-white/10">
+                        <span id="copy-icon">📋</span>
+                        <span id="copy-text">Copy Trace</span>
+                    </button>
+                </div>
+
+                <div class="font-mono text-xs text-gray-300 space-y-1.5 select-text overflow-x-auto">
+                    <p><span class="text-gray-500">EVENT_ID:</span> <span id="incident-id" class="text-[#FF3366] font-bold">#DEV-500-INIT</span></p>
+                    <p><span class="text-gray-500">TIMESTAMP:</span> <span id="incident-time" class="text-white">--</span></p>
+                    <p><span class="text-gray-500">HTTP_STATUS:</span> <span class="text-white font-bold">500 Internal Server Error</span></p>
+                    <p><span class="text-gray-500">DIAGNOSIS:</span> <span class="text-yellow-400">Unhandled Multiverse Exception / Micro-Router Signal</span></p>
+                    <p><span class="text-gray-500">RECOVERY:</span> <span class="text-green-400">Autonomous repair nanobots dispatched [ACTIVE]</span></p>
+                </div>
+
+                <!-- Expandable Technical Details -->
+                <details class="mt-3 pt-3 border-t border-white/10 text-xs font-mono text-gray-400 group cursor-pointer">
+                    <summary class="hover:text-white select-none text-[11px] uppercase tracking-wider flex items-center justify-between">
+                        <span>Show Subsystem Matrix</span>
+                        <span class="text-xs transition-transform group-open:rotate-180">▾</span>
+                    </summary>
+                    <div class="mt-3 p-3 bg-black/50 rounded-lg text-[11px] font-mono space-y-1 text-gray-300 border border-white/5">
+                        <p>&gt; Core Database: SQLite3 WAL Mode [CONNECTED]</p>
+                        <p>&gt; Worker Pool: Standard Library ThreadPool [OK]</p>
+                        <p>&gt; Client Origin: <span id="incident-origin">localhost</span></p>
+                        <p>&gt; Target Resource: <span id="incident-path">/</span></p>
+                        <p>&gt; Action Recommended: Retry in 5-10s or return to Home</p>
+                    </div>
+                </details>
+            </div>
+
+            <!-- Alternative Quick Links -->
+            <div class="mt-8 flex flex-wrap items-center justify-center gap-2 text-xs font-mono text-gray-400">
+                <span class="text-gray-500 uppercase tracking-wider">Quick Teleport:</span>
+                <a href="events.html" class="hover:text-[#CDFF29] underline decoration-dotted transition-colors">Events Hub</a>
+                <span class="text-gray-600">&bull;</span>
+                <a href="learn.html" class="hover:text-[#CDFF29] underline decoration-dotted transition-colors">Learning Tracks</a>
+                <span class="text-gray-600">&bull;</span>
+                <a href="dsa.html" class="hover:text-[#CDFF29] underline decoration-dotted transition-colors">DSA Arena</a>
+                <span class="text-gray-600">&bull;</span>
+                <a href="campus.html" class="hover:text-[#CDFF29] underline decoration-dotted transition-colors">Campus Resources</a>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- CANONICAL 3D FOOTER -->
+    <footer class="relative bg-[#0b0b0b] w-full pt-16 pb-14 px-6 overflow-hidden text-center select-none border-t border-gray-900" id="site-footer">
+        <div class="relative z-10 max-w-[1000px] mx-auto flex flex-col items-center">
+            <p class="text-white text-sm font-semibold tracking-tight mb-4">
+                Devengers Developer Community
+            </p>
+            <div class="flex items-center justify-center gap-6 text-white text-xs font-mono text-gray-400 mb-6">
+                <a href="index.html" class="hover:text-white">Home</a>
+                <a href="events.html" class="hover:text-white">Events</a>
+                <a href="learn.html" class="hover:text-white">Learn</a>
+                <a href="campus.html" class="hover:text-white">Campus</a>
+                <a href="dsa.html" class="hover:text-white">DSA Streak</a>
+            </div>
+            <p class="text-[#888888] font-mono text-[11px] uppercase tracking-wider">&copy; 2026 DEVENGERS COMMUNITY &bull; ALL RIGHTS RESERVED</p>
+        </div>
+    </footer>
+
+    <!-- Interactive 500 Controller Script -->
+    <script>
+        // Generate Unique Incident ID
+        function generateIncidentId() {
+            const chars = '0123456789ABCDEF';
+            let hex = '';
+            for (let i = 0; i < 8; i++) {
+                hex += chars[Math.floor(Math.random() * chars.length)];
+            }
+            return '#DEV-500-' + hex;
+        }
+
+        // Initialize Telemetry Data
+        const currentIncidentId = generateIncidentId();
+        document.addEventListener('DOMContentLoaded', () => {
+            const idEl = document.getElementById('incident-id');
+            const timeEl = document.getElementById('incident-time');
+            const originEl = document.getElementById('incident-origin');
+            const pathEl = document.getElementById('incident-path');
+
+            if (idEl) idEl.textContent = currentIncidentId;
+            if (timeEl) timeEl.textContent = new Date().toISOString().replace('T', ' ').substring(0, 19) + ' UTC';
+            if (originEl) originEl.textContent = window.location.origin || 'devengers.org';
+            if (pathEl) pathEl.textContent = window.location.pathname || '/';
+        });
+
+        // Re-Ignite Core (Retry / Reload)
+        function handleReigniteCore() {
+            const btn = document.getElementById('btn-reignite');
+            const icon = document.getElementById('reignite-icon');
+            const text = document.getElementById('reignite-text');
+
+            if (btn) btn.disabled = true;
+            if (icon) icon.classList.add('animate-spin');
+            if (text) text.textContent = 'Stabilizing Core...';
+
+            setTimeout(() => {
+                window.location.reload();
+            }, 750);
+        }
+
+        // Live Server Ping Health Check
+        async function pingServerCore() {
+            const btn = document.getElementById('btn-ping-core');
+            const text = document.getElementById('ping-text');
+            const resBox = document.getElementById('ping-result-box');
+
+            if (text) text.textContent = 'Pinging Core...';
+            const startTime = performance.now();
+
+            try {
+                // Ping lightweight public endpoint with cache-busting
+                const resp = await fetch('/api/auth/me?ping=' + Date.now(), { method: 'GET', cache: 'no-store' });
+                const elapsed = Math.round(performance.now() - startTime);
+
+                resBox.classList.remove('hidden', 'bg-[#FF3366]', 'text-white', 'bg-[#CDFF29]', 'text-black', 'bg-yellow-400');
+                if (resp.ok) {
+                    resBox.classList.add('bg-[#CDFF29]', 'text-black');
+                    resBox.innerHTML = `<span>🟢</span><span>Server Core Online! Response time: ${elapsed}ms. Safe to reload!</span>`;
+                } else {
+                    resBox.classList.add('bg-yellow-400', 'text-black');
+                    resBox.innerHTML = `<span>🟡</span><span>Core Gateway Status ${resp.status} (${elapsed}ms). Nanobots still recalibrating.</span>`;
+                }
+            } catch (err) {
+                const elapsed = Math.round(performance.now() - startTime);
+                resBox.classList.remove('hidden', 'bg-[#CDFF29]', 'text-black', 'bg-yellow-400');
+                resBox.classList.add('bg-[#FF3366]', 'text-white');
+                resBox.innerHTML = `<span>🔴</span><span>Core offline (${elapsed}ms). Stand by while servers reboot.</span>`;
+            } finally {
+                if (text) text.textContent = 'Test Server Ping';
+            }
+        }
+
+        // Copy Incident Telemetry Trace
+        function copyTelemetryTrace() {
+            const timeEl = document.getElementById('incident-time');
+            const traceText = `[DEVENGERS INCIDENT REPORT]
+Incident ID: ${currentIncidentId}
+Timestamp: ${timeEl ? timeEl.textContent : new Date().toISOString()}
+HTTP Status: 500 Internal Server Error
+Location: ${window.location.href}
+User Agent: ${navigator.userAgent}
+Status: Auto-repair Nanobots Dispatched`;
+
+            navigator.clipboard.writeText(traceText).then(() => {
+                const copyText = document.getElementById('copy-text');
+                const copyIcon = document.getElementById('copy-icon');
+                if (copyText) copyText.textContent = 'Copied!';
+                if (copyIcon) copyIcon.textContent = '✓';
+                setTimeout(() => {
+                    if (copyText) copyText.textContent = 'Copy Trace';
+                    if (copyIcon) copyIcon.textContent = '📋';
+                }, 2000);
+            }).catch(err => {
+                console.warn('Clipboard write error:', err);
+            });
+        }
+    </script>
+</body>
+</html>
