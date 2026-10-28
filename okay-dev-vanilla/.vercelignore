@@ -1,0 +1,15 @@
+# Tell Vercel to ignore all Python backend files
+# Python runs on Render, NOT on Vercel
+*.py
+*.db
+*.sqlite
+*.sqlite3
+__pycache__/
+.env
+.env.*
+!.env.example
+requirements.txt
+render.yaml
+Assest/dsa/solutions/
+test_*.py
+manage_admin.py
