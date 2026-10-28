@@ -37,7 +37,7 @@ import certificate_service
 import base64
 
 
-PORT = 3000
+PORT = int(os.environ.get("PORT", "3000"))
 DIRECTORY = os.path.dirname(os.path.abspath(__file__))
 UPLOADS_DIR = os.path.join(DIRECTORY, "Assest", "uploads")
 ALLOWED_CATEGORIES = {'Hackathons', 'Quizzes', 'Internships', 'Jobs'}
@@ -2809,33 +2809,38 @@ class DevengersHandler(http.server.SimpleHTTPRequestHandler):
 def ensure_initial_setup():
     """Initializes tables, seeds initial data, and ensures admin user is provisioned."""
     init_db()
+
+    admin_id = None
+    try:
+        conn = get_connection()
+        cursor = conn.cursor()
+        cursor.execute("SELECT id FROM users WHERE email = 'event@devengers.org'")
+        admin = cursor.fetchone()
+        admin_id = admin["id"] if admin else None
+        conn.close()
+    except Exception as e:
+        print(f"[Admin Check] Error: {e}")
+
+    if not admin_id:
+        from auth import create_or_update_user
+        env_pwd = os.environ.get("DEVENGERS_ADMIN_PASSWORD", "devengers@2026")
+        created = create_or_update_user("event@devengers.org", env_pwd, role="admin", name="Devengers Event Admin")
+        admin_id = created["id"]
+        print(f"[Admin Setup] Provisioned event@devengers.org")
+
+    seed_starter_events_if_empty(admin_id)
+    seed_starter_courses_if_empty()
+
     try:
         gallery_service.init_gallery_tables()
     except Exception as e:
         print(f"[Gallery Init] Error initializing gallery tables: {e}")
 
-    conn = get_connection()
-    cursor = conn.cursor()
-    cursor.execute("SELECT id FROM users WHERE email = 'event@devengers.org'")
-    admin = cursor.fetchone()
-    admin_id = admin["id"] if admin else None
-
-    if not admin:
-        # Default bootstrap password for local dev
-        from auth import create_or_update_user
-        env_pwd = os.environ.get("DEVENGERS_ADMIN_PASSWORD", "devengers@2026")
-        created = create_or_update_user("event@devengers.org", env_pwd, role="admin", name="Devengers Event Admin")
-        admin_id = created["id"]
-        print(f"[Admin Setup] Provisioned event@devengers.org (Password: {env_pwd})")
-
-    seed_starter_events_if_empty(admin_id)
-    seed_starter_courses_if_empty()
     try:
         certificate_service.init_certificate_tables()
         certificate_service.seed_starter_certificates_if_empty(admin_id)
     except Exception as e:
         print(f"[Certificate Init] Error: {e}")
-    conn.close()
 
 
 if __name__ == '__main__':

@@ -231,7 +231,14 @@ def seed_gallery_defaults_if_empty():
         # Get admin user ID for authoring seed projects
         cursor.execute("SELECT id FROM users WHERE role = 'admin' LIMIT 1")
         admin = cursor.fetchone()
-        admin_id = admin["id"] if admin else "system_admin"
+        if not admin:
+            cursor.execute("SELECT id FROM users LIMIT 1")
+            admin = cursor.fetchone()
+        admin_id = admin["id"] if admin else None
+
+        if not admin_id:
+            conn.close()
+            return
 
         now = datetime.now(timezone.utc).isoformat()
         starter_projects = [
