@@ -1,3 +1,4 @@
 # Vercel only serves the okay-dev-vanilla/ static frontend.
 # The backend/ folder contains Python and is deployed on Render — ignore it entirely.
 backend/
+

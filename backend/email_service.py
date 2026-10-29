@@ -1,18 +1,22 @@
 """
 Devengers Email & OTP Notification Service.
 Deliverability-Engineered for 100% Primary Inbox Landing.
-- RFC 5322 & RFC 3834 compliant transactional headers
-- Domain-aligned Message-ID generation (prevents local machine hostname leakage)
-- Display-name formatted From & Reply-To addresses
-- Auto-Submitted: auto-generated to prevent spam categorization & loops
-- Clean, table-based inline-CSS HTML template with hidden preheader
-- Matching plain-text fallback (avoids Bayesian filter score penalties)
-- Zero external dependencies - uses Python's built-in smtplib & email packages
+
+Supported Dispatch Channels (Automatic Priority Cascade):
+1. Resend HTTP REST API (HTTPS port 443 - zero block on Render / Vercel cloud)
+2. Brevo HTTP REST API (HTTPS port 443 - 300 free emails/day)
+3. Standard SMTP over TLS/SSL (Fallback for localhost or servers with open SMTP)
+4. Dev Mode bypass (Instant OTP generation for local/staging testing)
+
+Zero external dependencies - uses standard library (smtplib, email, urllib.request, json).
 """
 
 import os
 import smtplib
 import uuid
+import json
+import urllib.request
+import urllib.error
 from email.message import EmailMessage
 from email.utils import formataddr, make_msgid, formatdate
 
@@ -42,36 +46,87 @@ def get_smtp_config():
     return host, port, user, password, from_email, dev_mode
 
 def is_smtp_configured() -> bool:
+    _load_env()
+    resend_key = os.environ.get("RESEND_API_KEY", "").strip() or os.environ.get("DEVENGERS_RESEND_API_KEY", "").strip()
+    brevo_key = os.environ.get("BREVO_API_KEY", "").strip() or os.environ.get("DEVENGERS_BREVO_API_KEY", "").strip()
+    if resend_key or brevo_key:
+        return True
     host, _, user, password, _, _ = get_smtp_config()
     return bool(host and user and password)
+
+def _send_via_resend(api_key: str, from_addr: str, to_addr: str, subject: str, html_body: str, text_body: str) -> dict:
+    """Dispatches email via Resend HTTPS REST API (Port 443 - bypasses Render SMTP block)."""
+    url = "https://api.resend.com/emails"
+    payload = {
+        "from": from_addr,
+        "to": [to_addr],
+        "subject": subject,
+        "html": html_body,
+        "text": text_body
+    }
+    data = json.dumps(payload).encode("utf-8")
+    req = urllib.request.Request(
+        url,
+        data=data,
+        headers={
+            "Authorization": f"Bearer {api_key}",
+            "Content-Type": "application/json",
+            "User-Agent": "DevengersPlatform/1.0"
+        },
+        method="POST"
+    )
+    with urllib.request.urlopen(req, timeout=12) as resp:
+        body = resp.read().decode("utf-8")
+        return json.loads(body) if body else {"success": True}
+
+def _send_via_brevo(api_key: str, from_name: str, from_email: str, to_addr: str, subject: str, html_body: str, text_body: str) -> dict:
+    """Dispatches email via Brevo HTTPS REST API (Port 443 - bypasses Render SMTP block)."""
+    url = "https://api.brevo.com/v3/smtp/email"
+    payload = {
+        "sender": {"name": from_name, "email": from_email},
+        "to": [{"email": to_addr}],
+        "subject": subject,
+        "htmlContent": html_body,
+        "textContent": text_body
+    }
+    data = json.dumps(payload).encode("utf-8")
+    req = urllib.request.Request(
+        url,
+        data=data,
+        headers={
+            "api-key": api_key,
+            "Content-Type": "application/json",
+            "User-Agent": "DevengersPlatform/1.0"
+        },
+        method="POST"
+    )
+    with urllib.request.urlopen(req, timeout=12) as resp:
+        body = resp.read().decode("utf-8")
+        return json.loads(body) if body else {"success": True}
 
 def send_otp_email(to_email: str, otp: str, purpose: str = "Sign Up Verification") -> dict:
     """
     Sends a 6-digit OTP email engineered to land in the Primary Inbox, not Spam.
-    Injects strict anti-spam transactional headers and clean multipart MIME body.
+    Tries HTTP REST APIs first (Resend, Brevo) to bypass cloud SMTP blocks,
+    then falls back to SMTP, and finally to Dev Mode if enabled.
     """
+    _load_env()
     clean_email = to_email.strip().lower()
     host, port, user, password, from_email, dev_mode = get_smtp_config()
     from_name = os.environ.get("DEVENGERS_FROM_NAME", "Devengers Community").strip() or "Devengers Community"
 
+    resend_key = os.environ.get("RESEND_API_KEY", "").strip() or os.environ.get("DEVENGERS_RESEND_API_KEY", "").strip()
+    brevo_key = os.environ.get("BREVO_API_KEY", "").strip() or os.environ.get("DEVENGERS_BREVO_API_KEY", "").strip()
+
     # Extract sender domain for header alignment (e.g. devengers.org)
     domain = from_email.split("@")[-1].strip().lower() if "@" in from_email else "devengers.org"
 
-    # Direct, trusted subject line matching GitHub / Google / Stripe pattern
-    # Never use all-caps, exclamation marks, or spam trigger words
     is_pwd_reset = ('reset' in purpose.lower() or 'password' in purpose.lower())
     subject = f"{otp} is your Devengers password reset code" if is_pwd_reset else f"{otp} is your Devengers verification code"
     heading_text = "Password Reset Passcode" if is_pwd_reset else "Verification Passcode"
     action_desc = "Use the one-time verification passcode below to reset your Devengers account password." if is_pwd_reset else "Use the one-time verification code below to complete your authentication."
 
-    # -------------------------------------------------------------
     # Deliverability-Engineered HTML Template
-    # - Fully inline styles (safe across Gmail, Outlook, Apple Mail)
-    # - Hidden preheader text for clean snippet preview in inbox
-    # - Balanced HTML-to-text ratio (prevents Bayesian spam penalties)
-    # - Table-based layout (preserves layout in all email engines)
-    # - Legitimate CAN-SPAM / Google sender entity footer
-    # -------------------------------------------------------------
     html_content = f"""<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -82,7 +137,6 @@ def send_otp_email(to_email: str, otp: str, purpose: str = "Sign Up Verification
 </head>
 <body style="margin: 0; padding: 0; background-color: #0b0c10; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; color: #ffffff;">
   
-  <!-- Hidden Preheader for Inbox Snippet Preview -->
   <div style="display: none; font-size: 1px; color: #0b0c10; line-height: 1px; max-height: 0px; max-width: 0px; opacity: 0; overflow: hidden; mso-hide: all;">
     Your Devengers verification passcode is {otp}. Valid for 10 minutes. Do not share this code.
   </div>
@@ -90,10 +144,8 @@ def send_otp_email(to_email: str, otp: str, purpose: str = "Sign Up Verification
   <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color: #0b0c10; padding: 24px 12px;">
     <tr>
       <td align="center">
-        <!-- Main Card Container -->
         <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 540px; background-color: #141418; border-radius: 16px; border: 2px solid #24242c; overflow: hidden;">
           
-          <!-- Top Accent Header -->
           <tr>
             <td align="center" style="background-color: #7B42F6; padding: 22px 24px; border-bottom: 3px solid #000000;">
               <span style="font-size: 24px; font-weight: 900; letter-spacing: -0.5px; color: #CDFF29; text-transform: uppercase; text-shadow: 2px 2px 0px #000000; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
@@ -102,11 +154,9 @@ def send_otp_email(to_email: str, otp: str, purpose: str = "Sign Up Verification
             </td>
           </tr>
 
-          <!-- Main Content Body -->
           <tr>
             <td style="padding: 32px 28px 24px 28px; text-align: center;">
               
-              <!-- Purpose Tag -->
               <div style="display: inline-block; background-color: rgba(205, 255, 41, 0.12); color: #CDFF29; border: 1px solid rgba(205, 255, 41, 0.35); font-size: 11px; font-weight: 700; text-transform: uppercase; padding: 5px 14px; border-radius: 999px; letter-spacing: 0.8px; margin-bottom: 18px;">
                 {purpose}
               </div>
@@ -119,7 +169,6 @@ def send_otp_email(to_email: str, otp: str, purpose: str = "Sign Up Verification
                 {action_desc} This passcode is valid for <strong style="color: #ffffff;">10 minutes</strong>.
               </p>
 
-              <!-- High-Contrast Monospace OTP Code Box -->
               <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%" style="margin: 0 0 24px 0;">
                 <tr>
                   <td align="center" style="background-color: #000000; border: 2px dashed #CDFF29; border-radius: 14px; padding: 18px 24px;">
@@ -133,7 +182,6 @@ def send_otp_email(to_email: str, otp: str, purpose: str = "Sign Up Verification
                 </tr>
               </table>
 
-              <!-- Security Notice -->
               <p style="margin: 0; font-size: 12px; line-height: 1.5; color: #71717a;">
                 Devengers will never ask you for your verification code or password. If you did not request this email, you can safely disregard it.
               </p>
@@ -141,7 +189,6 @@ def send_otp_email(to_email: str, otp: str, purpose: str = "Sign Up Verification
             </td>
           </tr>
 
-          <!-- CAN-SPAM & Google Sender Requirements Footer -->
           <tr>
             <td style="padding: 18px 24px; background-color: #0e0e12; border-top: 1px solid #222228; text-align: center;">
               <p style="margin: 0 0 4px 0; font-size: 11px; color: #52525b; line-height: 1.4;">
@@ -162,9 +209,6 @@ def send_otp_email(to_email: str, otp: str, purpose: str = "Sign Up Verification
 </html>
 """
 
-    # -------------------------------------------------------------
-    # Matching Plain-Text Version (Mandatory for Spam Filter Scoring)
-    # -------------------------------------------------------------
     text_content = f"""DEVENGERS - {purpose}
 
 Your verification passcode is: {otp}
@@ -178,60 +222,91 @@ Website: https://devengers.org
 Support: support@devengers.org
 """
 
-    # Console logging for local visibility
     print("=" * 64)
     print(f"[DEVENGERS EMAIL OTP] To:         {clean_email}")
     print(f"[DEVENGERS EMAIL OTP] Purpose:    {purpose}")
     print(f"[DEVENGERS EMAIL OTP] Subject:    {subject}")
     print(f"[DEVENGERS EMAIL OTP] PASSCODE:   >>> {otp} <<< (10 min expiry)")
-    print(f"[DEVENGERS EMAIL OTP] Sender:     {from_name} <{from_email}> via {host}:{port}")
     print("=" * 64)
 
+    # -------------------------------------------------------------
+    # 1. Primary Cloud Channel: Resend HTTPS REST API (Port 443)
+    # -------------------------------------------------------------
+    if resend_key:
+        try:
+            # Custom from address or default to Resend-verified sender
+            resend_from = os.environ.get("RESEND_FROM", "").strip() or f"{from_name} <{from_email}>"
+            _send_via_resend(resend_key, resend_from, clean_email, subject, html_content, text_content)
+            print(f"[DEVENGERS EMAIL OTP] Successfully dispatched via Resend API to {clean_email}")
+            return {
+                "success": True,
+                "email": clean_email,
+                "provider": "resend",
+                "smtp_sent": True,
+                "smtp_error": None,
+                "dev_otp": None
+            }
+        except Exception as e:
+            err_msg = str(e)
+            print(f"[DEVENGERS EMAIL RESEND ERROR] Failed via Resend API: {e}")
+            if "HTTP Error" in err_msg and hasattr(e, "read"):
+                try:
+                    err_detail = e.read().decode("utf-8")
+                    print(f"[DEVENGERS EMAIL RESEND DETAIL] {err_detail}")
+                except Exception:
+                    pass
+
+    # -------------------------------------------------------------
+    # 2. Secondary Cloud Channel: Brevo HTTPS REST API (Port 443)
+    # -------------------------------------------------------------
+    if brevo_key:
+        try:
+            _send_via_brevo(brevo_key, from_name, from_email, clean_email, subject, html_content, text_content)
+            print(f"[DEVENGERS EMAIL OTP] Successfully dispatched via Brevo API to {clean_email}")
+            return {
+                "success": True,
+                "email": clean_email,
+                "provider": "brevo",
+                "smtp_sent": True,
+                "smtp_error": None,
+                "dev_otp": None
+            }
+        except Exception as e:
+            print(f"[DEVENGERS EMAIL BREVO ERROR] Failed via Brevo API: {e}")
+
+    # -------------------------------------------------------------
+    # 3. Standard SMTP (Localhost / unblocked servers)
+    # -------------------------------------------------------------
     smtp_sent = False
     smtp_error = None
 
     if host and user and password:
         try:
             msg = EmailMessage()
-
-            # 1. Primary Addressing with RFC 5322 Display Names
             msg["From"] = formataddr((from_name, from_email))
             msg["To"] = clean_email
             msg["Reply-To"] = formataddr(("Devengers Support", from_email))
             msg["Subject"] = subject
-
-            # 2. RFC 2822 Accurate Timestamp
             msg["Date"] = formatdate(localtime=True)
-
-            # 3. Domain-Aligned Message-ID (Critical: prevents local hostname spam flagging)
             msg["Message-ID"] = make_msgid(domain=domain)
-
-            # 4. RFC 3834 Transactional Auto-Submitted Header (Identifies system transactional mail)
             msg["Auto-Submitted"] = "auto-generated"
-
-            # 5. Prevent out-of-office / bounce loops
             msg["X-Auto-Response-Suppress"] = "All"
-
-            # 6. Transactional Precedence & Priority (Never 'bulk')
             msg["Precedence"] = "normal"
             msg["X-Priority"] = "1"
             msg["Importance"] = "High"
-
-            # 7. Identifier for provider deliverability tracking
             msg["X-Entity-Ref-ID"] = str(uuid.uuid4())
             msg["Feedback-ID"] = f"otp:{domain}:devengers"
 
-            # 8. MIME Body (Plain Text + Alternative HTML)
             msg.set_content(text_content)
             msg.add_alternative(html_content, subtype="html")
 
-            # 9. Dispatch over TLS/SSL
+            # Short 6s timeout so users don't hang if SMTP is blocked
             if port == 465:
-                with smtplib.SMTP_SSL(host, port, timeout=12) as server:
+                with smtplib.SMTP_SSL(host, port, timeout=6) as server:
                     server.login(user, password)
                     server.send_message(msg)
             else:
-                with smtplib.SMTP(host, port, timeout=12) as server:
+                with smtplib.SMTP(host, port, timeout=6) as server:
                     server.starttls()
                     server.login(user, password)
                     server.send_message(msg)
@@ -246,25 +321,49 @@ Support: support@devengers.org
         return {
             "success": True,
             "email": clean_email,
+            "provider": "smtp",
             "smtp_sent": True,
             "smtp_error": None,
             "dev_otp": None
         }
 
+    # -------------------------------------------------------------
+    # 4. Dev Mode Fallback (Allows testing without email blocks)
+    # -------------------------------------------------------------
+    if dev_mode:
+        print(f"[DEVENGERS DEV MODE] Returning OTP directly in response for {clean_email}: {otp}")
+        return {
+            "success": True,
+            "email": clean_email,
+            "provider": "dev_mode",
+            "smtp_sent": False,
+            "smtp_error": None,
+            "dev_otp": otp
+        }
+
+    # If SMTP failed in production mode:
     if host and user and password and smtp_error:
         return {
             "success": False,
             "email": clean_email,
             "smtp_sent": False,
-            "smtp_error": f"Failed to dispatch email via SMTP ({host}): {smtp_error}",
+            "smtp_error": (
+                f"Failed to dispatch email via SMTP ({host}): {smtp_error}. "
+                "Render Free Tier blocks outbound SMTP ports 465/587. "
+                "Please add a free RESEND_API_KEY (from resend.com) to your Render environment variables, "
+                "or set DEVENGERS_DEV_MODE=true for instant testing."
+            ),
             "dev_otp": None
         }
 
-    # If SMTP is not yet configured:
+    # If no email provider is configured at all:
     return {
-        "success": True if dev_mode else False,
+        "success": False,
         "email": clean_email,
         "smtp_sent": False,
-        "smtp_error": "SMTP server not configured. Please add DEVENGERS_SMTP_HOST, DEVENGERS_SMTP_USER, and DEVENGERS_SMTP_PASSWORD in .env" if not dev_mode else None,
-        "dev_otp": otp if dev_mode else None
+        "smtp_error": (
+            "Email service not configured. Add RESEND_API_KEY (free at resend.com) "
+            "or set DEVENGERS_DEV_MODE=true in Render environment variables."
+        ),
+        "dev_otp": None
     }

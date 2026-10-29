@@ -520,7 +520,13 @@
             const res = await window.DevengersAuth.sendPasswordResetOtp(email);
 
             if (res.success) {
-                succBox.textContent = res.message || `✓ 6-digit reset code sent to ${email}`;
+                let msg = res.message || `✓ 6-digit reset code sent to ${email}`;
+                if (res.dev_otp) {
+                    msg = `✓ [DEV MODE] Reset Code: ${res.dev_otp} (Auto-filled below)`;
+                    const otpInput = document.getElementById('forgot-otp');
+                    if (otpInput) otpInput.value = res.dev_otp;
+                }
+                succBox.textContent = msg;
                 succBox.classList.remove('hidden');
                 document.getElementById('forgot-otp').focus();
                 resendBtn.classList.remove('hidden');

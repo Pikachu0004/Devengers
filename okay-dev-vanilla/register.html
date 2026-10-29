@@ -300,7 +300,13 @@
                 const data = await res.json();
 
                 if (res.ok && data.success) {
-                    succBox.textContent = data.message || `✓ 6-digit OTP code dispatched to ${email}`;
+                    let msg = data.message || `✓ 6-digit OTP code dispatched to ${email}`;
+                    if (data.dev_otp) {
+                        msg = `✓ [DEV MODE] OTP: ${data.dev_otp} (Auto-filled below)`;
+                        const otpInput = document.getElementById('reg-otp');
+                        if (otpInput) otpInput.value = data.dev_otp;
+                    }
+                    succBox.textContent = msg;
                     succBox.classList.remove('hidden');
 
                     // Focus on OTP input
