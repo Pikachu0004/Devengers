@@ -230,6 +230,14 @@ class DevengersHandler(http.server.SimpleHTTPRequestHandler):
             self.send_error(403, "Access Denied: Protected System Resource")
             return
 
+        # UptimeRobot / health-check: respond 200 OK for any /api/ HEAD request
+        # without executing the full handler (HEAD must not send a body)
+        if path.startswith('/api/'):
+            self.send_response(200)
+            self.send_header('Content-Type', 'application/json')
+            self.end_headers()
+            return
+
         if path in ('/', '/index'):
             self.send_response(302)
             self.send_header('Location', '/index.html')
