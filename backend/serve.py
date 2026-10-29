@@ -89,6 +89,16 @@ class DevengersHandler(http.server.SimpleHTTPRequestHandler):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, directory=DIRECTORY, **kwargs)
 
+    def get_client_ip(self) -> str:
+        """Extracts client IP forwarded by Vercel edge proxy, Cloudflare, or direct connection."""
+        for header in ('X-Forwarded-For', 'CF-Connecting-IP', 'X-Real-IP'):
+            val = self.headers.get(header)
+            if val:
+                ip = val.split(',')[0].strip()
+                if ip:
+                    return ip
+        return self.client_address[0] if self.client_address else "127.0.0.1"
+
     @staticmethod
     def is_blocked_path(raw_path: str) -> bool:
         """Cyber defense: blocks access to sensitive files, hidden directories, databases, source code, and path traversal."""
@@ -1216,15 +1226,21 @@ class DevengersHandler(http.server.SimpleHTTPRequestHandler):
     # ------------------ Endpoint Handlers ------------------
 
     def handle_send_otp(self):
-        client_ip = self.client_address[0] if self.client_address else "127.0.0.1"
-        if is_rate_limited(client_ip, limit=10, window_sec=60):
-            self.send_json({"success": False, "error": "Too many OTP requests. Please wait a minute before retrying."}, 429)
-            return
-
+        client_ip = self.get_client_ip()
         body = self.read_json_body()
         email = body.get('email', '').strip().lower()
         raw_purpose = body.get('purpose', 'Sign Up Verification')
         purpose = normalize_purpose(raw_purpose)
+
+        # Rate limit per email (max 5 OTP requests per 5 minutes per email)
+        if email and is_rate_limited(f"otp_email:{email}", limit=5, window_sec=300):
+            self.send_json({"success": False, "error": "Too many OTP requests for this email. Please wait a few minutes before retrying."}, 429)
+            return
+
+        # High burst protection per IP (max 40 requests per minute per IP to accommodate campus / hackathon networks)
+        if is_rate_limited(f"otp_ip:{client_ip}", limit=40, window_sec=60):
+            self.send_json({"success": False, "error": "High volume of OTP requests from your network. Please wait a minute before retrying."}, 429)
+            return
 
         if not email or '@' not in email:
             self.send_json({"success": False, "error": "A valid email address is required."}, 400)
@@ -1268,7 +1284,7 @@ class DevengersHandler(http.server.SimpleHTTPRequestHandler):
         })
 
     def handle_reset_password(self):
-        client_ip = self.client_address[0] if self.client_address else "127.0.0.1"
+        client_ip = self.get_client_ip()
         if is_rate_limited(client_ip, limit=12, window_sec=60):
             self.send_json({"success": False, "error": "Too many password reset attempts. Please wait a minute."}, 429)
             return
@@ -1325,8 +1341,8 @@ class DevengersHandler(http.server.SimpleHTTPRequestHandler):
         })
 
     def handle_register(self):
-        client_ip = self.client_address[0] if self.client_address else "127.0.0.1"
-        if is_rate_limited(client_ip, limit=12, window_sec=60):
+        client_ip = self.get_client_ip()
+        if is_rate_limited(client_ip, limit=25, window_sec=60):
             self.send_json({"success": False, "error": "Too many registration attempts. Please wait a minute."}, 429)
             return
 
@@ -1335,7 +1351,6 @@ class DevengersHandler(http.server.SimpleHTTPRequestHandler):
         password = body.get('password', '')
         otp = body.get('otp', '').strip()
         name = body.get('name') or body.get('full_name') or email.split('@')[0]
-        client_ip = self.client_address[0] if self.client_address else "127.0.0.1"
 
         if not email or not password:
             self.send_json({"success": False, "error": "Email and password are required."}, 400)
@@ -1404,9 +1419,9 @@ class DevengersHandler(http.server.SimpleHTTPRequestHandler):
         email = body.get('email', '').strip().lower()
         password = body.get('password', '')
         otp = body.get('otp', '').strip() or None
-        client_ip = self.client_address[0] if self.client_address else "127.0.0.1"
+        client_ip = self.get_client_ip()
 
-        if is_rate_limited(client_ip, limit=15, window_sec=60):
+        if is_rate_limited(client_ip, limit=25, window_sec=60):
             self.send_json({"success": False, "error": "Too many login attempts. Please wait 1 minute before retrying."}, 429)
             return
 
@@ -1452,7 +1467,7 @@ class DevengersHandler(http.server.SimpleHTTPRequestHandler):
     def handle_google_auth(self):
         body = self.read_json_body()
         credential = body.get('credential', '').strip()
-        client_ip = self.client_address[0] if self.client_address else "127.0.0.1"
+        client_ip = self.get_client_ip()
 
         email = body.get('email', '').strip().lower()
         name = body.get('name') or body.get('full_name')

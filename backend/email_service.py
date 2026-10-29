@@ -2,13 +2,14 @@
 Devengers Email & OTP Notification Service.
 Deliverability-Engineered for 100% Primary Inbox Landing.
 
-Supported Dispatch Channels (Automatic Priority Cascade):
-1. Resend HTTP REST API (HTTPS port 443 - zero block on Render / Vercel cloud)
-2. Brevo HTTP REST API (HTTPS port 443 - 300 free emails/day)
-3. Standard SMTP over TLS/SSL (Fallback for localhost or servers with open SMTP)
-4. Dev Mode bypass (Instant OTP generation for local/staging testing)
+Supported Dispatch Channels (Automatic Priority Cascade over HTTPS Port 443):
+1. Zoho ZeptoMail REST API (Dedicated transactional API by Zoho - perfect for devengers.org, 10k free trial, no daily cap)
+2. Resend HTTP REST API (HTTPS port 443 - zero block on Render / Vercel cloud)
+3. Brevo HTTP REST API (HTTPS port 443 - 300 free emails/day)
+4. Standard SMTP over TLS/SSL (Fallback for localhost or unblocked hosts)
+5. Dev Mode bypass (Instant OTP generation for local/staging testing)
 
-Zero external dependencies - uses standard library (smtplib, email, urllib.request, json).
+Zero external dependencies - uses Python standard library.
 """
 
 import os
@@ -47,12 +48,59 @@ def get_smtp_config():
 
 def is_smtp_configured() -> bool:
     _load_env()
+    zepto_token = os.environ.get("ZEPTOMAIL_TOKEN", "").strip() or os.environ.get("DEVENGERS_ZEPTOMAIL_TOKEN", "").strip()
     resend_key = os.environ.get("RESEND_API_KEY", "").strip() or os.environ.get("DEVENGERS_RESEND_API_KEY", "").strip()
     brevo_key = os.environ.get("BREVO_API_KEY", "").strip() or os.environ.get("DEVENGERS_BREVO_API_KEY", "").strip()
-    if resend_key or brevo_key:
+    if zepto_token or resend_key or brevo_key:
         return True
     host, _, user, password, _, _ = get_smtp_config()
     return bool(host and user and password)
+
+def _send_via_zeptomail(token: str, from_name: str, from_email: str, to_addr: str, subject: str, html_body: str, text_body: str, region: str = "in") -> dict:
+    """Dispatches transactional email via Zoho ZeptoMail HTTPS REST API (Port 443 - zero cloud blocks)."""
+    region = (region or "in").strip().lower()
+    if region in ("com", "us"):
+        url = "https://api.zeptomail.com/v1.1/email"
+    elif region in ("eu", "europe"):
+        url = "https://api.zeptomail.eu/v1.1/email"
+    else:
+        url = "https://api.zeptomail.in/v1.1/email"
+
+    auth_header = token if token.startswith("Zoho-enczapikey ") else f"Zoho-enczapikey {token}"
+
+    payload = {
+        "from": {
+            "address": from_email,
+            "name": from_name
+        },
+        "to": [
+            {
+                "email_address": {
+                    "address": to_addr,
+                    "name": to_addr.split("@")[0]
+                }
+            }
+        ],
+        "subject": subject,
+        "htmlbody": html_body,
+        "textbody": text_body
+    }
+
+    data = json.dumps(payload).encode("utf-8")
+    req = urllib.request.Request(
+        url,
+        data=data,
+        headers={
+            "Authorization": auth_header,
+            "Content-Type": "application/json",
+            "Accept": "application/json",
+            "User-Agent": "DevengersPlatform/1.0"
+        },
+        method="POST"
+    )
+    with urllib.request.urlopen(req, timeout=12) as resp:
+        body = resp.read().decode("utf-8")
+        return json.loads(body) if body else {"success": True}
 
 def _send_via_resend(api_key: str, from_addr: str, to_addr: str, subject: str, html_body: str, text_body: str) -> dict:
     """Dispatches email via Resend HTTPS REST API (Port 443 - bypasses Render SMTP block)."""
@@ -107,7 +155,7 @@ def _send_via_brevo(api_key: str, from_name: str, from_email: str, to_addr: str,
 def send_otp_email(to_email: str, otp: str, purpose: str = "Sign Up Verification") -> dict:
     """
     Sends a 6-digit OTP email engineered to land in the Primary Inbox, not Spam.
-    Tries HTTP REST APIs first (Resend, Brevo) to bypass cloud SMTP blocks,
+    Tries HTTP REST APIs first (ZeptoMail, Resend, Brevo) to bypass cloud SMTP blocks,
     then falls back to SMTP, and finally to Dev Mode if enabled.
     """
     _load_env()
@@ -115,10 +163,12 @@ def send_otp_email(to_email: str, otp: str, purpose: str = "Sign Up Verification
     host, port, user, password, from_email, dev_mode = get_smtp_config()
     from_name = os.environ.get("DEVENGERS_FROM_NAME", "Devengers Community").strip() or "Devengers Community"
 
+    zepto_token = os.environ.get("ZEPTOMAIL_TOKEN", "").strip() or os.environ.get("DEVENGERS_ZEPTOMAIL_TOKEN", "").strip()
+    zepto_region = os.environ.get("ZEPTOMAIL_REGION", "").strip() or os.environ.get("DEVENGERS_ZEPTOMAIL_REGION", "in").strip()
+
     resend_key = os.environ.get("RESEND_API_KEY", "").strip() or os.environ.get("DEVENGERS_RESEND_API_KEY", "").strip()
     brevo_key = os.environ.get("BREVO_API_KEY", "").strip() or os.environ.get("DEVENGERS_BREVO_API_KEY", "").strip()
 
-    # Extract sender domain for header alignment (e.g. devengers.org)
     domain = from_email.split("@")[-1].strip().lower() if "@" in from_email else "devengers.org"
 
     is_pwd_reset = ('reset' in purpose.lower() or 'password' in purpose.lower())
@@ -126,7 +176,6 @@ def send_otp_email(to_email: str, otp: str, purpose: str = "Sign Up Verification
     heading_text = "Password Reset Passcode" if is_pwd_reset else "Verification Passcode"
     action_desc = "Use the one-time verification passcode below to reset your Devengers account password." if is_pwd_reset else "Use the one-time verification code below to complete your authentication."
 
-    # Deliverability-Engineered HTML Template
     html_content = f"""<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -230,11 +279,35 @@ Support: support@devengers.org
     print("=" * 64)
 
     # -------------------------------------------------------------
-    # 1. Primary Cloud Channel: Resend HTTPS REST API (Port 443)
+    # 1. Primary Enterprise Channel: Zoho ZeptoMail REST API (Port 443)
+    # -------------------------------------------------------------
+    if zepto_token:
+        try:
+            _send_via_zeptomail(zepto_token, from_name, from_email, clean_email, subject, html_content, text_content, region=zepto_region)
+            print(f"[DEVENGERS EMAIL OTP] Successfully dispatched via Zoho ZeptoMail API to {clean_email}")
+            return {
+                "success": True,
+                "email": clean_email,
+                "provider": "zeptomail",
+                "smtp_sent": True,
+                "smtp_error": None,
+                "dev_otp": None
+            }
+        except Exception as e:
+            err_msg = str(e)
+            print(f"[DEVENGERS EMAIL ZEPTOMAIL ERROR] Failed via ZeptoMail API: {e}")
+            if hasattr(e, "read"):
+                try:
+                    err_detail = e.read().decode("utf-8")
+                    print(f"[DEVENGERS EMAIL ZEPTOMAIL DETAIL] {err_detail}")
+                except Exception:
+                    pass
+
+    # -------------------------------------------------------------
+    # 2. Resend HTTPS REST API (Port 443)
     # -------------------------------------------------------------
     if resend_key:
         try:
-            # Custom from address or default to Resend-verified sender
             resend_from = os.environ.get("RESEND_FROM", "").strip() or f"{from_name} <{from_email}>"
             _send_via_resend(resend_key, resend_from, clean_email, subject, html_content, text_content)
             print(f"[DEVENGERS EMAIL OTP] Successfully dispatched via Resend API to {clean_email}")
@@ -249,7 +322,7 @@ Support: support@devengers.org
         except Exception as e:
             err_msg = str(e)
             print(f"[DEVENGERS EMAIL RESEND ERROR] Failed via Resend API: {e}")
-            if "HTTP Error" in err_msg and hasattr(e, "read"):
+            if hasattr(e, "read"):
                 try:
                     err_detail = e.read().decode("utf-8")
                     print(f"[DEVENGERS EMAIL RESEND DETAIL] {err_detail}")
@@ -257,7 +330,7 @@ Support: support@devengers.org
                     pass
 
     # -------------------------------------------------------------
-    # 2. Secondary Cloud Channel: Brevo HTTPS REST API (Port 443)
+    # 3. Brevo HTTPS REST API (Port 443)
     # -------------------------------------------------------------
     if brevo_key:
         try:
@@ -275,7 +348,7 @@ Support: support@devengers.org
             print(f"[DEVENGERS EMAIL BREVO ERROR] Failed via Brevo API: {e}")
 
     # -------------------------------------------------------------
-    # 3. Standard SMTP (Localhost / unblocked servers)
+    # 4. Standard SMTP (Localhost / unblocked servers)
     # -------------------------------------------------------------
     smtp_sent = False
     smtp_error = None
@@ -300,7 +373,6 @@ Support: support@devengers.org
             msg.set_content(text_content)
             msg.add_alternative(html_content, subtype="html")
 
-            # Short 6s timeout so users don't hang if SMTP is blocked
             if port == 465:
                 with smtplib.SMTP_SSL(host, port, timeout=6) as server:
                     server.login(user, password)
@@ -328,7 +400,7 @@ Support: support@devengers.org
         }
 
     # -------------------------------------------------------------
-    # 4. Dev Mode Fallback (Allows testing without email blocks)
+    # 5. Dev Mode Fallback (Instant OTP generation for testing)
     # -------------------------------------------------------------
     if dev_mode:
         print(f"[DEVENGERS DEV MODE] Returning OTP directly in response for {clean_email}: {otp}")
@@ -341,29 +413,15 @@ Support: support@devengers.org
             "dev_otp": otp
         }
 
-    # If SMTP failed in production mode:
-    if host and user and password and smtp_error:
-        return {
-            "success": False,
-            "email": clean_email,
-            "smtp_sent": False,
-            "smtp_error": (
-                f"Failed to dispatch email via SMTP ({host}): {smtp_error}. "
-                "Render Free Tier blocks outbound SMTP ports 465/587. "
-                "Please add a free RESEND_API_KEY (from resend.com) to your Render environment variables, "
-                "or set DEVENGERS_DEV_MODE=true for instant testing."
-            ),
-            "dev_otp": None
-        }
-
-    # If no email provider is configured at all:
+    # If all options failed:
     return {
         "success": False,
         "email": clean_email,
         "smtp_sent": False,
         "smtp_error": (
-            "Email service not configured. Add RESEND_API_KEY (free at resend.com) "
-            "or set DEVENGERS_DEV_MODE=true in Render environment variables."
+            "Transactional email delivery is not configured for high-volume production. "
+            "Please configure Zoho ZeptoMail (ZEPTOMAIL_TOKEN - 10,000 free emails, perfect for devengers.org), "
+            "or RESEND_API_KEY / BREVO_API_KEY in Render environment variables."
         ),
         "dev_otp": None
     }
