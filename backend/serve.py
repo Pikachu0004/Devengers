@@ -39,6 +39,9 @@ import base64
 
 PORT = int(os.environ.get("PORT", "3000"))
 DIRECTORY = os.path.dirname(os.path.abspath(__file__))
+candidate_static = os.path.abspath(os.path.join(DIRECTORY, "..", "okay-dev-vanilla"))
+if os.path.exists(os.path.join(candidate_static, "index.html")):
+    DIRECTORY = candidate_static
 UPLOADS_DIR = os.path.join(DIRECTORY, "Assest", "uploads")
 ALLOWED_CATEGORIES = {'Hackathons', 'Quizzes', 'Internships', 'Jobs'}
 ALLOWED_STATUSES = {'Draft', 'Published', 'Unpublished', 'Archived'}

@@ -16,7 +16,7 @@ import urllib.request
 import urllib.error
 
 BASE_URL = "http://localhost:3000"
-DB_PATH = os.path.join(os.path.dirname(__file__), "devengers.db")
+from db import DB_PATH
 
 def request(method, path, data=None):
     url = f"{BASE_URL}{path}"

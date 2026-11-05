@@ -8,7 +8,16 @@ import os
 import uuid
 from datetime import datetime, timezone, timedelta
 
-DB_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "devengers.db")
+DB_PATH = os.environ.get("DEVENGERS_DB_PATH", "").strip()
+if not DB_PATH:
+    candidate_backend = os.path.join(os.path.dirname(os.path.abspath(__file__)), "devengers.db")
+    candidate_parent = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "okay-dev-vanilla", "devengers.db"))
+    if os.path.exists(candidate_backend):
+        DB_PATH = candidate_backend
+    elif os.path.exists(candidate_parent):
+        DB_PATH = candidate_parent
+    else:
+        DB_PATH = candidate_backend
 
 def get_connection():
     conn = sqlite3.connect(DB_PATH, timeout=10.0)

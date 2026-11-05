@@ -9,6 +9,9 @@ import json
 import re
 
 SERVICE_DIR = os.path.dirname(os.path.abspath(__file__))
+candidate_parent = os.path.abspath(os.path.join(SERVICE_DIR, "..", "okay-dev-vanilla"))
+if os.path.exists(os.path.join(candidate_parent, "Assest", "pyqs", "pyqs_catalog.json")):
+    SERVICE_DIR = candidate_parent
 CATALOG_PATH = os.path.join(SERVICE_DIR, "Assest", "pyqs", "pyqs_catalog.json")
 PYQS_DIR = os.path.join(SERVICE_DIR, "Assest", "pyqs")
 

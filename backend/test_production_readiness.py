@@ -27,6 +27,9 @@ import re
 
 BASE_URL = "http://localhost:3000"
 PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
+candidate_parent = os.path.abspath(os.path.join(PROJECT_DIR, "..", "okay-dev-vanilla"))
+if os.path.exists(os.path.join(candidate_parent, "index.html")):
+    PROJECT_DIR = candidate_parent
 
 GREEN = "\033[92m"
 RED = "\033[91m"
@@ -66,7 +69,7 @@ print(f"{BOLD}{CYAN}============================================================
 # SECTION 1: Python Code Compilation
 # ---------------------------------------------------------
 print(f"{BOLD}1. Python Code Compilation & Syntax Validation{RESET}")
-py_files = glob.glob(os.path.join(PROJECT_DIR, "*.py"))
+py_files = glob.glob(os.path.join(os.path.dirname(os.path.abspath(__file__)), "*.py"))
 all_py_clean = True
 for pf in sorted(py_files):
     fname = os.path.basename(pf)

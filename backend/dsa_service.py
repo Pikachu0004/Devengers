@@ -10,7 +10,12 @@ import hashlib
 from datetime import datetime, timezone, timedelta
 
 SERVICE_DIR = os.path.dirname(os.path.abspath(__file__))
-DSA_CATALOG_PATH = os.path.join(SERVICE_DIR, "Assest", "dsa", "dsa_sheet.json")
+candidate_catalog = os.path.join(SERVICE_DIR, "Assest", "dsa", "dsa_sheet.json")
+if not os.path.exists(candidate_catalog):
+    parent_catalog = os.path.abspath(os.path.join(SERVICE_DIR, "..", "okay-dev-vanilla", "Assest", "dsa", "dsa_sheet.json"))
+    if os.path.exists(parent_catalog):
+        candidate_catalog = parent_catalog
+DSA_CATALOG_PATH = candidate_catalog
 
 def get_dsa_catalog():
     if not os.path.exists(DSA_CATALOG_PATH):

@@ -6,6 +6,7 @@ category filters, click-through URLs, and security edge cases.
 
 import urllib.request
 import urllib.parse
+from db import DB_PATH
 import json
 import http.cookiejar
 import os
@@ -69,7 +70,7 @@ def run_tests():
         otp = res.get("dev_otp")
         if not otp:
             import sqlite3
-            c = sqlite3.connect("devengers.db")
+            c = sqlite3.connect(DB_PATH)
             row = c.execute("SELECT otp FROM email_otps WHERE email = 'event@devengers.org' AND is_used = 0 ORDER BY created_at DESC LIMIT 1").fetchone()
             c.close()
             otp = row[0] if row else ""
@@ -235,7 +236,7 @@ def run_tests():
     signup_otp = otp_res.get("dev_otp")
     if not signup_otp:
         import sqlite3
-        c = sqlite3.connect("devengers.db")
+        c = sqlite3.connect(DB_PATH)
         row = c.execute("SELECT otp FROM email_otps WHERE email = ? AND is_used = 0 ORDER BY created_at DESC LIMIT 1", (new_user_email,)).fetchone()
         c.close()
         signup_otp = row[0] if row else ""
@@ -322,7 +323,7 @@ def run_tests():
         otp = res.get("dev_otp")
         if not otp:
             import sqlite3
-            c = sqlite3.connect("devengers.db")
+            c = sqlite3.connect(DB_PATH)
             row = c.execute("SELECT otp FROM email_otps WHERE email = 'event@devengers.org' AND is_used = 0 ORDER BY created_at DESC LIMIT 1").fetchone()
             c.close()
             otp = row[0] if row else ""

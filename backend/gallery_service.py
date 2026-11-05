@@ -12,15 +12,8 @@ import os
 import uuid
 from datetime import datetime, timezone
 
+from db import get_connection, DB_PATH
 SERVICE_DIR = os.path.dirname(os.path.abspath(__file__))
-DB_PATH = os.path.join(SERVICE_DIR, "devengers.db")
-
-def get_connection():
-    conn = sqlite3.connect(DB_PATH, timeout=10.0)
-    conn.row_factory = sqlite3.Row
-    conn.execute("PRAGMA journal_mode = WAL;")
-    conn.execute("PRAGMA foreign_keys = ON;")
-    return conn
 
 def init_gallery_tables():
     conn = get_connection()
