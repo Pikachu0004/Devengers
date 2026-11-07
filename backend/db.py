@@ -7,6 +7,7 @@ import sqlite3
 import os
 import uuid
 from datetime import datetime, timezone, timedelta
+from turso_client import is_turso_configured, get_turso_connection
 
 DB_PATH = os.environ.get("DEVENGERS_DB_PATH", "").strip()
 if not DB_PATH:
@@ -20,6 +21,11 @@ if not DB_PATH:
         DB_PATH = candidate_backend
 
 def get_connection():
+    if is_turso_configured():
+        turso_conn = get_turso_connection()
+        if turso_conn:
+            return turso_conn
+
     conn = sqlite3.connect(DB_PATH, timeout=10.0)
     conn.row_factory = sqlite3.Row
     conn.execute("PRAGMA journal_mode = WAL;")
