@@ -238,6 +238,12 @@ def init_db():
     cursor.execute("CREATE INDEX IF NOT EXISTS idx_notif_reads_user ON notification_reads(user_id);")
 
     # Safe column additions for Users (Profile, Emoji Avatar, Banner, Bio, Streak, Academics & Coding Handles)
+    try:
+        cursor.execute("PRAGMA table_info(users);")
+        existing_user_cols = {row['name'].lower() for row in cursor.fetchall()}
+    except Exception:
+        existing_user_cols = set()
+
     for col, col_type, col_default in [
         ('avatar_emoji', 'TEXT', "'⚡'"),
         ('avatar_url', 'TEXT', "''"),
@@ -259,12 +265,19 @@ def init_db():
         ('skills', 'TEXT', "'Python, JavaScript, React, DSA, SQL, Git'"),
         ('questions_solved_total', 'INTEGER', "0")
     ]:
-        try:
-            cursor.execute(f"ALTER TABLE users ADD COLUMN {col} {col_type} DEFAULT {col_default};")
-        except sqlite3.OperationalError:
-            pass
+        if not existing_user_cols or col.lower() not in existing_user_cols:
+            try:
+                cursor.execute(f"ALTER TABLE users ADD COLUMN {col} {col_type} DEFAULT {col_default};")
+            except Exception:
+                pass
 
     # Safe column additions for Jobs/Internships & Media fields
+    try:
+        cursor.execute("PRAGMA table_info(events);")
+        existing_event_cols = {row['name'].lower() for row in cursor.fetchall()}
+    except Exception:
+        existing_event_cols = set()
+
     for col, col_type, col_default in [
         ('location', 'TEXT', "'(Remote)'"),
         ('job_type', 'TEXT', "'Full Time'"),
@@ -274,10 +287,11 @@ def init_db():
         ('source', 'TEXT', "'manual'"),
         ('tags', 'TEXT', "''")
     ]:
-        try:
-            cursor.execute(f"ALTER TABLE events ADD COLUMN {col} {col_type} DEFAULT {col_default};")
-        except sqlite3.OperationalError:
-            pass
+        if not existing_event_cols or col.lower() not in existing_event_cols:
+            try:
+                cursor.execute(f"ALTER TABLE events ADD COLUMN {col} {col_type} DEFAULT {col_default};")
+            except Exception:
+                pass
 
     # For Hackathons & Community Events, use Devengers official logo
     cursor.execute("UPDATE events SET thumbnail = 'Assest/devengers-logo.png' WHERE category NOT IN ('Jobs', 'Internships') AND thumbnail LIKE '%hackwithindia%'")

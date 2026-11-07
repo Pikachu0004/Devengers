@@ -10,9 +10,22 @@ or packages that fail to compile on Python 3.14.
 import os
 import json
 import base64
+import sqlite3
 import urllib.request
 import urllib.error
 from typing import Any, Dict, List, Optional, Tuple, Union
+
+class TursoError(Exception):
+    """Base error for Turso client."""
+    pass
+
+class TursoOperationalError(sqlite3.OperationalError, TursoError):
+    """Raised for SQL syntax, duplicate column, or table errors (matches sqlite3.OperationalError)."""
+    pass
+
+class TursoIntegrityError(sqlite3.IntegrityError, TursoError):
+    """Raised for constraint violations (matches sqlite3.IntegrityError)."""
+    pass
 
 class TursoRow:
     """Row object that supports both dict-like key access and tuple-like index access (matching sqlite3.Row)."""
@@ -250,7 +263,9 @@ class TursoConnection:
         if first.get("type") == "error":
             err_obj = first.get("error", {})
             err_msg = err_obj.get("message", "Unknown Turso Error")
-            raise RuntimeError(f"Turso SQL Error: {err_msg}")
+            if "constraint" in err_msg.lower():
+                raise TursoIntegrityError(f"Turso SQL Error: {err_msg}")
+            raise TursoOperationalError(f"Turso SQL Error: {err_msg}")
 
         return first.get("response", {}).get("result", {})
 
@@ -269,3 +284,4 @@ def get_turso_connection() -> Optional[TursoConnection]:
     if url and token:
         return TursoConnection(url, token)
     return None
+
