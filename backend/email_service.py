@@ -150,6 +150,7 @@ def _send_via_brevo(api_key: str, from_name: str, from_email: str, to_addr: str,
         headers={
             "api-key": api_key,
             "Content-Type": "application/json",
+            "Accept": "application/json",
             "User-Agent": "DevengersPlatform/1.0"
         },
         method="POST"
@@ -336,11 +337,13 @@ Support: support@devengers.org
                     pass
 
     # -------------------------------------------------------------
-    # 3. Brevo HTTPS REST API (Port 443)
+    # 3. Brevo HTTPS REST API (Port 443 - 300 free emails/day)
     # -------------------------------------------------------------
     if brevo_key:
         try:
-            _send_via_brevo(brevo_key, from_name, from_email, clean_email, subject, html_content, text_content)
+            brevo_from_email = os.environ.get("BREVO_FROM_EMAIL", "").strip() or from_email
+            brevo_from_name = os.environ.get("BREVO_FROM_NAME", "").strip() or from_name
+            _send_via_brevo(brevo_key, brevo_from_name, brevo_from_email, clean_email, subject, html_content, text_content)
             print(f"[DEVENGERS EMAIL OTP] Successfully dispatched via Brevo API to {clean_email}")
             return {
                 "success": True,
@@ -351,7 +354,14 @@ Support: support@devengers.org
                 "dev_otp": None
             }
         except Exception as e:
+            err_msg = str(e)
             print(f"[DEVENGERS EMAIL BREVO ERROR] Failed via Brevo API: {e}")
+            if hasattr(e, "read"):
+                try:
+                    err_detail = e.read().decode("utf-8")
+                    print(f"[DEVENGERS EMAIL BREVO DETAIL] {err_detail}")
+                except Exception:
+                    pass
 
     # -------------------------------------------------------------
     # 4. Standard SMTP (Localhost / unblocked servers)
