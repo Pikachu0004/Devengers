@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | Devengers Community Platform</title>
+    <meta name="description" content="Discover Devengers: the premier student engineering community empowering developers with free DSA roadmaps, daily coding streaks, live hackathons, university PYQs, and verified credentials.">
+    <meta name="keywords" content="About Devengers, Student Developer Community, Engineering Platform Mission, Learn Build Lead, Open Access Tech Education">
+    <meta name="author" content="Devengers Community">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <meta name="theme-color" content="#7B42F6">
+    <meta name="msapplication-TileColor" content="#7B42F6">
+    <link rel="canonical" href="https://devengers.org/about">
+
+    <!-- Open Graph / Meta -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://devengers.org/about">
+    <meta property="og:site_name" content="Devengers">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:title" content="About Us | Devengers Community Platform">
+    <meta property="og:description" content="Empowering the next generation of engineers with open-access coding roadmaps, hackathons, and campus resources.">
+    <meta property="og:image" content="https://devengers.org/og-image.jpg">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@devengers">
+    <meta name="twitter:creator" content="@devengers">
+    <meta name="twitter:url" content="https://devengers.org/about">
+    <meta name="twitter:title" content="About Us | Devengers Community Platform">
+    <meta name="twitter:description" content="Empowering the next generation of engineers with open-access coding roadmaps, hackathons, and campus resources.">
+    <meta name="twitter:image" content="https://devengers.org/og-image.jpg">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico?v=3">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon.png?v=3">
+    <link rel="apple-touch-icon" href="favicon.png?v=3">
+
+    <!-- Fonts & Tailwind -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css?v=5">
+    <script src="theme.js"></script>
+    <script src="auth.js"></script>
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "AboutPage",
+      "name": "About Devengers",
+      "url": "https://devengers.org/about",
+      "description": "Devengers is an elite student engineering platform built to democratize tech learning, hackathons, and verified credentials.",
+      "mainEntity": {
+        "@type": "Organization",
+        "name": "Devengers",
+        "url": "https://devengers.org",
+        "logo": "https://devengers.org/favicon.png",
+        "sameAs": [
+          "https://www.instagram.com/officialdevengers",
+          "https://www.linkedin.com/company/officialdevengers",
+          "https://www.youtube.com/@officialdevengers",
+          "https://whatsapp.com/channel/0029VbCVGAd8KMql7Ie3ew43"
+        ]
+      }
+    }
+    </script>
+</head>
+<body class="bg-[#0b0b0b] text-white font-sans antialiased min-h-screen flex flex-col justify-between select-none overflow-x-hidden">
+
+    <!-- NAVIGATION (Fixed Canonical Notch) -->
+    <nav class="devengers-navbar-fixed fixed top-6 left-0 w-full z-50 flex justify-center px-4">
+        <div class="devengers-navbar-notch bg-[#7B42F6] shadow-brutal border-4 border-black rounded-full px-6 md:px-8 py-3 w-full max-w-[1400px] flex items-center justify-between">
+            <a href="index.html" class="flex items-center group select-none" title="Devengers Home">
+                <div class="devengers-nav-logo font-black text-2xl md:text-[30px] tracking-tighter uppercase rounded-full transition-transform duration-300"
+                    style="-webkit-text-stroke: 2px black; color: #CDFF29; text-shadow: 3px 3px 0px black; line-height: 1;">
+                    <span class="devengers-badge-icon">
+                        <svg class="w-3.5 h-3.5 text-[#CDFF29]" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
+                        </svg>
+                    </span>
+                    <span class="logo-char">D</span><span class="logo-char">E</span><span class="logo-char">V</span><span class="logo-char">E</span><span class="logo-char">N</span><span class="logo-char">G</span><span class="logo-char">E</span><span class="logo-char">R</span><span class="logo-char">S</span>
+                </div>
+            </a>
+
+            <!-- Center Links -->
+            <div class="hidden md:flex gap-6 lg:gap-8 text-[11px] font-bold uppercase tracking-widest text-white/80">
+                <a href="events.html" class="nav-link">Events</a>
+                <a href="learn.html" class="nav-link">Learn</a>
+                <a href="campus.html" class="nav-link">Campus Resource</a>
+                <a href="dsa.html" class="nav-link">DSA Streak</a>
+                <a href="gallery.html" class="nav-link">Gallery</a>
+                <a href="certificates.html" class="nav-link">Certificates</a>
+            </div>
+
+            <!-- Right Controls -->
+            <div class="flex items-center gap-3 sm:gap-4">
+                <button type="button" onclick="window.DevengersTheme.toggleTheme()" class="theme-toggle-btn" title="Toggle Theme" aria-label="Toggle Theme">
+                    <div class="toggle-thumb">🌙</div>
+                </button>
+                <div class="relative">
+                    <button type="button" id="nav-notification-btn" onclick="window.DevengersNotifications.toggleDropdown(event)"
+                        class="nav-notification-btn flex items-center justify-center w-8 h-8 text-white/80 hover:text-white transition-colors relative cursor-pointer"
+                        title="Notifications" aria-label="Notifications">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+                        </svg>
+                        <span id="nav-notification-dot" class="nav-notification-dot hidden"></span>
+                    </button>
+                </div>
+                <a href="profile.html" class="nav-profile-btn group" title="My Profile" aria-label="My Profile">
+                    <span class="nav-profile-inner">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                        </svg>
+                    </span>
+                </a>
+                <a href="login.html" class="hidden md:block text-[11px] font-bold uppercase tracking-widest text-white/80 hover:text-white transition-colors">LOGIN</a>
+                <a href="register.html" class="bg-white text-black px-5 py-2 rounded-full text-[11px] font-bold uppercase tracking-widest hover:bg-[#CDFF29] transition-colors flex items-center gap-1.5 shadow-sm">
+                    SIGN UP <span class="font-normal text-sm leading-none">&rarr;</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- MAIN ABOUT CONTENT -->
+    <main class="flex-grow w-full max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 pt-36 md:pt-40 pb-24 select-text">
+        
+        <!-- Hero Header -->
+        <div class="mb-14 text-center max-w-3xl mx-auto">
+            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#CDFF29] text-black font-mono text-xs font-black uppercase tracking-wider shadow-brutal-sm border-2 border-black mb-4">
+                <span>⚡</span>
+                <span>COMMUNITY MISSION &bull; LEARN. BUILD. LEAD.</span>
+            </div>
+            <h1 class="font-black text-3xl sm:text-5xl lg:text-7xl uppercase tracking-tighter leading-tight mb-6 text-white drop-shadow-md">
+                WE ARE <span class="text-[#CDFF29] underline decoration-[#7B42F6] decoration-4 underline-offset-4">DEVENGERS</span>
+            </h1>
+            <p class="text-gray-300 text-sm sm:text-lg leading-relaxed">
+                Devengers is an open-access engineering community built by student developers, for student developers. We bridge the critical gap between university academic theory and high-impact software engineering careers.
+            </p>
+        </div>
+
+        <!-- Metrics Grid -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16">
+            <div class="bg-[#141414] border-3 border-black rounded-2xl p-6 text-center shadow-brutal-md">
+                <div class="text-3xl sm:text-5xl font-black text-[#CDFF29] mb-1">500+</div>
+                <div class="text-xs sm:text-sm font-mono text-gray-400 uppercase tracking-wider">Curated DSA Problems</div>
+            </div>
+            <div class="bg-[#141414] border-3 border-black rounded-2xl p-6 text-center shadow-brutal-md">
+                <div class="text-3xl sm:text-5xl font-black text-[#7B42F6] mb-1">432+</div>
+                <div class="text-xs sm:text-sm font-mono text-gray-400 uppercase tracking-wider">University PYQs</div>
+            </div>
+            <div class="bg-[#141414] border-3 border-black rounded-2xl p-6 text-center shadow-brutal-md">
+                <div class="text-3xl sm:text-5xl font-black text-white mb-1">140+</div>
+                <div class="text-xs sm:text-sm font-mono text-gray-400 uppercase tracking-wider">Events &amp; Hackathons</div>
+            </div>
+            <div class="bg-[#141414] border-3 border-black rounded-2xl p-6 text-center shadow-brutal-md">
+                <div class="text-3xl sm:text-5xl font-black text-[#CDFF29] mb-1">$0</div>
+                <div class="text-xs sm:text-sm font-mono text-gray-400 uppercase tracking-wider">100% Free Forever</div>
+            </div>
+        </div>
+
+        <!-- Four Pillars Section -->
+        <div class="mb-16">
+            <div class="text-center mb-10">
+                <h2 class="text-2xl sm:text-4xl font-black uppercase tracking-tight text-white mb-2">Our Four Core Pillars</h2>
+                <p class="text-gray-400 font-mono text-xs sm:text-sm">The foundation of everything we build for engineering students</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Pillar 1 -->
+                <div class="bg-[#141414] border-3 border-black rounded-3xl p-8 shadow-brutal-md flex flex-col justify-between hover:-translate-y-1 transition-transform">
+                    <div>
+                        <div class="w-12 h-12 rounded-2xl bg-[#CDFF29] text-black font-black text-2xl flex items-center justify-center border-2 border-black shadow-brutal-sm mb-6">
+                            🧠
+                        </div>
+                        <h3 class="text-xl sm:text-2xl font-black text-white uppercase tracking-tight mb-3">0-to-Hero DSA Mastery</h3>
+                        <p class="text-gray-300 text-sm sm:text-base leading-relaxed mb-6">
+                            Consistency is the single biggest predictor of interview success. We offer daily Problem of the Day (POTD) streaks, structured topic sheets (Arrays, Dynamic Programming, Graphs), and real-time community leaderboards to turn daily practice into a habit.
+                        </p>
+                    </div>
+                    <a href="dsa.html" class="text-[#CDFF29] font-mono text-xs font-bold uppercase tracking-wider flex items-center gap-1 hover:underline">
+                        Explore DSA Roadmap &rarr;
+                    </a>
+                </div>
+
+                <!-- Pillar 2 -->
+                <div class="bg-[#141414] border-3 border-black rounded-3xl p-8 shadow-brutal-md flex flex-col justify-between hover:-translate-y-1 transition-transform">
+                    <div>
+                        <div class="w-12 h-12 rounded-2xl bg-[#7B42F6] text-white font-black text-2xl flex items-center justify-center border-2 border-black shadow-brutal-sm mb-6">
+                            🚀
+                        </div>
+                        <h3 class="text-xl sm:text-2xl font-black text-white uppercase tracking-tight mb-3">Live Hackathons &amp; Events</h3>
+                        <p class="text-gray-300 text-sm sm:text-base leading-relaxed mb-6">
+                            We organize live, student-focused hackathons, webinars, and open-source sprints with real industry mentors. Participants gain real collaborative experience, ship working prototypes, and compete for cash prizes and verified recognition.
+                        </p>
+                    </div>
+                    <a href="events.html" class="text-[#7B42F6] font-mono text-xs font-bold uppercase tracking-wider flex items-center gap-1 hover:underline">
+                        Browse Upcoming Events &rarr;
+                    </a>
+                </div>
+
+                <!-- Pillar 3 -->
+                <div class="bg-[#141414] border-3 border-black rounded-3xl p-8 shadow-brutal-md flex flex-col justify-between hover:-translate-y-1 transition-transform">
+                    <div>
+                        <div class="w-12 h-12 rounded-2xl bg-white text-black font-black text-2xl flex items-center justify-center border-2 border-black shadow-brutal-sm mb-6">
+                            🏛️
+                        </div>
+                        <h3 class="text-xl sm:text-2xl font-black text-white uppercase tracking-tight mb-3">Campus Academic Vault</h3>
+                        <p class="text-gray-300 text-sm sm:text-base leading-relaxed mb-6">
+                            Passing semester exams shouldn't require scouring shady Telegram channels. We provide over 430 direct PDF question papers, syllabus checklists, and mentor-verified notes spanning AKTU, MMMUT, GGSIPU, RGPV, MAKAUT, and VTU without paywalls.
+                        </p>
+                    </div>
+                    <a href="campus.html" class="text-white font-mono text-xs font-bold uppercase tracking-wider flex items-center gap-1 hover:underline">
+                        Access University PYQs &rarr;
+                    </a>
+                </div>
+
+                <!-- Pillar 4 -->
+                <div class="bg-[#141414] border-3 border-black rounded-3xl p-8 shadow-brutal-md flex flex-col justify-between hover:-translate-y-1 transition-transform">
+                    <div>
+                        <div class="w-12 h-12 rounded-2xl bg-[#CDFF29] text-black font-black text-2xl flex items-center justify-center border-2 border-black shadow-brutal-sm mb-6">
+                            🎓
+                        </div>
+                        <h3 class="text-xl sm:text-2xl font-black text-white uppercase tracking-tight mb-3">Verifiable Credentials</h3>
+                        <p class="text-gray-300 text-sm sm:text-base leading-relaxed mb-6">
+                            Every milestone, hackathon win, and course completion comes with a publicly verifiable digital certificate. Employers, recruiters, and university professors can instantly verify credentials with one click on our public ledger.
+                        </p>
+                    </div>
+                    <a href="certificates.html" class="text-[#CDFF29] font-mono text-xs font-bold uppercase tracking-wider flex items-center gap-1 hover:underline">
+                        Verify Credentials &rarr;
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Vision & Anti-Gatekeeping Manifesto -->
+        <div class="bg-gradient-to-r from-[#181818] to-[#121212] border-3 border-black rounded-3xl p-8 sm:p-12 shadow-brutal-lg mb-16">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#7B42F6] text-white font-mono text-xs font-black uppercase tracking-wider mb-4">
+                <span>✊</span>
+                <span>OUR CORE BELIEF</span>
+            </div>
+            <h2 class="text-2xl sm:text-4xl font-black uppercase tracking-tight text-white mb-4">No Gatekeeping. Just Engineering.</h2>
+            <p class="text-gray-300 text-sm sm:text-base leading-relaxed mb-6">
+                Most ed-tech platforms lock knowledge behind expensive $500 bootcamps or predatory subscriptions. Devengers operates on a radically different ethos: high-quality engineering education, curated roadmaps, campus notes, and interview prep must remain accessible to every student, regardless of their financial background or university tier.
+            </p>
+            <div class="flex flex-wrap items-center gap-4">
+                <a href="register.html" class="px-6 py-3 bg-[#CDFF29] text-black font-black uppercase text-xs sm:text-sm tracking-wider rounded-full border-2 border-black shadow-brutal-sm hover:bg-white transition-all">
+                    Join The Movement &rarr;
+                </a>
+                <a href="contact.html" class="px-6 py-3 bg-[#242424] text-white font-bold uppercase text-xs sm:text-sm tracking-wider rounded-full border border-gray-700 shadow-brutal-sm hover:bg-[#303030] transition-all">
+                    Partner With Us
+                </a>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- CANONICAL 3D FOOTER -->
+    <footer class="relative bg-[#0b0b0b] w-full pt-20 pb-16 px-6 overflow-hidden text-center select-none border-t border-gray-900" id="site-footer">
+        <div class="relative z-10 max-w-[1000px] mx-auto flex flex-col items-center">
+            
+            <!-- Quick Links Row -->
+            <div class="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-white font-medium text-sm mb-4">
+                <a href="index.html" class="hover:text-gray-300 transition-colors">Home</a>
+                <a href="events.html" class="hover:text-gray-300 transition-colors">Events</a>
+                <a href="learn.html" class="hover:text-gray-300 transition-colors">Learn</a>
+                <a href="campus.html" class="hover:text-gray-300 transition-colors">Campus Resource</a>
+                <a href="dsa.html" class="hover:text-gray-300 transition-colors">DSA Streak</a>
+                <a href="gallery.html" class="hover:text-gray-300 transition-colors">Gallery</a>
+                <a href="certificates.html" class="hover:text-gray-300 transition-colors">Certificates</a>
+            </div>
+
+            <!-- Legal & Info Row -->
+            <div class="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-gray-400 font-normal text-xs mb-6">
+                <a href="about.html" class="text-[#CDFF29] font-bold underline">About Us</a>
+                <span>&bull;</span>
+                <a href="contact.html" class="hover:text-white transition-colors">Contact Us</a>
+                <span>&bull;</span>
+                <a href="terms.html" class="hover:text-white transition-colors">Terms of Service</a>
+                <span>&bull;</span>
+                <a href="privacy.html" class="hover:text-white transition-colors">Privacy Policy</a>
+                <span>&bull;</span>
+                <a href="privacy.html#cookies" class="hover:text-white transition-colors">Cookie Policy</a>
+            </div>
+
+            <p class="text-[#888888] font-mono text-[11px] uppercase tracking-wider">&copy; 2026 DEVENGERS COMMUNITY &bull; ALL RIGHTS RESERVED</p>
+        </div>
+    </footer>
+
+</body>
+</html>

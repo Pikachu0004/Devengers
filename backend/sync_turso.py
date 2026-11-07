@@ -102,3 +102,4 @@ def sync_to_turso():
 
 if __name__ == "__main__":
     sync_to_turso()
+

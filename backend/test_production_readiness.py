@@ -170,6 +170,10 @@ pages_to_audit = [
     ("/jobs", "jobs.html", True),
     ("/gallery", "gallery.html", True),
     ("/directory", "directory.html", True),
+    ("/about", "about.html", True),
+    ("/contact", "contact.html", True),
+    ("/privacy", "privacy.html", True),
+    ("/terms", "terms.html", True),
     ("/login", "login.html", True),
     ("/register", "register.html", True),
     ("/profile", "profile.html", False) # private

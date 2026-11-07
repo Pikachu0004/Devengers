@@ -449,6 +449,26 @@ class DevengersHandler(http.server.SimpleHTTPRequestHandler):
             super().do_GET()
             return
 
+        if path in ('/about',):
+            self.path = '/about.html'
+            super().do_GET()
+            return
+
+        if path in ('/contact',):
+            self.path = '/contact.html'
+            super().do_GET()
+            return
+
+        if path in ('/privacy', '/privacy-policy'):
+            self.path = '/privacy.html'
+            super().do_GET()
+            return
+
+        if path in ('/terms', '/terms-of-service', '/tos'):
+            self.path = '/terms.html'
+            super().do_GET()
+            return
+
         if path in ('/login',):
             self.path = '/login.html'
             super().do_GET()

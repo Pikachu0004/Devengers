@@ -1,0 +1,6 @@
+# Devengers Authorized Digital Sellers (ads.txt)
+# Domain: devengers.org
+# Platform: https://devengers.org
+#
+# Once your Google AdSense account application is approved, replace 'pub-XXXXXXXXXXXXXXXX' with your Google AdSense Publisher ID below:
+# google.com, pub-XXXXXXXXXXXXXXXX, DIRECT, f08c47fec0942fa0

@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms of Service | Devengers Community Platform</title>
+    <meta name="description" content="Devengers Community Platform Terms of Service. Read the terms, user agreement, code of conduct, and educational guidelines governing the Devengers website and services.">
+    <meta name="keywords" content="Devengers Terms of Service, User Agreement, Student Developer Community Guidelines, Academic Terms">
+    <meta name="author" content="Devengers Community">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <meta name="theme-color" content="#7B42F6">
+    <meta name="msapplication-TileColor" content="#7B42F6">
+    <link rel="canonical" href="https://devengers.org/terms">
+
+    <!-- Open Graph / Meta -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://devengers.org/terms">
+    <meta property="og:site_name" content="Devengers">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:title" content="Terms of Service | Devengers Community Platform">
+    <meta property="og:description" content="Terms and conditions governing the use of Devengers community services, DSA tracking, and academic materials.">
+    <meta property="og:image" content="https://devengers.org/og-image.jpg">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@devengers">
+    <meta name="twitter:creator" content="@devengers">
+    <meta name="twitter:url" content="https://devengers.org/terms">
+    <meta name="twitter:title" content="Terms of Service | Devengers Community Platform">
+    <meta name="twitter:description" content="Terms and conditions governing the use of Devengers community services, DSA tracking, and academic materials.">
+    <meta name="twitter:image" content="https://devengers.org/og-image.jpg">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico?v=3">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon.png?v=3">
+    <link rel="apple-touch-icon" href="favicon.png?v=3">
+
+    <!-- Fonts & Tailwind -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css?v=5">
+    <script src="theme.js"></script>
+    <script src="auth.js"></script>
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "Terms of Service",
+      "url": "https://devengers.org/terms",
+      "description": "Devengers terms of service and user agreements for student developers and community members.",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Devengers",
+        "url": "https://devengers.org"
+      }
+    }
+    </script>
+</head>
+<body class="bg-[#0b0b0b] text-white font-sans antialiased min-h-screen flex flex-col justify-between select-none overflow-x-hidden">
+
+    <!-- NAVIGATION (Fixed Canonical Notch) -->
+    <nav class="devengers-navbar-fixed fixed top-6 left-0 w-full z-50 flex justify-center px-4">
+        <div class="devengers-navbar-notch bg-[#7B42F6] shadow-brutal border-4 border-black rounded-full px-6 md:px-8 py-3 w-full max-w-[1400px] flex items-center justify-between">
+            <a href="index.html" class="flex items-center group select-none" title="Devengers Home">
+                <div class="devengers-nav-logo font-black text-2xl md:text-[30px] tracking-tighter uppercase rounded-full transition-transform duration-300"
+                    style="-webkit-text-stroke: 2px black; color: #CDFF29; text-shadow: 3px 3px 0px black; line-height: 1;">
+                    <span class="devengers-badge-icon">
+                        <svg class="w-3.5 h-3.5 text-[#CDFF29]" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
+                        </svg>
+                    </span>
+                    <span class="logo-char">D</span><span class="logo-char">E</span><span class="logo-char">V</span><span class="logo-char">E</span><span class="logo-char">N</span><span class="logo-char">G</span><span class="logo-char">E</span><span class="logo-char">R</span><span class="logo-char">S</span>
+                </div>
+            </a>
+
+            <!-- Center Links -->
+            <div class="hidden md:flex gap-6 lg:gap-8 text-[11px] font-bold uppercase tracking-widest text-white/80">
+                <a href="events.html" class="nav-link">Events</a>
+                <a href="learn.html" class="nav-link">Learn</a>
+                <a href="campus.html" class="nav-link">Campus Resource</a>
+                <a href="dsa.html" class="nav-link">DSA Streak</a>
+                <a href="gallery.html" class="nav-link">Gallery</a>
+                <a href="certificates.html" class="nav-link">Certificates</a>
+            </div>
+
+            <!-- Right Controls -->
+            <div class="flex items-center gap-3 sm:gap-4">
+                <button type="button" onclick="window.DevengersTheme.toggleTheme()" class="theme-toggle-btn" title="Toggle Theme" aria-label="Toggle Theme">
+                    <div class="toggle-thumb">🌙</div>
+                </button>
+                <div class="relative">
+                    <button type="button" id="nav-notification-btn" onclick="window.DevengersNotifications.toggleDropdown(event)"
+                        class="nav-notification-btn flex items-center justify-center w-8 h-8 text-white/80 hover:text-white transition-colors relative cursor-pointer"
+                        title="Notifications" aria-label="Notifications">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+                        </svg>
+                        <span id="nav-notification-dot" class="nav-notification-dot hidden"></span>
+                    </button>
+                </div>
+                <a href="profile.html" class="nav-profile-btn group" title="My Profile" aria-label="My Profile">
+                    <span class="nav-profile-inner">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                        </svg>
+                    </span>
+                </a>
+                <a href="login.html" class="hidden md:block text-[11px] font-bold uppercase tracking-widest text-white/80 hover:text-white transition-colors">LOGIN</a>
+                <a href="register.html" class="bg-white text-black px-5 py-2 rounded-full text-[11px] font-bold uppercase tracking-widest hover:bg-[#CDFF29] transition-colors flex items-center gap-1.5 shadow-sm">
+                    SIGN UP <span class="font-normal text-sm leading-none">&rarr;</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- MAIN TERMS CONTENT -->
+    <main class="flex-grow w-full max-w-[1100px] mx-auto px-4 sm:px-6 lg:px-8 pt-36 md:pt-40 pb-24 select-text">
+        
+        <!-- Header Badge -->
+        <div class="mb-10 text-center">
+            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#CDFF29] text-black font-mono text-xs font-black uppercase tracking-wider shadow-brutal-sm border-2 border-black mb-4">
+                <span>📜</span>
+                <span>LEGAL &bull; TERMS OF USE &amp; CODE OF CONDUCT</span>
+            </div>
+            <h1 class="font-black text-3xl sm:text-5xl lg:text-6xl uppercase tracking-tighter leading-tight mb-4 text-white drop-shadow-md">
+                TERMS OF <span class="text-[#CDFF29] underline decoration-[#7B42F6] decoration-4 underline-offset-4">SERVICE</span>
+            </h1>
+            <p class="text-gray-400 font-mono text-xs sm:text-sm max-w-2xl mx-auto">
+                Effective Date: January 1, 2026 &bull; Last Updated: November 2026 &bull; Platform: devengers.org
+            </p>
+        </div>
+
+        <!-- Terms Body Card -->
+        <div class="bg-[#141414] border-3 border-black rounded-3xl p-6 sm:p-10 lg:p-12 shadow-brutal-lg space-y-10 text-gray-300 leading-relaxed text-sm sm:text-base">
+
+            <!-- Section 1 -->
+            <section class="space-y-3">
+                <h2 class="text-xl sm:text-2xl font-black uppercase tracking-tight text-white flex items-center gap-3">
+                    <span class="w-8 h-8 rounded-lg bg-[#7B42F6] text-white flex items-center justify-center font-mono text-sm border border-black shadow-brutal-sm">01</span>
+                    <span>Acceptance of Terms</span>
+                </h2>
+                <p>
+                    By accessing or using the <strong class="text-white">Devengers</strong> website, APIs, tools, coding challenges, campus repositories, or participating in our hackathons and community events, you agree to be bound by these Terms of Service ("Terms") and our <a href="privacy.html" class="text-[#CDFF29] underline">Privacy Policy</a>.
+                </p>
+                <p>
+                    If you do not agree to all the terms and conditions outlined in this agreement, you must discontinue your use of our platform immediately.
+                </p>
+            </section>
+
+            <!-- Section 2 -->
+            <section id="acceptable-use" class="space-y-3">
+                <h2 class="text-xl sm:text-2xl font-black uppercase tracking-tight text-white flex items-center gap-3">
+                    <span class="w-8 h-8 rounded-lg bg-[#7B42F6] text-white flex items-center justify-center font-mono text-sm border border-black shadow-brutal-sm">02</span>
+                    <span>Community Code of Conduct &amp; Acceptable Use</span>
+                </h2>
+                <p>Devengers is an inclusive, supportive learning environment for student engineers and developers. When using our platform, you agree NOT to:</p>
+                <ul class="list-disc pl-6 space-y-2 text-gray-300">
+                    <li>Engage in harassment, hate speech, bullying, defamation, or discrimination against any member.</li>
+                    <li>Attempt to disrupt, exploit, reverse engineer, or launch denial-of-service attacks against our platform, backend APIs, or community services.</li>
+                    <li>Submit automated spam, bot submissions, fraudulent streak claims, or falsified event attendance records.</li>
+                    <li>Upload or distribute malicious code, viruses, trojans, or unauthorized scripts.</li>
+                    <li>Violate the intellectual property, copyright, or privacy rights of any third party.</li>
+                </ul>
+                <p>Violations of our code of conduct may result in immediate suspension or permanent banning of your account and revocation of any issued credentials.</p>
+            </section>
+
+            <!-- Section 3 -->
+            <section class="space-y-3">
+                <h2 class="text-xl sm:text-2xl font-black uppercase tracking-tight text-white flex items-center gap-3">
+                    <span class="w-8 h-8 rounded-lg bg-[#7B42F6] text-white flex items-center justify-center font-mono text-sm border border-black shadow-brutal-sm">03</span>
+                    <span>User Accounts &amp; Security</span>
+                </h2>
+                <p>
+                    When creating an account on Devengers, you must provide accurate, current, and complete information. You are solely responsible for maintaining the confidentiality of your account credentials, passwords, and one-time password (OTP) verification emails.
+                </p>
+                <p>
+                    You agree to notify Devengers immediately at <a href="mailto:support@devengers.org" class="text-[#CDFF29] underline font-bold">support@devengers.org</a> if you detect any unauthorized access to or compromise of your account. Devengers is not liable for any losses caused by unauthorized use of your credentials.
+                </p>
+            </section>
+
+            <!-- Section 4 -->
+            <section class="space-y-3">
+                <h2 class="text-xl sm:text-2xl font-black uppercase tracking-tight text-white flex items-center gap-3">
+                    <span class="w-8 h-8 rounded-lg bg-[#7B42F6] text-white flex items-center justify-center font-mono text-sm border border-black shadow-brutal-sm">04</span>
+                    <span>Educational Content &amp; Campus Resources Disclaimer</span>
+                </h2>
+                <p>
+                    Devengers provides university syllabus notes, previous year exam papers (PYQs), coding roadmap materials, and interactive tutorials for strictly <strong class="text-white">educational, fair-use, and non-commercial learning purposes</strong>.
+                </p>
+                <p>
+                    While our student mentors strive to maintain the highest quality and accuracy, Devengers makes no warranties regarding syllabus completeness or official university endorsement. All third-party university names, acronyms (such as AKTU, MMMUT, GGSIPU, RGPV, MAKAUT, VTU), and trademarks belong to their respective institutions.
+                </p>
+            </section>
+
+            <!-- Section 5 -->
+            <section class="space-y-3">
+                <h2 class="text-xl sm:text-2xl font-black uppercase tracking-tight text-white flex items-center gap-3">
+                    <span class="w-8 h-8 rounded-lg bg-[#7B42F6] text-white flex items-center justify-center font-mono text-sm border border-black shadow-brutal-sm">05</span>
+                    <span>Digital Certificates &amp; Credentials</span>
+                </h2>
+                <p>
+                    Certificates issued by Devengers for hackathons, workshops, and mastery milestones are digital recognition of community participation and achievement. Certificates are cryptographically or uniquely verifiable through our public verification registry (<a href="certificates.html" class="text-[#CDFF29] underline">certificates.html</a>).
+                </p>
+                <p>
+                    Any attempt to forge, modify, duplicate, or falsely claim a certificate ID will result in permanent invalidation of the credential and permanent expulsion from the community.
+                </p>
+            </section>
+
+            <!-- Section 6 -->
+            <section class="space-y-3">
+                <h2 class="text-xl sm:text-2xl font-black uppercase tracking-tight text-white flex items-center gap-3">
+                    <span class="w-8 h-8 rounded-lg bg-[#7B42F6] text-white flex items-center justify-center font-mono text-sm border border-black shadow-brutal-sm">06</span>
+                    <span>Limitation of Liability &amp; "As-Is" Disclaimer</span>
+                </h2>
+                <p>
+                    The Devengers platform, software tools, coding challenges, and services are provided on an <strong class="text-white">"AS IS"</strong> and <strong class="text-white">"AS AVAILABLE"</strong> basis without warranties of any kind, whether express or implied.
+                </p>
+                <p>
+                    To the maximum extent permitted by law, Devengers, its founders, mentors, and contributors disclaim all liability for any indirect, incidental, special, consequential, or punitive damages resulting from your access to or inability to use the platform.
+                </p>
+            </section>
+
+            <!-- Section 7 -->
+            <section class="space-y-3">
+                <h2 class="text-xl sm:text-2xl font-black uppercase tracking-tight text-white flex items-center gap-3">
+                    <span class="w-8 h-8 rounded-lg bg-[#7B42F6] text-white flex items-center justify-center font-mono text-sm border border-black shadow-brutal-sm">07</span>
+                    <span>Termination</span>
+                </h2>
+                <p>
+                    We reserve the right to suspend or terminate your account or access to the platform at our sole discretion, without prior notice or liability, for conduct that violates these Terms or harms other users, us, or third parties.
+                </p>
+            </section>
+
+            <!-- Section 8 -->
+            <section class="space-y-3 border-t border-gray-800 pt-6">
+                <h2 class="text-xl sm:text-2xl font-black uppercase tracking-tight text-white flex items-center gap-3">
+                    <span class="w-8 h-8 rounded-lg bg-[#CDFF29] text-black flex items-center justify-center font-mono text-sm border border-black shadow-brutal-sm">08</span>
+                    <span>Contact &amp; Questions</span>
+                </h2>
+                <p>
+                    If you have any questions or concerns regarding our Terms of Service, please reach out to our team:
+                </p>
+                <div class="bg-black/40 border border-gray-800 rounded-2xl p-4 font-mono text-xs sm:text-sm space-y-1">
+                    <p><strong class="text-white">Platform:</strong> Devengers Developer Community</p>
+                    <p><strong class="text-white">Domain:</strong> <a href="https://devengers.org" class="text-[#CDFF29] underline">https://devengers.org</a></p>
+                    <p><strong class="text-white">Legal Inquiries:</strong> <a href="mailto:support@devengers.org" class="text-[#CDFF29] underline">support@devengers.org</a></p>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- CANONICAL 3D FOOTER -->
+    <footer class="relative bg-[#0b0b0b] w-full pt-20 pb-16 px-6 overflow-hidden text-center select-none border-t border-gray-900" id="site-footer">
+        <div class="relative z-10 max-w-[1000px] mx-auto flex flex-col items-center">
+            
+            <!-- Quick Links Row -->
+            <div class="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-white font-medium text-sm mb-4">
+                <a href="index.html" class="hover:text-gray-300 transition-colors">Home</a>
+                <a href="events.html" class="hover:text-gray-300 transition-colors">Events</a>
+                <a href="learn.html" class="hover:text-gray-300 transition-colors">Learn</a>
+                <a href="campus.html" class="hover:text-gray-300 transition-colors">Campus Resource</a>
+                <a href="dsa.html" class="hover:text-gray-300 transition-colors">DSA Streak</a>
+                <a href="gallery.html" class="hover:text-gray-300 transition-colors">Gallery</a>
+                <a href="certificates.html" class="hover:text-gray-300 transition-colors">Certificates</a>
+            </div>
+
+            <!-- Legal & Info Row -->
+            <div class="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-gray-400 font-normal text-xs mb-6">
+                <a href="about.html" class="hover:text-white transition-colors">About Us</a>
+                <span>&bull;</span>
+                <a href="contact.html" class="hover:text-white transition-colors">Contact Us</a>
+                <span>&bull;</span>
+                <a href="terms.html" class="text-[#CDFF29] font-bold underline">Terms of Service</a>
+                <span>&bull;</span>
+                <a href="privacy.html" class="hover:text-white transition-colors">Privacy Policy</a>
+                <span>&bull;</span>
+                <a href="privacy.html#cookies" class="hover:text-white transition-colors">Cookie Policy</a>
+            </div>
+
+            <p class="text-[#888888] font-mono text-[11px] uppercase tracking-wider">&copy; 2026 DEVENGERS COMMUNITY &bull; ALL RIGHTS RESERVED</p>
+        </div>
+    </footer>
+
+</body>
+</html>

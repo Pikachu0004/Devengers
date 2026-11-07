@@ -13,6 +13,11 @@ Allow: /gallery
 Allow: /directory
 Allow: /login
 Allow: /register
+Allow: /about
+Allow: /contact
+Allow: /privacy
+Allow: /terms
+Allow: /ads.txt
 Allow: /og-image.jpg
 Allow: /favicon.ico
 Allow: /favicon.png

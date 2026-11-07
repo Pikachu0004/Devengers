@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy | Devengers Community Platform</title>
+    <meta name="description" content="Devengers Community Platform Privacy Policy. Learn how we collect, protect, and handle your data, our cookie policy, and our Google advertising disclosures.">
+    <meta name="keywords" content="Devengers Privacy Policy, Student Developer Community Privacy, Google Adsense Privacy Disclosures, Cookie Policy">
+    <meta name="author" content="Devengers Community">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <meta name="theme-color" content="#7B42F6">
+    <meta name="msapplication-TileColor" content="#7B42F6">
+    <link rel="canonical" href="https://devengers.org/privacy">
+
+    <!-- Open Graph / Meta -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://devengers.org/privacy">
+    <meta property="og:site_name" content="Devengers">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:title" content="Privacy Policy | Devengers Community Platform">
+    <meta property="og:description" content="Transparency and data privacy guidelines for Devengers members, students, and website visitors.">
+    <meta property="og:image" content="https://devengers.org/og-image.jpg">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@devengers">
+    <meta name="twitter:creator" content="@devengers">
+    <meta name="twitter:url" content="https://devengers.org/privacy">
+    <meta name="twitter:title" content="Privacy Policy | Devengers Community Platform">
+    <meta name="twitter:description" content="Transparency and data privacy guidelines for Devengers members, students, and website visitors.">
+    <meta name="twitter:image" content="https://devengers.org/og-image.jpg">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico?v=3">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon.png?v=3">
+    <link rel="apple-touch-icon" href="favicon.png?v=3">
+
+    <!-- Fonts & Tailwind -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css?v=5">
+    <script src="theme.js"></script>
+    <script src="auth.js"></script>
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "Privacy Policy",
+      "url": "https://devengers.org/privacy",
+      "description": "Devengers privacy guidelines, data collection principles, cookie policies, and advertising compliance disclosures.",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Devengers",
+        "url": "https://devengers.org",
+        "logo": "https://devengers.org/favicon.png"
+      }
+    }
+    </script>
+</head>
+<body class="bg-[#0b0b0b] text-white font-sans antialiased min-h-screen flex flex-col justify-between select-none overflow-x-hidden">
+
+    <!-- NAVIGATION (Fixed Canonical Notch) -->
+    <nav class="devengers-navbar-fixed fixed top-6 left-0 w-full z-50 flex justify-center px-4">
+        <div class="devengers-navbar-notch bg-[#7B42F6] shadow-brutal border-4 border-black rounded-full px-6 md:px-8 py-3 w-full max-w-[1400px] flex items-center justify-between">
+            <a href="index.html" class="flex items-center group select-none" title="Devengers Home">
+                <div class="devengers-nav-logo font-black text-2xl md:text-[30px] tracking-tighter uppercase rounded-full transition-transform duration-300"
+                    style="-webkit-text-stroke: 2px black; color: #CDFF29; text-shadow: 3px 3px 0px black; line-height: 1;">
+                    <span class="devengers-badge-icon">
+                        <svg class="w-3.5 h-3.5 text-[#CDFF29]" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
+                        </svg>
+                    </span>
+                    <span class="logo-char">D</span><span class="logo-char">E</span><span class="logo-char">V</span><span class="logo-char">E</span><span class="logo-char">N</span><span class="logo-char">G</span><span class="logo-char">E</span><span class="logo-char">R</span><span class="logo-char">S</span>
+                </div>
+            </a>
+
+            <!-- Center Links -->
+            <div class="hidden md:flex gap-6 lg:gap-8 text-[11px] font-bold uppercase tracking-widest text-white/80">
+                <a href="events.html" class="nav-link">Events</a>
+                <a href="learn.html" class="nav-link">Learn</a>
+                <a href="campus.html" class="nav-link">Campus Resource</a>
+                <a href="dsa.html" class="nav-link">DSA Streak</a>
+                <a href="gallery.html" class="nav-link">Gallery</a>
+                <a href="certificates.html" class="nav-link">Certificates</a>
+            </div>
+
+            <!-- Right Controls -->
+            <div class="flex items-center gap-3 sm:gap-4">
+                <button type="button" onclick="window.DevengersTheme.toggleTheme()" class="theme-toggle-btn" title="Toggle Theme" aria-label="Toggle Theme">
+                    <div class="toggle-thumb">🌙</div>
+                </button>
+                <div class="relative">
+                    <button type="button" id="nav-notification-btn" onclick="window.DevengersNotifications.toggleDropdown(event)"
+                        class="nav-notification-btn flex items-center justify-center w-8 h-8 text-white/80 hover:text-white transition-colors relative cursor-pointer"
+                        title="Notifications" aria-label="Notifications">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+                        </svg>
+                        <span id="nav-notification-dot" class="nav-notification-dot hidden"></span>
+                    </button>
+                </div>
+                <a href="profile.html" class="nav-profile-btn group" title="My Profile" aria-label="My Profile">
+                    <span class="nav-profile-inner">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                        </svg>
+                    </span>
+                </a>
+                <a href="login.html" class="hidden md:block text-[11px] font-bold uppercase tracking-widest text-white/80 hover:text-white transition-colors">LOGIN</a>
+                <a href="register.html" class="bg-white text-black px-5 py-2 rounded-full text-[11px] font-bold uppercase tracking-widest hover:bg-[#CDFF29] transition-colors flex items-center gap-1.5 shadow-sm">
+                    SIGN UP <span class="font-normal text-sm leading-none">&rarr;</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- MAIN LEGAL CONTENT -->
+    <main class="flex-grow w-full max-w-[1100px] mx-auto px-4 sm:px-6 lg:px-8 pt-36 md:pt-40 pb-24 select-text">
+        
+        <!-- Header Badge -->
+        <div class="mb-10 text-center">
+            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#CDFF29] text-black font-mono text-xs font-black uppercase tracking-wider shadow-brutal-sm border-2 border-black mb-4">
+                <span>🛡️</span>
+                <span>LEGAL &bull; PRIVACY &amp; DATA PROTECTION</span>
+            </div>
+            <h1 class="font-black text-3xl sm:text-5xl lg:text-6xl uppercase tracking-tighter leading-tight mb-4 text-white drop-shadow-md">
+                PRIVACY <span class="text-[#CDFF29] underline decoration-[#7B42F6] decoration-4 underline-offset-4">POLICY</span>
+            </h1>
+            <p class="text-gray-400 font-mono text-xs sm:text-sm max-w-2xl mx-auto">
+                Effective Date: January 1, 2026 &bull; Last Updated: November 2026 &bull; Platform: devengers.org
+            </p>
+        </div>
+
+        <!-- Policy Body Card -->
+        <div class="bg-[#141414] border-3 border-black rounded-3xl p-6 sm:p-10 lg:p-12 shadow-brutal-lg space-y-10 text-gray-300 leading-relaxed text-sm sm:text-base">
+
+            <!-- Section 1 -->
+            <section class="space-y-3">
+                <h2 class="text-xl sm:text-2xl font-black uppercase tracking-tight text-white flex items-center gap-3">
+                    <span class="w-8 h-8 rounded-lg bg-[#7B42F6] text-white flex items-center justify-center font-mono text-sm border border-black shadow-brutal-sm">01</span>
+                    <span>Introduction &amp; Scope</span>
+                </h2>
+                <p>
+                    Welcome to <strong class="text-white">Devengers</strong> (<a href="https://devengers.org" class="text-[#CDFF29] underline">https://devengers.org</a>). At Devengers, we are committed to respecting and protecting the privacy of our community members, student engineers, event participants, and visitors.
+                </p>
+                <p>
+                    This Privacy Policy explains how we collect, store, process, and safeguard your personal information when you access our website, use our Data Structures &amp; Algorithms (DSA) streak tracking tools, participate in hackathons, download academic notes and past exam papers, earn verified certificates, or communicate with us.
+                </p>
+            </section>
+
+            <!-- Section 2 -->
+            <section class="space-y-3">
+                <h2 class="text-xl sm:text-2xl font-black uppercase tracking-tight text-white flex items-center gap-3">
+                    <span class="w-8 h-8 rounded-lg bg-[#7B42F6] text-white flex items-center justify-center font-mono text-sm border border-black shadow-brutal-sm">02</span>
+                    <span>Information We Collect</span>
+                </h2>
+                <p>We collect information you directly provide when using Devengers, as well as data automatically gathered by our server infrastructure:</p>
+                <ul class="list-disc pl-6 space-y-2 text-gray-300">
+                    <li><strong class="text-white">Account Information:</strong> Name, email address, password hash, bio, college or university name, branch/discipline, graduation year, and social handles (GitHub, LinkedIn, Twitter/X).</li>
+                    <li><strong class="text-white">Authentication Data:</strong> Secure one-time password (OTP) verification tokens delivered via transactional email.</li>
+                    <li><strong class="text-white">Academic &amp; Coding Activity:</strong> Daily DSA problem-solving streaks, topic mastery progress, submissions, leaderboard points, and hackathon registration details.</li>
+                    <li><strong class="text-white">Media &amp; User Content:</strong> Profile photos or event showcase images uploaded through our signed content delivery network.</li>
+                    <li><strong class="text-white">Certificate Credentials:</strong> Verifiable certificate IDs, issue dates, and recipient names issued upon event completion.</li>
+                </ul>
+            </section>
+
+            <!-- Section 3 -->
+            <section class="space-y-3">
+                <h2 class="text-xl sm:text-2xl font-black uppercase tracking-tight text-white flex items-center gap-3">
+                    <span class="w-8 h-8 rounded-lg bg-[#7B42F6] text-white flex items-center justify-center font-mono text-sm border border-black shadow-brutal-sm">03</span>
+                    <span>Log Files &amp; Automated Analytics</span>
+                </h2>
+                <p>
+                    Like most modern web platforms, Devengers follows standard log file procedures. These logs record visitors when they navigate the platform. The information recorded includes internet protocol (IP) addresses, browser type, Internet Service Provider (ISP), date/time stamps, referring/exit pages, and the number of clicks. This data is not linked to any personally identifiable information and is used solely for system administration, traffic analysis, fraud prevention, and platform security.
+                </p>
+            </section>
+
+            <!-- Section 4 (CRITICAL ADSENSE COMPLIANCE) -->
+            <section id="cookies" class="space-y-4 p-5 sm:p-6 bg-[#1a1a1a] rounded-2xl border-2 border-[#CDFF29]/40 shadow-brutal-sm">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#CDFF29] text-black font-mono text-xs font-black uppercase tracking-wider">
+                    <span>🍪</span>
+                    <span>MANDATORY ADVERTISING &amp; COOKIE DISCLOSURE</span>
+                </div>
+                <h2 class="text-xl sm:text-2xl font-black uppercase tracking-tight text-white">
+                    Cookies, Web Beacons &amp; Google Advertising Policy
+                </h2>
+                <p>
+                    Devengers uses cookies to store information about visitors' preferences, to record user-specific information on which pages the visitor accesses or visits, and to personalize or customize our web page content based on visitors' browser type or other information that the visitor sends via their browser.
+                </p>
+                <div class="space-y-3 text-gray-200">
+                    <p>
+                        <strong class="text-[#CDFF29]">&bull; Google DoubleClick DART Cookies &amp; Third-Party Vendors:</strong> Google is a third-party vendor on our site. Google uses cookies, known as DART cookies, to serve advertisements to our site visitors based on their visit to <strong class="text-white">devengers.org</strong> and other sites on the Internet.
+                    </p>
+                    <p>
+                        <strong class="text-[#CDFF29]">&bull; Third-Party Ad Networks:</strong> Third-party ad servers or ad networks use technologies like cookies, JavaScript, or Web Beacons that are used in their respective advertisements and links that appear on Devengers, which are sent directly to users' browsers. They automatically receive your IP address when this occurs. These technologies are used to measure the effectiveness of their advertising campaigns and/or to personalize the advertising content that you see on websites that you visit.
+                    </p>
+                    <p>
+                        <strong class="text-[#CDFF29]">&bull; How to Opt Out of Personalized Advertising:</strong> Visitors may choose to opt out of the use of the DART cookie and personalized advertising by visiting the <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener noreferrer" class="text-[#CDFF29] underline font-bold">Google Ads Settings</a>. Alternatively, visitors can opt out of a third-party vendor's use of cookies for personalized advertising by visiting <a href="https://www.aboutads.info/choices/" target="_blank" rel="noopener noreferrer" class="text-[#CDFF29] underline font-bold">www.aboutads.info</a>.
+                    </p>
+                    <p class="text-xs text-gray-400">
+                        Note: Devengers has no access to or control over these cookies that are used by third-party advertisers. You can also disable cookies through your individual browser options. Detailed information about cookie management with specific web browsers can be found at the browsers' respective websites.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Section 5 -->
+            <section class="space-y-3">
+                <h2 class="text-xl sm:text-2xl font-black uppercase tracking-tight text-white flex items-center gap-3">
+                    <span class="w-8 h-8 rounded-lg bg-[#7B42F6] text-white flex items-center justify-center font-mono text-sm border border-black shadow-brutal-sm">05</span>
+                    <span>Third-Party Service Providers</span>
+                </h2>
+                <p>We partner with industry-leading infrastructure providers to deliver our $0 free student platform with high reliability:</p>
+                <ul class="list-disc pl-6 space-y-2 text-gray-300">
+                    <li><strong class="text-white">Transactional Email Delivery:</strong> Brevo (Sendinblue) and Zoho Mail for delivering account security codes and OTP verifications over encrypted TLS connections.</li>
+                    <li><strong class="text-white">Cloud Database:</strong> Turso Cloud SQLite (libSQL) with edge encryption located in Mumbai (aws-ap-south-1).</li>
+                    <li><strong class="text-white">Media &amp; CDN Storage:</strong> Cloudinary and Vercel Global Edge Network for optimized, fast asset delivery.</li>
+                </ul>
+                <p>Each of these third parties maintains their own independent privacy policies and data protection standards.</p>
+            </section>
+
+            <!-- Section 6 -->
+            <section class="space-y-3">
+                <h2 class="text-xl sm:text-2xl font-black uppercase tracking-tight text-white flex items-center gap-3">
+                    <span class="w-8 h-8 rounded-lg bg-[#7B42F6] text-white flex items-center justify-center font-mono text-sm border border-black shadow-brutal-sm">06</span>
+                    <span>GDPR Data Protection Rights</span>
+                </h2>
+                <p>We want to ensure you are fully aware of all of your data protection rights under the General Data Protection Regulation (GDPR):</p>
+                <ul class="list-disc pl-6 space-y-2 text-gray-300">
+                    <li><strong class="text-white">Right of Access:</strong> You have the right to request copies of your personal data.</li>
+                    <li><strong class="text-white">Right to Rectification:</strong> You have the right to request that we correct any information you believe is inaccurate or incomplete.</li>
+                    <li><strong class="text-white">Right to Erasure:</strong> You have the right to request that we delete your account and associated personal data under certain conditions.</li>
+                    <li><strong class="text-white">Right to Restrict Processing:</strong> You have the right to request that we restrict the processing of your personal data.</li>
+                    <li><strong class="text-white">Right to Data Portability:</strong> You have the right to request that we transfer the data that we have collected to another organization, or directly to you.</li>
+                </ul>
+                <p>If you make a request, we have one month to respond to you. Please contact us at <a href="mailto:support@devengers.org" class="text-[#CDFF29] underline font-bold">support@devengers.org</a> to exercise these rights.</p>
+            </section>
+
+            <!-- Section 7 -->
+            <section class="space-y-3">
+                <h2 class="text-xl sm:text-2xl font-black uppercase tracking-tight text-white flex items-center gap-3">
+                    <span class="w-8 h-8 rounded-lg bg-[#7B42F6] text-white flex items-center justify-center font-mono text-sm border border-black shadow-brutal-sm">07</span>
+                    <span>CCPA Privacy Rights (Do Not Sell My Info)</span>
+                </h2>
+                <p>
+                    Under the California Consumer Privacy Act (CCPA), California consumers have the right to request that a business disclose what categories and specific pieces of personal data have been collected, request the deletion of personal data, and request that a business that sells personal data not sell that data.
+                </p>
+                <p class="text-[#CDFF29] font-bold">
+                    Devengers does NOT sell personal information to third parties, data brokers, or marketing lists under any circumstances.
+                </p>
+            </section>
+
+            <!-- Section 8 -->
+            <section class="space-y-3">
+                <h2 class="text-xl sm:text-2xl font-black uppercase tracking-tight text-white flex items-center gap-3">
+                    <span class="w-8 h-8 rounded-lg bg-[#7B42F6] text-white flex items-center justify-center font-mono text-sm border border-black shadow-brutal-sm">08</span>
+                    <span>Children's Privacy Protection (COPPA)</span>
+                </h2>
+                <p>
+                    Protecting children while using the internet is an utmost priority. Devengers does not knowingly collect any Personal Identifiable Information from children under the age of 13. Our platform, coding challenges, and academic materials are intended for high school and university students, adult learners, and software engineering professionals. If you think that your child provided this kind of information on our website, we strongly encourage you to contact us immediately and we will promptly remove such information from our records.
+                </p>
+            </section>
+
+            <!-- Section 9 -->
+            <section class="space-y-3 border-t border-gray-800 pt-6">
+                <h2 class="text-xl sm:text-2xl font-black uppercase tracking-tight text-white flex items-center gap-3">
+                    <span class="w-8 h-8 rounded-lg bg-[#CDFF29] text-black flex items-center justify-center font-mono text-sm border border-black shadow-brutal-sm">09</span>
+                    <span>Contact Our Data Privacy Team</span>
+                </h2>
+                <p>
+                    If you have additional questions, require more information about our Privacy Policy, or wish to exercise your data protection rights, please do not hesitate to contact our team:
+                </p>
+                <div class="bg-black/40 border border-gray-800 rounded-2xl p-4 font-mono text-xs sm:text-sm space-y-1">
+                    <p><strong class="text-white">Organization:</strong> Devengers Developer Community</p>
+                    <p><strong class="text-white">Official Website:</strong> <a href="https://devengers.org" class="text-[#CDFF29] underline">https://devengers.org</a></p>
+                    <p><strong class="text-white">Direct Privacy Support:</strong> <a href="mailto:support@devengers.org" class="text-[#CDFF29] underline">support@devengers.org</a></p>
+                    <p><strong class="text-white">Partnerships &amp; Events:</strong> <a href="mailto:event@devengers.org" class="text-[#CDFF29] underline">event@devengers.org</a></p>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- CANONICAL 3D FOOTER -->
+    <footer class="relative bg-[#0b0b0b] w-full pt-20 pb-16 px-6 overflow-hidden text-center select-none border-t border-gray-900" id="site-footer">
+        <div class="relative z-10 max-w-[1000px] mx-auto flex flex-col items-center">
+            
+            <!-- Quick Links Row -->
+            <div class="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-white font-medium text-sm mb-4">
+                <a href="index.html" class="hover:text-gray-300 transition-colors">Home</a>
+                <a href="events.html" class="hover:text-gray-300 transition-colors">Events</a>
+                <a href="learn.html" class="hover:text-gray-300 transition-colors">Learn</a>
+                <a href="campus.html" class="hover:text-gray-300 transition-colors">Campus Resource</a>
+                <a href="dsa.html" class="hover:text-gray-300 transition-colors">DSA Streak</a>
+                <a href="gallery.html" class="hover:text-gray-300 transition-colors">Gallery</a>
+                <a href="certificates.html" class="hover:text-gray-300 transition-colors">Certificates</a>
+            </div>
+
+            <!-- Legal & Info Row -->
+            <div class="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-gray-400 font-normal text-xs mb-6">
+                <a href="about.html" class="hover:text-white transition-colors">About Us</a>
+                <span>&bull;</span>
+                <a href="contact.html" class="hover:text-white transition-colors">Contact Us</a>
+                <span>&bull;</span>
+                <a href="terms.html" class="hover:text-white transition-colors">Terms of Service</a>
+                <span>&bull;</span>
+                <a href="privacy.html" class="text-[#CDFF29] font-bold underline">Privacy Policy</a>
+                <span>&bull;</span>
+                <a href="privacy.html#cookies" class="hover:text-white transition-colors">Cookie Policy</a>
+            </div>
+
+            <p class="text-[#888888] font-mono text-[11px] uppercase tracking-wider">&copy; 2026 DEVENGERS COMMUNITY &bull; ALL RIGHTS RESERVED</p>
+        </div>
+    </footer>
+
+</body>
+</html>
