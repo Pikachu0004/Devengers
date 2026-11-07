@@ -34,6 +34,7 @@ import campus_service
 import dsa_service
 import gallery_service
 import certificate_service
+from cloudinary_service import save_media_file
 import base64
 
 
@@ -1965,19 +1966,12 @@ class DevengersHandler(http.server.SimpleHTTPRequestHandler):
             self.send_json({"error": "Invalid image format. Only JPEG, PNG, and WebP images are permitted."}, 400)
             return
 
-        # Generate safe filename and save to uploads folder
-        os.makedirs(UPLOADS_DIR, exist_ok=True)
-        safe_name = f"evt_{int(datetime.now().timestamp())}_{secrets.token_hex(4)}.{detected_ext}"
-        target_path = os.path.join(UPLOADS_DIR, safe_name)
-
-        with open(target_path, 'wb') as f:
-            f.write(file_bytes)
-
-        rel_url = f"Assest/uploads/{safe_name}"
+        # Generate safe filename and save to uploads folder or Cloudinary CDN
+        save_res = save_media_file(file_bytes, detected_ext=detected_ext, prefix="evt", folder="devengers/events", uploads_dir=UPLOADS_DIR)
         self.send_json({
             "success": True,
-            "url": rel_url,
-            "filename": safe_name,
+            "url": save_res.get("url"),
+            "filename": save_res.get("filename", ""),
             "size": len(file_bytes)
         })
 
@@ -2285,21 +2279,16 @@ class DevengersHandler(http.server.SimpleHTTPRequestHandler):
         if detected_ext not in ('png', 'jpg', 'webp', 'gif'):
             detected_ext = 'png'
 
-        os.makedirs(UPLOADS_DIR, exist_ok=True)
-        safe_name = f"usr_{media_type}_{int(datetime.now().timestamp())}_{secrets.token_hex(4)}.{detected_ext}"
-        target_path = os.path.join(UPLOADS_DIR, safe_name)
+        save_res = save_media_file(file_bytes, detected_ext=detected_ext, prefix=f"usr_{media_type}", folder="devengers/users", uploads_dir=UPLOADS_DIR)
+        final_url = save_res.get("url")
 
-        with open(target_path, 'wb') as f:
-            f.write(file_bytes)
-
-        rel_url = f"Assest/uploads/{safe_name}"
         if media_type == "avatar":
-            update_user_profile(user["id"], {"avatar_url": rel_url})
+            update_user_profile(user["id"], {"avatar_url": final_url})
 
         self.send_json({
             "success": True,
-            "url": rel_url,
-            "filename": safe_name,
+            "url": final_url,
+            "filename": save_res.get("filename", ""),
             "media_type": media_type
         })
 
@@ -2682,18 +2671,11 @@ class DevengersHandler(http.server.SimpleHTTPRequestHandler):
             return
 
         detected_ext = validate_image_magic(file_bytes) or 'png'
-        os.makedirs(UPLOADS_DIR, exist_ok=True)
-        safe_name = f"gal_{media_type}_{int(datetime.now().timestamp())}_{secrets.token_hex(4)}.{detected_ext}"
-        target_path = os.path.join(UPLOADS_DIR, safe_name)
-
-        with open(target_path, 'wb') as f:
-            f.write(file_bytes)
-
-        rel_url = f"Assest/uploads/{safe_name}"
+        save_res = save_media_file(file_bytes, detected_ext=detected_ext, prefix=f"gal_{media_type}", folder="devengers/gallery", uploads_dir=UPLOADS_DIR)
         self.send_json({
             "success": True,
-            "url": rel_url,
-            "filename": safe_name
+            "url": save_res.get("url"),
+            "filename": save_res.get("filename", "")
         })
 
     # ==========================================
@@ -2763,15 +2745,8 @@ class DevengersHandler(http.server.SimpleHTTPRequestHandler):
             return
 
         detected_ext = validate_image_magic(file_bytes) or 'jpg'
-        os.makedirs(UPLOADS_DIR, exist_ok=True)
-        safe_name = f"cert_tmpl_{int(datetime.now().timestamp())}_{secrets.token_hex(4)}.{detected_ext}"
-        target_path = os.path.join(UPLOADS_DIR, safe_name)
-
-        with open(target_path, 'wb') as f:
-            f.write(file_bytes)
-
-        rel_url = f"Assest/uploads/{safe_name}"
-        self.send_json({"success": True, "url": rel_url, "filename": safe_name})
+        save_res = save_media_file(file_bytes, detected_ext=detected_ext, prefix="cert_tmpl", folder="devengers/certificates", uploads_dir=UPLOADS_DIR)
+        self.send_json({"success": True, "url": save_res.get("url"), "filename": save_res.get("filename", "")})
 
     def handle_certificate_roster_upload(self, comp_id):
         content_type = self.headers.get('Content-Type', '')

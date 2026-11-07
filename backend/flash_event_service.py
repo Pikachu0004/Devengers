@@ -98,6 +98,15 @@ def download_and_cache_image(img_url, base_dir, prefix='flash'):
             elif b'<svg' in data[:200]:
                 ext = 'svg'
 
+            from cloudinary_service import is_cloudinary_configured, upload_to_cloudinary
+            if is_cloudinary_configured():
+                try:
+                    c_res = upload_to_cloudinary(data, folder="devengers/events", detected_ext=ext)
+                    if c_res.get("url"):
+                        return c_res["url"]
+                except Exception as ce:
+                    print(f"[FLASH CLOUDINARY NOTICE] CDN upload failed ({ce}), falling back to local cache.")
+
             uploads_dir = os.path.join(base_dir, 'Assest', 'uploads')
             os.makedirs(uploads_dir, exist_ok=True)
 
