@@ -3,12 +3,12 @@
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <!-- Homepage -->
   <url>
-    <loc>https://devengers.org/</loc>
+    <loc>https://www.devengers.org/</loc>
     <lastmod>2026-10-27</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
     <image:image>
-      <image:loc>https://devengers.org/og-image.jpg</image:loc>
+      <image:loc>https://www.devengers.org/og-image.jpg</image:loc>
       <image:title>Devengers Engineering Community Platform</image:title>
       <image:caption>Learn, Build, Lead - Elite engineering student community</image:caption>
     </image:image>
@@ -16,12 +16,12 @@
 
   <!-- DSA Streak & 0-to-Hero Roadmap -->
   <url>
-    <loc>https://devengers.org/dsa</loc>
+    <loc>https://www.devengers.org/dsa</loc>
     <lastmod>2026-10-27</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.95</priority>
     <image:image>
-      <image:loc>https://devengers.org/og-image.jpg</image:loc>
+      <image:loc>https://www.devengers.org/og-image.jpg</image:loc>
       <image:title>Devengers DSA 0-to-Hero Roadmap</image:title>
       <image:caption>Daily Problem of the Day (POTD) and 500+ curated DSA challenges</image:caption>
     </image:image>
@@ -29,12 +29,12 @@
 
   <!-- Events & Live Hackathons -->
   <url>
-    <loc>https://devengers.org/events</loc>
+    <loc>https://www.devengers.org/events</loc>
     <lastmod>2026-10-27</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.90</priority>
     <image:image>
-      <image:loc>https://devengers.org/og-image.jpg</image:loc>
+      <image:loc>https://www.devengers.org/og-image.jpg</image:loc>
       <image:title>Devengers Hackathons &amp; Events</image:title>
       <image:caption>Live tech hackathons, coding workshops, and prizes</image:caption>
     </image:image>
@@ -42,7 +42,7 @@
 
   <!-- Campus PYQs & Subject Notes -->
   <url>
-    <loc>https://devengers.org/campus</loc>
+    <loc>https://www.devengers.org/campus</loc>
     <lastmod>2026-10-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
@@ -50,7 +50,7 @@
 
   <!-- Interactive Courses & CS Roadmaps -->
   <url>
-    <loc>https://devengers.org/learn</loc>
+    <loc>https://www.devengers.org/learn</loc>
     <lastmod>2026-10-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
@@ -58,7 +58,7 @@
 
   <!-- Certificate Verification Portal -->
   <url>
-    <loc>https://devengers.org/certificates</loc>
+    <loc>https://www.devengers.org/certificates</loc>
     <lastmod>2026-10-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
@@ -66,7 +66,7 @@
 
   <!-- Job Board & Internships -->
   <url>
-    <loc>https://devengers.org/jobs</loc>
+    <loc>https://www.devengers.org/jobs</loc>
     <lastmod>2026-10-27</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.85</priority>
@@ -74,7 +74,7 @@
 
   <!-- Community Projects Showcase -->
   <url>
-    <loc>https://devengers.org/gallery</loc>
+    <loc>https://www.devengers.org/gallery</loc>
     <lastmod>2026-10-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.80</priority>
@@ -82,7 +82,7 @@
 
   <!-- Member Directory -->
   <url>
-    <loc>https://devengers.org/directory</loc>
+    <loc>https://www.devengers.org/directory</loc>
     <lastmod>2026-10-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.75</priority>
@@ -90,7 +90,7 @@
 
   <!-- Member Login -->
   <url>
-    <loc>https://devengers.org/login</loc>
+    <loc>https://www.devengers.org/login</loc>
     <lastmod>2026-10-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.70</priority>
@@ -98,7 +98,7 @@
 
   <!-- Member Registration -->
   <url>
-    <loc>https://devengers.org/register</loc>
+    <loc>https://www.devengers.org/register</loc>
     <lastmod>2026-11-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.70</priority>
@@ -106,7 +106,7 @@
 
   <!-- About Us -->
   <url>
-    <loc>https://devengers.org/about</loc>
+    <loc>https://www.devengers.org/about</loc>
     <lastmod>2026-11-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.80</priority>
@@ -114,7 +114,7 @@
 
   <!-- Contact Us -->
   <url>
-    <loc>https://devengers.org/contact</loc>
+    <loc>https://www.devengers.org/contact</loc>
     <lastmod>2026-11-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.80</priority>
@@ -122,7 +122,7 @@
 
   <!-- Privacy Policy -->
   <url>
-    <loc>https://devengers.org/privacy</loc>
+    <loc>https://www.devengers.org/privacy</loc>
     <lastmod>2026-11-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
@@ -130,7 +130,7 @@
 
   <!-- Terms of Service -->
   <url>
-    <loc>https://devengers.org/terms</loc>
+    <loc>https://www.devengers.org/terms</loc>
     <lastmod>2026-11-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>

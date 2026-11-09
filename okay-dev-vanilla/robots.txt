@@ -55,5 +55,5 @@ User-agent: LinkedInBot
 Allow: /
 
 # Host & Sitemaps
-Host: https://devengers.org
-Sitemap: https://devengers.org/sitemap.xml
+Host: https://www.devengers.org
+Sitemap: https://www.devengers.org/sitemap.xml

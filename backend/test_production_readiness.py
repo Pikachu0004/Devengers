@@ -194,7 +194,7 @@ for clean_path, disk_file, is_public in pages_to_audit:
     
     # 3. Canonical Tag
     canon_match = re.search(r'<link\s+rel=["\x27]canonical["\x27]\s+href=["\x27](.*?)["\x27]', body_str, re.IGNORECASE)
-    has_canon = bool(canon_match and "https://devengers.org" in canon_match.group(1))
+    has_canon = bool(canon_match and ("https://www.devengers.org" in canon_match.group(1) or "https://devengers.org" in canon_match.group(1)))
     log_test(f"  Canonical URL on {clean_path}", has_canon, canon_match.group(1) if canon_match else "Missing")
     
     # 4. Meta Description
@@ -282,7 +282,7 @@ print(f"\n{BOLD}8. Search Engine Robots & Sitemap Verification{RESET}")
 # Check robots.txt
 status, h, body = http_get("/robots.txt")
 body_txt = body.decode("utf-8", errors="ignore")
-has_sitemap_ref = "Sitemap: https://devengers.org/sitemap.xml" in body_txt
+has_sitemap_ref = ("Sitemap: https://www.devengers.org/sitemap.xml" in body_txt or "Sitemap: https://devengers.org/sitemap.xml" in body_txt)
 has_googlebot = "User-agent: Googlebot" in body_txt
 has_disallow_admin = "Disallow: /admin-*" in body_txt
 log_test("robots.txt HTTP 200", status == 200)
@@ -303,7 +303,7 @@ try:
     for u in urls:
         loc = u.find("{http://www.sitemaps.org/schemas/sitemap/0.9}loc")
         if loc is not None and loc.text:
-            url_path = loc.text.replace("https://devengers.org", "") or "/"
+            url_path = loc.text.replace("https://www.devengers.org", "").replace("https://devengers.org", "") or "/"
             s, _, _ = http_get(url_path)
             if s != 200:
                 all_sitemap_urls_ok = False
