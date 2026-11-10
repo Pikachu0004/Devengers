@@ -48,32 +48,53 @@
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "AboutPage",
-      "name": "About Devengers",
-      "url": "https://www.devengers.org/about",
-      "description": "Devengers is an elite student engineering platform built to democratize tech learning, hackathons, and verified credentials.",
-      "mainEntity": {
-        "@type": "Organization",
-        "name": "Devengers",
-        "url": "https://www.devengers.org",
-        "logo": "https://www.devengers.org/favicon.png",
-        "founder": {
-          "@type": "Person",
-          "name": "Kishan Nishad",
-          "jobTitle": "Founder, Developer, CEO & Owner",
-          "url": "https://www.linkedin.com/in/kishannishad/",
-          "sameAs": [
-            "https://www.linkedin.com/in/kishannishad/",
-            "https://github.com/code-with-kishan"
+      "@graph": [
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Devengers Home",
+              "item": "https://www.devengers.org/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "About Us",
+              "item": "https://www.devengers.org/about"
+            }
           ]
         },
-        "sameAs": [
-          "https://www.instagram.com/officialdevengers",
-          "https://www.linkedin.com/company/officialdevengers",
-          "https://www.youtube.com/@officialdevengers",
-          "https://whatsapp.com/channel/0029VbCVGAd8KMql7Ie3ew43"
-        ]
-      }
+        {
+          "@type": "AboutPage",
+          "name": "About Devengers",
+          "url": "https://www.devengers.org/about",
+          "description": "Devengers is an elite student engineering platform built to democratize tech learning, hackathons, and verified credentials.",
+          "mainEntity": {
+            "@type": "Organization",
+            "name": "Devengers",
+            "url": "https://www.devengers.org",
+            "logo": "https://www.devengers.org/favicon.png",
+            "founder": {
+              "@type": "Person",
+              "name": "Kishan Nishad",
+              "jobTitle": "Founder, Developer, CEO & Owner",
+              "url": "https://www.linkedin.com/in/kishannishad/",
+              "sameAs": [
+                "https://www.linkedin.com/in/kishannishad/",
+                "https://github.com/code-with-kishan"
+              ]
+            },
+            "sameAs": [
+              "https://www.instagram.com/officialdevengers",
+              "https://www.linkedin.com/company/officialdevengers",
+              "https://www.youtube.com/@officialdevengers",
+              "https://whatsapp.com/channel/0029VbCVGAd8KMql7Ie3ew43"
+            ]
+          }
+        }
+      ]
     }
     </script>
 </head>

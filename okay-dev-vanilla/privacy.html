@@ -48,16 +48,37 @@
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "WebPage",
-      "name": "Privacy Policy",
-      "url": "https://www.devengers.org/privacy",
-      "description": "Devengers privacy guidelines, data collection principles, cookie policies, and advertising compliance disclosures.",
-      "publisher": {
-        "@type": "Organization",
-        "name": "Devengers",
-        "url": "https://www.devengers.org",
-        "logo": "https://www.devengers.org/favicon.png"
-      }
+      "@graph": [
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Devengers Home",
+              "item": "https://www.devengers.org/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Privacy Policy",
+              "item": "https://www.devengers.org/privacy"
+            }
+          ]
+        },
+        {
+          "@type": "WebPage",
+          "name": "Privacy Policy",
+          "url": "https://www.devengers.org/privacy",
+          "description": "Devengers privacy guidelines, data collection principles, cookie policies, and advertising compliance disclosures.",
+          "publisher": {
+            "@type": "Organization",
+            "name": "Devengers",
+            "url": "https://www.devengers.org",
+            "logo": "https://www.devengers.org/favicon.png"
+          }
+        }
+      ]
     }
     </script>
 </head>

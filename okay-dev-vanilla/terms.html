@@ -48,15 +48,36 @@
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "WebPage",
-      "name": "Terms of Service",
-      "url": "https://www.devengers.org/terms",
-      "description": "Devengers terms of service and user agreements for student developers and community members.",
-      "publisher": {
-        "@type": "Organization",
-        "name": "Devengers",
-        "url": "https://www.devengers.org"
-      }
+      "@graph": [
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Devengers Home",
+              "item": "https://www.devengers.org/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Terms of Service",
+              "item": "https://www.devengers.org/terms"
+            }
+          ]
+        },
+        {
+          "@type": "WebPage",
+          "name": "Terms of Service",
+          "url": "https://www.devengers.org/terms",
+          "description": "Devengers terms of service and user agreements for student developers and community members.",
+          "publisher": {
+            "@type": "Organization",
+            "name": "Devengers",
+            "url": "https://www.devengers.org"
+          }
+        }
+      ]
     }
     </script>
 </head>
