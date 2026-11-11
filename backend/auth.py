@@ -178,6 +178,25 @@ def generate_and_store_otp(email: str, purpose: str = "Sign Up Verification") ->
     result = email_service.send_otp_email(clean_email, otp_code, purpose=norm_purpose)
     return result
 
+def check_otp_valid(email: str, otp: str, purpose: str = "Sign Up Verification") -> bool:
+    """Checks whether the provided OTP code matches and has not expired, without consuming it."""
+    init_otp_table()
+    clean_email = email.strip().lower()
+    clean_otp = str(otp).strip()
+    norm_purpose = normalize_purpose(purpose)
+    now_iso = datetime.now(timezone.utc).isoformat()
+
+    conn = get_connection()
+    cursor = conn.cursor()
+    cursor.execute("""
+        SELECT id FROM email_otps 
+        WHERE email = ? AND otp = ? AND purpose = ? AND is_used = 0 AND expires_at >= ?
+        ORDER BY created_at DESC LIMIT 1
+    """, (clean_email, clean_otp, norm_purpose, now_iso))
+    row = cursor.fetchone()
+    conn.close()
+    return bool(row)
+
 def verify_otp(email: str, otp: str, purpose: str = "Sign Up Verification") -> bool:
     """Verifies that the provided OTP matches and has not expired."""
     init_otp_table()

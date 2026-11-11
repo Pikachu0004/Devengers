@@ -263,7 +263,13 @@ def init_db():
         ('portfolio_url', 'TEXT', "''"),
         ('twitter_handle', 'TEXT', "''"),
         ('skills', 'TEXT', "'Python, JavaScript, React, DSA, SQL, Git'"),
-        ('questions_solved_total', 'INTEGER', "0")
+        ('questions_solved_total', 'INTEGER', "0"),
+        ('user_type', 'TEXT', "'student'"),
+        ('course', 'TEXT', "''"),
+        ('branch', 'TEXT', "''"),
+        ('company_name', 'TEXT', "''"),
+        ('job_title', 'TEXT', "''"),
+        ('experience_years', 'TEXT', "''")
     ]:
         if not existing_user_cols or col.lower() not in existing_user_cols:
             try:
@@ -1233,7 +1239,13 @@ def get_user_full_profile(user_id):
         SELECT id, email, name, role, avatar_emoji, avatar_url, banner_color, banner_url, banner_fit, banner_aspect, bio, target_role,
                streak_count, last_active_date, college_name, grad_year,
                github_handle, leetcode_handle, linkedin_url, portfolio_url, twitter_handle, skills,
-               questions_solved_total, created_at
+               questions_solved_total, created_at,
+               COALESCE(user_type, 'student') AS user_type,
+               COALESCE(course, '') AS course,
+               COALESCE(branch, '') AS branch,
+               COALESCE(company_name, '') AS company_name,
+               COALESCE(job_title, '') AS job_title,
+               COALESCE(experience_years, '') AS experience_years
         FROM users WHERE id = ?
     """, (user_id,))
     user_row = cursor.fetchone()
@@ -1285,7 +1297,7 @@ def update_user_profile(user_id, data):
     text_fields = (
         "name", "avatar_emoji", "avatar_url", "banner_color", "banner_url", "banner_fit", "banner_aspect",
         "bio", "target_role", "college_name", "grad_year", "github_handle", "leetcode_handle", "linkedin_url",
-        "portfolio_url", "twitter_handle", "skills"
+        "portfolio_url", "twitter_handle", "skills", "user_type", "course", "branch", "company_name", "job_title", "experience_years"
     )
     for field in text_fields:
         if field in data_dict and data_dict[field] is not None:

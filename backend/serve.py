@@ -29,7 +29,7 @@ from db import (
     log_daily_user_checkin, calculate_user_streak
 )
 import db
-from auth import authenticate, create_session, get_session_user, delete_session, create_or_update_user, generate_and_store_otp, verify_otp, authenticate_or_create_google_user, reset_user_password, normalize_purpose
+from auth import authenticate, create_session, get_session_user, delete_session, create_or_update_user, generate_and_store_otp, verify_otp, check_otp_valid, authenticate_or_create_google_user, reset_user_password, normalize_purpose
 import campus_service
 import dsa_service
 import gallery_service
@@ -778,6 +778,11 @@ class DevengersHandler(http.server.SimpleHTTPRequestHandler):
             self.handle_send_otp()
             return
 
+        # 0a-2. Auth: Pre-verify OTP Code
+        if path == '/api/auth/verify-otp':
+            self.handle_verify_otp()
+            return
+
         # 0b. Auth: Reset Password
         if path == '/api/auth/reset-password':
             self.handle_reset_password()
@@ -1307,6 +1312,46 @@ class DevengersHandler(http.server.SimpleHTTPRequestHandler):
             "dev_otp": res.get("dev_otp")
         })
 
+    def handle_verify_otp(self):
+        client_ip = self.get_client_ip()
+        if is_rate_limited(client_ip, limit=30, window_sec=60):
+            self.send_json({"success": False, "error": "Too many verification attempts. Please wait a moment."}, 429)
+            return
+
+        body = self.read_json_body()
+        email = body.get('email', '').strip().lower()
+        otp = body.get('otp', '').strip()
+        purpose = body.get('purpose', 'Sign Up Verification')
+
+        if not email or not otp:
+            self.send_json({"success": False, "error": "Email and 6-digit OTP code are required."}, 400)
+            return
+
+        if len(otp) != 6 or not otp.isdigit():
+            self.send_json({"success": False, "error": "Please enter a valid 6-digit verification code."}, 400)
+            return
+
+        # Check if email is already registered
+        conn = get_connection()
+        cursor = conn.cursor()
+        cursor.execute("SELECT id FROM users WHERE email = ?", (email,))
+        if cursor.fetchone():
+            conn.close()
+            self.send_json({"success": False, "error": "An account with this email already exists. Please log in."}, 409)
+            return
+        conn.close()
+
+        # Check OTP validity without consuming it
+        if not check_otp_valid(email, otp, purpose=purpose):
+            self.send_json({"success": False, "error": "Invalid or expired OTP code. Please check your email or click Resend."}, 400)
+            return
+
+        self.send_json({
+            "success": True,
+            "message": f"✓ Email verified successfully! Please complete your profile details.",
+            "email": email
+        }, 200)
+
     def handle_reset_password(self):
         client_ip = self.get_client_ip()
         if is_rate_limited(client_ip, limit=12, window_sec=60):
@@ -1409,13 +1454,33 @@ class DevengersHandler(http.server.SimpleHTTPRequestHandler):
         grad_year = body.get('grad_year')
         github = body.get('github_handle')
         leetcode = body.get('leetcode_handle')
-        if any([college, grad_year, github, leetcode]):
-            update_user_profile(user_info["id"], {
-                "college_name": college,
-                "grad_year": grad_year,
-                "github_handle": github,
-                "leetcode_handle": leetcode
-            })
+        user_type = body.get('user_type', 'student')
+        course = body.get('course')
+        branch = body.get('branch')
+        company_name = body.get('company_name')
+        job_title = body.get('job_title')
+        experience_years = body.get('experience_years')
+
+        if user_type == 'working_professional':
+            target_role = f"{job_title or 'Engineer'} @ {company_name or 'Tech'}" if (job_title or company_name) else "Working Professional"
+        else:
+            target_role = f"{course or 'B.Tech'} {branch or 'CSE'} | Student" if (course or branch) else "Engineering Student"
+
+        profile_updates = {
+            "user_type": user_type,
+            "target_role": target_role
+        }
+        if college: profile_updates["college_name"] = str(college).strip()
+        if grad_year: profile_updates["grad_year"] = str(grad_year).strip()
+        if course: profile_updates["course"] = str(course).strip()
+        if branch: profile_updates["branch"] = str(branch).strip()
+        if company_name: profile_updates["company_name"] = str(company_name).strip()
+        if job_title: profile_updates["job_title"] = str(job_title).strip()
+        if experience_years: profile_updates["experience_years"] = str(experience_years).strip()
+        if github: profile_updates["github_handle"] = str(github).strip()
+        if leetcode: profile_updates["leetcode_handle"] = str(leetcode).strip()
+
+        update_user_profile(user_info["id"], profile_updates)
 
         token = create_session(user_info["id"], user_info["role"], ip_address=client_ip)
         cookie = cookies.SimpleCookie()
