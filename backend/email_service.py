@@ -234,6 +234,13 @@ def send_otp_email(to_email: str, otp: str, purpose: str = "Sign Up Verification
                     <div style="font-size: 11px; color: #f59e0b; font-weight: 700; margin-top: 8px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
                       ⏱ Expires in 10 minutes
                     </div>
+                    <div style="margin-top: 14px;">
+                      <a href="mailto:?body={otp}"
+                         onclick="navigator.clipboard&&navigator.clipboard.writeText('{otp}');return false;"
+                         style="display: inline-block; background-color: #CDFF29; color: #000000; font-family: 'Courier New', Courier, monospace; font-size: 12px; font-weight: 900; letter-spacing: 1px; text-transform: uppercase; text-decoration: none; padding: 9px 24px; border-radius: 8px; border: 2px solid #000000; cursor: pointer;">
+                        📋 Copy Code: {otp}
+                      </a>
+                    </div>
                   </td>
                 </tr>
               </table>
